@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS Grid - line-based placement</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 2em auto;
+            font: .9em/1.2 Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-gap: 20px;
+        }
+
+        header,
+        footer {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: teal;
+            border: 2px solid red;
+        }
+
+        aside {
+            border-right: 1px solid #999;
+        }
+		
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>Python 1</header>
+        <article>
+                <h1>My article</h1>
+                <p>Python is good.</p>
+
+                <p>Python is good.</p>
+        </article>
+        <aside><h2>Other things</h2>
+            <p>Python is good.</p></aside>
+        <footer>Python is good</footer>
+    </div>
+
+</body>
+
+</html>
