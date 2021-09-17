@@ -1,0 +1,11 @@
+The CSS Grid Layout is a 2-D layout system for placement in web pages. Using this we can lay out content out in rows and columns. 
+It makes designing complex layouts easy.
+Here are the basics
+
+A grid is a collection of columns and rows with gaps between each row and column. The gaps are called gutters.
+
+To define a grid you need to define the following CSS
+.container {
+    display: grid;
+}
+we start with a simple page where display grid has not been defined and then to one where templates are defined

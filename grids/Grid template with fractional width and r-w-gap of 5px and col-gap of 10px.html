@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grid template with fractional width and r-w-gap of 5px and col-gap of 10px</title>
+    <style>
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+	grid-column-gap: 10px;
+    grid-row-gap: 5px;/* Gap between rows and columns
+	gap can be given in px or percentage.
+	
+	We can define grid-row-gap and grid-column-gap for finer control
+	*/
+}
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+        }
+
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: teal;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grid template with fractional width and r-w-gap of 5px and col-gap of 10px</h1>
+
+    <div class="container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+    </div>
+
+</body>
+
+</html>

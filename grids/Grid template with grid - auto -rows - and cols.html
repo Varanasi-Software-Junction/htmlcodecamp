@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grid template with grid - auto -rows</title>
+    <style>
+.container {
+     display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 20px;
+	
+	/*
+	Control expansion and diminishing of grid elements
+	grid-auto-rows: minmax(100px, auto)Min width 100 px, max is unlimited
+	grid-auto-rows: minmax(auto, 20px)
+	grid-auto-rows: minmax(auto,auto) allows unlimited expansion an contraction
+	*/
+    
+}
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+        }
+
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: teal;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grid template with grid - auto -rows</h1>
+
+    <div class="container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+    </div>
+
+</body>
+
+</html>

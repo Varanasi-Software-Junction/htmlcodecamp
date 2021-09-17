@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grids</title>
+    <style>
+	.container {
+	/* This will display 3 columns in one row with each column being 200 px wide.
+	If there are more than 3 columns it will spill over into the next row*/
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+}
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+        }
+
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: teal;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grid with simple 3 column template grid with 200 pixels </h1>
+
+    <div class="container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+    </div>
+
+</body>
+
+</html>

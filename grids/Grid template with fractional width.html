@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grids with column width in fractions</title>
+    <style>
+	.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+	/*
+	Make 3 columns in one row with fractional widths of 1,2 and 1
+	Total width = 1 + 2 + 1=4
+	Col 1 will be 1/4 of total available width, Col2 2/4=1/2. Col 3 =1/4
+	*/
+}
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+        }
+
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: teal;
+            border: 2px ridge red;
+			/*border: width style color
+			Other way of defining this is
+			border-color:red;
+			border-width:2px;
+			border-style:solid;
+			*/
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Grids with column width in fractions</h1>
+
+    <div class="container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+    </div>
+
+</body>
+
+</html>
