@@ -6,40 +6,40 @@
   <meta http-equiv="X-UA-Compatible">
   <title>Varanasi Software Junction --- Form</title>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
   body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   background-color: white;
-  font-family: "lato", sans-serif;
+  font-family: "pacifico", sans-serif;
 }
-.vsjform {
+.vsjformdiv {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;/*vh stands for vertical height*/
+  height: 100vh;
 }
-.form {
+.vsjform {
   background-color: white;
   width: 400px;
   border-radius: 8px;
   padding: 20px 40px;
-  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);/*https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow*/
+  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
 }
 
-.title {
+.vsjtitle {
   font-size: 50px;
   margin-bottom: 50px;
 }
-.inputContainer {
+.vsjdiv {
   position: relative;
   height: 45px;
   width: 90%;
   margin-bottom: 17px;
 }
 
-.input {
+.vsjinput {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -54,20 +54,20 @@
   z-index: 1;
 }
 
-/* Hide the placeholder texts (a) */
+
 
 ::placeholder {
   color: transparent;
 }
-/* Styling text labels */
+/* Style the label */
 
-.label {
+.vsjlabel {
   position: absolute;
   top: 15px;
   left: 15px;
   padding: 0 4px;
   background-color: white;
-  color: #DADCE0;
+  color: teal;
   font-size: 16px;
   transition: 0.5s;
   z-index: 0;
@@ -75,31 +75,31 @@
   </style>
 </head>
 <body>
-<div class="vsjform">
-    <form action="" class="form">
-      <h1 class="title">Sign up</h1>
+<div class="vsjformdiv">
+    <form action="" class="vsjform">
+      <h1 class="vsjtitle">Sign up</h1>
 
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Email</label>
+      <div class="vsjdiv">
+        <input type="text" class="vsjinput" placeholder="vsj">
+        <label for="" class="vsjlabel">Email</label>
       </div>
 
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Username</label>
+      <div class="vsjdiv">
+        <input type="text" class="vsjinput" placeholder="vsj">
+        <label for="" class="vsjlabel">Username</label>
       </div>
 
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Password</label>
+      <div class="vsjdiv">
+        <input type="text" class="vsjinput" placeholder="vsj">
+        <label for="" class="vsjlabel">Password</label>
       </div>
 
-      <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Confirm Password</label>
+      <div class="vsjdiv">
+        <input type="text" class="vsjinput" placeholder="vsj">
+        <label for="" class="vsjlabel">Confirm Password</label>
       </div>
 
-      <input type="submit" class="submitBtn" value="Sign up">
+      <input type="submit" class="vsjsubmit" value="Sign up">
     </form>
   </div>
 </body>
