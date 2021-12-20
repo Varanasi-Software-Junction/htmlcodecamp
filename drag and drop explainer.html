@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Varanasi Software Junction --- Drag and Drop Explainer</title>
+    <style>
+.droptarget
+{
+    width: 200px;
+    height: 200px;
+    background-color: teal;
+    border-color: black ;
+    border-width: 4px;
+    border-style: ridge;
+}
+.dropOverTarget
+{
+    border-color: red ;
+}
+
+    </style>
+    <script>
+function doDragOver(event)
+{
+console.log(event.target);
+console.log(event.target.classList.add("dropOverTarget"));
+}
+
+function doDragLeave(event)
+{
+console.log(event.target);
+console.log(event.target.classList.remove("dropOverTarget"));
+}
+
+
+    </script>
+</head>
+<body>
+<div class="droptarget" ondragover="doDragOver(event)" ondragleave="doDragLeave(event)"></div>
+<input type="button" value="Drag" draggable="true">
+</body>
+</html>

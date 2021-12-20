@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<chessbody>
+<!--***************************************************-->
+
+<style>
+  .chesstable {
+      border-style: ridge;
+      border-width: 0px;
+      border-collapse: collapse; /* Remove cell spacing */
+    }
+    .chess-table {
+  background-color:khaki;
+  box-shadow: 10px 10px 5px grey;
+  }
+      .white-coin
+      {
+        box-sizing: border-box;
+          background-color: wheat;
+          width: 50px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+      }
+
+      
+      .chesstable, th, td{
+        border: 1px solid #666;
+    }
+    .chesstable th, .chesstable td{
+        padding: 10px; /* Apply cell padding */
+    }
+      .black-coin
+      {
+        box-sizing: border-box;
+          background-color: gray;
+          width: 50px;
+          line-height: 50px;
+    text-align: center;
+    height: 50px;
+    font-size: 30px;
+      }
+    .chessCoin
+      
+    {
+      border-color:yellow;
+      border-width: 5px;
+      border-style: ridge;
+    }
+    .activeChessGrid
+    {
+      border-color: red;
+      border-width: 5px;
+      border-style: ridge;
+    }
+    .attackableChessGrid
+    {
+      border-color:yellow;
+      border-width: 5px;
+      border-style: ridge;
+    }
+    .currentChessGrid
+    {
+      border-color:lime;
+      border-width: 5px;
+      border-style: ridge;
+    }
+  chessbody{
+      background-color: khaki;
+  }
+  </style>
+  <script>
+
+    var currentCoin=0;
+    function doSelect(event)
+    {
+      uncheckAll();
+      currentCoin=event.target;
+      console.log(currentCoin);
+      event.target.classList.add("currentChessGrid");
+      console.log(event.target.title);
+    }
+  function getY(id)
+  {
+    return Number(id[1]);
+  }
+  function getX(id)
+  {
+    return Number(id[2]);
+  }
+  function isPointInRange(y,x)
+  {
+    if(y<1 || y>8 || x<1 || x>8)
+      return false;
+      return true;
+  }
+  function uncheckAll()
+  {
+    for(var i=1;i<=5;i++)
+    {
+      var x=document.getElementById("h" + i);
+      x.classList.remove("currentChessGrid");
+  
+    }
+  }
+
+
+  function removeAll()
+  {
+    for(var i=1;i<=8;i++)
+    for(var j=1;j<=8;j++)
+    {
+      removeCss(i,j);
+      
+  
+    }
+  }
+  function removeCss(y,x)
+  {
+    if(!isPointInRange(y,x))
+    return;
+    coin=document.getElementById("a" + y + x);
+    coin.innerHTML="" + y + x;
+    coin.classList.remove("activeChessGrid");
+  coin.classList.remove("currentChessGrid");
+  coin.classList.remove("attackableChessGrid");
+    
+  }
+  function markWithCss(y,x)
+  {
+    if(!isPointInRange(y,x))
+    return;
+    coin=document.getElementById("a" + y + x);
+    coin.classList.add("activeChessGrid");
+  }
+  
+  function bishopsMap(y,x)
+  {
+    var total=y+x ;
+    for(var row=1;row<=8;row++)
+    {
+      var py=row;
+      var px=total-row;
+  markWithCss(py,px);
+    }
+  
+    diff=y-x ;
+    for(var row=1;row<=8;row++)
+    {
+      var py=row;
+      var px=row-diff;
+  markWithCss(py,px);
+    }
+  }
+  
+  function rooksMap(y,x)
+  {
+    var total=y+x ;
+    for(var row=1;row<=8;row++)
+    {
+      
+  markWithCss(y,row);
+  markWithCss(row,x);
+    }
+  
+   
+  }
+  
+  function queensMap(y,x)
+  {
+  rooksMap(y,x);
+  bishopsMap(y,x);
+  }
+  
+  
+  
+  function kingsMap(y,x)
+  {
+  markWithCss(y+1,x+1);
+  markWithCss(y+1,x-1);
+  markWithCss(y-1,x+1);
+  markWithCss(y-1,x-1);
+  markWithCss(y+1,x);
+  markWithCss(y-1,x);
+  markWithCss(y,x+1);
+  markWithCss(y,x-1);
+  }
+  
+  
+  function pawnsMap(y,x)
+  {
+  markWithCss(y-1,x);
+  if(isPointInRange(y-1,x-1))
+  {
+    var coin=document.getElementById("a" + (y-1) + (x-1));
+    coin.classList.add("attackableChessGrid");
+  }
+  if(isPointInRange(y-1,x+1))
+  {
+    var coin=document.getElementById("a" + (y-1) + (x+1));
+    coin.classList.add("attackableChessGrid");
+  
+  }
+  if(y==8)
+  markWithCss(y-2,x);
+  }
+
+  function knightsMap(y,x)
+  {
+  markWithCss(y+1,x+2);
+  markWithCss(y+1,x-2);
+  markWithCss(y-1,x+2);
+  markWithCss(y-1,x-2);
+  markWithCss(y+2,x+1);
+  markWithCss(y+2,x-1);
+  markWithCss(y-2,x+1);
+  markWithCss(y-2,x-1);
+  }
+    function doProcess(event)
+    {
+      if(currentCoin==0)
+      {
+        alert("Please select a coin");
+        return;
+      }
+      removeAll();
+      //  alert(event.target.id);
+       // alert(event.target.parentNode);
+      event.target.classList.add("currentChessGrid");
+      event.target.innerHTML=currentCoin.innerHTML;
+      var y=getY(event.target.id);
+      var x=getX(event.target.id);
+      console.log(y + "," + x);
+      if(currentCoin.title=="Knight")
+      knightsMap(y,x);
+      if(currentCoin.title=="Bishop")
+      bishopsMap(y,x);
+      if(currentCoin.title=="Rook")
+      rooksMap(y,x);
+      if(currentCoin.title=="Queen")
+      queensMap(y,x);
+      if(currentCoin.title=="King")
+      kingsMap(y,x);
+      if(currentCoin.title=="Pawn")
+      pawnsMap(y,x);
+    }
+  </script>
+  
+
+<!--***************************************************-->
+<div style="overflow:scroll"> 
+  <center>
+<table style="width: 600px; height: 400px;" class="chess-table chesstable">
+
+<!--********************************************-->
+    <tr>
+        <td><div onclick="doProcess(event)"  id="a11" class="white-coin">11</div></td>
+        <td><div onclick="doProcess(event)"  id="a12" class="black-coin">12</div></td>
+        <td><div onclick="doProcess(event)"  id="a13" class="white-coin">13</div></td>
+        <td><div onclick="doProcess(event)"  id="a14" class="black-coin">14</div></td>
+        <td><div onclick="doProcess(event)"  id="a15" class="white-coin">15</div></td>
+        <td><div onclick="doProcess(event)"  id="a16" class="black-coin">16</div></td>
+        <td><div onclick="doProcess(event)"  id="a17" class="white-coin">17</div></td>
+        <td><div onclick="doProcess(event)"  id="a18" class="black-coin">18</div></td>
+
+    </tr>
+      <!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a21" class="black-coin">21</div></td>
+  <td><div onclick="doProcess(event)"  id="a22" class="white-coin">22</div></td>
+  <td><div onclick="doProcess(event)"  id="a23" class="black-coin">23</div></td>
+  <td><div onclick="doProcess(event)"  id="a24" class="white-coin">24</div></td>
+  <td><div onclick="doProcess(event)"  id="a25" class="black-coin">25</div></td>
+  <td><div onclick="doProcess(event)"  id="a26" class="white-coin">26</div></td>
+  <td><div onclick="doProcess(event)"  id="a27" class="black-coin">27</div></td>
+  <td><div onclick="doProcess(event)"  id="a28" class="white-coin">28</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a31" class="white-coin">31</div></td>
+  <td><div onclick="doProcess(event)"  id="a32" class="black-coin">32</div></td>
+  <td><div onclick="doProcess(event)"  id="a33" class="white-coin">33</div></td>
+  <td><div onclick="doProcess(event)"  id="a34" class="black-coin">34</div></td>
+  <td><div onclick="doProcess(event)"  id="a35" class="white-coin">35</div></td>
+  <td><div onclick="doProcess(event)"  id="a36" class="black-coin">36</div></td>
+  <td><div onclick="doProcess(event)"  id="a37" class="white-coin">37</div></td>
+  <td><div onclick="doProcess(event)"  id="a38" class="black-coin">38</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a41" class="black-coin">41</div></td>
+  <td><div onclick="doProcess(event)"  id="a42" class="white-coin">42</div></td>
+  <td><div onclick="doProcess(event)"  id="a43" class="black-coin">43</div></td>
+  <td><div onclick="doProcess(event)"  id="a44" class="white-coin">44</div></td>
+  <td><div onclick="doProcess(event)"  id="a45" class="black-coin">45</div></td>
+  <td><div onclick="doProcess(event)"  id="a46" class="white-coin">46</div></td>
+  <td><div onclick="doProcess(event)"  id="a47" class="black-coin">47</div></td>
+  <td><div onclick="doProcess(event)"  id="a48" class="white-coin">48</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a51" class="white-coin">51</div></td>
+  <td><div onclick="doProcess(event)"  id="a52" class="black-coin">52</div></td>
+  <td><div onclick="doProcess(event)"  id="a53" class="white-coin">53</div></td>
+  <td><div onclick="doProcess(event)"  id="a54" class="black-coin">54</div></td>
+  <td><div onclick="doProcess(event)"  id="a55" class="white-coin">55</div></td>
+  <td><div onclick="doProcess(event)"  id="a56" class="black-coin">56</div></td>
+  <td><div onclick="doProcess(event)"  id="a57" class="white-coin">57</div></td>
+  <td><div onclick="doProcess(event)"  id="a58" class="black-coin">58</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a61" class="black-coin">61</div></td>
+  <td><div onclick="doProcess(event)"  id="a62" class="white-coin">62</div></td>
+  <td><div onclick="doProcess(event)"  id="a63" class="black-coin">63</div></td>
+  <td><div onclick="doProcess(event)"  id="a64" class="white-coin">64</div></td>
+  <td><div onclick="doProcess(event)"  id="a65" class="black-coin">65</div></td>
+  <td><div onclick="doProcess(event)"  id="a66" class="white-coin">66</div></td>
+  <td><div onclick="doProcess(event)"  id="a67" class="black-coin">67</div></td>
+  <td><div onclick="doProcess(event)"  id="a68" class="white-coin">68</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a71" class="white-coin">71</div></td>
+  <td><div onclick="doProcess(event)"  id="a72" class="black-coin">72</div></td>
+  <td><div onclick="doProcess(event)"  id="a73" class="white-coin">73</div></td>
+  <td><div onclick="doProcess(event)"  id="a74" class="black-coin">74</div></td>
+  <td><div onclick="doProcess(event)"  id="a75" class="white-coin">75</div></td>
+  <td><div onclick="doProcess(event)"  id="a76" class="black-coin">76</div></td>
+  <td><div onclick="doProcess(event)"  id="a77" class="white-coin">77</div></td>
+  <td><div onclick="doProcess(event)"  id="a78" class="black-coin">78</div></td>
+
+</tr>
+<!--********************************************-->
+
+<!--********************************************-->
+<tr>
+  <td><div onclick="doProcess(event)"  id="a81" class="black-coin">81</div></td>
+  <td><div onclick="doProcess(event)"  id="a82" class="white-coin">82</div></td>
+  <td><div onclick="doProcess(event)"  id="a83" class="black-coin">83</div></td>
+  <td><div onclick="doProcess(event)"  id="a84" class="white-coin">84</div></td>
+  <td><div onclick="doProcess(event)"  id="a85" class="black-coin">85</div></td>
+  <td><div onclick="doProcess(event)"  id="a86" class="white-coin">86</div></td>
+  <td><div onclick="doProcess(event)"  id="a87" class="black-coin">87</div></td>
+  <td><div onclick="doProcess(event)"  id="a88"  class="white-coin">88</div></td>
+
+</tr>
+
+<!--********************************************-->
+<tr>
+  <td><h1></h1> </td>
+  <td><h1 class="chessCoin" id="h1" onclick="doSelect(event)" title="Rook">♜</h1> </td>
+  <td><h1 class="chessCoin"  id="h2"  onclick="doSelect(event)"  title="Knight">♞</h1> </td>
+  <td><h1 class="chessCoin"  id="h3"  onclick="doSelect(event)"  title="Bishop">♝</h1> </td>
+  <td><h1  class="chessCoin" id="h4"  onclick="doSelect(event)"  title="Queen">♛</h1> </td>
+  <td><h1  class="chessCoin"  id="h5" onclick="doSelect(event)"  title="King">♚</h1> </td>
+  <td><h1  class="chessCoin" id="h6"  onclick="doSelect(event)"  title="Pawn">♟</h1> </td>
+  <td><h1></h1> </td>
+  
+
+</tr>
+</table>
+</center>
+</div>
+<!--********************************************-->
+</chesssbody>
+
+</html>
+
+

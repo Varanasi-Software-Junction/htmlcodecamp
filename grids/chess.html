@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+        <meta charset="UTF-8">
+        <title>chess-board</title>
+        <style>
+            .chess-board { 
+                border-spacing: 0; 
+                border-collapse: collapse; }
+            .chess-board th { 
+                padding: .5em; 
+            }
+            .chess-board td { 
+                border: 2px solid; 
+                width: 5em; 
+                height: 5em; 
+            }
+             
+            .chess-board .white { 
+                background:#fdf6c5
+            }
+            .chess-board .black { 
+                background: #c46424;
+            }
+            h1 {
+                padding-left: 12px;
+            }
+        </style>
+        <script>
+            function drag(ev) {
+            console.log("Drag Started");
+            console.log(ev.target.id);
+                ev.dataTransfer.setData("text", ev.target.id);
+
+        }
+        function allowdrop(ev) {
+            console.log("Drop Target");
+            console.log(ev.target.id);
+                ev.preventDefault();
+        }
+        function drop(ev) {
+            ev.preventDefault;
+            var data = ev.dataTransfer.getData("text");
+            var img=document.getElementById(data);
+            ev.target.appendChild(img); 
+      }
+
+        </script>
+    </head> 
+    <body>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5">
+                <table class="chess-board">
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>&nbsp; &nbsp; 1 </th>
+                            <th>&nbsp; &nbsp; 2 </th>
+                            <th>&nbsp; &nbsp; 3 </th>
+                            <th>&nbsp; &nbsp; 4 </th>
+                            <th>&nbsp; &nbsp; 5 </th>
+                            <th>&nbsp; &nbsp; 6 </th>
+                            <th>&nbsp; &nbsp; 7 </th>
+                            <th>&nbsp; &nbsp; 8 </th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td class="white"><div id="a11" draggable="true" ondragstart="drag(event)"><h1> ♜ </h1></div></td>
+                            <td class="black"><div id="a12" draggable="true" ondragstart="drag(event)"><h1> ♞ </h1></div></td>
+                            <td class="white"><div id="a13" draggable="true" ondragstart="drag(event)"><h1> ♝ </h1></div></td>
+                            <td class="black"><div id="a14" draggable="true" ondragstart="drag(event)"><h1> ♛ </h1></div></td>
+                            <td class="white"><div id="a15" draggable="true" ondragstart="drag(event)"><h1> ♚ </h1></div></td>
+                            <td class="black"><div id="a16" draggable="true" ondragstart="drag(event)"><h1> ♝ </h1></div></td>
+                            <td class="white"><div id="a17" draggable="true" ondragstart="drag(event)"><h1> ♞ </h1></div></td>
+                            <td class="black"><div id="a18" draggable="true" ondragstart="drag(event)"><h1> ♜ </h1></div></td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td class="black"><div id="a21" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="white"><div id="a22" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="black"><div id="a23" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="white"><div id="a24" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="black"><div id="a25" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="white"><div id="a26" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="black"><div id="a27" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                            <td class="white"><div id="a28" draggable="true" ondragstart="drag(event)"> <h1> ♟ </h1></div> </td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td class="white"><div id="a31" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a32" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a33" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a34" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a35" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a36" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a37" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a38" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td class="black"><div id="a41" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a42" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a43" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a44" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a45" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a46" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a47" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a48" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td class="white"><div id="a51" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a52" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a53" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a54" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a55" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a56" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a57" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a58" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td class="black"><div id="a61" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a62" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a63" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a64" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a65" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a66" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="black"><div id="a67" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                            <td class="white"><div id="a68" ondrop="drop(event)" ondragover= "allowdrop(event)"> &nbsp; </div></td>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <td class="white"><div  id="a71" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowdrop(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="black"><div  id="a72" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="white"><div  id="a73" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="black"><div  id="a74" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="white"><div  id="a75" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="black"><div  id="a76" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="white"><div  id="a77" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                            <td class="black"><div  id="a78" draggable="true" ondragstart="drag(event)"><h1> ♙ </h1></div>  </td>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <td class="black"> <div id="a81" draggable="true" ondragstart="drag(event)"><h1> ♖ </h1></div> </td>
+                            <td class="white"> <div id="a82" draggable="true" ondragstart="drag(event)"><h1> ♘ </h1></div> </td>
+                            <td class="black"> <div id="a83" draggable="true" ondragstart="drag(event)"><h1> ♗ </h1></div> </td>
+                            <td class="white"> <div id="a84" draggable="true" ondragstart="drag(event)"><h1> ♕ </h1></div> </td>
+                            <td class="black"> <div id="a85" draggable="true" ondragstart="drag(event)"><h1> ♔ </h1></div> </td>
+                            <td class="white"> <div id="a86" draggable="true" ondragstart="drag(event)"><h1> ♗ </h1></div> </td>
+                            <td class="black"> <div id="a87" draggable="true" ondragstart="drag(event)"><h1> ♘ </h1></div> </td>
+                            <td class="white"> <div id="a88" draggable="true" ondragstart="drag(event)"><h1> ♖ </h1></div> </td>
+                        </tr>
+                    </tbody>
+                </table>        
+            </div>
+        </div>    
+    </body>
+</html>
