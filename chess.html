@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rough2 chess </title>
+</head>
+<style>
+    .blackcoin
+    {
+        font-weight: bold;
+color: black;
+    }
+    .whitecoin
+    {
+color:white;
+font-weight: bold;
+    }
+     td,th{
+           border: 2px solid teal;
+           /* width: 70px ;
+           height: 70px; */
+           width: 40px;
+           height: 40px;
+           background-color: white;
+        }
+    .white{
+        background-color:  rgb(235, 212, 212);
+        /* padding-top: 7px; */
+        /* padding: 11px; */
+    }
+    .black{
+        background-color: #802a2a;
+        /* padding-top: 7px; */
+        /* padding: 11px; */
+    }
+</style>
+<script>
+
+    
+     function isPlacingValid(srcy,srcx,desty,destx,coin)
+     {
+        var value=Board[desty-1][destx-1];
+        if(coin.name=="knight")
+        {
+        console.log("Knight");
+            value=isknightvalid(srcy,srcx,desty,destx);
+            return value;
+        }
+        if(coin.name=="rook")
+        {
+        console.log("rook")
+            value=rookisvalid(srcy,srcx,desty,destx)
+            return value
+        }
+        if(coin.name=="bishop")
+        {
+        console.log==("bishop")
+            value=isbishopvalid(srcy,srcx,desty,destx)
+            return value
+        }
+        if(coin.name=="queen")
+        {
+            console.log==("queen")
+            value=isQueenvalid(srcy,srcx,desty,destx)
+            return value
+        }
+        if(coin.name=="king")
+        {
+            console.log==("king")
+            value=Kingvalid(srcy,srcx,desty,destx)
+            return value
+        }
+        if(coin.name=="pawn")
+        {
+            // console.log("white")
+            alert("Pawn");
+            value=pawnvalid(srcy,srcx,desty,destx)
+            return value;
+        }
+       
+        
+        if(value==0)
+         return true;
+
+         return false;
+    }
+
+    function isknightvalid(srcy,srcx,y,x){
+      if (srcy-y== 2 && srcx-x==-1)
+      return true;
+      if (srcy-y== 1 && srcx-x==-2)
+      return true;
+      if (srcy-y== -1 && srcx-x==-2)
+      return true;
+      if (srcy-y== -2 && srcx-x==-1)
+      return true;
+      if (srcy-y== -2 && srcx-x==1)
+      return true;
+      if (srcy-y== -1 && srcx-x==2)
+      return true;
+      if (srcy-y== 1 && srcx-x==2)
+        return true;
+     if (srcy-y== 2 && srcx-x== 1 )
+     return true;
+
+        return false;
+
+}
+function rookisvalid(srcy,srcx,y,x)
+{
+
+    if(srcx!=x && srcy!=y)
+    return false;
+    var direction="";
+    if(srcy>y)
+    direction="0";
+    /*
+    y is decreasing
+    neeeche se upar
+    srcy>y
+    loop from y+1 to srcy-1
+    */
+    if(srcx<x)
+    direction="1";
+    /*
+    x is increasing
+    left to right
+    loop from srcx + 1 to x-1
+    */
+    if(srcy<y)
+    direction="2";
+    /*
+    y is increasing
+    upar se neeche
+    loop from srcy + 1 to y-1
+    */
+    if(srcx>x)
+    direction="3";
+    /*
+    x is decreasing
+    right to left
+    loop from x+1 to srcx-1
+    */
+    console.log(direction);
+    alert(direction);
+// [0= y1<y2]    [2= y1>y2]   [1= x1<x2]  [3= x1>x2]
+//******
+    if(direction==0)
+    {
+        alert("Direction is 0 and dropping from " + srcy + " to " + y + ", x is " + x);
+        //y is decreasing
+        for(var i=y+1;i<=srcy-1;i++)
+        {
+            var value=Board[i-1][x-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+
+//******
+if(direction==2)
+    {
+        alert("Direction is 2 and dropping from " + srcy + " to " + y + ", x is " + x);
+        //y is decreasing
+        for(var i=srcy+1;i<=y-1;i++)
+        {
+            var value=Board[i-1][x-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+
+
+
+//******
+if(direction==1)
+    {
+        alert("Direction is 1 and dropping from " + srcx + " to " + x + ", y is " + y);
+        //y is decreasing
+        for(var i=srcx+1;i<=x-1;i++)
+        {
+            var value=Board[y-1][i-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+//******
+if(direction==3)
+    {
+        alert("Direction is 1 and dropping from " + srcx + " to " + x + ", y is " + y);
+        //y is decreasing
+        for(var i=x+1;i<=srcx-1;i++)
+        {
+            var value=Board[y-1][i-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//**
+//***
+ return true;
+
+}
+function isbishopvalid(srcy,srcx,y,x){
+    // if (srcy-srcx==y-x)
+    // return true;
+    // if (srcy + srcx == x + y)
+    // return true;
+    // return false;
+    if (!((srcy + srcx == x + y) || (srcy - srcx == y - x)))
+    return false;
+
+    var direction="";
+    if((srcy + srcx)==(x+y))
+    {
+    alert("Non leading diagonal");
+    alert("Move from " + srcy + "," + srcx + " to " + y + "," + x);
+    var sum=srcx + srcy ;
+    alert("SUm " + sum);
+    if(srcy>y)
+    {
+        var t=srcy;
+            srcy=y;
+             y=t;
+
+        t=srcx;
+        srcx=x;
+        x=t;
+    }
+    
+    for(var i=1;i<=y-srcy-1;i++)
+    {
+        var py=srcy + i;
+
+        var px=sum-srcy- i;
+        alert(py+ "," + px);
+           var value=Board[py-1][px-1];
+            //alert(value);
+            if(value!=0)
+            return false;
+    }
+
+
+    }
+    if((srcy - srcx)==(y-x))
+    {
+    alert("Leading diagonal");
+    alert("Move from " + srcy + "," + srcx + " to " + y + "," + x);
+    if(srcy>y)
+    {
+        var t=srcy;
+        srcy=y;
+        y=t;
+
+         var t=srcx;
+         srcx=x;
+         x=t;
+    }
+    for(var i=1;i<=y-srcy-1;i++)
+    {
+        var py=srcy + i;
+         var px=srcx+ i;
+        alert(py+ "," + px);//srcx+1
+         var value=Board[py-1][px-1];
+            // alert(value);
+             if(value!=0)
+             return false;
+    }
+    }
+    return true;
+    }
+function isQueenvalid(srcy,srcx,y,x){
+    // if (srcy-srcx==y-x)
+    // return true;
+    // if (srcy + srcx == x + y)
+    // return  true;
+    // if (srcx==x)
+    // return true;
+    // if (srcy==y)
+    // return true;
+    // return false;
+    // if (!((srcy - srcx == y - x) || (srcy + srcx == x + y) || (srcx==x) ||(srcy==y)))
+    // return false;  
+
+    if((srcy - srcx)==(y-x))
+    {
+    alert("Leading diagonal");
+    alert("Move from " + srcy + "," + srcx + " to " + y + "," + x);
+    if(srcy>y)
+    {
+        var t=srcy;
+        srcy=y;
+        y=t;
+
+         var t=srcx;
+         srcx=x;
+         x=t;
+    }
+    for(var i=1;i<=y-srcy-1;i++)
+    {
+        var py=srcy + i;
+         var px=srcx+ i;
+        alert(py+ "," + px);//srcx+1
+         var value=Board[py-1][px-1];
+            // alert(value);
+             if(value!=0)
+             return false;
+    }
+    return true;
+    }
+    if((srcy + srcx)==(x+y))
+    {
+    alert("Non leading diagonal");
+    alert("Move from " + srcy + "," + srcx + " to " + y + "," + x);
+    var sum=srcx + srcy ;
+    alert("SUm " + sum);
+    if(srcy>y)
+    {
+        var t=srcy;
+            srcy=y;
+             y=t;
+
+        t=srcx;
+        srcx=x;
+        x=t;
+    }
+    
+for(var i=1;i<=y-srcy-1;i++)
+   {
+        var py=srcy + i;
+        var px=sum-srcy- i;
+        alert(py+ "," + px);
+           var value=Board[py-1][px-1];
+            //alert(value);
+            if(value!=0)
+            return false;
+    }
+return true;
+}
+
+
+if(srcx!=x && srcy!=y)
+    return false;
+    var direction="";
+    if(srcy>y)
+    direction="0";
+    /*
+    y is decreasing
+    neeeche se upar
+    srcy>y
+    loop from y+1 to srcy-1
+    */
+    if(srcx<x)
+    direction="1";
+    /*
+    x is increasing
+    left to right
+    loop from srcx + 1 to x-1
+    */
+    if(srcy<y)
+    direction="2";
+    /*
+    y is increasing
+    upar se neeche
+    loop from srcy + 1 to y-1
+    */
+    if(srcx>x)
+    direction="3";
+    /*
+    x is decreasing
+    right to left
+    loop from x+1 to srcx-1
+    */
+    console.log(direction);
+    alert(direction);
+// [0= y1<y2]    [2= y1>y2]   [1= x1<x2]  [3= x1>x2]
+//******
+    if(direction==0)
+    {
+        alert("Direction is 0 and dropping from " + srcy + " to " + y + ", x is " + x);
+        //y is decreasing
+        for(var i=y+1;i<=srcy-1;i++)
+        {
+            var value=Board[i-1][x-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+
+//******
+if(direction==2)
+    {
+        alert("Direction is 2 and dropping from " + srcy + " to " + y + ", x is " + x);
+        //y is decreasing
+        for(var i=srcy+1;i<=y-1;i++)
+        {
+            var value=Board[i-1][x-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+
+
+
+//******
+if(direction==1)
+    {
+        alert("Direction is 1 and dropping from " + srcx + " to " + x + ", y is " + y);
+        //y is decreasing
+        for(var i=srcx+1;i<=x-1;i++)
+        {
+            var value=Board[y-1][i-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//******
+
+//******
+if(direction==3)
+    {
+        alert("Direction is 1 and dropping from " + srcx + " to " + x + ", y is " + y);
+        //y is decreasing
+        for(var i=x+1;i<=srcx-1;i++)
+        {
+            var value=Board[y-1][i-1];
+            alert(value);
+            if(value!=0)
+            return false;
+        }
+
+
+    }
+//**
+//***
+ return true;
+
+}
+function Kingvalid(srcy,srcx,y,x){
+    var originalcoin=Board[srcy-1][srcx-1];
+        var droppingcoin=Board[y-1][x-1];
+        alert(y + "," + x);
+        alert(originalcoin.color);
+        if(droppingcoin==0)
+        alert("Khali hai");
+        else
+        alert("Pehle se hai " + droppingcoin.name);
+
+    if (srcy-y== 0 && srcx-x== 0)
+      return true;
+      if (srcy-y== 0 && srcx-x== 1)
+      return true;
+      if (srcy-y== -1 && srcx-x== 1)
+      return true;
+      if (srcy-y== -1 && srcx-x== 0)
+      return true;
+      if (srcy-y== -1 && srcx-x==-1)
+      return true;
+      if (srcy-y== 0 && srcx-x== -1)
+      return true;  
+      if (srcy-y== 1 && srcx-x== -1)
+        return true;
+      if (srcy-y== 1 && srcx-x== 0 )
+     return true;
+
+        return false
+    }
+    function pawnvalid(srcy,srcx,y,x,coin)
+    {   
+        var originalcoin=Board[srcy-1][srcx-1];
+        var droppingcoin=Board[y-1][x-1];
+        alert(y + "," + x);
+        alert(originalcoin.color);
+        if(droppingcoin==0)
+        alert("Khali hai");
+        else
+        alert("Pehle se hai " + droppingcoin.name);
+        // if(srcy-y==1 && srcx==x)
+        // return true;
+        // if ( srcy-y ==-1 && srcx==x)
+        // return true;
+        // return false
+        if(originalcoin.color=="white")
+        {
+            alert("White");
+            if(y<=srcy)
+            return 0;
+        }
+        if(originalcoin.color=="black")
+        {
+            alert("Black");
+            if(y>=srcy)
+            return false;
+        }
+        if(x==srcx && srcy-y==1 )
+         return true;
+        if(srcy==7)
+        {
+         return y==5;
+        }
+        if(x==srcx && y-srcy==1)
+         return true;
+        if(srcy==2)
+        {
+            return y==4;
+        }
+
+    return false;
+}
+
+    function getCoin(name,color)
+    {
+        return{name:name,color:color}
+    }
+    
+    var Board=[
+        [getCoin("rook","white"),getCoin("knight","white"),getCoin("bishop","white"),getCoin("king","white"),getCoin("queen","white"),getCoin("bishop","white"),getCoin("knight","white"),getCoin("rook","white")],
+        [getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white"),getCoin("pawn","white")],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black"),getCoin("pawn","black")],
+        [getCoin("rook","black"),getCoin("knight","black"),getCoin("bishop","black"),getCoin("queen","black"),getCoin("king","black"),getCoin("bishop","black"),getCoin("knight","black"),getCoin("rook","black")],
+     ];
+     function addEvent(description)
+     {
+        document.getElementById("tevents").value=description  + "\n" + document.getElementById("tevents").value;
+     }
+    function printBoard()
+    {
+        var fullstr="";
+        for(var i=0;i<=7;i++)
+        {
+            var str="";
+            for(var j=0;j<=7;j++)
+            {
+                str += "," + Board[i][j];
+            }
+            fullstr =fullstr + str + "\n";
+            console.log(str);
+            
+            
+
+        }
+        document.getElementById("ta").value=fullstr;
+    }
+    function getY(id)
+    {
+        return Number(id[1]);
+    }
+    function getX(id)
+    {
+        return Number(id[2]);
+    }
+     function Drag(ev){
+         var parentdiv=ev.target.parentElement;
+         addEvent("Drag " + ev.target.id + " started from " + parentdiv.id);
+         ev.dataTransfer.setData("id",ev.target.id)
+
+     }
+     function Dragover(ev)
+     {
+         event.preventDefault();
+        //addEvent("Dragging Over " + ev.target.id);
+     }  
+     function f1(){
+        
+        var x1=Number( document.getElementById("tx1").value);
+        var x2=Number( document.getElementById("tx2").value);
+        var y1=Number( document.getElementById("ty1").value);
+        var y2=Number( document.getElementById("ty2").value);
+        doAutoMove(y1,x1,y2,x2);
+    }
+     function doAutoMove(y1,x1,y2,x2)
+     {
+         y1=Number(y1);//abhadi
+         y2=Number(y2);
+         x1=Number(x1);
+         x2=Number(x2);
+        var droppingid="A" + y1 + x1;
+        var targetid="A" + y2 + x2;
+        console.log("Move " + droppingid + " to " + targetid);
+        console.log(y1 + "," + x1 + "," + y2 + "," + x2);
+        var src=document.getElementById(droppingid);
+        console.log(droppingid + "," + targetid);
+        console.log(src);
+        var dest=document.getElementById(targetid);
+        console.log(dest);
+        console.log(Board);
+        console.log(y1-1);
+        var oldcoin=Board[y1-1][x1-1];
+        var value=isPlacingValid(x1,y1,y2,x2,oldcoin);
+        console.log(value);
+        
+        //dest.removeChild();
+        dest.appendChild(src);
+        Board[y1-1][x1-1]=0;
+        Board[y2-1][x2-1]=oldcoin;
+        console.log(oldcoin);
+        console.log("Board");
+        printBoard();
+     }
+    function getCoinDescription(y,x)
+    {
+        var value=Board[y-1][x-1];
+        if(value==0)
+        return 0;
+        else
+        return " Coin(" + value.name + "," + value.color + ")";
+    }
+    function Drop(event){
+    var targetid=event.target.id;// drop wali current id event.target se kuch bhi mangayenge wo current wale tag ka aayega
+      var droppingid= event.dataTransfer.getData("id");//Jo Id Hm Drag me call kiye the us id ko drop wali jagah par call kiye hy 
+        
+        var y=getY(targetid);// y(column) position 
+        var x=getX(targetid);// x(row) position
+        var b=document.getElementById(droppingid);// stor droppingid 
+        var bparent=document.getElementById(b.parentElement.id);//parentElemnt-   
+        var srcx=getX(bparent.id); 
+        var srcy=getY(bparent.id);
+        addEvent("Dropping " + droppingid + " over " + targetid + " from (" + srcy + "," + srcx + ") to (" + y + "," + x + ") Coin moved is  " + getCoinDescription(srcy,srcx) + " over " + getCoinDescription(y,x));
+        var oldcoin=Board[srcy-1][srcx-1];
+        var destcoin=Board[y-1][x-1];
+        var value=isPlacingValid(srcy,srcx,y,x,oldcoin);
+        console.log(value);
+        if(!value)
+        {
+         alert("cannot drop Here")
+            return;
+        }
+        event.preventDefault;
+        alert(oldcoin);
+        if(destcoin!=0)
+        event.target.removeChild(event.target.childNodes[1]); 
+        alert("removing");
+        event.target.appendChild(b);
+        console.log(srcy + "," + srcx + "," + y + "," + x);
+        Board[srcy-1][srcx-1]=0;
+        //Board[0][0]=100;
+        Board[y-1][x-1]=oldcoin;
+        console.log(oldcoin)
+        console.log("Board");
+        printBoard();        
+    }   
+       
+</script>
+<body>
+    <textarea style="width:100%;height:200px;" id="ta">data</textarea>
+    <br>
+    <textarea style="width:100%;height:200px;" id="tevents"></textarea>
+    <div class="row">
+        <div class="col-sm-12 p-4"></div>
+        <div class="col-sm-3"></div> 
+        <div class="col-sm-5">
+        <table>
+            <tr>
+                <td class="white"><div ondragover="Dragover(event)"  ondrop="Drop(event)" id="A11"> &nbsp; <h1 class="whitecoin" id="a1" draggable="true" ondragstart="Drag(event)">♖</h1></div></td>
+                <td class="black"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A12">&nbsp; <h1  class="whitecoin"  id="a2" draggable="true" ondragstart="Drag(event)">♘</h1> </div> </td>
+                <td class="white"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A13">&nbsp; <h1  class="whitecoin"  id="a3" draggable="true" ondragstart="Drag(event)">♗</h1> </div></td>
+                <td class="black"><div ondragover="Dragover(event)"  ondrop="Drop(event)" id="A14"> &nbsp; <h1  class="whitecoin"  id="a4" draggable="true" ondragstart="Drag(event)">♔</h1></div></td>
+                <td class="white"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A15">&nbsp; <h1  class="whitecoin"  id="a5" draggable="true" ondragstart="Drag(event)">♕</h1> </div> </td>
+                <td class="black"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A16">&nbsp; <h1  class="whitecoin"  id="a6" draggable="true" ondragstart="Drag(event)">♗</h1> </div></td>
+                <td class="white"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A17">&nbsp; <h1  class="whitecoin"  id="a7" draggable="true" ondragstart="Drag(event)">♘</h1> </div></td>
+                <td class="black"><div ondragover="Dragover(event)"  ondrop="Drop(event)"  id="A18">&nbsp; <h1  class="whitecoin"  id="a8" draggable="true" ondragstart="Drag(event)">♖</h1> </div></td>
+
+            </tr>
+            <tr>
+                <td class="black"><div id="A21" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b1" draggable="true" ondragstart="Drag(event)" >♙</h1></div> </td>
+                <td class="white"><div id="A22" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b2" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A23" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b3" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A24" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b4" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A25" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1   class="whitecoin" id="b5" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A26" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b6" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A27" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b7" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A28" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="whitecoin"  id="b8" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+
+            </tr>
+            <tr>
+                <td class="white"><div id="A31" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div> </td>
+                <td class="black"><div id="A32" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div> </td>
+                <td class="white"><div id="A33" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div> </td>
+                <td class="black"><div id="A34" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div></td>
+                <td class="white"><div id="A35" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div></td>
+                <td class="black"><div id="A36" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div></td>
+                <td class="white"><div id="A37" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div></td>
+                <td class="black"><div id="A38" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; </div></td>
+            </tr>
+            <tr>
+                <td class="black" ><div id="A41" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div> </td>
+                <td class="white" ><div id="A42" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black" ><div id="A43" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white" ><div id="A44" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black" ><div id="A45" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div> </td>
+                <td class="white" ><div id="A46" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black" ><div id="A47" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white" ><div id="A48" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+
+            </tr>
+            <tr>
+                <td class="white"><div id="A51" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A52" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div> </td>
+                <td class="white"><div id="A53" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A54" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white"><div id="A55" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A56" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white"><div id="A57" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A58" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+
+            </tr>
+            <tr>
+                <td class="black"><div id="A61" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div> </td>
+                <td class="white"><div id="A62" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A63" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white"><div id="A64" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A65" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white"><div id="A66" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="black"><div id="A67" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+                <td class="white"><div id="A68" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;</div></td>
+
+            </tr>
+            <tr>
+                <td class="white"><div id="A71" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g1" draggable="true" ondragstart="Drag(event)" >♙</h1></div> </td>
+                <td class="black"><div id="A72" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g2" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A73" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g3" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A74" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g4" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A75" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1   class="blackcoin" id="g5" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A76" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g6" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="white"><div id="A77" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g7" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+                <td class="black"><div id="A78" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp; <h1  class="blackcoin"  id="g8" draggable="true" ondragstart="Drag(event)">♙</h1> </div> </td>
+            </tr>
+            <tr>
+                <td class="black"><div id="A81" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h1" draggable="true" ondragstart="Drag(event)">♜</h1></div> </td>
+                <td class="white"><div id="A82" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h2" draggable="true" ondragstart="Drag(event)">♞</h1></div></td>
+                <td class="black"><div id="A83" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h3" draggable="true" ondragstart="Drag(event)">♝</h1></div></td>
+                <td class="white"><div id="A84" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h4" draggable="true" ondragstart="Drag(event)">♛</h1></div></td>
+                <td class="black"><div id="A85" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h5" draggable="true" ondragstart="Drag(event)">♚</h1></div></td>
+                <td class="white"><div id="A86" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h6" draggable="true" ondragstart="Drag(event)">♝</h1></div></td>
+                <td class="black"><div id="A87" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h7" draggable="true" ondragstart="Drag(event)">♞</h1></div></td>
+                <td class="white"><div id="A88" ondragover="Dragover(event)"  ondrop="Drop(event)">&nbsp;<h1 class="blackcoin"  id="h8" draggable="true" ondragstart="Drag(event)">♜</h1></div></td>
+            </tr>
+        </table><br>
+        <label>X1 Value:</label>
+        <input type="text" onclick="f1(event)" id="tx1" placeholder="x1" >
+       <label>X2 value:</label>
+        <input type="text" placeholder="X2"  id="tx2" ><br>
+        <label>Y1 value:</label>
+        <input type="text" placeholder="Y1"  id="ty1" >
+        <label>Y2 value:</label>
+        <input type="text" placeholder="Y2"  id="ty2" >
+        <br>
+        <input type="button" value="Auto Move" id="abcd" onclick="f1()" ondragstart="Drag(event)" draggable="true">
+    
+    </div></div>
+    
+</body>
+</html>
