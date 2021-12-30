@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "stdio.h": "c"
-    }
+    },
+    "livePreview.defaultPreviewPath": "/java script/datalist.html"
 }
