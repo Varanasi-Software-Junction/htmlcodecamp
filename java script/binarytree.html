@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Trees</title>
+    </head>
+    <vsjtree>
+    <style>
+        .vsjcard {
+  box-shadow: 0 4px 8px 0 #FFC604;
+  transition: 0.3s;
+  width: 5px;
+}
+
+.vsjcard:hover {
+  box-shadow: 0 8px 16px 0 #FE413E;
+}
+.vsjinputTextArea
+{
+    font-weight: bolder;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    
+}
+.vsjoutputdiv
+{
+    background-color: lightgrey;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    height: 200px;
+
+}
+.vsjcanvasclass
+{
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    height: 300px;
+
+}
+.vsjroundeddiv
+{
+    vertical-align: middle;
+    display: inline-block;
+    background-color: lightpink;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 60%;
+    border-width: 5px;
+    height: 30px;
+    border-color: blue;
+    border-style: ridge;
+text-align: center;
+
+}
+
+    </style>
+    <script>
+var vsjpreoutput="";
+var vsjinoutput="";
+var vsjpostoutput="";
+
+
+function vsjmax(x,y)
+{
+    x=Number(x);
+    y=Number(y);
+    if(x>=y)
+return x;
+else 
+return y;
+}
+function vsjtreeHeight(root)
+{
+    if(root.ptr==null)
+    return 0;
+    return 1 + vsjmax( vsjtreeHeight(root.ptr.left), vsjtreeHeight(root.ptr.right))
+}
+
+function vsjnullNode()
+{
+    return ({ptr:null});
+}
+function vsjpreOrder(root)
+{
+    if(root.ptr==null)
+    return;
+    var data=root.ptr.data;
+    preoutput+=vsjgetBox(data);
+    vsjpreOrder(root.ptr.left);
+    
+    vsjpreOrder(root.ptr.right);
+
+
+}
+function vsjpostOrder(root)
+{
+    if(root.ptr==null)
+    return;
+    var data=root.ptr.data;
+    
+    vsjpostOrder(root.ptr.left);
+    
+    vsjpostOrder(root.ptr.right);
+    postoutput+=vsjgetBox(data);
+
+}
+function vsjinOrder(root)
+{
+    if(root.ptr==null)
+    return;
+    var data=root.ptr.data;
+    
+    vsjinOrder(root.ptr.left);
+    inoutput+=vsjgetBox(data);
+    vsjinOrder(root.ptr.right);
+
+
+}
+function vsjaddNode(root,data)
+{
+    console.log(root);
+    if(root.ptr==null)
+    {
+        var newnode=vsjgetNode(data);
+        
+        root.ptr=newnode;
+        console.log(root.ptr.data);
+        return;
+    }
+    
+    if(data<=root.ptr.data)
+    vsjaddNode(root.ptr.left,data);
+    else 
+    vsjaddNode(root.ptr.right,data);
+}
+function vsjgetNode(data)
+{
+    return({data:data,left:vsjnullNode(),right:vsjnullNode()});
+}
+function vsjgetBox(n)
+{
+    return ("<div class=\"vsjroundeddiv vsjcard\">" + n + "</div>&nbsp;");
+}
+function vsjsplitIntoNumberTokens(event)
+{
+    root=vsjgetNode(0);
+    var outputdiv=document.getElementById("vsjoutputdiv");
+    outputdiv.innerHTML="";
+    if(event.target.value.startsWith(","))
+    event.target.value=event.target.value.replace(',',"");
+
+    var pattern= /,,/g;
+    event.target.value=event.target.value.replace(pattern,",");
+    pattern= /--/g;
+    event.target.value=event.target.value.replace(pattern,"-");
+    pattern= /[^0-9+,+-]/g;
+    event.target.value=event.target.value.replace(pattern,"");
+    var a=event.target.value.split(",");
+    var root=vsjnullNode();
+    var n=a.length;
+    for(var x in a)
+    {
+        if(!isNaN(a[x]) && a[x]!='')
+        {
+            vsjaddNode(root,Number(a[x]));
+        }
+    }
+    preoutput="";
+    inoutput="";
+    postoutput="";
+    var treeheight=vsjtreeHeight(root);
+    
+    console.log("Tree Height = " + treeheight);
+    vsjpreOrder(root);
+    vsjinOrder(root);
+    vsjpostOrder(root);
+    vsjoutputdiv.innerHTML+="<br>Pre Order<br>" + preoutput;
+    vsjoutputdiv.innerHTML+="<br>In Order<br>" + inoutput;
+    vsjoutputdiv.innerHTML+="<br>Post Output<br>" + postoutput;
+    vsjdrawTreeBegin(root);
+}
+function vsjdrawTreeBegin(root)
+{
+    
+var canvas = document.getElementById("vsjtreeCanvas");
+const canvaswidth = canvas.width;
+const canvasheight = canvas.height;
+var ht=vsjtreeHeight(root);
+var ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, canvaswidth, canvasheight);
+console.log(canvaswidth + "," +canvasheight);
+var dx=canvaswidth/2;
+var dy=canvasheight/ht;
+vsjdrawTree(ctx,root,dx,10,dx,dy,dx,10);
+}
+function vsjdrawTree(ctx,root,x,y,dx,dy,prevx,prevy)
+{
+    if(root.ptr==null)
+    return;
+    
+    vsjdrawCircle(ctx,x,y,root.ptr.data,prevx,prevy);
+    vsjdrawTree(ctx,root.ptr.left,x-dx/2,y+dy,dx/2,dy,x,y);
+    vsjdrawTree(ctx,root.ptr.right,x+dx/2,y+dy,dx/2,dy,x,y);
+}
+function vsjdrawCircle(ctx,x,y,data,prevx,prevy)
+{
+
+ctx.beginPath();
+ctx.moveTo(prevx, prevy);
+ctx.lineTo(x, y);
+ctx.stroke();
+    ctx.beginPath();
+ctx.arc(x, y, 10, 0, 2 * Math.PI);
+
+ctx.fillStyle="wheat";
+
+ctx.fill();
+ctx.strokeStyle = "red";
+ctx.stroke();
+ctx.fillStyle="blue";
+ctx.strokeStyle = "blue";
+ctx.font="12px Verdana";
+var absdata=data;
+if(absdata<0)
+absdata=-absdata;
+var xdiff=0;
+if(absdata<=9)
+xdiff=3;
+else
+if(absdata<=99)
+xdiff=8;
+else
+xdiff=12;
+ctx.strokeText(data, x-xdiff,y+2);
+}
+    </script>
+
+    <input type="text" id="tInput" class="vsjinputTextArea vsjcard"  onchange="vsjsplitIntoNumberTokens(event)" onkeyup="vsjsplitIntoNumberTokens(event)">
+    <br><br>
+    <div class="vsjoutputdiv vsjcard" id="vsjoutputdiv"></div>
+    <br>
+    <br>
+    <canvas id="vsjtreeCanvas" class="vsjcanvasclass vsjcard"
+    style="border:1px solid #c3c3c3;">
+    Your browser does not support the canvas element.
+    </canvas>
+</vsjtree>
+</html>

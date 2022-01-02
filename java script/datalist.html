@@ -5,9 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datalist</title>
+<style>
+
+    ::placeholder
+    {
+        color: brown;
+    }
+</style>
 </head>
 <body>
-    <input type="text" list="cities">
+    <input placeholder="Cities" type="text" list="cities">
     <br>
     <datalist id="cities">
 <option>Varanasi</option>
