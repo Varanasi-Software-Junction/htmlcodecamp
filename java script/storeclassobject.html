@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <script>
+        function getBook(bookname,price,subject)
+        {
+            return{bookname:bookname,price:price,subject:subject,toString:function(){return "Book Name=" + bookname + ", Price = " + price + ", Subject = " + subject}};
+
+        }
+function doSave()
+{
+    var bookname=document.getElementById("bookname").value;
+    var price=document.getElementById("price").value;
+    var subject=document.getElementById("subject").value;
+    var book=getBook(bookname,price,subject);
+    localStorage.setItem("book",JSON.stringify( book));
+    alert(book);
+
+}
+function doClear()
+{
+    document.getElementById("bookname").value="";
+    document.getElementById("price").value="";
+    document.getElementById("subject").value="";
+  
+
+}
+function doRetrieve()
+{
+    var data=localStorage.getItem("book");
+    if(data==null)
+    {
+        document.getElementById("bookname").value="null";
+    document.getElementById("price").value="null";
+    document.getElementById("subject").value="null";
+        return;
+    }
+    var book=JSON.parse(data );
+    alert(book.bookname);
+    document.getElementById("bookname").value=book.bookname;
+    document.getElementById("price").value=book.price;
+    document.getElementById("subject").value=book.subject;
+}
+function doRemove()
+{
+    localStorage.removeItem("book");
+   
+}
+    </script>
+</head>
+<body>
+   Book Name <input type="text" id="bookname">
+    <br>
+  Price  <input type="text" id="price">
+    <br>
+  Subject  <input type="text" id="subject">
+    <br>
+<input type="button" value="Save" onclick="doSave()">
+<input type="button" value="Clear" onclick="doClear()">
+<input type="button" value="Get" onclick="doRetrieve()">
+<input type="button" value="Del" onclick="doRemove()">
+</body>
+</html>
