@@ -1,8 +1,8 @@
-    //printf("\n");
-    printf("\t");
-    for(j=0;j<=n-1;j++)
+#include<stdio.h>
+int main()
+{
+    //write  program to print odd and even number;
+    int a=10,n;
+    for(n=1;n<=a;n++)
+    if(n%2==1)
     {
-        data= a[i][j];
-        if(data>=infinity)
-            printf("inf\t");
-        else

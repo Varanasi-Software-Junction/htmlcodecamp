@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Slider</title>
+    <style>
+        img{
+            width: 100px;
+        }
+        h1{
+            display: inline-block;
+            width: 200px;
+            padding: 10px;
+            
+
+        }
+        .maindiv
+        {
+
+            border: blue;
+            border-style: ridge;
+            border-width: 2px;
+            margin: 20px;
+
+        }
+input
+{
+    width: 200px;
+}
+    </style>
+    
+</head>
+<body>
+    <div class="maindiv">
+<h1>Name</h1><input type="text" id="txtName">
+<br>
+<h1>Author</h1><input type="text" id="txtAuthor">
+<br>
+<h1>Pic</h1><img  id="imgBook" src="">
+<br>
+<input type="button" onclick="prev()" value="<<">
+<input type="button" onclick="next()" value=">>">
+<input type="button" value="Read">
+<input type="button" value="Write">
+    </div>
+</body>
+<script>
+
+    function getBook(bookname,bookauthor,bookpic)  
+    {
+        return {name:bookname,author:bookauthor,pic:bookpic};
+    }     
+   let books=[getBook("Basic C","Sachin","one.jpg"),getBook("Basic C++","Rahul","two.jpg"),getBook("Adv C","Sourav","three.jpg")];
+   let n=books.length;
+   let index=-1;
+   function prev()
+   {
+        if(index<=0)
+        return;
+        index--;
+        let currentbook=books[index];
+       document.getElementById("txtName").value=currentbook.name;
+       document.getElementById("txtAuthor").value=currentbook.author;
+       document.getElementById("imgBook").src="images/" +currentbook.pic;
+   }
+   function next()
+   {
+       if(index>=n-1)
+       return;
+       index++;
+       let currentbook=books[index];
+       document.getElementById("txtName").value=currentbook.name;
+       document.getElementById("txtAuthor").value=currentbook.author;
+       document.getElementById("imgBook").src="images/" +currentbook.pic;
+   
+   }
+   
+   next();
+       </script>
+</html>
