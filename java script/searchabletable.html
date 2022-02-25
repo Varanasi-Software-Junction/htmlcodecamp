@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+#vsjTable {
+  width: 100%;
+  border: 1px solid red;
+  font-size: 18px;
+}
+
+#vsjTable th, #vsjTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#vsjTable tr {
+  border-bottom: 1px solid red;
+}
+
+#vsjTable tr.header, #vsjTable tr:hover {
+  background-color:grey;
+}
+</style>
+</head>
+<body>
+
+<h2>Searchable Table</h2>
+No of records<input type="text" id="t">
+Search Text<input style="height:20px; font-size: 16px;" type="text" id="searchText" onkeyup="fSearch('searchText','vsjTable','t')" >
+
+<table id="vsjTable">
+  <tr class="header">
+    <th style="width:60%;">Book Name</th>
+    <th style="width:40%;">Price</th>
+  </tr>
+  <tr>
+    <td>Basic C</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>Basic  C++</td>
+    <td>250</td>
+  </tr>
+  <tr>
+    <td>Basic Java</td>
+    <td>300</td>
+  </tr>
+  <tr>
+    <td>Adv Java</td>
+    <td>350</td>
+  </tr>
+  <tr>
+    <td>Python for Beginners</td>
+    <td>400</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Italy</td>
+  </tr>
+  
+</table>
+
+<script>
+  function fSearch(textboxid, tableid, recordcounttext) {
+        var input, filter, table, tr, td, i;
+        //alert(textboxid);
+        input = document.getElementById(textboxid);
+       // alert(input);
+       // alert(input.value);
+        filter = input.value.toUpperCase();
+
+
+
+        table = document.getElementById(tableid);
+        tr = table.getElementsByTagName("tr");
+        var noofrows = tr.length;
+        var count = 0;
+        for (i = 1; i <= noofrows - 1; i++) {
+            var noofcols = tr[i].getElementsByTagName("td").length;
+            var textdata = "";
+            for (j = 0; j <= noofcols - 1; j++) {
+                currenttd = tr[i].getElementsByTagName("td")[j];
+                if (currenttd) {
+                    textdata += currenttd.textContent || currenttd.innerText
+                }
+            }
+            //  alert(textdata);
+
+            if (textdata.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                count++;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+        document.getElementById(recordcounttext).value = count;
+    }
+    fSearch("searchText","vsjTable","t");
+</script>
+
+</body>
+</html>
