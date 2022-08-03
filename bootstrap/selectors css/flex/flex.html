@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Arrangements</title>
+    <style>
+        .box{
+            display: flex;
+        flex-wrap: wrap;
+          }
+                        
+
+        .box>* {
+          flex: 1 2 200px;
+        }
+
+        div {
+            justify-content:end ;
+            border-color: blue;
+            border-width: 1px;
+            border-style: ridge;
+        }
+        div2 {
+            flex-grow: 3;
+            border-color: red;
+            border-width: 1px;
+            border-style: ridge;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>four</div>
+        <div>five</div>
+        <div>six</div>
+        <div>seven</div>
+        <div>enight</div>
+        <div>nine</div>
+
+    <!--<div2 class="box">
+        <div2>One</div2>
+        <div2>Two</div2>
+        <div2>Three</div2>-->
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter</title>
+    <style>
+        .vsjtext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-right: 4px solid black;
+            font-size: 180%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .vsjtypewriteranimation {
+            animation: typewriter 5s steps(15) 1s 1 normal both,
+                vsjBlinkCursor 500ms steps(15) infinite normal;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 280px;
+            }
+        }
+
+        @keyframes vsjBlinkCursor {
+            from {
+                border-right-color: blue;
+            }
+
+            to {
+                border-right-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p class="vsjtext vsjtypewriteranimation">I am Shubham the CR</p>
+</body>
+
+</html>
