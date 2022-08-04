@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO List</title>
+    <script>
+var tasklist=Array();
+        function getTask(taskname, taskdescription, taskstatus) {
+            return { name: taskname, desc: taskdescription, status: taskstatus, toString: function () { return "Task: " + this.name + ", Description: " + this.desc + ", Status: " + this.status} };
+        }
+function f()
+{
+    let taskname=document.getElementById("task").value;
+    let taskdescription=document.getElementById("desc").value;
+    let taskstatus=document.getElementById("status").value;
+    var newtask=getTask(taskname,taskdescription,taskstatus);
+    tasklist.push(newtask);
+    alert(tasklist);
+}
+function saveToStorage()
+{
+    let data=JSON.stringify(tasklist);
+    alert(data);
+    localStorage.setItem("task",data);
+}
+function getFromStorage()
+{
+    let data=localStorage.getItem("task");
+    if(data==null)
+    {
+        return;
+    }
+   data=JSON.parse(data);
+   let output="<table border='2'><tr><td>Name</td><td>Description</td><td>Status</td></tr>";
+   for(let i=0;i<=data.length-1;i++)
+   {
+    let currenttask=getTask(data[i].name,data[i].desc,data[i].status);
+    output+="<tr><td>" + currenttask.name +"</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td></tr>";
+   }
+   output+="</table>";
+   document.getElementById("d").innerHTML=output;
+}
+    </script>
+</head>
+
+<body>
+    <h1>To Do List</h1>
+    <label>Task Name<input type="text" id="task"></label>
+    <label>Task Description<input type="text" id="desc"></label>
+    <label>Task Status<input type="text" id="status"></label>
+<button onclick="f()">Click me</button>
+<br>
+<button onclick=" saveToStorage()">Click me</button>
+<br>
+<button onclick=" getFromStorage()">Click me</button>
+<div id="d"></div>
+</body>
+
+</html>
