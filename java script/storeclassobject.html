@@ -41,7 +41,7 @@ function doRetrieve()
         return;
     }
     var book=JSON.parse(data );
-    alert(book.bookname);
+    alert(book.toString());
     document.getElementById("bookname").value=book.bookname;
     document.getElementById("price").value=book.price;
     document.getElementById("subject").value=book.subject;
