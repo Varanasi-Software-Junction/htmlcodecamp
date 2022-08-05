@@ -6,6 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO List</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 100%;
+          border: 1px solid #ddd;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 16px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+
+
+        .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.addbutton {background-color: #008CBA;} /* Blue */
+.removebutton {background-color: #f44336;} /* Red */ 
+
+        </style>
     <script>
 var tasklist=Array();
         function getTask(taskname, taskdescription, taskstatus) {
@@ -20,6 +55,11 @@ function f()
     tasklist.push(newtask);
     alert(tasklist);
 }
+function listClear()
+{
+    localStorage.removeItem("task");
+    alert("done");
+}
 function saveToStorage()
 {
     let data=JSON.stringify(tasklist);
@@ -29,12 +69,16 @@ function saveToStorage()
 function getFromStorage()
 {
     let data=localStorage.getItem("task");
+    console.log(data);
     if(data==null)
     {
-        return;
+        data="[]";
+        alert("here");
+
+        //return;
     }
    data=JSON.parse(data);
-   let output="<table border='2'><tr><td>Name</td><td>Description</td><td>Status</td></tr>";
+   let output="<table border='2'><tr><th>Name</th><th>Description</th><th>Status</th></tr>";
    for(let i=0;i<=data.length-1;i++)
    {
     let currenttask=getTask(data[i].name,data[i].desc,data[i].status);
@@ -51,11 +95,15 @@ function getFromStorage()
     <label>Task Name<input type="text" id="task"></label>
     <label>Task Description<input type="text" id="desc"></label>
     <label>Task Status<input type="text" id="status"></label>
-<button onclick="f()">Click me</button>
+    
+<button class="button addbutton"  onclick="f()">Add To List</button>
 <br>
-<button onclick=" saveToStorage()">Click me</button>
+
+<button  class="button addbutton"    onclick=" saveToStorage()">Save</button>
 <br>
-<button onclick=" getFromStorage()">Click me</button>
+<button   class="button addbutton"   onclick=" getFromStorage()">Get Saved List</button>
+<br>
+<button class="button removebutton"  onclick="listClear()">Clear List</button>
 <div id="d"></div>
 </body>
 
