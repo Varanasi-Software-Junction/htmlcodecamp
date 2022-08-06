@@ -43,6 +43,15 @@
         </style>
     <script>
 var tasklist=Array();
+function doDelete(n)
+{
+    alert("Del " + n);
+}
+
+function doEdit(n)
+{
+    alert("Edit " + n);
+}
         function getTask(taskname, taskdescription, taskstatus) {
             return { name: taskname, desc: taskdescription, status: taskstatus, toString: function () { return "Task: " + this.name + ", Description: " + this.desc + ", Status: " + this.status} };
         }
@@ -78,11 +87,11 @@ function getFromStorage()
         //return;
     }
    data=JSON.parse(data);
-   let output="<table border='2'><tr><th>Name</th><th>Description</th><th>Status</th></tr>";
+   let output="<table border='2'><tr><th>Name</th><th>Description</th><th>Status</th><th>Edit</th><th>Delete</th></tr>";
    for(let i=0;i<=data.length-1;i++)
    {
     let currenttask=getTask(data[i].name,data[i].desc,data[i].status);
-    output+="<tr><td>" + currenttask.name +"</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td></tr>";
+    output+="<tr><td>" + currenttask.name +"</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
    }
    output+="</table>";
    document.getElementById("d").innerHTML=output;
@@ -105,6 +114,11 @@ function getFromStorage()
 <br>
 <button class="button removebutton"  onclick="listClear()">Clear List</button>
 <div id="d"></div>
+<script>
+
+getFromStorage();
+
+</script>
 </body>
 
 </html>
