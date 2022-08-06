@@ -46,6 +46,17 @@ var tasklist=Array();
 function doDelete(n)
 {
     alert("Del " + n);
+    let a=Array();
+    for(i=0;i<=tasklist.length-1;i++)
+    {
+        if(n!=i)
+        a.push( getTask( tasklist[i].name,tasklist[i].desc,tasklist[i].status));
+        alert(i);
+    }
+    alert("data " + a);
+    tasklist=a;
+    saveToStorage();
+    getFromStorage();
 }
 
 function doEdit(n)
@@ -63,6 +74,8 @@ function f()
     var newtask=getTask(taskname,taskdescription,taskstatus);
     tasklist.push(newtask);
     alert(tasklist);
+    saveToStorage();
+    getFromStorage();
 }
 function listClear()
 {
@@ -86,11 +99,11 @@ function getFromStorage()
 
         //return;
     }
-   data=JSON.parse(data);
+   tasklist=JSON.parse(data);
    let output="<table border='2'><tr><th>Name</th><th>Description</th><th>Status</th><th>Edit</th><th>Delete</th></tr>";
-   for(let i=0;i<=data.length-1;i++)
+   for(let i=0;i<=tasklist.length-1;i++)
    {
-    let currenttask=getTask(data[i].name,data[i].desc,data[i].status);
+    let currenttask=getTask(tasklist[i].name,tasklist[i].desc,tasklist[i].status);
     output+="<tr><td>" + currenttask.name +"</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
    }
    output+="</table>";
@@ -108,10 +121,6 @@ function getFromStorage()
 <button class="button addbutton"  onclick="f()">Add To List</button>
 <br>
 
-<button  class="button addbutton"    onclick=" saveToStorage()">Save</button>
-<br>
-<button   class="button addbutton"   onclick=" getFromStorage()">Get Saved List</button>
-<br>
 <button class="button removebutton"  onclick="listClear()">Clear List</button>
 <div id="d"></div>
 <script>
