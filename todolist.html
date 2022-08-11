@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO List</title>
     <style>
+
+input, textarea {
+color:white;
+  background-color: teal;
+  box-shadow: 10px 10px;
+}
+
+
+
+
         table {
             border-collapse: collapse;
             border-spacing: 0;
@@ -108,7 +118,7 @@
             for (let i = 0; i <= tasklist.length - 1; i++) {
                 let currenttask = getTask(tasklist[i].name, tasklist[i].desc, tasklist[i].status);
                 if (i == n)
-                    output += "<tr><td><input type='text' value=\"" + currenttask.name + "\"/></td><td><input type='text' value=\"" + currenttask.desc + "\"/></td><td><input type='text' value=\"" + currenttask.status + "\"/></td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
+                    output += "<tr><td><input type='text' id='nameedit' value=\"" + currenttask.name + "\"/></td><td><textarea  id='descedit' >" + currenttask.desc + "</textarea></td><td><input  id='statusedit'  type='text' value=\"" + currenttask.status + "\"/></td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
                 else
 
 
