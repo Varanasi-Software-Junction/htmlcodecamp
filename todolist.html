@@ -87,6 +87,7 @@
         function listClear() {
             localStorage.removeItem("task");
             alert("done");
+            getFromStorage(-1);
         }
         function saveToStorage() {
             let data = JSON.stringify(tasklist);
@@ -106,12 +107,12 @@
             let output = "<table border='2'><tr><th>Name</th><th>Description</th><th>Status</th><th>Edit</th><th>Delete</th></tr>";
             for (let i = 0; i <= tasklist.length - 1; i++) {
                 let currenttask = getTask(tasklist[i].name, tasklist[i].desc, tasklist[i].status);
-                if(i==n)
-                output += "<tr><td><input type='text' value=\"" + currenttask.name + "\"/></td><td><input type='text' value=\"" + currenttask.desc + "\"/></td><td><input type='text' value=\"" + currenttask.status + "\"/></td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
+                if (i == n)
+                    output += "<tr><td><input type='text' value=\"" + currenttask.name + "\"/></td><td><input type='text' value=\"" + currenttask.desc + "\"/></td><td><input type='text' value=\"" + currenttask.status + "\"/></td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
                 else
 
 
-                output += "<tr><td>" + currenttask.name + "</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
+                    output += "<tr><td>" + currenttask.name + "</td><td>" + currenttask.desc + "</td><td>" + currenttask.status + "</td><td><button onclick=\"doEdit(" + i + ")\"  class=\"button addbutton\">Edit</button></td><td><button onclick=\"doDelete(" + i + ")\"  class=\"button removebutton\">Delete</button></td> </tr>";
             }
             output += "</table>";
             document.getElementById("d").innerHTML = output;
