@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>A simple Flex Layout (Flex Direction)</title>
+  <style>
+    div {
+
+      border-color: red;
+      border-style: ridge;
+    }
+
+    .flexrow {
+      flex-direction: row;
+    }
+
+    .flexrowreverse {
+      flex-direction: row-reverse;
+    }
+
+    .flexcolumn {
+      flex-direction: column;
+    }
+
+    .flexcolumnreverse {
+      flex-direction: column-reverse;
+    }
+
+    .flex-container {
+      flex-wrap: wrap;
+      display: flex;
+      background-color: lightgrey;
+      width: fit-content;
+    }
+
+    .flex-container>div {
+      padding: 10px;
+      border-style: none;
+      background-color: teal;
+      color: white;
+
+      margin: 10px;
+      text-align: center;
+      line-height: 75px;
+      font-size: 30px;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 style="text-align: center;">Flex Layout</h1>
+  <h2 style="text-align: center;">direction:row;</h2>
+  <div class="flex-container flexrow">
+    <div>Block-1</div>
+    <div>Block-2</div>
+    <div>Block-3</div>
+    <div>Block-4</div>
+    <div>Block-5</div>
+    <div>Block-6</div>
+    <div>Block-7</div>
+    <div>Block-8</div>
+    <div>Block-9</div>
+    <div>Block-10</div>
+  </div>
+
+
+
+
+  <h1 style="text-align: center;">Flex Layout</h1>
+  <h2 style="text-align: center;">direction:row-reverse;</h2>
+  <div class="flex-container flexrowreverse">
+    <div>Block-1</div>
+    <div>Block-2</div>
+    <div>Block-3</div>
+    <div>Block-4</div>
+    <div>Block-5</div>
+    <div>Block-6</div>
+    <div>Block-7</div>
+    <div>Block-8</div>
+    <div>Block-9</div>
+    <div>Block-10</div>
+  </div>
+
+
+
+
+  <h1 style="text-align: center;">Flex Layout</h1>
+  <h2 style="text-align: center;">direction:column;</h2>
+  <div class="flex-container flexcolumn">
+    <div>Block-1</div>
+    <div>Block-2</div>
+    <div>Block-3</div>
+    <div>Block-4</div>
+    <div>Block-5</div>
+    <div>Block-6</div>
+    <div>Block-7</div>
+    <div>Block-8</div>
+    <div>Block-9</div>
+    <div>Block-10</div>
+  </div>
+
+
+
+
+  <h1 style="text-align: center;">Flex Layout</h1>
+  <h2 style="text-align: center;">direction:column-reverse;</h2>
+  <div class="flex-container flexcolumnreverse">
+    <div>Block-1</div>
+    <div>Block-2</div>
+    <div>Block-3</div>
+    <div>Block-4</div>
+    <div>Block-5</div>
+    <div>Block-6</div>
+    <div>Block-7</div>
+    <div>Block-8</div>
+    <div>Block-9</div>
+    <div>Block-10</div>
+  </div>
+
+</body>
+
+</html>

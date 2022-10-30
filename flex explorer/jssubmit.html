@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Google Sheet</title>
+</head>
+<!--
+AKfycbwQPq3YmQ87w2oIXz6a-YMaQZt3MGG9bxt2xcgSfW3QLTiqhU8tAmuyKSwJGW4ExUkn
+
+https://script.google.com/macros/s/AKfycbwQPq3YmQ87w2oIXz6a-YMaQZt3MGG9bxt2xcgSfW3QLTiqhU8tAmuyKSwJGW4ExUkn/exec
+
+-->
+<body>
+    
+    
+
+
+    <form name="submit-to-google-sheet">
+        <input name="Email" type="email" placeholder="Email" required>
+        <input name="Name" type="text" placeholder="Name" required>
+      
+        <button type="submit">Send</button>
+        <input type="text" id="result"/>
+      </form>
+      
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwQPq3YmQ87w2oIXz6a-YMaQZt3MGG9bxt2xcgSfW3QLTiqhU8tAmuyKSwJGW4ExUkn/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => document.getElementById("result").value="Success")
+            .catch(error => document.getElementById("result").value="Error")
+        })
+      </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
