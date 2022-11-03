@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload Preview</title>
+  <!--Load the icon for upload
+  https://fontawesome.com/v4/icons/
+  
+  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *,
+    ::before,/*https://developer.mozilla.org/en-US/docs/Web/CSS/::before*/
+    ::after/*https://developer.mozilla.org/en-US/docs/Web/CSS/::after*/ {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;/*https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing*/
+    }
+
+    body {
+      /*https://developer.mozilla.org/en-US/docs/Web/CSS/flex*/
+      height: 100vh;/*https://developer.mozilla.org/en-US/docs/Web/CSS/length*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-uploader {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      height: 500px;
+      border: 2px dashed #4169e1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      cursor: pointer;
+    }
+
+    .upload-icon {
+      font-size: 5rem;/*https://developer.mozilla.org/en-US/docs/Web/CSS/font-size*/
+      color: teal;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-top: 1em;
+    }
+
+    p {
+      margin: 0.75em 0;
+      color: #696969;
+    }
+
+    .browse-link {
+      border: none;
+      background-color: transparent;
+      font-size: 1.15rem;
+      text-decoration: underline;
+      cursor: pointer;
+      color: #4169e1;
+    }
+
+    .image-preview {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: none;
+      padding: 1em;
+    }
+
+    .image-preview::before {
+      content: "Click or Drag to add more images";/*https://developer.mozilla.org/en-US/docs/Web/CSS/content*/
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);/*https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate*/
+      color: #696969;
+      font-size: 1.05rem;
+      opacity: 0;
+    }
+
+    .image-preview:hover::before {
+      opacity: 1;
+    }
+
+    figure {
+      width: 100px;
+      height: 100px;
+      margin: 1em;
+      display: inline-block;
+      animation: zoomIn 500ms ease-in 1;/*https://developer.mozilla.org/en-US/docs/Web/CSS/animation*/
+      filter: drop-shadow(0 0 0.5em #e5e5e5);
+    }
+
+    figure::before {
+      content: "x";
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      background-color: rgb(229, 15, 15);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      top: -0.75em;
+      right: -0.75em;
+      border-radius: 50%;
+      font-weight: bold;
+      transform: scale(0);
+      transition: transform 250ms ease-in;
+    }
+
+    figure:hover::before {
+      transform: scale(1);
+    }
+
+    figure.zoomOut {/*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors*/
+      animation: zoomOut 500ms ease-in 1;
+    }
+
+    img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;/*https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit*/
+      border-radius: 0.5em;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0);/*https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale*/
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomOut {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="image-uploader" id="dragArea">
+    <i class="fa fa-upload upload-icon fa-solid"></i>
+    <h2>Drag &amp; Drop</h2>
+    <p>
+      your file here or
+      <span class="browse-link">browse</span>
+    </p>
+    <input type="file" accept="image/*" multiple hidden />
+
+    <div class="image-preview" id="imagePreview"></div>
+  </div>
+  <script>
+
+    const fileInput = document.querySelector("input");
+    //https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+    const dragArea = document.getElementById("dragArea");
+    const imagePreview = document.getElementById("imagePreview");
+
+    dragArea.addEventListener("click", () => {
+      //https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+      fileInput.click();
+    });
+
+    function preventDefault(event) {
+      //https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+      event.preventDefault();
+      event.stopPropagation();
+      //https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation
+    }
+
+    dragArea.addEventListener("dragenter", preventDefault);
+    dragArea.addEventListener("dragleave", preventDefault);
+    dragArea.addEventListener("dragover", preventDefault);
+    dragArea.addEventListener("drop", preventDefault);
+
+    dragArea.addEventListener("drop", (event) => {
+      let files = event.dataTransfer.files;
+      checkFileType(files);
+    });
+
+    fileInput.addEventListener("change", () => {
+      let files = fileInput.files;
+      checkFileType(files);
+    });
+
+    function checkFileType(files) {
+      let validTypes = ["image/jpeg", "image/png", "image/gif"];
+      for (let i = 0; i < files.length; i++) {
+        let fileType = files[i].type;
+
+        if (validTypes.includes(fileType)) {
+          displayImage(files[i]);
+        }
+      }
+    }
+
+    function displayImage(image) {
+      imagePreview.style.display = "block";
+
+      let figure = document.createElement("figure");
+      let img = document.createElement("img");
+      //https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
+      figure.append(img);
+      imagePreview.append(figure);
+
+      figure.addEventListener("click", removeImage);
+
+      let fileReader = new FileReader();
+
+      fileReader.onload = (event) => {
+        img.src = event.target.result;
+      };
+
+      fileReader.readAsDataURL(image);
+      //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+    }
+
+    function removeImage(event) {
+      event.stopPropagation();
+      let deletedImage = event.currentTarget;
+      deletedImage.classList.add("zoomOut");
+
+      setTimeout(() => {
+        imagePreview.removeChild(deletedImage);
+
+        if (imagePreview.children.length == 0) {
+          imagePreview.style.display = "none";
+        }
+      }, 450);
+    }
+
+
+  </script>
+</body>
+
+</html>
