@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varanasi Software Junction: Local Storage --- Starter. Save a form and recover</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<script>
+
+
+  function saveData(id) {
+    let value = document.getElementById(id).value;
+    localStorage.setItem(id, value);
+  }
+  function saveCheckRadioData(id) {
+    let value = document.getElementById(id).checked;
+    localStorage.setItem(id, value);
+
+  } s
+  function getData() {
+    let value = localStorage.getItem("txtEmail");
+    document.getElementById("txtEmail").value = value;
+    value = localStorage.getItem("txtPassword");
+    document.getElementById("txtPassword").value = value;
+    value = localStorage.getItem("textcomment");
+    document.getElementById("textcomment").value = value;
+
+  }
+
+</script>
+
+<body>
+  <div class="container">
+
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="txtEmail" onkeyup="saveData('txtEmail')"
+        placeholder="name@example.com">
+      <label for="txtEmail">Email address</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" onkeyup="saveData('txtPassword')" class="form-control" id="txtPassword"
+        placeholder="Password">
+      <label for="txtPassword">Password</label>
+    </div>
+
+    <div class="form-floating mb-3">
+
+      <div class="form-check">
+        <input class="form-check-input" onchange="saveCheckRadioData('chkAgree')" value="I agree" type="checkbox"
+          value="" id="chkAgree">
+        <label class="form-check-label" for="chkAgree">
+          I agree
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" onchange="saveCheckRadioData('chkDisagree')" type="checkbox" value=""
+          id="chkDisagree" checked>
+        <label class="form-check-label" for="chkDisagree">
+          I disagree
+        </label>
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Default radio
+        </label>
+
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Default checked radio
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="Leave a comment here" onkeyup="saveData('textcomment')"
+        id="textcomment"></textarea>
+      <label for="textcomment">Comments</label>
+    </div>
+
+    &nbsp;
+
+    <div class="form-floating">
+      <select onchange="saveData('selectMonth')" class="form-select" id="selectMonth"
+        aria-label="Floating label select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <label for="floatingSelect">Works with selects</label>
+    </div>
+
+
+  </div>
+
+  </div>
+  <script>
+
+    getData();
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
