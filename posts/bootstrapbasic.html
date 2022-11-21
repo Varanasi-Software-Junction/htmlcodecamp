@@ -12,7 +12,10 @@
 <script>
 
 
+
+
   function saveData(id) {
+
     let value = document.getElementById(id).value;
     localStorage.setItem(id, value);
   }
@@ -20,7 +23,7 @@
     let value = document.getElementById(id).checked;
     localStorage.setItem(id, value);
 
-  } s
+  } 
   function getData() {
     let value = localStorage.getItem("txtEmail");
     document.getElementById("txtEmail").value = value;
@@ -28,6 +31,28 @@
     document.getElementById("txtPassword").value = value;
     value = localStorage.getItem("textcomment");
     document.getElementById("textcomment").value = value;
+    value = localStorage.getItem("chkAgree");
+    if(value==="true")
+    document.getElementById("chkAgree").checked = true;
+    else
+    document.getElementById("chkAgree").checked = false;
+
+
+
+
+    value = localStorage.getItem("chkDisagree");
+    if(value==="true")
+    document.getElementById("chkDisagree").checked = true;
+    else
+    document.getElementById("chkDisagree").checked = false;
+    let radios=document.getElementsByName("rdSport");
+    let n=radios.length;
+    for(let i=0;i<=n-1;i++)
+    {
+      radio=radios[i];
+      localStorage.removeItem(radio.id);
+      radio.checked=false
+    }
 
   }
 
@@ -69,17 +94,17 @@
     <div class="form-floating mb-3">
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-          Default radio
+        <input class="form-check-input" value="Cricket" onchange="saveCheckRadioData('rdCricket')"  type="radio" name="rdSport" id="rdCricket">
+        <label class="form-check-label" for="rdCricket">
+          Cricket
         </label>
 
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
-          Default checked radio
+        <input class="form-check-input" value="Football"  onchange="saveCheckRadioData('rdFootball')"   type="radio" name="rdSport" id="rdFootball" checked>
+        <label class="form-check-label" for="rdFootball">
+          Football
         </label>
       </div>
 

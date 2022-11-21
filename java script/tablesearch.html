@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <script>
+
+
+
+
+
+
+
+
+        function doTableSearch(textboxid, tableid, recordcounttext) {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById(textboxid);
+            filter = input.value.toUpperCase();
+
+
+
+            table = document.getElementById(tableid);
+            tr = table.getElementsByTagName("tr");
+            var noofrows = tr.length;
+            var count = 0;
+            for (i = 1; i <= noofrows - 1; i++) {
+                var noofcols = tr[i].getElementsByTagName("td").length;
+                var textdata = "";
+                for (j = 0; j <= noofcols - 1; j++) {
+                    currenttd = tr[i].getElementsByTagName("td")[j];
+                    if (currenttd) {
+                        textdata += currenttd.textContent || currenttd.innerText
+                    }
+                }
+                //  alert(textdata);
+
+                if (textdata.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    count++;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+            document.getElementById(recordcounttext).value = count;
+        }
+
+        doTableSearch();
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input onchange="doTableSearch('txtDataSearch','tbl','txtDataCount');"
+                        onkeyup="doTableSearch('txtDataSearch','tbl','txtDataCount');" type="text" class="form-control"
+                        id="txtDataSearch" placeholder="name@example.com">
+                    <label for="txtDataSearch">Data Search</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" readonly class="form-control disabled" id="txtDataCount" placeholder="Password">
+                    <label for="txtDataCount">Count</label>
+                </div>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table id="tbl" class="table table-striped">
+                    <tr>
+                        <th>State</th>
+                        <th>City</th>
+                    </tr>
+                    <tr>
+                        <td>UP</td>
+                        <td>Lucknow</td>
+                    </tr>
+                    <tr>
+                        <td>Bihar</td>
+                        <td>Patna</td>
+                    </tr>
+                    <tr>
+                        <td>Maharashtra</td>
+                        <td>Mumbai</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script>
+
+        doTableSearch('txtDataSearch', 'tbl', 'txtDataCount');
+    </script>
+</body>
+
+</html>
