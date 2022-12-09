@@ -9,14 +9,14 @@
     <script>
         function dataResponse(data) {
             console.log(data);
-            let output=JSON.stringify(data);
+            let output = JSON.stringify(data);
             document.getElementById("d").innerHTML = output;
 
         }
         function call() {
             fetch('https://swapi.py4e.com/api/people/1/')
-                .then((response) => response.json())
-                .then((data) => dataResponse(data));
+                .then(function (response) { return response.json(); })
+                .then(function (data) { dataResponse(data); });
         }
         call();
     </script>
