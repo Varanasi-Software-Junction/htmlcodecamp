@@ -7,21 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Console</title>
     <script>
-        function f() {
+        function f() {//Function to print using the Console in Javascript
+            console.log('This is a log');
             console.warn('This is a warning');
-
             console.error('This is an error');
             console.info('This is an information');
-
+            console.log("");
             console.debug('This is a debug');
-
             let books = [
                 { bookname: 'Recursion Sutras', subject: "Recursion" },
                 { bookname: 'How to do Object Oriented Programming', subject: "OOPS" },
             ];
             console.table(books);
+            console.log("");
             console.dir(books);
-
             console.log('%c This is a great book, %c This is a greater book', 'font-size:40px;color:brown;background-color:green;', 'font-size:48px;color:green;background-color:brown;');
         }
 
