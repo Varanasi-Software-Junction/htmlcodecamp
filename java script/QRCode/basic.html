@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Slip Format</title>
+    <script>
+      function doPrint()
+      {
+        document.getElementById("p").style.visibility="hidden";
+        print();
+        document.getElementById("p").style.visibility="visible";
+      }
+    </script>
+</head>
+<body>
+  <style>
+    tr,{
+      border: none;
+    }
+  </style>
+   <div style="border: solid black; background-color: rgba(255, 255, 0, 0.512);" class="container-fluid">
+
+    <div class="container-fluid ">
+        <div class="row">
+          <div  class="col">
+          </div>
+          <div style="background-color: black; color: white; border-radius: 10px;" class="col">
+            <center>
+               <h3> Cash Memo</h3>
+            </center>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+
+      <!-- second container -->
+
+      <div class="container-fluid ">
+        <div class="row">
+            <center>
+               <h1 style="font-size: 80px; text-shadow: 5px 5px white;">
+                Stationery Palace
+               </h1>
+            </center>
+        </div>
+
+        <div class="row">
+            <center>
+            <h4>Deals in all kinds of office files</h4>
+        </center>
+        </div>
+
+      </div>
+      <!-- second container -->
+      <div style="border-radius: 100px;" class="container-fluid bg-dark">
+        <div  class="row">
+            <center>
+                <h4 style="color: white;">Nai Basti Pandeypur Varanasi</h4>
+            </center>
+        </div>
+      </div>
+      <!-- first text-field -->
+      <form class="row g-3 justify-content-around">
+        <div class="col-md-4">
+          <label for="validationDefault01" class="form-label"><h4>Receipt No:- 800</h4></label>
+          </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label"><h4>Date :- 7-12-2023</h4></label>
+          </div>
+
+          <div class="col-ms-10 justify-content-around">
+          <label for="validationDefault03" class="form-label"><h4>To:- </h4> <h5><i>Dhoni Tandulker</i></h5></label>
+
+        </div>
+        
+      </form>
+
+      <!-- Second form -->
+      <br>
+      <div class="container-fluid-12">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"><h4>S.No</h4></th>
+              <th scope="col"><h4>Particular</h4></th>
+              <th scope="col"><h4>Rate</h4></th>
+              <th scope="col"><h4>Amount</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry the Bird</td>
+              <td>@twitter</td>
+              <td>shubh</td>
+            </tr>
+            <tr>
+              <td colspan="2"><h5>Rupies in word.........</h5></td>
+              <td>Total=</td>
+              <td></td>
+              
+            </tr>
+            
+          </tbody>
+        </table>
+
+
+      </div>
+        
+          <div class="container-fluid">
+            <div class="row">
+                <h4>C.O.E</h4>
+                <br>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h5>Goods once solid will not be taken back</h5>
+                </div>
+                <div class="col">
+                    <h5>
+                        For: Stationery palace
+                    </h5>
+                </div>
+            </div>
+          </div>
+
+    
+   </div>
+   <center>
+    <br>
+    <button onclick="doPrint()" id="p" type="button" class="btn btn-success btn-lg">Submit</button>
+
+   </center>
+    
+</body>
+</html>

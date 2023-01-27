@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+    <script>
+        function f() {
+            console.warn('This is a warning');
+
+            console.error('This is an error');
+            console.info('This is an information');
+
+            console.debug('This is a debug');
+
+            let books = [
+                { bookname: 'Recursion Sutras', subject: "Recursion" },
+                { bookname: 'How to do Object Oriented Programming', subject: "OOPS" },
+            ];
+            console.table(books);
+            console.dir(books);
+
+            console.log('%c This is a great book', 'font-size:40px;color:brown;background-color:green;');
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <script>
+        f();
+    </script>
+</body>
+
+</html>
