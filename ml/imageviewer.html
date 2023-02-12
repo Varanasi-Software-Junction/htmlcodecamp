@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Image Classifier</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+  let values=[
+    ['Contry', 'Mhl'],
+    ['Italy',54.8],
+    ['France',48.6],
+    ['Spain',44.4]
+  ];
+  function drawChart() {
+  
+    var data = google.visualization.arrayToDataTable(values);
+    
+    var options = {
+      title:'Image Classifier',
+      is3D:true
+    };
+    
+    var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+      chart.draw(data, options);
+    }
+    </script>
+</script>
+    <div>
+      <div
+id="myChart" style="width:100%; max-width:600px; height:500px;">
+</div>
+
+      <center>
+        <style>
+          .vsjfile-upload-label {
+            background-color: #2196f3;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            
+            align-items: center;
+          }
+          #vsjimage {
+            display: none;
+          }
+          #vsjimg {
+            width: 350px;
+          }
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+        <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+        <input
+          style="display: none"
+          type="file"
+          id="vsjchoose-file"
+          name="choose-file"
+          accept="image/*"
+        />
+        <label class="vsjfile-upload-label" for="vsjchoose-file">Choose Image</label>
+
+        <input  class="vsjfile-upload-label" type="button" onclick="vsjDoClassify()" value="Click" />
+        <div id="vsjresult"></div>
+<br>
+        
+          <div>
+            <div id="vsjimg-preview"></div>
+          </div>
+        
+        <script>
+          const chooseFile = document.getElementById("vsjchoose-file");
+          const imgPreview = document.getElementById("vsjimg-preview");
+
+          function vsjGetImgData() {
+            const files = chooseFile.files[0];
+            if (files) {
+              const fileReader = new FileReader();
+              fileReader.readAsDataURL(files);
+              fileReader.addEventListener("load", function () {
+                //imgPreview.style.display = "block";
+                let output =
+                  '<img  crossorigin="anonymous" id="vsjimage" src="' +
+                  this.result +
+                  '" />';
+                output +=
+                  '<img id="vsjimg"  crossorigin="anonymous"  src="' +
+                  this.result +
+                  '" />';
+                imgPreview.innerHTML = output;
+              });
+            }
+          }
+
+          chooseFile.addEventListener("change", function () {
+            vsjGetImgData();
+          });
+        </script>
+
+        <script>
+          // Initialize Image Classifier with MobileNet.
+          const classifier = ml5.imageClassifier("MobileNet");
+
+          function vsjDoClassify() {
+            //alert('Here');
+            document.getElementById("vsjresult").innerHTML = "Scanning";
+            classifier.classify(
+              document.getElementById("vsjimage"),
+              vsjGotResult
+            );
+            //alert('Here');
+          }
+          // Function to run when results arrive
+          function vsjGotResult(error, results) {
+            const element = document.getElementById("vsjresult");
+            //alert(error);
+            if (error) {
+              element.innerHTML = error;
+            } else {
+              let output = "";
+              let n = results.length;
+              for (let i = 0; i <= n - 1; i++) {
+                let result = results[i];
+                let num = result.confidence * 100;
+                values[i+1]=[result.label,num];
+                output +=
+                  "<li>" +
+                  result.label +
+                  "<br>Confidence: " +
+                  num.toFixed(2) +
+                  "%</li>";
+                  drawChart();
+              }
+
+              element.innerHTML = "<div style='width:350px;'><ol>" + output + "</ol></div>";
+            }
+          }
+          google.charts.load('current', {'packages':['corechart']});
+        </script>
+      </center>
+    </div>
+  </body>
+</html>

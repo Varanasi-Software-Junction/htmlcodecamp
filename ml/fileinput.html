@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <style>
+      .file-upload {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+      
+      .file-upload__label {
+        background-color: #2196f3;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .file-upload__input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+      }
+      
+      .file-upload__icon {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="file-upload">
+      <label class="file-upload__label">
+        <i class="file-upload__icon fa fa-upload"></i>
+        Upload File
+        <input type="file" class="file-upload__input">
+      </label>
+    </div>
+  </body>
+</html>
