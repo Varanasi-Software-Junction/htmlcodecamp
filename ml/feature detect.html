@@ -11,13 +11,13 @@
 
     <style></style>
   </head>
-
+*
   <script>
     let faceapi;
     let img;
     let detections;
-
-    // by default all options are set to true
+   // let width=200;
+    //let height=200    // by default all options are set to true
     const detection_options = {
       withLandmarks: true,
       withDescriptors: true,
@@ -25,14 +25,17 @@
 
     function preload() {
       img = loadImage("champak.jpg");
+     // width=img.width;
+     // height=img.height;
       console.log("Load Image");
     }
 
     function setup() {
-      createCanvas(300, 300);
+      createCanvas(200, 200);
       img.resize(width, height);
 
       faceapi = ml5.faceApi(detection_options, modelReady);
+      console.log(faceapi);
       textAlign(RIGHT);
     }
 
@@ -55,7 +58,7 @@
       detections = result;
 
       // background(220);
-      background(255);
+      background(128);
       image(img, 0, 0, width, height);
       if (detections) {
         // console.log(detections)
