@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chart.js Example</title>
+    <style>
+      canvas:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+      }
+
+      body {
+        background-color: white;
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .canvas-container {
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+      }
+
+      .input {
+        background-color: #f9f9f9;
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); /* add a 3D shadow effect */
+        transition: all 0.2s ease-in-out; /* add a transition effect */
+      }
+
+      .input:hover {
+        transform: translate(2px, 2px); /* move the input element on hover */
+        box-shadow: none; /* remove the shadow on hover */
+      }
+
+      .button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); /* add a 3D shadow effect */
+        transition: all 0.2s ease-in-out; /* add a transition effect */
+      }
+
+      .button:hover {
+        transform: translate(2px, 2px); /* move the button on hover */
+        box-shadow: none; /* remove the shadow on hover */
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Chart.js Example</h1>
+    <p>Enter a comma-separated list of numbers to plot:</p>
+    <input onkeyup="drawCharts()" class="input" type="text" id="inputArray" />
+    <button class="button" onclick="drawCharts()">Plot Charts</button>
+    <div style="display: flex; justify-content: center">
+      <div class="canvas-container">
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="canvas-container">
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="canvas-container">
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+    <script>
+      let lineChart = null;
+      let barChart = null;
+      let pieChart = null;
+
+      function drawCharts() {
+        // get input array from text input
+        const inputArray = document
+          .getElementById("inputArray")
+          .value.split(",")
+          .map(Number);
+
+        // create labels for each data point
+        const labels = inputArray.map(
+          (value, index) => "Data Point " + (index + 1)
+        );
+
+        // create data objects for each chart type
+        const lineChartData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Line Chart",
+              data: inputArray,
+              fill: false,
+              borderColor: "rgb(75, 192, 192)",
+              tension: 0.1,
+            },
+          ],
+        };
+
+        const barChartData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Bar Chart",
+              data: inputArray,
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgb(75, 192, 192)",
+              borderWidth: 1,
+            },
+          ],
+        };
+
+        const pieChartData = {
+          labels: labels,
+          datasets: [
+            {
+              label: "Pie Chart",
+              data: inputArray,
+              backgroundColor: [
+                "rgb(255, 99, 132)",
+                "rgb(54, 162, 235)",
+                "rgb(255, 205, 86)",
+                "rgb(75, 192, 192)",
+                "rgb(153, 102, 255)",
+                "rgb(255, 159, 64)",
+              ],
+            },
+          ],
+        };
+
+        // destroy existing charts
+        if (lineChart) {
+          lineChart.destroy();
+        }
+        if (barChart) {
+          barChart.destroy();
+        }
+        if (pieChart) {
+          pieChart.destroy();
+        }
+
+        // draw the charts
+        const lineChartElement = document.getElementById("lineChart");
+        lineChart = new Chart(lineChartElement, {
+          type: "line",
+          data: lineChartData,
+          options: {},
+        });
+
+        const barChartElement = document.getElementById("barChart");
+        barChart = new Chart(barChartElement, {
+          type: "bar",
+          data: barChartData,
+          options: {},
+        });
+
+        const pieChartElement = document.getElementById("pieChart");
+        pieChart = new Chart(pieChartElement, {
+          type: "pie",
+          data: pieChartData,
+          options: {},
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -3,5 +3,5 @@
         "stdio.h": "c",
         "iostream": "cpp"
     },
-    "livePreview.defaultPreviewPath": "/java script/datalist.html"
+    "livePreview.defaultPreviewPath": "/ml/facedetect.html"
 }
