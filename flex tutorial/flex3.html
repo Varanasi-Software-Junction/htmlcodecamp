@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Flexbox 0</title>
+    <meta charset="utf-8" />
+    <title>Flexbox 3</title>
     <style>
+      .article1 {
+        flex: 2;
+      }
+      .article2 {
+        flex: 4;
+      }
+      .article3 {
+        flex: 6;
+      }
       html {
         font-family: sans-serif;
       }
@@ -29,13 +38,12 @@
         margin: 10px;
         background: teal;
       }
-section {
-  display: flex;
-}
-      
-
-
-      
+      section {
+        display: flex;
+        flex-direction: row;
+      align-items: center;
+       justify-content: space-around;
+      }
     </style>
   </head>
   <body>
@@ -44,24 +52,24 @@ section {
     </header>
 
     <section>
-      <article>
+      <article class="article1">
         <h2>First</h2>
 
-        <p>Vishal and Manas went up the hill</p>
+        <p>One</p>
       </article>
 
-      <article>
+      <article class="article2">
         <h2>Second</h2>
 
-        <p>Baba Manas have you any tea.</p>
+        <p>Two</p>
       </article>
 
-      <article>
+      <article class="article3">
         <h2>Third</h2>
 
-        <p>Yes Sir, yes Sir,.</p>
+        <p>Three</p>
 
-        <p>three purva full.</p>
+        <p>Four</p>
       </article>
     </section>
   </body>
