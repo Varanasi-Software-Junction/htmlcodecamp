@@ -1,76 +1,97 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Flexbox 3</title>
+    <title>Flexbox Justify Content Demo by Varanasi Software Junction</title>
+    <link rel="icon" type="image/png" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png">
+
     <style>
-      .article1 {
-        flex: 2;
-      }
-      .article2 {
-        flex: 4;
-      }
-      .article3 {
-        flex: 6;
-      }
-      html {
-        font-family: sans-serif;
-      }
-
       body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
         margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #f7f1e3;
       }
-
-      header {
-        background: orange;
-        height: 100px;
-      }
-
       h1 {
-        text-align: center;
-        color: white;
-        line-height: 100px;
-        margin: 0;
+        margin: 20px;
+        color: #e17055;
       }
-
-      article {
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #f9dcc4;
+        padding: 20px;
+        margin: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .item {
+        background-color: #e17055;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
         padding: 10px;
         margin: 10px;
-        background: teal;
+        border-radius: 5px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease-in-out;
       }
-      section {
-        display: flex;
-        flex-direction: row;
-      align-items: center;
-       justify-content: space-around;
+      .item:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+      .item:nth-child(even) {
+        background-color: #f8b195;
+      }
+      .item:nth-child(3) {
+        background-color: #c0392b;
+      }
+      select {
+        font-size: 18px;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #f9dcc4;
+        border: none;
+        border-radius: 5px;
+      }
+      .credit {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>VSJ Flexbox</h1>
-    </header>
-
-    <section>
-      <article class="article1">
-        <h2>First</h2>
-
-        <p>One</p>
-      </article>
-
-      <article class="article2">
-        <h2>Second</h2>
-
-        <p>Two</p>
-      </article>
-
-      <article class="article3">
-        <h2>Third</h2>
-
-        <p>Three</p>
-
-        <p>Four</p>
-      </article>
-    </section>
+    <h1>Flexbox Justify Content Demo by Varanasi Software Junction</h1>
+    <select id="justify-content-select">
+      <option value="">Select justify-content value</option>
+      <option value="flex-start">flex-start</option>
+      <option value="flex-end">flex-end</option>
+      <option value="center">center</option>
+      <option value="space-between">space-between</option>
+      <option value="space-around">space-around</option>
+      <option value="space-evenly">space-evenly</option>
+    </select>
+    <div class="container" id="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+    </div>
+    <div class="credit">
+      Developed by Varanasi Software Junction
+    </div>
+    <script>
+      const select = document.getElementById("justify-content-select");
+      const container = document.getElementById("container");
+      select.addEventListener("change", () => {
+        container.style.justifyContent = select.value;
+        console.log("Done");
+      });
+    </script>
   </body>
 </html>
