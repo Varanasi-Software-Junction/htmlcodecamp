@@ -1,108 +1,133 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Flexbox Demo</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-      body {
-        background-color: #f6e8d6;
-        font-family: Arial, sans-serif;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Navigation Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .logo a {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu li {
+      list-style: none;
+      margin: 0 10px;
+    }
+
+    .menu a {
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      padding: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu a:hover {
+      background-color: white;
+      color: #333;
+      border-radius: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu {
+        display: none;
       }
-      
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: lightgoldenrodyellow;
+
+      .burger {
+        display: block;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
       }
-      
-      .box {
-        width: 200px;
-        height: 200px;
-        background-color: #ffd8b5;
-        margin: 10px;
+
+      .burger:hover {
+        color: #ddd;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: #333;
+        padding: 10px;
+        z-index: 1;
+      }
+
+      .dropdown li {
+        margin: 10px 0;
+      }
+
+      .dropdown a {
+        color: white;
+        font-size: 1.2rem;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .dropdown a:hover {
+        background-color: white;
+        color: #333;
         border-radius: 5px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease-in-out;
-      }
-      
-      .box:hover {
-        transform: scale(1.1);
-      }
-      
-      .form {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
       }
 
-      label {
-        font-weight: bold;
-        margin-right: 10px;
+      .show {
+        display: block;
       }
-
-      select {
-        padding: 5px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: none;
-      }
-
-      select:focus {
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Flexbox Demo</h1>
-    </header>
-
-    <div class="form">
-      <label for="justify-content">Justify Content:</label>
-      <select id="justify-content">
-        <option value="center">Center</option>
-        <option value="flex-start">Flex Start</option>
-        <option value="flex-end">Flex End</option>
-        <option value="space-between">Space Between</option>
-        <option value="space-around">Space Around</option>
-      </select>
-
-      <label for="align-items">Align Items:</label>
-      <select id="align-items">
-        <option value="center">Center</option>
-        <option value="flex-start">Flex Start</option>
-        <option value="flex-end">Flex End</option>
-        <option value="stretch">Stretch</option>
-        <option value="baseline">Baseline</option>
-      </select>
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="#">Logo</a>
     </div>
-
-    <div class="container">
-      <div class="box">1</div>
-      <div class="box">2</div>
-      <div class="box">3</div>
-      <div class="box">4</div>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="burger">
+      &#9776;
+      <ul class="dropdown">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
     </div>
+  </nav>
+  <script>
+    const burger = document.querySelector('.burger');
+    const dropdown = document.querySelector('.dropdown');
 
-    <script>
-      const justifyContentSelect = document.getElementById('justify-content');
-      const alignItemsSelect = document.getElementById('align-items');
-      const container = document.querySelector('.container');
-
-      // Update justify-content value when select changes
-      justifyContentSelect.addEventListener('change', () => {
-        container.style.justifyContent = justifyContentSelect.value;
-      });
-
-      // Update align-items value when select changes
-      alignItemsSelect.addEventListener('change', () => {
-        container.style.alignItems = alignItemsSelect.value;
-      });
-    </script>
-  </body>
+    burger.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+  </script>
+</body>
 </html>
