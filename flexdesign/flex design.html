@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flex Sample</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      section {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+      }
+      article {
+        padding: 10px;
+        margin: 10px;
+        background: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <article>
+        <h2>One</h2>
+        <p></p>
+        <h2>One</h2>
+      </article>
+      <article>
+        <h2>Two</h2>
+        <p></p>
+        <h2>Two</h2>
+      </article>
+    </section>
+  </body>
 </html>
