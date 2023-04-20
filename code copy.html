@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Block Example</title>
+    <!-- include the highlight.js library -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <!-- initialize highlight.js -->
+    <script>hljs.highlightAll();</script>
+    <!-- define the CSS for the code block -->
+    <style>
+      pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 10px;
+        overflow-x: auto;
+        font-size: 16px;
+        line-height: 1.4em;
+      }
+      code {
+        font-family: "Consolas", "Courier New", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Code Block Example</h1>
+    <p>Here's an example of a code block:</p>
+    <pre><code class="python">
+        from django.shortcuts import render
+
+        from . import ProgrammingQuestions as questionsbank
+        
+        
+        def quiz(request):
+            correctresult='<span class="material-icons" style="color: green">check</span>'
+            wrongresult='<span class="material-icons" style="color: red">close</span>'
+            currentquestionno = -1
+            currentquestion = 'Press any key to start'
+            questions = questionsbank.questions
+            n = len(questions)
+        
+            if request.GET:
+                currentquestionno = int(request.GET["questionno"])
+                print(currentquestionno)
+                currentquestionno += 1
+                # currentquestion = questionsbank.questions[currentquizno]
+        
+                if currentquestionno >= n:
+                    currentquestion = 'Test over'
+                else:
+                    if currentquestionno == -1:
+                        currentquestionno += 1
+                    currentquestion = questions[currentquestionno]
+            return render(request, "quiz.html", {'qno': currentquestionno, "question": currentquestion,"results":correctresult})
+            # return HttpResponse("Home")
+        
+    </code></pre>
+    <p>To copy the code, click the "Copy Code" button below:</p>
+    <button onclick="copyCode()">Copy Code</button>
+    <!-- define the copyCode() function -->
+    <script>
+      function copyCode() {
+        // get the code element
+        var code = document.querySelector('code');
+        // create a new textarea element
+        var textarea = document.createElement('textarea');
+        // set the value of the textarea to the code
+        textarea.value = code.innerText;
+        // add the textarea to the document
+        document.body.appendChild(textarea);
+        // select the text in the textarea
+        textarea.select();
+        // copy the text to the clipboard
+        document.execCommand('copy');
+        // remove the textarea from the document
+        document.body.removeChild(textarea);
+        // alert the user that the code has been copied
+        alert('Code copied to clipboard!');
+      }
+    </script>
+  </body>
+</html>
