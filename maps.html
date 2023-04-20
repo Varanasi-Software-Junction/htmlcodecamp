@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Maps</title>
+    <script>
+      const numbers = [1, 2, 3, 4, 5];
+      function doMap1() {
+        console.log(numbers);
+        const doubledNumbers = numbers.map(function (number) {
+          return number * 2;
+        });
+        console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+      }
+      function doMap2() {
+        console.log(numbers);
+
+        const filteredNumbers = numbers.map(function (number) {
+          if (number % 2 === 0) {
+            return number;
+          }
+        });
+        console.log(filteredNumbers); // [undefined, 2, undefined, 4, undefined]
+
+        for(let i=0;i<=filteredNumbers.length-1;i++)
+        if(filteredNumbers[i]==undefined)
+        filteredNumbers.splice(i,1);
+        console.log(filteredNumbers);
+      }
+    </script>
+    <style>
+      button {
+        width: 100%;
+      }
+      column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+      }
+      row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: stretch;
+      }
+      article {
+        height: 10vh;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <column>
+      <row>
+        <article>
+          <button onclick="doMap1()">Map</button>
+        </article>
+        <article>
+            <button onclick="doMap2()">Map</button>
+          </article>
+      </row>
+      <row>
+        <article></article>
+        <article></article>
+      </row>
+    </column>
+  </body>
+</html>
