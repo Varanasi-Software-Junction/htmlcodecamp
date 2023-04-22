@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flexbox Navigation Bar with Dropdown Menu</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #333;
+			padding: 10px;
+		}
+
+		nav img {
+			height: 50px;
+			margin-left: 20px;
+		}
+
+		nav ul {
+			display: flex;
+			flex-direction: row;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+		}
+
+		nav li {
+			margin: 0 10px;
+			position: relative;
+		}
+
+		nav li:hover > ul {
+            transition: 30s;
+			display: block;
+            opacity: 1;
+		}
+
+		nav a {
+			display: block;
+			padding: 10px;
+			color: #fff;
+			text-decoration: none;
+		}
+
+		nav ul ul {
+			display: none;
+            opacity: 0;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: #333;
+			padding: 0;
+		}
+
+		nav ul ul li {
+			display: block;
+			margin: 0;
+			position: relative;
+			width: 100%;
+			text-align: center;
+		}
+
+		nav ul ul a {
+			padding: 10px;
+			display: block;
+			color: #fff;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<img src="logo.png" alt="Logo">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a>
+				<ul>
+					<li><a href="#">Our Story</a></li>
+					<li><a href="#">Our Team</a></li>
+					<li><a href="#">Our Mission</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Services</a>
+				<ul>
+					<li><a href="#">Web Design</a></li>
+					<li><a href="#">Graphic Design</a></li>
+					<li><a href="#">Digital Marketing</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

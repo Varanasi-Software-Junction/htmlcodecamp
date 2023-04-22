@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3x2 Grid using Flexbox</title>
+	<style>
+
+
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+          }
+          
+          .grid-item {
+            flex-basis: calc(33.33% - 10px);
+            margin-bottom: 20px;
+          }
+          
+          .grid-item img {
+            width: 100%;
+            height: auto;
+          }
+          
+    </style>
+</head>
+<body>
+	<div class="grid-container">
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+		<div class="grid-item"><img src="your-logo.jpg"></div>
+	</div>
+</body>
+</html>
