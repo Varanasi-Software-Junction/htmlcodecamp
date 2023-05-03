@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>PDF Viewer</title>
   </head>
   <body>
     <table>
@@ -30,7 +30,7 @@
     </table>
     <iframe
       id="f"
-      src="pdfs/The Dance of Shiva.pdf"
+      src=""
       style="display: none; width: 100%; height: 800px"
     ></iframe>
 
@@ -39,7 +39,10 @@
         const params = new URLSearchParams(window.location.search);
 
         const pdf = params.get("pdf");
-        if (pdf == null) return;
+        if (pdf == null) {
+          document.getElementById("f").style.display = "none";
+          return;
+        }
         document.getElementById("f").src = pdf;
         document.getElementById("f").style.display = "block";
       }
