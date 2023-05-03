@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Url</td>
+      </tr>
+      <tr>
+        <td>System</td>
+        <td>
+          <a
+            href="pdfviewer.html?pdf=pdfs/PRINCIPLES_OF_COMMUNICATION_SYSTEMS_Seco.pdf"
+            >Read</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Dance of Shiva</td>
+        <td>
+          <a href="pdfviewer.html?pdf=pdfs/The Dance of Shiva.pdf">Read</a>
+        </td>
+      </tr>
+    </table>
+    <iframe
+      id="f"
+      src="pdfs/The Dance of Shiva.pdf"
+      style="display: none; width: 100%; height: 800px"
+    ></iframe>
+
+    <script>
+      function getPdf() {
+        const params = new URLSearchParams(window.location.search);
+
+        const pdf = params.get("pdf");
+        if (pdf == null) return;
+        document.getElementById("f").src = pdf;
+        document.getElementById("f").style.display = "block";
+      }
+      getPdf();
+    </script>
+  </body>
+</html>
