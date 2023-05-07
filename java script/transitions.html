@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TranslateX Example</title>
+    <style>
+      .container {
+        width: 1500px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 5s ease-out;
+      }
+
+      img.moved {
+        transform: translateX(100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+        <button id="move-button">Move the logo</button>
+        <select id="timing-function-select">
+          <option value="ease">Ease</option>
+          <option value="linear">Linear</option>
+          <option value="ease-in">Ease In</option>
+          <option value="ease-out">Ease Out</option>
+          <option value="ease-in-out">Ease In Out</option>
+        </select>
+      </div>
+    <div class="container">
+      <img src="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png" alt="Varanasi Software Junction Phone Logo" id="logo">
+  
+    </div>
+    <script>
+      var logo = document.getElementById('logo');
+      var moveButton = document.getElementById('move-button');
+      var timingFunctionSelect = document.getElementById('timing-function-select');
+
+      moveButton.addEventListener('click', function() {
+       
+        logo.classList.add('moved');
+      });
+
+      timingFunctionSelect.addEventListener('change', function() {
+        var selectedValue = this.value;
+        logo.style.transitionTimingFunction = selectedValue;
+      });
+      logo.addEventListener('transitionend', function() {
+        logo.classList.remove('moved');
+      });
+    </script>
+  </body>
+</html>

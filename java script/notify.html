@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Notification Demo</title>
+  <link href='https://varanasisoftwarejunction.blogspot.com/favicon.ico' rel='icon' type='image/x-icon'/
+</head>
+<body>
+  <button onclick="showNotification()">Show Notification</button>
+
+  <script>
+    function showNotification() {
+      if ('Notification' in window) {
+        Notification.requestPermission().then(function (permission) {
+          if (permission === 'granted') {
+            var notification = new Notification('Varanasi Software Junction!', {
+              body: 'Go to Varanasi Software Junction',
+              icon: 'https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png'
+            });
+
+            notification.onclick = function(event) {
+              event.preventDefault();
+              window.open('https://varanasisoftwarejunction.blogspot.com/');
+            }
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

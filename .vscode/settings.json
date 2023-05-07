@@ -3,5 +3,6 @@
         "stdio.h": "c",
         "iostream": "cpp"
     },
-    "livePreview.defaultPreviewPath": "/ml/facedetect.html"
+    "livePreview.defaultPreviewPath": "/ml/facedetect.html",
+    "liveServer.settings.port": 5501
 }
