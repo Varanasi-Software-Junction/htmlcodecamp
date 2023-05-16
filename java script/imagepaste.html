@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Copy-Paste Image</title>
+    <style>
+      .image-container {
+        border: 2px dashed #aaa;
+        padding: 10px;
+      }
+    </style>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png"
+    />
+  </head>
+  <body>
+    <h1>Copy-Paste Image Example</h1>
+
+    <div
+      class="image-container"
+      contenteditable="true"
+      onpaste="handlePaste(event)"
+    >
+      <p>Copy and paste an image here:</p>
+    </div>
+
+    <script>
+      function handlePaste(event) {
+        var items = event.clipboardData.items;
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf("image") !== -1) {
+            var file = items[i].getAsFile();
+            var reader = new FileReader();
+            reader.onload = function (event) {
+              var img = document.createElement("img");
+              img.src = event.target.result;
+              document.querySelector(".image-container").appendChild(img);
+            };
+            reader.readAsDataURL(file);
+          }
+        }
+      }
+    </script>
+<h1>Javascript Code</h1>    
+<textarea style="width: 100%;height:300px">
+
+    <!-- HTML code -->
+<div class="image-container" contenteditable="true" onpaste="handlePaste(event)">
+    <p>Copy and paste an image here:</p>
+  </div>
+  
+  <script>
+    // JavaScript code
+    function handlePaste(event) {
+      // Access the clipboard items that were pasted
+      var items = event.clipboardData.items;
+      
+      // Iterate through each item
+      for (var i = 0; i < items.length; i++) {
+        // Check if the item is an image
+        if (items[i].type.indexOf("image") !== -1) {
+          // Retrieve the image data as a File object
+          var file = items[i].getAsFile();
+          
+          // Create a FileReader object to read the file
+          var reader = new FileReader();
+          
+          // Set the event listener for when the file has been read successfully
+          reader.onload = function(event) {
+            // Create a new img element
+            var img = document.createElement("img");
+            
+            // Set the src attribute to the result of reading the file (data URL)
+            img.src = event.target.result;
+            
+            // Append the img element to the .image-container element
+            document.querySelector(".image-container").appendChild(img);
+          };
+          
+          // Read the file as a data URL
+          reader.readAsDataURL(file);
+        }
+      }
+    }
+  </script>
+  
+</textarea>
+<h1>Explanation</h1>
+<textarea style="width: 100%;height: 400px;">
+
+    The <div> element with the class image-container is where the image can be pasted. It has the contenteditable attribute set to "true" to allow editing and pasting of content within the element. Additionally, the onpaste attribute is set to call the handlePaste(event) function when a paste event occurs.
+
+        The handlePaste(event) function is defined within the <script> tag. It takes an event object as a parameter, which is automatically passed when the paste event occurs.
+        
+        Inside the handlePaste function, the event.clipboardData.items property is used to access the clipboard items that were pasted. This property returns an array-like object containing information about each item in the clipboard.
+        
+        The code then iterates through each item using a for loop. It checks if the item type contains the word "image" by using the type.indexOf("image") !== -1 condition. This condition ensures that only image items are processed.
+        
+        If the item is an image, it retrieves the image data as a File object using items[i].getAsFile(). This allows access to the file's content and metadata.
+        
+        A FileReader object, reader, is created to read the contents of the file.
+        
+        The reader.onload event listener is set to a function that triggers when the file has been read successfully. Inside this function, a new <img> element is created using document.createElement("img").
+        
+        The src attribute of the <img> element is set to the result of reading the file, accessed via event.target.result. In this case, the file is read as a data URL using reader.readAsDataURL(file).
+        
+        Finally, the newly created <img> element is appended to the .image-container element using document.querySelector(".image-container").appendChild(img). This adds the image as a child element within the container, effectively displaying the pasted image on the page.
+        
+        By combining the HTML and JavaScript code described above, users can paste images into the designated area, and the images will be displayed within the .image-container element.
+        
+        
+</textarea>
+  </body>
+</html>
