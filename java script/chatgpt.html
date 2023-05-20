@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Call Chat GPT API</title>
+  <script>
+    // JavaScript code
+    const apiKey = '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';
+    const endpoint = 'https://api.openai.com/v1/chat/completions';
+
+    async function callChatGPT(prompt) {
+      console.log(prompt);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          'messages': [{'role': 'system', 'content': 'You are ChatGPT.'}, {'role': 'user', 'content': prompt}],
+        })
+      });
+
+      const data = await response.json();
+      return data.choices[0].message.content;
+    }
+
+    function handleButtonClick() {
+      const prompt = document.getElementById('prompt').value;
+      callChatGPT(prompt)
+        .then(response => {
+          const output = document.getElementById('output');
+          output.innerText = response;
+        })
+        .catch(error => console.error(error));
+    }
+  </script>
+</head>
+<body>
+  <h1>Chat GPT API Example</h1>
+  <div>
+    <label for="prompt">Prompt:</label>
+    <input type="text" id="prompt" />
+    <button onclick="handleButtonClick()">Generate Response</button>
+  </div>
+  <div>
+    <h3>Output:</h3>
+    <p id="output"></p>
+  </div>
+</body>
+</html>

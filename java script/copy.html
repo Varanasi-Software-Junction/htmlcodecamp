@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code Copy Example</title>
+  <style>
+    .code {
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      padding: 10px;
+      font-family: Consolas, monospace;
+    }
+    .copy-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png">
+</head>
+<body>
+  <div class="code">
+    <pre id="codeSnippet">
+      <!-- Your code here -->
+      console.log("Hello, World!");
+    </pre>
+    <button class="copy-button" onclick="copyCode()">Copy Code</button>
+  </div>
+
+  <script>
+    function copyCode() {
+      // Get the code snippet element by its ID
+      const codeSnippet = document.getElementById('codeSnippet');
+      
+      // Get the text content of the code snippet element,
+      // using either the 'textContent' or 'innerText' property
+      const codeText = codeSnippet.textContent || codeSnippet.innerText;
+
+      // Check if the Clipboard API is supported and if the page is in a secure context
+      if (navigator.clipboard && window.isSecureContext) {
+        // Use the Clipboard API to write the code text to the clipboard
+        navigator.clipboard.writeText(codeText)
+          .then(() => {
+            // Display an alert to indicate that the code has been successfully copied
+            alert('Code copied to clipboard!');
+          })
+          .catch((error) => {
+            // Display an error message if there was a problem copying the code
+            console.error('Failed to copy code: ', error);
+          });
+      } else {
+        // Fallback for older browsers or non-secure contexts
+        
+        // Create a temporary textarea element
+        const textarea = document.createElement('textarea');
+        
+        // Set the value of the textarea to the code text
+        textarea.value = codeText;
+        
+        // Append the textarea to the document body
+        document.body.appendChild(textarea);
+        
+        // Select the contents of the textarea
+        textarea.select();
+        
+        // Execute the 'copy' command to copy the code
+        document.execCommand('copy');
+        
+        // Remove the temporary textarea from the document body
+        document.body.removeChild(textarea);
+        
+        // Display an alert to indicate that the code has been successfully copied
+        alert('Code copied to clipboard!');
+      }
+    }
+  </script>
+
+</body>
+</html>
