@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise Example</title>
+   <link rel="icon" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png" type="image/png">
+
+</head>
+<body>
+  <h1>Promise Example</h1>
+  
+  <script>
+    // Create the promise
+    const myPromise = new Promise((resolve, reject) => {
+      // Generate a random integer between 1 and 10
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+      if (randomNumber % 2 === 0) {
+        // If the number is even, resolve the promise with success
+        resolve(randomNumber);
+      } else {
+        // If the number is odd, reject the promise with an error
+        reject('Error: Odd number generated');
+      }
+    });
+
+    // Handle the promise
+    myPromise
+      .then(result => {
+        // Handle the fulfilled promise with the result value
+        console.log('Promise fulfilled:', result);
+        document.body.innerHTML += `<p>Promise fulfilled: ${result}</p>`;
+      })
+      .catch(error => {
+        // Handle any errors or rejected promises
+        console.error('Promise rejected:', error);
+        document.body.innerHTML += `<p>Promise rejected: ${error}</p>`;
+      });
+  </script>
+</body>
+</html>
