@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenWeatherMap API Example</title>
+  <script>
+    function fetchWeatherData() {
+      const city = document.getElementById('cityInput').value;
+
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4a1f8a61b74546825af1e0be106e797b&units=metric`)
+        .then(response => response.json())
+        .then(data => {
+          // Process the weather data from the API response
+          displayWeatherData(data);
+        })
+        .catch(error => {
+          // Handle any errors that occur during the API call
+          console.error('Error:', error);
+        });
+    }
+
+    function displayWeatherData(data) {
+      const table = document.createElement('table');
+      const headers = ['City', 'Temperature', 'Humidity', 'Description'];
+
+      // Create table headers
+      const headerRow = document.createElement('tr');
+      headers.forEach(headerText => {
+        const headerCell = document.createElement('th');
+        headerCell.textContent = headerText;
+        headerRow.appendChild(headerCell);
+      });
+      table.appendChild(headerRow);
+
+      // Create table rows with data
+      const dataRow = document.createElement('tr');
+      headers.forEach(header => {
+        const dataCell = document.createElement('td');
+        dataCell.textContent = data[header.toLowerCase()];
+        dataRow.appendChild(dataCell);
+      });
+      table.appendChild(dataRow);
+
+      // Display the table on the page
+      const weatherDataContainer = document.getElementById('weatherData');
+      weatherDataContainer.innerHTML = '';
+      weatherDataContainer.appendChild(table);
+    }
+  </script>
+</head>
+<body>
+  <h1>OpenWeatherMap API Example</h1>
+  <input type="text" id="cityInput" placeholder="Enter City Name">
+  <button onclick="fetchWeatherData()">Fetch Weather Data</button>
+
+  <div id="weatherData"></div>
+</body>
+</html>
