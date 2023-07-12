@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Prevent Page Close</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #0047b3;
+    }
+
+    p {
+      color: #333;
+    }
+
+    button {
+      background-color: #0047b3;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    a {
+      display: inline-block;
+      background-color: #0047b3;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #002b80;
+    }
+  </style>
+  <script>
+    // Prompt the user before leaving the page
+    window.addEventListener('beforeunload', function (e) {
+      // Cancel the event
+      e.preventDefault();
+      // Chrome requires returnValue to be set
+      e.returnValue = '';
+    });
+
+    // Save the data
+    function makeChanges() {
+      // Perform your data saving logic here
+
+      // Remove the beforeunload event listener
+      window.removeEventListener('beforeunload', confirmExit);
+    }
+  </script>
+  <link rel="icon" type="image/x-icon"
+    href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png">
+
+</head>
+
+<body>
+  <h1>Prevent Page Close Example</h1>
+  <p>Make changes to the data and try to close the page.</p>
+
+  <button onclick="makeChanges()">Make Changes</button>
+  <a href="https://goo.gl/maps/LGHLS6rvBy1gNZH59" target="_blank">Contact Us</a>
+
+</body>
+
+</html>
