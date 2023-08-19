@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VSJ SWAPI Example</title>
+
+  <link rel="icon" type="image/x-icon" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+    }
+    
+    h1, h2 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    h1 {
+      font-size: 48px;
+      margin-top: 50px;
+    }
+    
+    h2 {
+      font-size: 36px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 24px;
+      background-color: #ffcc00;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    
+    #info {
+      margin-top: 50px;
+      font-size: 24px;
+      text-align: left;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>API Example</h1>
+  
+  <button onclick="getInfo()">Get Info</button>
+  <div id="info"></div>
+  <script>
+    function getInfo() {
+      fetch('https://swapi.dev/api/people/1/',{
+
+headers:{
+ 'Access-Control-Allow-Origin':'*'
+
+},
+
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Network response was not ok.');
+          }
+        })
+        .then(data => {
+          const infoDiv = document.getElementById('info');
+          infoDiv.innerHTML = `
+            <h2>${data.name}</h2>
+            <ul>
+              <li>Height: ${data.height}</li>
+              <li>Mass: ${data.mass}</li>
+              <li>Birth Year: ${data.birth_year}</li>
+              <li>Gender: ${data.gender}</li>
+            </ul>
+          `;
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+  </script>
+</body>
+</html>
+
+
+                                    
