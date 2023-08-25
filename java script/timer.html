@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <link rel="icon" type="image/png" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png">
+   
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+  <div id="timer">0:00</div>
+
+  <script>
+    // Set the target countdown time in seconds
+    const countdownTime = 300; // 5 minutes
+
+    // Calculate the target time in milliseconds
+    const targetTime = Date.now() + countdownTime * 1000;
+
+    // Update the timer display every second
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+      const currentTime = Date.now();
+      const remainingTime = Math.max(0, targetTime - currentTime); // Ensure the timer doesn't go negative
+
+      const minutes = Math.floor(remainingTime / 1000 / 60);
+      const seconds = Math.floor((remainingTime / 1000) % 60);
+
+      const timerDisplay = document.getElementById("timer");
+      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+      if (remainingTime === 0) {
+        clearInterval(timerInterval); // Stop the timer when it reaches 0
+        alert("Time's up!");
+      }
+    }
+  </script>
+</body>
+</html>
