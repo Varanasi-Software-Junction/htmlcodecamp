@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merge Sort</title>
+    <script>
+        // Function to merge two sorted arrays
+        function merge(arr, left, right) {
+            let i = 0, j = 0, k = 0;
+
+            // Compare elements from left and right subarrays and merge them
+            while (i < left.length && j < right.length) {
+                if (left[i] <= right[j]) {
+                    arr[k] = left[i];
+                    i++;
+                } else {
+                    arr[k] = right[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // Copy any remaining elements from the left subarray
+            while (i < left.length) {
+                arr[k] = left[i];
+                i++;
+                k++;
+            }
+
+            // Copy any remaining elements from the right subarray
+            while (j < right.length) {
+                arr[k] = right[j];
+                j++;
+                k++;
+            }
+        }
+
+        // Merge Sort function
+        function mergeSort(arr) {
+            // Base case: if the array has one or zero elements, it's already sorted
+            console.log(arr);
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            // Calculate the middle index
+            const middle = Math.floor(arr.length / 2);
+
+            // Divide the array into left and right subarrays
+            const left = arr.slice(0, middle);
+            const right = arr.slice(middle);
+
+            // Recursively sort the left and right subarrays
+            const sortedLeft = mergeSort(left);
+            const sortedRight = mergeSort(right);
+
+            // Merge the sorted subarrays and return the result
+            return merge([], sortedLeft, sortedRight);
+        }
+
+        function sortArray() {
+            const input = document.getElementById('inputArray').value;
+            const arr = input.split(' ').map(Number);
+            const sortedArray = mergeSort(arr);
+            document.getElementById('outputArray').value = sortedArray.join(' ');
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputArray');
+            output.select();
+            document.execCommand('copy');
+        }
+    </script>
+</head>
+<body>
+    <h1>Merge Sort</h1>
+    <label for="inputArray">Enter numbers:</label>
+    <input type="text" id="inputArray">
+    <button onclick="sortArray()">Sort</button>
+    <br><br>
+    <label for="outputArray">Sorted array:</label>
+    <textarea id="outputArray" rows="5" cols="40" readonly></textarea>
+    <button onclick="copyOutput()">Copy</button>
+</body>
+</html>

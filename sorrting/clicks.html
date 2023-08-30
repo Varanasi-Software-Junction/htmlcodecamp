@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #result {
+    display: none;
+  }
+</style>
+<script>
+window.onload = function() {
+  var clickButton = document.getElementById("clickButton");
+  var resetButton = document.getElementById("resetButton");
+  var clickCounter = document.getElementById("clickCounter");
+  var result = document.getElementById("result");
+  var clickCount = 0;
+  var isCounting = false;
+
+  clickButton.addEventListener("click", function() {
+    if (isCounting) {
+      clickCount++;
+      clickCounter.textContent = "Clicks: " + clickCount;
+    }
+  });
+
+  resetButton.addEventListener("click", function() {
+    clickCount = 0;
+    clickCounter.textContent = "Clicks: " + clickCount;
+    result.style.display = "none";
+  });
+
+  function startCounting() {
+    isCounting = true;
+    setTimeout(function() {
+      isCounting = false;
+      result.style.display = "block";
+      result.textContent = "Time's up! You clicked " + clickCount + " times.";
+      //clickCount = 0;
+      //clickCounter.textContent = "Clicks: " + clickCount;
+    }, 10000); // 10000 milliseconds = 10 seconds
+  }
+
+  clickButton.addEventListener("click", startCounting);
+};
+</script>
+</head>
+<body>
+<button id="clickButton">Click Me</button>
+<button id="resetButton" style="display: none;">Reset Count</button>
+<p id="clickCounter">Clicks: 0</p>
+<p id="result"></p>
+</body>
+</html>
