@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png" />
+    <style>
+        .hiddenclass {
+            display: none;
+        }
+    </style>
+    <script>
+        let qno = 0;
+        function checkQuestion() {
+            const useranswer = givenAnswer();
+            const actualanswer = document.getElementById("correctanswer").innerHTML;
+            // alert(useranswer + "," + actualanswer);
+            if (useranswer == -1) {
+                alert("Please select an option");
+                return;
+            }
+            if (useranswer != actualanswer) {
+                alert("Wrong answer");
+                location = "gameover.html";
+                return;
+            }
+            const prize = document.getElementById("prize").innerHTML;
+            alert("Correct answer, You win " + prize);
+            if (qno == 16) {
+                alert("Quiz Over");
+                location = "win.html";
+                return;
+            }
+            getQuestion();
+        }
+        function givenAnswer() {
+            let rd = document.getElementById("default");
+            if (rd.checked)
+                return rd.value;
+            rd = document.getElementById("rd0");
+            if (rd.checked)
+                return rd.value;
+            rd = document.getElementById("rd1");
+            if (rd.checked)
+                return rd.value;
+            rd = document.getElementById("rd2");
+            if (rd.checked)
+                return rd.value;
+            rd = document.getElementById("rd3");
+            if (rd.checked)
+                return rd.value;
+
+        }
+        async function loadQuestions() {
+            const url = 'https://gist.githubusercontent.com/Avinashvns/f3a1859a7a68d8a525deca56bf92b59c/raw/06e6a81cac74db4c8d5b5c7e3af01bb8a9674fc1/kbc.json';
+            // alert(url);
+            const response = await fetch(url);
+            const questions = await response.json();
+            console.log(questions);
+            localStorage.setItem("questions", JSON.stringify(questions));
+
+        }
+        function getQuestion() {
+            const data = JSON.parse(localStorage.getItem("questions"));
+            let question = data["questions"][qno];
+            // alert(question.question);
+            for (let i = 0; i <= 3; i++) {
+                document.getElementById("opt" + i).classList.remove("hiddenclass");
+                document.getElementById("rd" + i).classList.remove("hiddenclass");
+            }
+            document.getElementById("st").classList.add("hiddenclass");
+            document.getElementById("sb").classList.remove("hiddenclass");
+
+            document.getElementById("tdq").innerHTML = `${question.question_number}) ${question.question}`;
+            document.getElementById("default").checked = true;
+            document.getElementById("opt0").innerHTML = `${question.options[0]}`;
+            document.getElementById("opt1").innerHTML = `${question.options[1]}`;
+            document.getElementById("opt2").innerHTML = `${question.options[2]}`;
+            document.getElementById("opt3").innerHTML = `${question.options[3]}`;
+            document.getElementById("correctanswer").innerHTML = question.correct_option;
+            document.getElementById("prize").innerHTML = question.prize_money;
+            // const opt = ["questions"][]
+            console.log(question.question + question.options, question.options[1]);
+            qno += 1;
+            if (qno > 16) {
+                console.log("KBC End");
+            }
+            console.log(qno);
+        }
+    </script>
+    <title>KBC</title>
+    <style>
+        body {
+            /* background-color: blue; */
+            /* background-image: url('/KBC/assets/bg.jpg'); */
+        }
+
+        .d1 {
+            height: 50px;
+            background-color: pink;
+        }
+
+        .relative {
+            background-color: khaki;
+            position: relative;
+            width: 300px;
+            /* height: 300px; */
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 50px;
+            `
+        }
+
+        .relativeleft {
+            background-color: aliceblue;
+            position: relative;
+            width: 100px;
+            top: 50px;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flex-container {
+            display: flex;
+            /* background-color: dodgerblue; */
+        }
+
+        .flex-1 {
+            /* background-color: aliceblue; */
+            flex: 25%;
+        }
+
+        .flex-2 {
+            background-color: cornflowerblue;
+            padding: 10px;
+
+            flex: 50%;
+        }
+
+        .flex-3 {
+            background-color: aliceblue;
+            padding: 10px;
+            margin-left: 10px;
+            flex: 25%;
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 3px;
+            border-color: aqua;
+
+        }
+
+        header {
+            background: orange;
+            height: 100px;
+        }
+
+        header>h1 {
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            margin: 0;
+        }
+
+        .tdpadding {
+            padding-left: 20px;
+        }
+
+        table {
+            color: red;
+
+            font-weight: bolder;
+            font-size: large;
+        }
+
+        .tdprice {
+            font-size: medium;
+        }
+
+        .tdhover:hover {
+            background-color: greenyellow;
+        }
+
+        .tdselect:active {
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2 style="display: none;" id="correctanswer">Answer</h2>
+
+    <table style="background-image: url('/KBC/assets/kbcs1.jpg');" border="1" width="100%;">
+        <tr>
+            <th colspan="3">
+                <header>
+                    <h1>KBC</h1>
+                    <h2 id="prize"></h2>
+                </header>
+            </th>
+        </tr>
+        <tr>
+            <td> <img src="/KBC/assets/kbc.jpg" alt="logo" width="150px"></td>
+            <td id="tdq">
+
+            </td>
+            <td style="min-width :150px;">
+                <table style="padding: 5px;">
+                    <tr class="tdprice">
+                        <td>₹ 1 CRORE</td>
+                        <td class="tdpadding">12</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 50,00,000</td>
+                        <td class="tdpadding">11</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 25,00,000</td>
+                        <td class="tdpadding">10</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 12,50,000</td>
+                        <td class="tdpadding">9</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 6,40,000</td>
+                        <td class="tdpadding">8</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 3,20,000</td>
+                        <td class="tdpadding">7</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 1,60,000</td>
+                        <td class="tdpadding">6</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 80,000</td>
+                        <td class="tdpadding">5</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 40,000</td>
+                        <td class="tdpadding">4</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 20,000</td>
+                        <td class="tdpadding">3</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 10,000</td>
+                        <td class="tdpadding">2</td>
+                    </tr>
+                    <tr class="tdprice">
+                        <td>₹ 5,000</td>
+                        <td class="tdpadding">1</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input name="answer" id="default" style="display:none;" value="-1" type="radio">
+                <table border="1" width="100%">
+                    <tr>
+                        <td class="tdhover">A:<input class="hiddenclass" name="answer" id="rd0" value="0"
+                                type="radio"><label for="rd0" class="hiddenclass" id="opt0">Anand kumar
+                                singh</label></td>
+                        <td class="tdhover">B:<input name="answer" id="rd1" value="1" class="hiddenclass"
+                                type="radio"><label class="hiddenclass" for="rd1" id="opt1">Sachin</label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdhover tdselect">C:<input value="2" name="answer" id="rd2" class="hiddenclass"
+                                type="radio"><label for="rd2" class="hiddenclass" id="opt2">Rohit
+                                Sharma</label>
+                        </td>
+                        <td class="tdhover">D:<input class="hiddenclass" id="rd3" value="3" name="answer"
+                                type="radio"><label for="rd3" class="hiddenclass" id="opt3">Azad
+                                kumar
+                                singh</label></td>
+                    </tr>
+                    <tr>
+                        <td><button id="st" onclick="getQuestion()">Start</button></td>
+                        <td><button id="sb" class="hiddenclass" onclick="checkQuestion()">Submit</button></td>
+                    </tr>
+                </table>
+
+
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        loadQuestions();
+    </script>
+
+</body>
+
+</html>
