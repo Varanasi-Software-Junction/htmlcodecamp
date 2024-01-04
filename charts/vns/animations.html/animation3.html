@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @keyframes rotateAnimation {
+            0% {
+                transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+
+        .rotating-cube {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            transform-style: preserve-3d;
+            animation: rotateAnimation 4s infinite;
+        }
+    </style>
+    <link rel="shortcut icon" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png" />
+
+</head>
+
+<body>
+
+    <div class="rotating-cube"></div>
+
+</body>
+
+</html>

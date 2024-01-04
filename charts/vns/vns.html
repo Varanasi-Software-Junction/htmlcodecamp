@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const checkUserHosting = async (hostEmail, callback) => {
+            let hostEmailData = await fetch(`https://swapi.dev/api/people/1/`)
+            //use string literals
+            let hostEmailJson = await hostEmailData.json();
+            return hostEmailJson;
+        }
+
+        const getActivity = async () => {
+            let jsonData = await checkUserHosting("theEmail");
+            //now you can directly use jsonData
+            console.log(jsonData);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="getActivity()">Call</button>
+</body>
+
+</html>
