@@ -15,23 +15,39 @@
         function dataResponse(data) {
             // Log the data to the console (for debugging purposes)
             console.log(data);
-            
+
             // Convert the JSON data to a string and set it as the innerHTML of the element with id "d"
             let output = JSON.stringify(data);
             document.getElementById("d").innerHTML = output;
         }
 
-        // Define a function to make the API call
+        // Define a function to make the API call using POST method
         function call() {
-            // Define the URL for the API endpoint (Star Wars API in this case)
-            const url = `https://swapi.py4e.com/api/people/1/`;
-            
-            // Use the fetch function to make a GET request to the specified URL
-            fetch(url)
-                // Parse the response as JSON
-                .then(function (response) { return response.json(); })
-                // Call the dataResponse function with the parsed JSON data
-                .then(function (data) { dataResponse(data); });
+            // Define the URL for the API endpoint
+            const url = `http://surevih.in/api/posthello`;
+
+            // Create an object with the necessary parameters for the POST request
+            const requestOptions = {
+                method: 'POST',
+                mode: 'no-cors', // Add 'mode' property to handle CORS, set to 'no-cors'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // Add any data you want to send in the body
+                body: JSON.stringify({ key1: 'value1', key2: 'value2' }),
+            };
+
+            // Use the fetch function to make a POST request to the specified URL
+            fetch(url, requestOptions)
+                .then(response => {
+                    // Since 'no-cors' is used, the response won't be directly accessible
+                    // Check the console for the result, and handle it accordingly on the server side
+                    console.log(response);
+                })
+                .catch(error => {
+                    // Log any errors that occur during the fetch
+                    console.error('Error:', error);
+                });
         }
 
         // Call the 'call' function when the script is executed
@@ -42,10 +58,10 @@
 <body>
     <!-- Create a div with the id "d" to display the fetched data -->
     <div id="d"></div>
-    
+
     <!-- Line break for better presentation -->
     <br>
-    
+
     <!-- Create a button that, when clicked, calls the 'call' function to fetch data again -->
     <input type="button" value="Find" onclick="call()">
 </body>
