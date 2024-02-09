@@ -1,191 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Album Page</title>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Page</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
 
-    header {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
-    }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
 
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 20px;
-    }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
 
-    .album {
-        width: 200px;
-        margin: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-    }
+        .album {
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
-    .album:hover {
-        transform: scale(1.05);
-    }
+        .album:hover {
+            transform: scale(1.05);
+        }
 
-    .album img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
+        .album img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
 
-    .album h3 {
-        font-size: 18px;
-        margin: 0;
-        color: #333;
-    }
+        .album h3 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
 
-    .album p {
-        font-size: 14px;
-        color: #666;
-        margin: 10px 0;
-    }
-    
-    .carousel-container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+        .album p {
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0;
+        }
 
-    .carousel-slide {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-    }
-    
-    .carousel-slide img {
-        width: 100%;
-        border-radius: 10px;
-    }
-    
-    .carousel-content {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        color: #fff;
-    }
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .carousel-heading {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
+        .carousel-slide {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-    .carousel-button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 16px;
-    }
+        .carousel-slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
 
-    .carousel-button:hover {
-        background-color: #0056b3;
-    }
+        .carousel-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+        }
 
-    .search-box {
-        margin: 20px auto;
-        padding: 10px;
-        width: 300px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-</style>
+        .carousel-heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .carousel-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .carousel-button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-box {
+            margin: 20px auto;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <link rel="shortcut icon" href="pics/logo.jpg" />
+
 </head>
+
 <body>
 
-<header>
-    <h1>My Albums</h1>
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search albums...">
-    </div>
-</header>
+    <header>
+        <h1>My Albums</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search albums...">
+        </div>
+    </header>
 
-<div class="carousel-container">
-    <div class="carousel-slide">
-        <img src="carousel-image1.jpg" alt="Carousel Image 1">
-        <div class="carousel-content">
-            <h2 class="carousel-heading">Album 1</h2>
-            <a href="#" class="carousel-button">View Details</a>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="carousel-image1.jpg" alt="Carousel Image 1">
+            <div class="carousel-content">
+                <h2 class="carousel-heading">Album 1</h2>
+                <a href="#" class="carousel-button">View Details</a>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="carousel-image2.jpg" alt="Carousel Image 2">
+            <div class="carousel-content">
+                <h2 class="carousel-heading">Album 2</h2>
+                <a href="#" class="carousel-button">View Details</a>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="carousel-image3.jpg" alt="Carousel Image 3">
+            <div class="carousel-content">
+                <h2 class="carousel-heading">Album 3</h2>
+                <a href="#" class="carousel-button">View Details</a>
+            </div>
         </div>
     </div>
-    <div class="carousel-slide">
-        <img src="carousel-image2.jpg" alt="Carousel Image 2">
-        <div class="carousel-content">
-            <h2 class="carousel-heading">Album 2</h2>
-            <a href="#" class="carousel-button">View Details</a>
-        </div>
-    </div>
-    <div class="carousel-slide">
-        <img src="carousel-image3.jpg" alt="Carousel Image 3">
-        <div class="carousel-content">
-            <h2 class="carousel-heading">Album 3</h2>
-            <a href="#" class="carousel-button">View Details</a>
-        </div>
-    </div>
-</div>
 
-<div class="container">
-    <div class="album">
-        <img src="album1.jpg" alt="Album 1">
-        <h3>Album 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="container">
+        <div class="album">
+            <img src="album1.jpg" alt="Album 1">
+            <h3>Album 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="album">
+            <img src="album2.jpg" alt="Album 2">
+            <h3>Album 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="album">
+            <img src="album3.jpg" alt="Album 3">
+            <h3>Album 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- Add more album divs as needed -->
     </div>
-    <div class="album">
-        <img src="album2.jpg" alt="Album 2">
-        <h3>Album 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <div class="album">
-        <img src="album3.jpg" alt="Album 3">
-        <h3>Album 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <!-- Add more album divs as needed -->
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.carousel-container').slick({
-            dots: true,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed: 2000
-        });
-        
-        $('#searchInput').on('input', function() {
-            var searchText = $(this).val().toLowerCase();
-            $('.album').each(function() {
-                var albumText = $(this).text().toLowerCase();
-                if (albumText.includes(searchText)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel-container').slick({
+                dots: true,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000
+            });
+
+            $('#searchInput').on('input', function () {
+                var searchText = $(this).val().toLowerCase();
+                $('.album').each(function () {
+                    var albumText = $(this).text().toLowerCase();
+                    if (albumText.includes(searchText)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
