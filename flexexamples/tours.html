@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Destinations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .destination {
+            width: 300px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+        .destination:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .destination img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .destination h2 {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .destination p {
+            font-size: 16px;
+            color: #555;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tour Destinations</h1>
+</header>
+
+<nav>
+    <div class="dropdown">
+        <a href="#">Destinations</a>
+        <div class="dropdown-content">
+            <a href="#">Destination 1</a>
+            <a href="#">Destination 2</a>
+            <a href="#">Destination 3</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="#">Tours</a>
+        <div class="dropdown-content">
+            <a href="#">Tour 1</a>
+            <a href="#">Tour 2</a>
+            <a href="#">Tour 3</a>
+        </div>
+    </div>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <input type="text" id="search" placeholder="Search destinations...">
+</nav>
+
+<div class="container">
+    <div class="destination">
+        <img src="destination1.jpg" alt="Destination 1">
+        <h2>Destination 1</h2>
+        <p>Description of Destination 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="destination">
+        <img src="destination2.jpg" alt="Destination 2">
+        <h2>Destination 2</h2>
+        <p>Description of Destination 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" class="btn">Learn More</a>
+    </div>
+
+    <div class="destination">
+        <img src="destination3.jpg" alt="Destination 3">
+        <h2>Destination 3</h2>
+        <p>Description of Destination 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" class="btn">Learn More</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Tour Destinations
+</footer>
+
+<script>
+    document.getElementById('search').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const destinations = document.querySelectorAll('.destination');
+        destinations.forEach(function(destination) {
+            const title = destination.querySelector('h2').innerText.toLowerCase();
+            if (title.includes(searchTerm)) {
+                destination.style.display = 'block';
+            } else {
+                destination.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
