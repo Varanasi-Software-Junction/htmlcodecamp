@@ -32,12 +32,16 @@
             color: #fff;
             padding: 10px 0;
             text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 10px 20px;
+            display: inline-block;
         }
 
         nav a:hover {
@@ -72,43 +76,48 @@
             display: block;
         }
 
+        /* Search box styling */
+        #search {
+            border: 2px solid #007bff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            width: 200px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        #search:focus {
+            width: 300px;
+            outline: none;
+        }
+
         /* Responsive styles */
         @media only screen and (max-width: 768px) {
-            .navbar-toggle {
+            .dropdown {
+                display: none;
+            }
+
+            .menu-toggle {
                 display: block;
                 color: #fff;
-                font-size: 24px;
-                padding: 10px;
+                padding: 10px 20px;
                 cursor: pointer;
             }
 
-            .navbar-links {
-                display: none;
-                width: 100%;
-                text-align: center;
-                padding: 20px 0;
+            .menu-toggle:hover {
+                background-color: #0056b3;
             }
 
-            .navbar-links.active {
+            .dropdown.active {
                 display: block;
+                position: relative;
+            }
+
+            nav {
+                flex-direction: column;
             }
 
             nav a {
-                display: block;
-                padding: 10px 0;
-            }
-
-            .dropdown-content {
-                position: static;
-                display: none;
-                text-align: center;
-            }
-
-            .dropdown:hover .dropdown-content {
-                display: none;
-            }
-
-            .dropdown-content.active {
                 display: block;
             }
         }
@@ -122,41 +131,38 @@
     </header>
 
     <nav>
-        <div class="navbar-toggle" onclick="toggleMenu()">☰</div>
-        <div class="navbar-links" id="navbarLinks">
-            <div class="dropdown">
-                <a href="#">Destinations</a>
-                <div class="dropdown-content">
-                    <a href="#">Destination 1</a>
-                    <a href="#">Destination 2</a>
-                    <a href="#">Destination 3</a>
-                </div>
+        <div class="dropdown">
+            <a href="#">Destinations</a>
+            <div class="dropdown-content">
+                <a href="#">Destination 1</a>
+                <a href="#">Destination 2</a>
+                <a href="#">Destination 3</a>
             </div>
-            <div class="dropdown">
-                <a href="#">Tours</a>
-                <div class="dropdown-content">
-                    <a href="#">Tour 1</a>
-                    <a href="#">Tour 2</a>
-                    <a href="#">Tour 3</a>
-                </div>
-            </div>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <input type="text" onkeyup="doSearch()" onchange="doSearch()" id="search"
-                placeholder="Search destinations...">
-            <h2 id="count"></h2>
         </div>
+        <div class="dropdown">
+            <a href="#">Tours</a>
+            <div class="dropdown-content">
+                <a href="#">Tour 1</a>
+                <a href="#">Tour 2</a>
+                <a href="#">Tour 3</a>
+            </div>
+        </div>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <input type="text" onkeyup="doSearch()" onchange="doSearch()" id="search" placeholder="Search destinations...">
+        <h2 id="count"></h2>
     </nav>
 
     <!-- Rest of your content -->
 
     <script>
         function toggleMenu() {
-            var navbarLinks = document.getElementById("navbarLinks");
-            navbarLinks.classList.toggle("active");
+            var dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(function (dropdown) {
+                dropdown.classList.toggle('active');
+            });
         }
     </script>
-
 </body>
 
 </html>
