@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="pics/logo.jpg" />
 
     <style>
+        /* Common styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -71,70 +72,35 @@
             display: block;
         }
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-        .destination {
-            width: 300px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            transition: transform 0.3s ease;
-        }
+            nav a {
+                flex: 1 0 50%; /* Two columns for each link */
+            }
 
-        .destination:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+            .dropdown {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-        .destination img {
-            width: 100%;
-            border-radius: 5px;
-        }
+            .dropdown-content {
+                position: static;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
 
-        .destination h2 {
-            margin-top: 10px;
-            font-size: 20px;
-        }
-
-        .destination p {
-            font-size: 16px;
-            color: #555;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 8px 15px;
-            margin-top: 10px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        input {
-            height: 30px;
-            padding: 5px;
-            border-radius: 5px;
+            .dropdown:hover .dropdown-content {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -168,54 +134,7 @@
         <h2 id="count"></h2>
     </nav>
 
-    <div class="container">
-        <div class="destination">
-            <img src="pics/logo.jpg" alt="Kashi Panchkoshi Parikrama">
-            <h2>Kashi Panchkoshi Parikrama</h2>
-            <p>Description of Kashi Panchkoshi Parikrama Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn">Learn More</a>
-        </div>
-
-        <div class="destination">
-            <img src="pics/sonebhadra/sonebhadra.jpg" alt="Chunar Sonebhadra Tour">
-            <h2>Chunar Sonebhadra Tour</h2>
-            <p>Description of Destination 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn">Learn More</a>
-        </div>
-
-        <div class="destination">
-            <img src="pics/ganga-gomati/ganga-gomati.jpg" alt="Ganga Gomati Sangam">
-            <h2>Ganga Gomati Sangam</h2>
-            <p>Description of Destination 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn">Learn More</a>
-        </div>
-    </div>
-
-
-    <footer>
-        &copy; 2024 Kashi Panchkoshi Parikrama
-    </footer>
-
-    <script>
-        function doSearch() {
-            let count = 0;
-            const searchTerm = document.getElementById("search").value.toLowerCase();
-            const destinations = document.querySelectorAll('.destination');
-            destinations.forEach(function (destination) {
-                const title = destination.querySelector('h2').innerText.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    destination.style.display = 'block';
-                    count++;
-                } else {
-                    destination.style.display = 'none';
-                }
-            });
-            // alert(count);
-            document.getElementById("count").innerHTML = `${count} items.`;
-        }
-        doSearch(); 
-    </script>
-
+    <!-- Rest of your content -->
 </body>
 
 </html>
