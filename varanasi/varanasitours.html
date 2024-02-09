@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varanasi Tour Destinations</title>
-    <link rel="shortcut icon"
-    href="pics/logo.jpg" />
+    <meta property="og:title" content="Discover Varanasi:Home Page">
+    <meta property="og:description" content="The ultimate discovery of Varanasi: Mandirs, Ghats,Tours and more">
+    <meta property="og:image" content="https://varanasi-software-junction.github.io/htmlcodecamp/varanasi/pics/logo.jpg">
+    <link rel="shortcut icon" href="pics/logo.jpg" />
 
     <style>
         body {
@@ -14,30 +17,36 @@
             padding: 0;
             background-color: #f0f0f0;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
+
         nav {
             background-color: #007bff;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 10px 20px;
         }
+
         nav a:hover {
             background-color: #0056b3;
         }
+
         .dropdown {
             position: relative;
             display: inline-block;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -45,23 +54,28 @@
             min-width: 160px;
             z-index: 1;
         }
+
         .dropdown-content a {
             color: #333;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
+
         .dropdown-content a:hover {
             background-color: #ddd;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
         }
+
         .destination {
             width: 300px;
             margin-bottom: 20px;
@@ -71,22 +85,27 @@
             background-color: #fff;
             transition: transform 0.3s ease;
         }
+
         .destination:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
+
         .destination img {
             width: 100%;
             border-radius: 5px;
         }
+
         .destination h2 {
             margin-top: 10px;
             font-size: 20px;
         }
+
         .destination p {
             font-size: 16px;
             color: #555;
         }
+
         .btn {
             display: inline-block;
             padding: 8px 15px;
@@ -96,9 +115,11 @@
             text-decoration: none;
             border-radius: 5px;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
+
         footer {
             background-color: #333;
             color: #fff;
@@ -110,75 +131,77 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Varanasi Tour Destinations</h1>
-</header>
+    <header>
+        <h1>Varanasi Tour Destinations</h1>
+    </header>
 
-<nav>
-    <div class="dropdown">
-        <a href="#">Destinations</a>
-        <div class="dropdown-content">
-            <a href="#">Destination 1</a>
-            <a href="#">Destination 2</a>
-            <a href="#">Destination 3</a>
+    <nav>
+        <div class="dropdown">
+            <a href="#">Destinations</a>
+            <div class="dropdown-content">
+                <a href="#">Destination 1</a>
+                <a href="#">Destination 2</a>
+                <a href="#">Destination 3</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Tours</a>
+            <div class="dropdown-content">
+                <a href="#">Tour 1</a>
+                <a href="#">Tour 2</a>
+                <a href="#">Tour 3</a>
+            </div>
+        </div>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <input type="text" id="search" placeholder="Search destinations...">
+    </nav>
+
+    <div class="container">
+        <div class="destination">
+            <img src="pics/logo.jpg" alt="Kashi Panchkoshi Parikrama">
+            <h2>Kashi Panchkoshi Parikrama</h2>
+            <p>Description of Kashi Panchkoshi Parikrama Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+        <div class="destination">
+            <img src="pics/sonebhadra/sonebhadra.jpg" alt="Chunar Sonebhadra Tour">
+            <h2>Chunar Sonebhadra Tour</h2>
+            <p>Description of Destination 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+        <div class="destination">
+            <img src="pics/ganga-gomati/ganga-gomati.jpg" alt="Ganga Gomati Sangam">
+            <h2>Ganga Gomati Sangam</h2>
+            <p>Description of Destination 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#" class="btn">Learn More</a>
         </div>
     </div>
-    <div class="dropdown">
-        <a href="#">Tours</a>
-        <div class="dropdown-content">
-            <a href="#">Tour 1</a>
-            <a href="#">Tour 2</a>
-            <a href="#">Tour 3</a>
-        </div>
-    </div>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-    <input type="text" id="search" placeholder="Search destinations...">
-</nav>
 
-<div class="container">
-    <div class="destination">
-        <img src="pics/logo.jpg" alt="Kashi Panchkoshi Parikrama">
-        <h2>Kashi Panchkoshi Parikrama</h2>
-        <p>Description of Kashi Panchkoshi Parikrama Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="#" class="btn">Learn More</a>
-    </div>
+    <footer>
+        &copy; 2024 Tour Destinations
+    </footer>
 
-    <div class="destination">
-        <img src="pics/sonebhadra/sonebhadra.jpg" alt="Chunar Sonebhadra Tour">
-        <h2>Chunar Sonebhadra Tour</h2>
-        <p>Description of Destination 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="#" class="btn">Learn More</a>
-    </div>
-
-    <div class="destination">
-        <img src="pics/ganga-gomati/ganga-gomati.jpg" alt="Ganga Gomati Sangam">
-        <h2>Ganga Gomati Sangam</h2>
-        <p>Description of Destination 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <a href="#" class="btn">Learn More</a>
-    </div>
-</div>
-
-<footer>
-    &copy; 2024 Tour Destinations
-</footer>
-
-<script>
-    document.getElementById('search').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const destinations = document.querySelectorAll('.destination');
-        destinations.forEach(function(destination) {
-            const title = destination.querySelector('h2').innerText.toLowerCase();
-            if (title.includes(searchTerm)) {
-                destination.style.display = 'block';
-            } else {
-                destination.style.display = 'none';
-            }
+    <script>
+        document.getElementById('search').addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            const destinations = document.querySelectorAll('.destination');
+            destinations.forEach(function (destination) {
+                const title = destination.querySelector('h2').innerText.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    destination.style.display = 'block';
+                } else {
+                    destination.style.display = 'none';
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
