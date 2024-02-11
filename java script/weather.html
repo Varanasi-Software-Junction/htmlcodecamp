@@ -10,6 +10,7 @@
         .then(response => response.json())
         .then(data => {
           // Process the weather data from the API response
+          console.log(data);
           displayWeatherData(data);
         })
         .catch(error => {
@@ -19,37 +20,17 @@
     }
 
     function displayWeatherData(data) {
-      const table = document.createElement('table');
-      const headers = ['City', 'Temperature', 'Humidity', 'Description'];
-
-      // Create table headers
-      const headerRow = document.createElement('tr');
-      headers.forEach(headerText => {
-        const headerCell = document.createElement('th');
-        headerCell.textContent = headerText;
-        headerRow.appendChild(headerCell);
-      });
-      table.appendChild(headerRow);
-
-      // Create table rows with data
-      const dataRow = document.createElement('tr');
-      headers.forEach(header => {
-        const dataCell = document.createElement('td');
-        dataCell.textContent = data[header.toLowerCase()];
-        dataRow.appendChild(dataCell);
-      });
-      table.appendChild(dataRow);
-
-      // Display the table on the page
       const weatherDataContainer = document.getElementById('weatherData');
-      weatherDataContainer.innerHTML = '';
-      weatherDataContainer.appendChild(table);
+      weatherDataContainer.innerHTML = `Temp: ${data.main.temp}<br>`;
+      weatherDataContainer.innerHTML += `Humidity: ${data.main.humidity}<br>`;
+      weatherDataContainer.innerHTML += `Icon:<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"/> <br>`;
+      
     }
   </script>
 </head>
 <body>
   <h1>OpenWeatherMap API Example</h1>
-  <input type="text" id="cityInput" placeholder="Enter City Name">
+  <input type="text" id="cityInput" value="Varanasi" placeholder="Enter City Name">
   <button onclick="fetchWeatherData()">Fetch Weather Data</button>
 
   <div id="weatherData"></div>
