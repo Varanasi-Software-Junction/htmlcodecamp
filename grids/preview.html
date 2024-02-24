@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Preview</title>
+<style>
+.url-preview {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.url-preview img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.url-preview h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.url-preview p {
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+<input type="text" id="urlInput" placeholder="Paste URL here">
+<button onclick="fetchUrlPreview()">Preview</button>
+<div class="url-preview" id="urlPreview"></div>
+<script>
+function fetchUrlPreview() {
+  const url = document.getElementById("urlInput").value.trim();
+  if (!url) {
+    alert("Please enter a valid URL.");
+    return;
+  }
+  // Use a service like Open Graph.io or similar for URL preview
+  const apiUrl = `https://opengraph.io/api/1.1/site/${encodeURIComponent(url)}?app_id=5d4a2571-0056-4292-bb18-fe5793f6f875`; // Replace with your app ID
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Display the URL preview on the page
+      const urlPreview = document.getElementById("urlPreview");
+      if (data && data.hybridGraph && data.hybridGraph.image && data.hybridGraph.title && data.hybridGraph.description && data.hybridGraph.url) {
+        urlPreview.innerHTML = `
+          <img src="${data.hybridGraph.image}" alt="Preview Image">
+          <h2>${data.hybridGraph.title}</h2>
+          <p>${data.hybridGraph.description}</p>
+          <a href="${data.hybridGraph.url}" target="_blank">Visit Website</a>
+        `;
+      } else {
+        urlPreview.innerHTML = "<p>Error: Unable to fetch URL preview data.</p>";
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching URL preview:', error);
+      const urlPreview = document.getElementById("urlPreview");
+      urlPreview.innerHTML = "<p>Error fetching URL preview</p>";
+    });
+}
+</script>
+</body>
+</html>
