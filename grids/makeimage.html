@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creating a Blank Image with Text using Canvas</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="200"></canvas>
+
+<script>
+  // Get the canvas element
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+
+  // Set a background color (optional)
+  ctx.fillStyle = 'lightblue'; // You can set any color here
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Set the font style for the text
+  ctx.font = '30px Arial';
+  ctx.fillStyle = 'black';
+
+  // Position and write "Hello, World!" text on the canvas
+  ctx.fillText('Hello, World!', 50, 50);
+</script>
+
+</body>
+</html>
