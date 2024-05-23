@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Divs</title>
+    <style>
+        /* CSS for an upward-pointing triangle */
+        .triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid #007bff;
+        }
+        /* CSS for a downward-pointing triangle */
+        .triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #007bff;
+        }
+        /* CSS for a left-pointing triangle */
+        .triangle-left {
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-right: 100px solid #007bff;
+        }
+        /* CSS for a right-pointing triangle */
+        .triangle-right {
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 100px solid #007bff;
+        }
+        /* Container to arrange triangles in a row */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Triangle Divs</h1>
+    <!-- Container for the triangles -->
+    <div class="container">
+        <!-- Upward-pointing triangle -->
+        <div class="triangle-up"></div>
+        <!-- Downward-pointing triangle -->
+        <div class="triangle-down"></div>
+        <!-- Left-pointing triangle -->
+        <div class="triangle-left"></div>
+        <!-- Right-pointing triangle -->
+        <div class="triangle-right"></div>
+    </div>
+</body>
+</html>
