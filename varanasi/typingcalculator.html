@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Calculator</title>
+</head>
+<script>
+    let x=0;
+function calculate(ev)
+{
+
+    console.log(ev.target.value);
+    const expression="x=" + ev.target.value;
+    try{
+    const result=eval(expression);
+    console.log("Result",x);
+    answerdiv.innerHTML="Result : " + x;
+    }catch(e)
+    {
+        console.warn(e);
+        answerdiv.innerHTML="Error : " + e;
+    }
+}
+</script>
+<style>
+    *{
+        margin: auto;
+  box-shadow: 5px 5px 10px 5px #888888;
+
+    }
+</style>
+<body>
+    <div>
+    <textarea onkeyup="calculate(event)"></textarea>
+</div>
+    <div id="result"></div>
+    <script>
+        const answerdiv=document.getElementById("result");
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inline SVG</title>
+    <script>
+        let cx = 10;
+        let cy = 10;
+        let radius = 40;
+        let clr = "red";
+        function drawFile() {
+            cx = document.getElementById("cx").value;
+            cy = document.getElementById("cy").value;
+            clr = document.getElementById("clr").value;
+            radius = document.getElementById("radius").value;
+            let svg = `<svg width="700" height="700">
+
+
+            <circle cx="${cx}" cy="${cy}" r="${radius}" fill="${clr}" />
+
+        </svg>`;
+            document.getElementById("d").innerHTML = svg;
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+  <label>Center X  <input type="number" id="cx" value="10" onkeyup="drawFile()"></label>
+    <br>
+ <label>  Center Y <input type="number" value="10" id="cy" onkeyup="drawFile()"></label>
+    <br>
+    <label>  Radius <input type="number" value="10" id="radius" onkeyup="drawFile()"></label>
+    <br>
+    <label>  Color <input type="color" input="drawFile()" onchange="drawFile()" value="#FF0000" id="clr" onkeyup="drawFile()"></label>
+    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="d" style="background-color: khaki;">
+    </div>
+    <script>
+        drawFile();
+    </script>
+</body>
+
+</html>

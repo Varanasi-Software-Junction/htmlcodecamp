@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Click Coordinates</title>
+    <style>
+        #myDiv {
+            width: 500px;
+            height: 500px;
+            background-color: lightgray;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <p>Coordinates: <span id="coords"></span></p>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const div = document.getElementById('myDiv');
+            const coordsDisplay = document.getElementById('coords');
+
+            div.addEventListener('click', (e) => {
+                // Get the bounding rectangle of the div
+                const rect = div.getBoundingClientRect();
+
+                // Calculate the coordinates relative to the div
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Display the coordinates
+                coordsDisplay.textContent = `X: ${x}, Y: ${y}`;
+            });
+        });
+    </script>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28460.094218325725!2d80.95334397884946!3d26.91898554219779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1722246668151!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</body>
+</html>

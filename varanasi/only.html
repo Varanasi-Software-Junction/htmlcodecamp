@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Places in Varanasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+        .place-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .place-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .place-details {
+            padding: 15px;
+        }
+        .place-title {
+            font-size: 1.2em;
+            margin: 0 0 10px;
+        }
+        .place-description {
+            margin: 0 0 15px;
+        }
+        @media (min-width: 600px) {
+            .places-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search places..." id="searchInput">
+        </div>
+        <div class="places-grid" id="placesGrid">
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place1.jpg" alt="Place 1">
+                <div class="place-details">
+                    <h2 class="place-title">Dashashwamedh Ghat</h2>
+                    <p class="place-description">One of the oldest and most significant ghats in Varanasi, known for its evening aarti.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place2.jpg" alt="Place 2">
+                <div class="place-details">
+                    <h2 class="place-title">Kashi Vishwanath Temple</h2>
+                    <p class="place-description">One of the most famous Hindu temples dedicated to Lord Shiva, located in the heart of Varanasi.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place3.jpg" alt="Place 3">
+                <div class="place-details">
+                    <h2 class="place-title">Sarnath</h2>
+                    <p class="place-description">A major Buddhist pilgrimage site where Gautama Buddha is said to have given his first sermon.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place4.jpg" alt="Place 4">
+                <div class="place-details">
+                    <h2 class="place-title">Assi Ghat</h2>
+                    <p class="place-description">One of the oldest ghats in Varanasi, known for its scenic beauty and tranquility.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place5.jpg" alt="Place 5">
+                <div class="place-details">
+                    <h2 class="place-title">Ramnagar Fort</h2>
+                    <p class="place-description">A fortification in Varanasi near the Ganges River, known for its museum and scenic views.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place6.jpg" alt="Place 6">
+                <div class="place-details">
+                    <h2 class="place-title">Manikarnika Ghat</h2>
+                    <p class="place-description">A famous cremation ghat on the banks of the Ganges, central to Hindu funeral rites.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place7.jpg" alt="Place 7">
+                <div class="place-details">
+                    <h2 class="place-title">Bharat Mata Temple</h2>
+                    <p class="place-description">A unique temple dedicated to Mother India, featuring a relief map of the country carved in marble.</p>
+                </div>
+            </div>
+            <div class="place-card">
+                <img class="place-image" src="https://example.com/place8.jpg" alt="Place 8">
+                <div class="place-details">
+                    <h2 class="place-title">Tulsi Manas Temple</h2>
+                    <p class="place-description">A modern temple dedicated to Lord Rama, known for its beautiful murals depicting scenes from the Ramayana.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for filtering places based on search input
+        const searchInput = document.getElementById('searchInput');
+        const placesGrid = document.getElementById('placesGrid');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const placeCards = placesGrid.getElementsByClassName('place-card');
+
+            Array.from(placeCards).forEach(function(card) {
+                const title = card.querySelector('.place-title').textContent.toLowerCase();
+                const description = card.querySelector('.place-description').textContent.toLowerCase();
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
