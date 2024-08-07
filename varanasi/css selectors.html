@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        [type="text"] {
+            background-color: lightblue;
+        }
+
+        [type="number"] {
+            background-color: lightgreen;
+        }
+        div p{
+            color: red;
+        }
+        :nth-child(3)
+        {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" />
+    <br>
+    <input type="number" value="0">
+    <div>
+        <p>P inside Div</p>
+    </div>
+    <p>P outside Div</p>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li><li>Four</li>
+    </ul>
+</body>
+
+</html>

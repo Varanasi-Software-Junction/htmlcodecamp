@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Click Coordinates</title>
+    <style>
+        #myDiv {
+            width: 500px;
+            height: 500px;
+            background-color: lightgray;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv" onclick="getLocation(event)">
+
+
+    </div>
+    <p>Coordinates: <span id="coords"></span></p>
+    <script>
+        const mydiv = document.getElementById("myDiv");
+        const coordsDisplay = document.getElementById('coords');
+
+    </script>
+
+    <script>
+
+
+        function getLocation(e) {
+
+
+            const rect = mydiv.getBoundingClientRect();
+
+            // Calculate the coordinates relative to the div
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Display the coordinates
+            coordsDisplay.innerHTML = `X: ${x}, Y: ${y}`;
+
+            let svg = `<svg width="700" height="700">
+
+
+<circle cx="${x}" cy="${y}" r="10" fill="red" />
+
+</svg>`;
+            mydiv.innerHTML = svg;
+        }
+    </script>
+
+</body>
+
+</html>

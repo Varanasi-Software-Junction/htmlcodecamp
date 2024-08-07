@@ -1,34 +1,34 @@
-a=[1,2,3,2,2,6,5,4,0]
-value=9
-p1=0
-p2=0
-n=len(a)
-sum=0
-result=""
+a = [1, 2, 3, 3, 2, 6, 5, 4, 0]
+value = 8
+p1 = 0
+p2 = 0
+n = len(a)
+sum = 0
+result = ""
+solved = False
 while True:
-    while sum <value:
-        sum+=a[p2]
-        if sum==value:
-            print("Found at ",p2)
-            result="found"
+    # print("Hello")
+    while sum < value:
+        print("Here")
+        sum += a[p2]
+        print(sum, end=",")
+        p2 += 1
+        if p2 >= n:
+
             break
-        p2+=1
-        if p2>=n:
-            result="over"
-            break
-    if result=="over":
+    if sum == value:
+        print("Found p1=", p1, ", p2=", p2-1, "sum = ", sum)
+        solved = True
         break
-    if result=="found":
+
+    if p2 >= n:
         break
-    while sum>value:
-        sum=sum-a[p1]
-        p1+=1
-        if sum==value:
-            result="found"
+    while sum > value:
+        sum = sum-a[p1]
+        p1 += 1
+        if p1 > p2:
+            # solved=True
             break
-        if p1>p2:
-            result="over"
-            break
-
-
-
+    if sum == value:
+        print("Found p1=", p1, ", p2=", p2-1, "sum = ", sum)
+        break

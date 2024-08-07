@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flexbox Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+      body {
+        background-color: #f6e8d6;
+        font-family: Arial, sans-serif;
+      }
+      
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: lightgoldenrodyellow;
+      }
+      
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #ffd8b5;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+      }
+      
+      .box:hover {
+        transform: scale(1.1);
+      }
+      
+      .form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      select {
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      select:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Flexbox Demo</h1>
+    </header>
+
+    <div class="form">
+      <label for="justify-content">Justify Content:</label>
+      <select id="justify-content">
+        <option value="center">Center</option>
+        <option value="flex-start">Flex Start</option>
+        <option value="flex-end">Flex End</option>
+        <option value="space-between">Space Between</option>
+        <option value="space-around">Space Around</option>
+      </select>
+
+      <label for="align-items">Align Items:</label>
+      <select id="align-items">
+        <option value="center">Center</option>
+        <option value="flex-start">Flex Start</option>
+        <option value="flex-end">Flex End</option>
+        <option value="stretch">Stretch</option>
+        <!-- <option value="baseline">Baseline</option> -->
+      </select>
+    </div>
+
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+    </div>
+
+    <script>
+      const justifyContentSelect = document.getElementById('justify-content');
+      const alignItemsSelect = document.getElementById('align-items');
+      const container = document.querySelector('.container');
+
+      // Update justify-content value when select changes
+      justifyContentSelect.addEventListener('change', () => {
+        container.style.justifyContent = justifyContentSelect.value;
+      });
+
+      // Update align-items value when select changes
+      alignItemsSelect.addEventListener('change', () => {
+        container.style.alignItems = alignItemsSelect.value;
+      });
+    </script>
+  </body>
+</html>
