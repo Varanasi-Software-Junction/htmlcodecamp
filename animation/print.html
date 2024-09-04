@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Div Content</title>
+    <script>
+        function printDivContent() {
+            var content = document.getElementById("contentToPrint").innerHTML;
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>Print Div Content</title>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</head>
+<body>
+    <h1>Sample Page</h1>
+    <div id="contentToPrint">
+        <p>This is the content inside the div that will be printed.</p>
+        <p>It includes any HTML elements, like this <strong>bold text</strong> and <em>italic text</em>.</p>
+    </div>
+    <button onclick="printDivContent()">Print Content</button>
+</body>
+</html>

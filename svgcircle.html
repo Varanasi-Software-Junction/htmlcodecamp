@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SVG Generator</title>
+    <link rel="icon" href="https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="range"],
+        input[type="color"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #svgContainer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        svg {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        #radiusValue, #colorValue {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Interactive SVG Generator</h2>
+<form id="svgForm">
+    <label for="radiusRange">Select radius:</label>
+    <input type="range" id="radiusRange" min="10" max="100" value="50" oninput="updateSVG()">
+    <span id="radiusValue">50%</span><br>
+
+    <label for="unitSelector">Unit:</label>
+    <select id="unitSelector" onchange="updateSVG()">
+        <option value="%">%</option>
+        <option value="px">px</option>
+    </select><br>
+
+    <label for="colorPicker">Select color:</label>
+    <input type="color" id="colorPicker" value="#ff0000" oninput="updateSVG()">
+    <span id="colorValue">#ff0000</span><br>
+
+    <button type="button" onclick="saveSVG()">Save SVG</button>
+    <button type="button" onclick="savePNG()">Save as PNG</button>
+</form>
+
+<div id="svgContainer">
+    <h3>Your SVG Preview:</h3>
+    <svg id="generatedSVG" width="200" height="200"></svg>
+</div>
+
+<script>
+    function updateSVG() {
+        const radius = document.getElementById('radiusRange').value;
+        const unit = document.getElementById('unitSelector').value;
+        const color = document.getElementById('colorPicker').value;
+
+        const radiusWithUnit = radius + unit;
+
+        document.getElementById('radiusValue').textContent = radiusWithUnit;
+        document.getElementById('colorValue').textContent = color;
+
+        const svg = document.getElementById('generatedSVG');
+        svg.innerHTML = '';
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '50%');
+        circle.setAttribute('cy', '50%');
+        circle.setAttribute('r', radiusWithUnit);
+        circle.setAttribute('fill', color);
+
+        svg.appendChild(circle);
+    }
+
+    function saveSVG() {
+        const svg = document.getElementById('generatedSVG');
+        const serializer = new XMLSerializer();
+        const source = serializer.serializeToString(svg);
+
+        const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'generated.svg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    function savePNG() {
+        const svg = document.getElementById('generatedSVG');
+        const serializer = new XMLSerializer();
+        const source = serializer.serializeToString(svg);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = svg.getAttribute('width');
+        canvas.height = svg.getAttribute('height');
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0);
+
+            const pngFile = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = pngFile;
+            link.download = 'generated.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source);
+    }
+
+    window.onload = updateSVG;
+</script>
+
+</body>
+</html>

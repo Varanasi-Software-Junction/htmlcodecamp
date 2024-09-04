@@ -17,11 +17,25 @@
     function pasteFromClipboard()
     {
         let copiedtext="No data";
+        alert( navigator.clipboard.readText());
         navigator.clipboard.readText().then((copiedtext) => (document.getElementById("divCopiedText").innerHTML=copiedtext))
         .catch((e)=> (document.getElementById().innerHTML= "Copy Failed:" + e.message));
         
     }
+     
+    
+    function newPasteFromClipboard()
+    {
+        let copiedtext="No data";
         
+        navigator.clipboard.readText().then((copiedtext) => (document.getElementById("divCopiedText").innerHTML=copiedtext))
+        .catch((e)=> (document.getElementById().innerHTML= "Copy Failed:" + e.message));
+
+        alert(copiedtext);
+        
+    }
+
+
         function outFunc() {
           var tooltip = document.getElementById("spanTooltipCopy");
           tooltip.innerHTML = "Copy to clipboard";
