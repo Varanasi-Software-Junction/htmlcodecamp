@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Line Drawing</title>
+</head>
+<body>
+    <input type="text" id="coordinates" placeholder="Enter coordinates (e.g., 10,20,50,80)">
+    <button onclick="drawLines()">Draw Lines</button>
+    <svg id="svgCanvas" width="400" height="300"></svg>
+    <script>
+        function drawLines() {
+            const coordinatesInput = document.getElementById("coordinates");
+            const coordinates = coordinatesInput.value.split(",");
+
+            // Ensure the input has the correct number of coordinates (even number)
+            if (coordinates.length % 2 !== 0) {
+                alert("Please enter an even number of coordinates.");
+                return;
+            }
+
+            const svgCanvas = document.getElementById("svgCanvas");
+
+            // Clear previous lines
+            svgCanvas.innerHTML = "";
+
+            // Create lines based on coordinates
+            for (let i = 0; i < coordinates.length; i += 2) {
+                const x1 = parseInt(coordinates[i]);
+                const y1 = parseInt(coordinates[i + 1]);
+                const x2 = parseInt(coordinates[i + 2]);
+                const y2 = parseInt(coordinates[i + 3]);
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", x1);
+                line.setAttribute("y1", y1);
+                line.setAttribute("x2", x2);
+                line.setAttribute("y2", y2);
+                line.setAttribute("stroke", "black");
+                line.setAttribute("stroke-width", "2");
+                svgCanvas.appendChild(line);
+            }
+        }
+    </script>
+</body>
+</html>
