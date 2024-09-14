@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Width Calculation</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0%2C0%2C450%2C450_.jpg" type="image/jpg">
+
+    <style>
+        .element {
+            width: calc(50% - 20px);
+            /* Width is 50% of the viewport minus 20px */
+            margin-left: calc(50% - (50% - 20px) / 2);
+            /* Centers the element dynamically */
+            height: 200px;
+            background-color: lightblue;
+            text-align: center;
+            border: 1px solid teal;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .favicon {
+            width: 100px;
+            height: 100px;
+            background-image: url('https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0%2C0%2C450%2C450_.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Light shadow for 3D effect */
+                        0 6px 20px rgba(0, 0, 0, 0.19); /* Deeper shadow for 3D effect */
+            border: 3px solid teal;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .info span {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="element">
+        <div class="favicon"></div>
+    </div>
+
+    <div class="info" id="info">
+        <!-- Element size and position info will be shown here -->
+    </div>
+
+    <script>
+        function updateElementInfo() {
+            const element = document.querySelector('.element');
+            const info = document.getElementById('info');
+            const rect = element.getBoundingClientRect();
+
+            // Display width, height, and position info
+            info.innerHTML = `
+                <span><strong>Width:</strong> ${rect.width}px</span>
+                <span><strong>Height:</strong> ${rect.height}px</span>
+                <span><strong>Left (relative to viewport):</strong> ${rect.left}px</span>
+                <span><strong>Top (relative to viewport):</strong> ${rect.top}px</span>
+                <span><strong>Margin-Left:</strong> ${window.getComputedStyle(element).marginLeft}</span>
+            `;
+        }
+
+        // Call function on page load to display the info
+        window.onload = updateElementInfo;
+
+        // Also update info when the window is resized
+        window.onresize = updateElementInfo;
+    </script>
+</body>
+
+</html>

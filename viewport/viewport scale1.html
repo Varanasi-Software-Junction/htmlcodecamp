@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta">
+    <title>Viewport and Device Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .device-info, .scale-info {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Viewport and Device Simulator</h1>
+        <p>Select a device and scale factor to see how the page adapts.</p>
+
+        <div class="controls">
+            <div class="device-info">
+                <label for="deviceSelect">Choose Device: </label>
+                <select id="deviceSelect">
+                    <option value="360">iPhone X (360px)</option>
+                    <option value="375">iPhone 6/7/8 (375px)</option>
+                    <option value="768">Tablet (768px)</option>
+                    <option value="1024">Desktop (1024px)</option>
+                    <option value="1440">Large Desktop (1440px)</option>
+                </select>
+            </div>
+
+            <div class="scale-info">
+                <label for="scaleSelect">Choose Initial Scale: </label>
+                <select id="scaleSelect">
+                    <option value="0.5">0.5 (Zoom Out)</option>
+                    <option value="1.0" selected>1.0 (Default)</option>
+                    <option value="1.5">1.5 (Zoom In)</option>
+                    <option value="2.0">2.0 (Zoom In More)</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <p>Observe how the content adjusts based on the selected device and zoom level.</p>
+            <p style="border: 1px solid #ccc; padding: 10px;">
+                This is some example content. The viewport width and initial scale are adjusted based on your selection.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const viewportMeta = document.getElementById('viewportMeta');
+        const scaleSelect = document.getElementById('scaleSelect');
+        const deviceSelect = document.getElementById('deviceSelect');
+
+        function updateViewport() {
+            const selectedScale = scaleSelect.value;
+            const selectedWidth = deviceSelect.value;
+            viewportMeta.setAttribute('content', `width=${selectedWidth}, initial-scale=${selectedScale}`);
+        }
+
+        scaleSelect.addEventListener('change', updateViewport);
+        deviceSelect.addEventListener('change', updateViewport);
+
+        // Initialize viewport based on default selections
+        updateViewport();
+    </script>
+</body>
+</html>
