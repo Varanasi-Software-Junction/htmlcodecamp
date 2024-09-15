@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA List-Based System - Responsive</title>
     <style>
+          /* Floating Image */
+          .floating-image {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotate(-10deg);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .floating-image img:hover {
+            transform: rotate(0deg);
+        }
+        .code-block button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #f4a300;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.code-block button:hover {
+    background-color: #d48800;
+}
+
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -97,6 +135,9 @@
     </style>
 </head>
 <body>
+    <div class="floating-image">
+        <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0,0,450,450_.jpg" alt="Decorative Image">
+    </div>
     <h1>Data Structures and Algorithms</h1>
 
     <!-- Search Box -->
@@ -173,8 +214,7 @@
         // Load the code for a selected program from its JSON file
         
 
-// Load the code for a selected program from its JSON file
-async function loadProgramCode(filename) {
+        async function loadProgramCode(filename) {
     try {
         const response = await fetch(filename);
         const programData = await response.json();
@@ -201,8 +241,13 @@ async function loadProgramCode(filename) {
                 const codeElement = document.createElement('pre');
                 codeElement.textContent = code || 'Code not available';
 
+                const copyButton = document.createElement('button');
+                copyButton.textContent = 'Copy to Clipboard';
+                copyButton.onclick = () => copyToClipboard(code);
+
                 codeBlock.appendChild(codeTitle);
                 codeBlock.appendChild(codeElement);
+                codeBlock.appendChild(copyButton);
             }
         } else {
             const errorMessage = document.createElement('p');
@@ -220,7 +265,13 @@ async function loadProgramCode(filename) {
     }
 }
 
-        //*******************************
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Code copied to clipboard!');
+    }).catch(err => {
+        console.error('Error copying text: ', err);
+    });
+}
 
         // Filter both algorithm and program lists based on the search input
         function filterContent() {
