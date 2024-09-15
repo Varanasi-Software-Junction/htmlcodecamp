@@ -1,0 +1,15 @@
+{
+    "programs": [
+      {
+        "algorithm": "Divide and Conquer",
+        "program": "Quicksort",
+        "file": "quicksort.json"
+      },
+      {
+        "algorithm": "Dynamic Programming",
+        "program": "Knapsack Problem",
+        "file": "knapsack.json"
+      }
+    ]
+  }
+  

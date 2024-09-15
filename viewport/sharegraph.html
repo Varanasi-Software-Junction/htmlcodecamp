@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Stock Graph</title>
+    
+    <!-- Favicon Link -->
+    <link rel="icon" href="https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0%2C0%2C450%2C450_.jpg" type="image/jpg">
+
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: hidden; /* Prevent vertical scrolling */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        svg {
+            border: 1px solid black;
+            width: 90vw; /* 90% of the viewport width to add margins on the left and right */
+            height: 100vh; /* Fill the full height of the viewport */
+        }
+
+        .graph-line {
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .green {
+            stroke: green;
+        }
+
+        .red {
+            stroke: red;
+        }
+
+        .plot-point {
+            fill: black;
+            stroke: black;
+            stroke-width: 0.5;
+        }
+
+        .axis {
+            stroke: blue;
+            stroke-width: 1;
+        }
+
+        .tick {
+            stroke: black;
+        }
+
+        .label {
+            font-size: 2px; /* Reduced font size */
+            fill: black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>SVG Stock Graph</h1>
+    
+    <label for="y-coords">Enter Y coordinates (comma separated): </label>
+    <input type="text" id="y-coords" value="3,4,7,6,5,12">
+    
+    <svg id="stock-graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+
+    <script>
+        function drawGraph() {
+            const yInput = document.getElementById('y-coords').value;
+            const yValues = yInput.split(',').map(Number).filter(n => !isNaN(n));  // Filter out invalid values
+
+            const svg = document.getElementById('stock-graph');
+            svg.innerHTML = ''; // Clear previous graph
+
+            if (yValues.length === 0) return;  // No data to draw
+
+            const width = 100;
+            const height = 100;
+            const leftRightMargin = 10; // Adding left and right margin
+            const topBottomPadding = 10;
+            const maxY = Math.max(...yValues);
+            const minY = Math.min(...yValues);
+            const xStep = (width - 2 * leftRightMargin) / (yValues.length - 1);
+
+            const initialValue = yValues[0];
+
+            // Draw X and Y axes
+            const xAxis = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+            xAxis.setAttribute('x1', leftRightMargin);
+            xAxis.setAttribute('y1', height - topBottomPadding);
+            xAxis.setAttribute('x2', width - leftRightMargin);
+            xAxis.setAttribute('y2', height - topBottomPadding);
+            xAxis.setAttribute('class', 'axis');
+            svg.appendChild(xAxis);
+
+            const yAxis = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+            yAxis.setAttribute('x1', leftRightMargin);
+            yAxis.setAttribute('y1', topBottomPadding);
+            yAxis.setAttribute('x2', leftRightMargin);
+            yAxis.setAttribute('y2', height - topBottomPadding);
+            yAxis.setAttribute('class', 'axis');
+            svg.appendChild(yAxis);
+
+            // Draw tick marks and labels on Y-axis
+            for (let i = 0; i <= 5; i++) {
+                const tickY = topBottomPadding + (i * (height - 2 * topBottomPadding)) / 5;
+                const tickValue = maxY - i * (maxY - minY) / 5;
+
+                const tick = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+                tick.setAttribute('x1', leftRightMargin - 1);
+                tick.setAttribute('y1', tickY);
+                tick.setAttribute('x2', leftRightMargin + 1);
+                tick.setAttribute('y2', tickY);
+                tick.setAttribute('class', 'tick');
+                svg.appendChild(tick);
+
+                const label = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+                label.setAttribute('x', leftRightMargin - 3);
+                label.setAttribute('y', tickY + 2);
+                label.setAttribute('class', 'label');
+                label.textContent = tickValue.toFixed(1);
+                svg.appendChild(label);
+            }
+
+            // Draw tick marks and labels on X-axis
+            for (let i = 0; i < yValues.length; i++) {
+                const tickX = leftRightMargin + i * xStep;
+
+                const tick = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+                tick.setAttribute('x1', tickX);
+                tick.setAttribute('y1', height - topBottomPadding - 1);
+                tick.setAttribute('x2', tickX);
+                tick.setAttribute('y2', height - topBottomPadding + 1);
+                tick.setAttribute('class', 'tick');
+                svg.appendChild(tick);
+
+                const label = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+                label.setAttribute('x', tickX);
+                label.setAttribute('y', height - topBottomPadding + 4);
+                label.setAttribute('class', 'label');
+                label.textContent = i;
+                svg.appendChild(label);
+            }
+
+            // Draw the graph line segments
+            for (let i = 0; i < yValues.length - 1; i++) {
+                const x1 = leftRightMargin + i * xStep;
+                const y1 = topBottomPadding + (1 - (yValues[i] - minY) / (maxY - minY)) * (height - 2 * topBottomPadding);
+                const x2 = leftRightMargin + (i + 1) * xStep;
+                const y2 = topBottomPadding + (1 - (yValues[i + 1] - minY) / (maxY - minY)) * (height - 2 * topBottomPadding);
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+                line.setAttribute('x1', x1);
+                line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+
+                if (yValues[i + 1] > initialValue) {
+                    line.setAttribute('class', 'graph-line green');
+                } else if (yValues[i + 1] < initialValue) {
+                    line.setAttribute('class', 'graph-line red');
+                }
+
+                svg.appendChild(line);
+            }
+
+            // Plot points (circles) and add tooltips
+            for (let i = 0; i < yValues.length; i++) {
+                const x = leftRightMargin + i * xStep;
+                const y = topBottomPadding + (1 - (yValues[i] - minY) / (maxY - minY)) * (height - 2 * topBottomPadding);
+
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', 0.5); // Reduced radius of points
+                circle.setAttribute('class', 'plot-point');
+
+                const title = document.createElementNS("http://www.w3.org/2000/svg", 'title');
+                title.textContent = `entry: ${i}, price: ₹${yValues[i]}`; // Updated tooltip format with ₹ symbol
+                circle.appendChild(title);
+
+                svg.appendChild(circle);
+            }
+        }
+
+        // Draw the graph automatically when typing
+        document.getElementById('y-coords').addEventListener('input', drawGraph);
+
+        // Initial graph drawing on page load
+        window.onload = drawGraph;
+    </script>
+</body>
+</html>
