@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancing Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            perspective: 1000px; /* Add perspective for 3D effect */
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .dancing-img {
+            width: 200px; /* Adjust size as needed */
+            animation: dance 2s infinite;
+            transform-style: preserve-3d; /* Preserve 3D transformations */
+        }
+
+        @keyframes dance {
+            0% {
+                transform: translateY(0) rotate(0deg) rotateX(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(15deg) rotateX(15deg);
+            }
+            50% {
+                transform: translateY(0) rotate(-15deg) rotateX(-15deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(15deg) rotateX(15deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg) rotateX(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0,0,450,450_.jpg" alt="Dancing Character" class="dancing-img">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const img = document.querySelector('.dancing-img');
+            
+            img.addEventListener('click', () => {
+                img.classList.toggle('dancing');
+            });
+        });
+    </script>
+</body>
+</html>

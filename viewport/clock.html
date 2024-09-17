@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analog Clock</title>
+    <style>
+        .clock {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        .hour-hand, .minute-hand, .second-hand {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform-origin: bottom center;
+        }
+
+        .hour-hand {
+            width: 10px;
+            height: 100px;
+            background-color: #000;
+            transform: rotate(90deg);
+        }
+
+        .minute-hand {
+            width: 8px;
+            height: 150px;
+            background-color: #000;
+            transform: rotate(90deg);
+        }
+
+        .second-hand {
+            width: 4px;
+            height: 200px;
+            background-color: red;
+            transform: rotate(90deg);
+        }
+
+        .hour-label {
+            position: absolute;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .hour-label.hour1 {
+            top: 10px;
+            left: 50%;
+        }
+
+        .hour-label.hour2 {
+            top: 70px;
+            left: 75%;
+        }
+
+        .hour-label.hour3 {
+            top: 130px;
+            left: 100%;
+        }
+
+        .hour-label.hour4 {
+            top: 130px;
+            right: 75%;
+        }
+
+        .hour-label.hour5 {
+            top: 70px;
+            right: 50%;
+        }
+
+        .hour-label.hour6 {
+            top: 10px;
+            right: 25%;
+        }
+
+        .hour-label.hour7 {
+            bottom: 70px;
+            right: 100%;
+        }
+
+        .hour-label.hour8 {
+            bottom: 130px;
+            right: 75%;
+        }
+
+        .hour-label.hour9 {
+            bottom: 130px;
+            left: 50%;
+        }
+
+        .hour-label.hour10 {
+            bottom: 70px;
+            left: 25%;
+        }
+
+        .hour-label.hour11 {
+            top: 10px;
+            left: 25%;
+        }
+
+        .hour-label.hour12 {
+            top: 10px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hour-hand"></div>
+        <div class="minute-hand"></div>
+        <div class="second-hand"></div>
+        <div class="hour-label hour1">1</div>
+        <div class="hour-label hour2">2</div>
+        <div class="hour-label hour3">3</div>
+        <div class="hour-label hour4">4</div>
+        <div class="hour-label hour5">5</div>
+        <div class="hour-label hour6">6</div>
+        <div class="hour-label hour7">7</div>
+        <div class="hour-label hour8">8</div>
+        <div class="hour-label hour9">9</div>
+        <div class="hour-label hour10">10</div>
+        <div class="hour-label hour11">11</div>
+        <div class="hour-label hour12">12</div>
+    </div>
+    <script>
+        const hourHand = document.querySelector('.hour-hand');
+        const minuteHand = document.querySelector('.minute-hand');
+        const secondHand = document.querySelector('.second-hand');
+
+        function setDate() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            const secondsDegree = ((seconds / 60) * 360) + 90;
+            const minutesDegree = ((minutes / 60) * 360) + 90;
+            const hoursDegree = ((hours / 12) * 360) + 90;
+
+            secondHand.style.transform = `rotate(${secondsDegree}deg)`;
+            minuteHand.style.transform = `rotate(${minutesDegree}deg)`;
+            hourHand.style.transform = `rotate(${hoursDegree}deg)`;
+        }
+
+        setInterval(setDate, 1000);
+    </script>
+</body>
+</html>
