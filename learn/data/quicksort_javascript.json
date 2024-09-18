@@ -1,0 +1,4 @@
+{
+    "language": "JavaScript",
+    "code": "function quicksort(arr) {\n    if (arr.length <= 1) return arr;\n    const pivot = arr[Math.floor(arr.length / 2)];\n    const left = arr.filter(x => x < pivot);\n    const middle = arr.filter(x => x === pivot);\n    const right = arr.filter(x => x > pivot);\n    return [...quicksort(left), ...middle, ...quicksort(right)];\n}\n\nconst arr = [3, 6, 8, 10, 1, 2, 1];\nconsole.log(quicksort(arr));"
+}

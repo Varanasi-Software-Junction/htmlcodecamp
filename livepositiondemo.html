@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Modes---Interactive</title>
+</head>
+
+<body>
+    <select onchange="setPositioningMode(event)" onclickc="setPositioningMode(event)">
+        <option value="">---</option>
+        <option value="static">Static</option>
+        <option value="absolute">Absolute</option>
+        <option value="relative">Relative</option>
+        <option value="fixed">Fixed</option>
+        <option value="sticky">Sticky</option>
+
+    </select>
+    <div style="border-style: solid; border-color: teal; border-width: 1px;  position: relative;width: 100%;">
+        Content
+    </div>
+    <script>
+        function setPositioningMode(event) {
+            const positionmode = event.target.value;
+            console.log(positionmode);
+        }
+
+    </script>
+</body>
+
+</html>

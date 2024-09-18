@@ -1,0 +1,4 @@
+{
+    "language": "Python",
+    "code": "def quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)\n\narr = [3, 6, 8, 10, 1, 2, 1]\nprint(quicksort(arr))"
+}

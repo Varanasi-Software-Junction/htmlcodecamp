@@ -17,17 +17,15 @@
             margin: 0;
             perspective: 1000px;
             /* Add perspective for 3D effect */
+            overflow: hidden;
         }
 
         .cube {
             position: relative;
             width: 200px;
-            /* Adjust size as needed */
             height: 200px;
             transform-style: preserve-3d;
-            /* Preserve 3D transformations */
-            transform: rotateX(0deg) rotateY(0deg);
-            animation: spin 5s infinite linear;
+            animation: spin 5s infinite linear, moveDiagonally 10s infinite linear;
         }
 
         .cube-face {
@@ -72,9 +70,17 @@
             from {
                 transform: rotateX(0deg) rotateY(0deg);
             }
-
             to {
                 transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        @keyframes moveDiagonally {
+            from {
+                transform: translate(-50vw, -50vh) rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: translate(50vw, 50vh) rotateX(360deg) rotateY(360deg);
             }
         }
     </style>
@@ -89,9 +95,6 @@
         <div class="cube-face top"></div>
         <div class="cube-face bottom"></div>
     </div>
-
-
-
 </body>
 
 </html>
