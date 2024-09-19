@@ -22,55 +22,7 @@
         </div>
     </div>
 
-    <!-- Bubble Sort Essay Section -->
-    <div class="bubble-sort-essay">
-        <h2>Bubble Sort: A Comprehensive Overview</h2>
-        
-        <h3>Introduction</h3>
-        <p>Bubble Sort is one of the simplest and most intuitive sorting algorithms, often used to introduce the concept of sorting to students. Named for the way larger elements "bubble" to the top of the list, it provides a clear and easy-to-understand approach to sorting data.</p>
-
-        <h3>Algorithm Description</h3>
-        <p>The Bubble Sort algorithm works by repeatedly stepping through the list to be sorted, comparing adjacent elements and swapping them if they are in the wrong order. Here’s a step-by-step breakdown:</p>
-        <ol>
-            <li><strong>Initial State</strong>: Begin with the first element of the list and compare it with the next element. If the first element is greater than the second, swap them.</li>
-            <li><strong>Pass Through the List</strong>: Continue comparing and swapping adjacent elements until the end of the list is reached. At this point, the largest element will have been moved to its correct position at the end of the list.</li>
-            <li><strong>Repeat the Process</strong>: Start again from the beginning of the list, ignoring the last sorted elements. Repeat this process until no more swaps are needed.</li>
-            <li><strong>Completion</strong>: The algorithm terminates when a pass through the list is completed without any swaps, indicating that the list is sorted.</li>
-        </ol>
-
-        <h3>Example</h3>
-        <p>Consider the list [5, 3, 8, 4, 2]. Here’s how Bubble Sort would process it:</p>
-        <ul>
-            <li><strong>First Pass</strong>: Compare 5 and 3, swap to get [3, 5, 8, 4, 2]; Compare 5 and 8, no swap needed; Compare 8 and 4, swap to get [3, 5, 4, 8, 2]; Compare 8 and 2, swap to get [3, 5, 4, 2, 8]</li>
-            <li><strong>Second Pass</strong>: Compare 3 and 5, no swap needed; Compare 5 and 4, swap to get [3, 4, 5, 2, 8]; Compare 5 and 2, swap to get [3, 4, 2, 5, 8]</li>
-            <li><strong>Third Pass</strong>: Compare 3 and 4, no swap needed; Compare 4 and 2, swap to get [3, 2, 4, 5, 8]</li>
-            <li><strong>Fourth Pass</strong>: Compare 3 and 2, swap to get [2, 3, 4, 5, 8]</li>
-        </ul>
-        <p>The list is now sorted.</p>
-
-        <h3>Time Complexity</h3>
-        <p>Bubble Sort is known for its simplicity, but it is not the most efficient sorting algorithm. Its time complexity can be analyzed as follows:</p>
-        <ul>
-            <li><strong>Worst-Case Time Complexity</strong>: O(n²), which occurs when the list is sorted in reverse order. Each element needs to be compared with every other element.</li>
-            <li><strong>Best-Case Time Complexity</strong>: O(n), which occurs when the list is already sorted. In this case, only one pass through the list is needed, with no swaps.</li>
-            <li><strong>Average-Case Time Complexity</strong>: O(n²), as on average, the algorithm will need to perform a number of comparisons and swaps proportional to the square of the number of elements.</li>
-        </ul>
-
-        <h3>Importance and Applications</h3>
-        <p>Bubble Sort's primary value lies in its educational simplicity. It introduces fundamental concepts in sorting algorithms, such as comparisons and swaps. It is easy to understand and implement, making it a useful tool for teaching basic algorithm design and analysis.</p>
-        <p>However, due to its O(n²) time complexity, Bubble Sort is generally not used for large datasets or in performance-critical applications. More efficient algorithms, such as Quick Sort or Merge Sort, are preferred for practical applications.</p>
-
-        <h3>Variations</h3>
-        <p>Several variations of Bubble Sort have been developed to improve its efficiency:</p>
-        <ul>
-            <li><strong>Optimized Bubble Sort</strong>: This version introduces a flag to check if any swaps were made during a pass. If no swaps occur, the algorithm terminates early, improving performance in cases where the list becomes sorted before all passes are completed.</li>
-            <li><strong>Cocktail Shaker Sort</strong>: Also known as Bidirectional Bubble Sort, this variation sorts the list in both directions—forward and backward. This approach can reduce the number of passes required and improve the sorting time slightly.</li>
-        </ul>
-
-        <h3>Conclusion</h3>
-        <p>Bubble Sort remains a fundamental sorting algorithm in computer science education. Its straightforward approach provides a clear understanding of sorting principles, despite its inefficiency for larger datasets. By learning Bubble Sort, students gain foundational knowledge that can be applied to more advanced algorithms and problem-solving techniques.</p>
-    </div>
-    
+  
     <script src="script.js"></script>
 </body>
 </html>
