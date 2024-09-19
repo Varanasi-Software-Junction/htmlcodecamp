@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>JSON Editor</h1>
+        <textarea id="json-input">
+{
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York",
+    "skills": [
+        "JavaScript",
+        "Python",
+        "Java"
+    ],
+    "address": {
+        "street": "123 Main St",
+        "zipcode": "10001"
+    }
+}
+        </textarea>
+        <div class="button-container">
+            <button onclick="parseJSON()">Parse JSON</button>
+            <button onclick="exportJSON()">Export JSON</button>
+            <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importJSON()">
+            <button onclick="document.getElementById('import-file').click()">Import JSON</button>
+        </div>
+        <pre id="json-output" class="json-output"></pre>
+    </div>
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+        <div id="quiz" style="display: none;"></div>
+        <div class="btn-container" style="display: none;">
+            <button class="prev-btn" onclick="prevQuestion()" style="display: none;">Previous</button>
+            <button class="next-btn" onclick="nextQuestion()">Next</button>
+            <button class="submit-btn" onclick="submitQuiz()" style="display: none;">Submit</button>
+        </div>
+        <div id="timer" class="timer" style="display: none;">Time: 00:00</div>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
