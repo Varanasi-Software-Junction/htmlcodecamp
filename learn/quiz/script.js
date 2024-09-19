@@ -73,7 +73,7 @@ function submitQuiz() {
     const percentage = ((score / totalQuestions) * 100).toFixed(2);
     const timeTaken = document.getElementById('timer').innerText.replace('Time: ', '');
 
-    document.getElementById('result').innerText = `You scored ${score} out of ${totalQuestions} (${percentage}%). Time taken: ${timeTaken}`;
+    document.getElementById('result').innerText = `You scored ${score} out of ${totalQuestions} (${percentage}%). Time taken: ${timeTaken} secs`;
 }
 
 function updateTimer() {

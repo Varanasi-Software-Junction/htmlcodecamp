@@ -1,0 +1,11 @@
+{
+    "title": "Bubble Sort: An Overview",
+    "content": {
+      "Origins and History": "Bubble Sort is one of the simplest sorting algorithms, but its origins are somewhat murky. It is believed to have been developed in the early 1960s as a basic educational tool for understanding sorting algorithms. Though it was not attributed to a specific person, it became a fundamental part of algorithm education due to its simplicity.",
+      "The Algorithm": "Bubble Sort operates by repeatedly stepping through the list of items to be sorted, comparing adjacent items and swapping them if they are in the wrong order. This process is repeated until the list is sorted. The algorithm gets its name because smaller elements 'bubble' to the top of the list with each pass through the data. Here is a brief description of the steps:\n1. Compare Adjacent Elements: Starting from the beginning of the list, compare the first two elements.\n2. Swap if Needed: If the first element is greater than the second, swap them.\n3. Move to Next Pair: Move to the next pair of adjacent elements and repeat the comparison and swap if needed.\n4. Repeat: Continue the process until the end of the list is reached.\n5. Repeat Passes: Repeat the entire process for the length of the list minus one, as the largest elements will have 'bubbled' to the end.",
+      "Time Complexity": "The time complexity of Bubble Sort is O(n²) in the average and worst-case scenarios, where n is the number of items being sorted. This quadratic time complexity arises because each element needs to be compared with every other element. For a best-case scenario, where the list is already sorted, the time complexity can be improved to O(n) if an optimized version is used that detects whether any swaps have been made during a pass.",
+      "People Behind It": "While Bubble Sort does not have a single inventor, it has been widely used and discussed in the computer science community. Its simplicity makes it an excellent introductory algorithm for teaching sorting techniques.",
+      "Conclusion": "Despite its inefficiency compared to more advanced algorithms like Quicksort or Mergesort, Bubble Sort remains a valuable educational tool. Its straightforward nature helps students grasp fundamental concepts in sorting and algorithm design."
+    }
+  }
+  
