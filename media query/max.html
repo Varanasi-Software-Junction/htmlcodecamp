@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query: max-width Example</title>
+    <style>
+        body {
+            background-color: lightgray; /* Default background */
+        }
+
+        @media (max-width: 500px) {
+            body {
+                background-color: lightcoral; /* Apply on screens 500px or smaller */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Max Width Example (≤ 500px)</h1>
+    <p>The background color changes based on screen size.</p>
+
+    <textarea rows="6" cols="50" readonly>
+Explanation:
+- The background color changes to light coral if the screen width is 500px or smaller.
+- Resize the browser window to 500px or less to see the change.
+    </textarea>
+</body>
+</html>

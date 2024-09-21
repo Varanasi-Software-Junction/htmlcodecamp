@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query: Between Example</title>
+    <style>
+        body {
+            background-color: lightyellow; /* Default background */
+        }
+
+        @media (min-width: 500px) and (max-width: 800px) {
+            body {
+                background-color: lightpink; /* Apply between 500px and 800px */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Between Example (500px < width < 800px)</h1>
+    <p>The background color changes based on screen size.</p>
+
+    <textarea rows="6" cols="50" readonly>
+Explanation:
+- The background color changes to light pink when the screen width is between 500px and 800px.
+    </textarea>
+</body>
+</html>
