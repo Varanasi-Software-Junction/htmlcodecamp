@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +59,7 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     button:hover {
@@ -70,8 +70,8 @@
       margin-top: 20px;
     }
 
-    #canvas {
-      display: none; /* Hidden Canvas */
+    #downloadBtn {
+      display: none;
     }
 
     /* Responsive Design */
@@ -98,6 +98,9 @@
     <!-- Generate Button -->
     <button id="generateBtn">Generate QR Code</button>
 
+    <!-- Download Button -->
+    <button id="downloadBtn">Download QR Code</button>
+
     <!-- Placeholder for the generated QR code -->
     <div id="qrcode"></div>
   </div>
@@ -105,8 +108,11 @@
   <script>
     // Select elements
     const generateBtn = document.getElementById('generateBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
     const textInput = document.getElementById('textInput');
     const qrcodeDiv = document.getElementById('qrcode');
+
+    let generatedCanvas = null;
 
     // Event listener for generate button
     generateBtn.addEventListener('click', function() {
@@ -114,6 +120,7 @@
       if (text) {
         // Clear any previous QR code
         qrcodeDiv.innerHTML = '';
+        downloadBtn.style.display = 'none'; // Hide download button initially
 
         // Create a canvas to draw the QR code
         const canvas = document.createElement('canvas');
@@ -131,7 +138,7 @@
 
           // Create an image for the logo
           const logo = new Image();
-          logo.src = 'https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0,0,450,450_.jpg'; // Replace with the URL of your logo
+          logo.src = 'champ.png'; // Replace with the URL of your logo
 
           // Once the logo image is loaded, draw it on top of the QR code
           logo.onload = function() {
@@ -145,16 +152,27 @@
 
             // Append the generated canvas (with QR code and logo) to the qrcode div
             qrcodeDiv.appendChild(canvas);
+            generatedCanvas = canvas; // Store the canvas for download
+
+            // Show the download button
+            downloadBtn.style.display = 'inline-block';
           };
         });
       } else {
         alert('Please enter text to generate the QR code.');
       }
     });
+
+    // Event listener for download button
+    downloadBtn.addEventListener('click', function() {
+      if (generatedCanvas) {
+        const link = document.createElement('a');
+        link.href = generatedCanvas.toDataURL(); // Convert canvas to data URL
+        link.download = 'qrcode.png'; // Set the download filename
+        link.click(); // Trigger the download
+      }
+    });
   </script>
 
 </body>
 </html>
-
-
-
