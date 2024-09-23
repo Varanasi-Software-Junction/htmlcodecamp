@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Generator</title>
+  <title>QR Code Generator with Logo</title>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
@@ -114,19 +115,37 @@
         // Clear any previous QR code
         qrcodeDiv.innerHTML = '';
 
+        // Create a canvas to draw the QR code
+        const canvas = document.createElement('canvas');
+
         // Generate the QR code with fixed values
-        QRCode.toCanvas(document.createElement('canvas'), text, {
+        QRCode.toCanvas(canvas, text, {
           width: 250, // Fixed size for best visibility
           margin: 2,  // Fixed margin for better readability
-          errorCorrectionLevel: 'M' // Medium error correction
-        }, function (error, canvas) {
+          errorCorrectionLevel: 'H' // High error correction to allow a logo in the center
+        }, function (error) {
           if (error) {
             console.error(error);
             return;
           }
 
-          // Append the generated canvas to the qrcode div
-          qrcodeDiv.appendChild(canvas);
+          // Create an image for the logo
+          const logo = new Image();
+          logo.src = 'https://m.media-amazon.com/images/S/amzn-author-media-prod/id0qlusomcu8ld5n4j4rutrvgi._SX450_CR0,0,450,450_.jpg'; // Replace with the URL of your logo
+
+          // Once the logo image is loaded, draw it on top of the QR code
+          logo.onload = function() {
+            const ctx = canvas.getContext('2d');
+            const logoSize = 50; // Adjust logo size
+            const centerX = (canvas.width - logoSize) / 2;
+            const centerY = (canvas.height - logoSize) / 2;
+
+            // Draw the logo on the QR code canvas
+            ctx.drawImage(logo, centerX, centerY, logoSize, logoSize);
+
+            // Append the generated canvas (with QR code and logo) to the qrcode div
+            qrcodeDiv.appendChild(canvas);
+          };
         });
       } else {
         alert('Please enter text to generate the QR code.');
@@ -136,3 +155,6 @@
 
 </body>
 </html>
+
+
+
