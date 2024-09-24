@@ -1,43 +1,82 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f5f5f5;
-  }
-  
-  h1 {
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fb;
+    margin: 0;
+    padding: 0;
     color: #333;
   }
   
-  .controls {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
   }
   
-  label {
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+  }
+  
+  .controls-section,
+  .preview-section,
+  .code-section {
+    margin-bottom: 40px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Controls */
+  .controls label {
     font-weight: bold;
+    color: #34495e;
   }
   
-  input, select, button {
+  .controls input,
+  .controls select {
     padding: 10px;
-    font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
   }
   
-  button {
+  .actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  .primary-btn {
     background-color: #3498db;
     color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  button:hover {
+  .primary-btn:hover {
     background-color: #2980b9;
   }
   
-  .preview-container {
-    margin-top: 20px;
+  /* Preview Section */
+  .preview-section {
     text-align: center;
   }
   
@@ -46,32 +85,43 @@ body {
     height: 100px;
     background-color: #e74c3c;
     margin: 20px auto;
-    transition: none;
     line-height: 100px;
     color: white;
+    font-weight: bold;
     text-align: center;
-    cursor: pointer;
+    transition: none;
+    border-radius: 10px;
   }
   
   .box:hover {
-    /* The properties will be applied via JS */
+    cursor: pointer;
   }
   
-  textarea {
+  /* Code Section */
+  .code-section textarea {
     width: 100%;
-    height: 100px;
-    margin-top: 10px;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 14px;
+    height: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
+    resize: none;
   }
   
-  #copy {
+  .code-section button {
     margin-top: 10px;
     background-color: #2ecc71;
   }
   
-  #copy:hover {
+  .code-section button:hover {
     background-color: #27ae60;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .primary-btn {
+      width: 100%;
+    }
   }
   
