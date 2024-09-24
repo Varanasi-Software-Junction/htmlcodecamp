@@ -1,11 +1,12 @@
 const arrayContainer = document.getElementById('array-container');
 const swapCountDisplay = document.getElementById('swap-count');
+const loopCountDisplay = document.getElementById('loop-count');
 const favicon = document.getElementById('favicon');
 const image = document.querySelector('.side-image');
 const numberInput = document.getElementById('number-input');
 const startButton = document.querySelector('button');
 let array = [];
-let moves = []; // To store the moves
+let moves = []; // To store the moves and markers
 let boxWidth = 60; // Width of each div
 let gap = 10; // Gap between divs
 
@@ -41,6 +42,9 @@ function createArray() {
 // Perform bubble sort and store the moves
 function bubbleSort() {
     for (let i = 0; i < array.length - 1; i++) {
+        // Store outer loop marker
+        moves.push([-1, i]); // Using -1 to indicate an outer loop marker
+
         for (let j = 0; j < array.length - i - 1; j++) {
             if (array[j] > array[j + 1]) {
                 // Store the swap in the moves array (i and j are the indices)
@@ -57,7 +61,7 @@ function bubbleSort() {
 
 // Animate the stored moves
 function animateMoves() {
-    let noofswaps = 0; // Counter for number of swaps
+    let noofswaps = 0, loopcount = 0;; // Counter for number of swaps
     let boxes = document.querySelectorAll('.box'); // Use querySelectorAll for a static NodeList
     let moveIndex = 0;
 
@@ -71,6 +75,24 @@ function animateMoves() {
         }
 
         const [i, j] = moves[moveIndex];
+
+        // Handle outer loop marker visualization
+        if (i === -1) {
+            // Highlight the outer loop index
+            loopcount++;
+            loopCountDisplay.textContent = `Loops : ${loopcount}`;
+
+            boxes[j].classList.add('outer-loop-active'); // Highlight outer loop index
+
+            setTimeout(() => {
+                boxes[j].classList.remove('outer-loop-active'); // Remove highlight after delay
+                moveIndex++; // Move to next animation step
+                animate(); // Recursively call animate for next move
+            }, 1000); // Delay for outer loop marker
+            return; // Wait for marker animation to complete
+        }
+
+        // Handle swap visualization
         boxes[i].classList.add('active');
         boxes[j].classList.add('active');
 
@@ -103,7 +125,7 @@ function animateMoves() {
                 swapCountDisplay.textContent = `Swaps: ${noofswaps}`;
 
                 moveIndex++;
-                animate(); // Recursively call animate for the next move
+                animate(); // Recursively call animate for next move
             }, 500); // Delay before moving down
         }, 500); // Delay before swapping
     }

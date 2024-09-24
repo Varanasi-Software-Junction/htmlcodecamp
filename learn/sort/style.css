@@ -25,30 +25,60 @@ body {
 }
 
 .side-image {
-    width: 150px; /* Adjust the width as needed */
-    height: 150px; /* Make height equal to width for a round shape */
-    border-radius: 50%; /* Makes the image round */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow for lifting effect */
-    transform: translateY(-10px); /* Lifts the image */
-    animation: inquisitive 2s infinite; /* Default animation */
+    width: 150px;
+    /* Adjust the width as needed */
+    height: 150px;
+    /* Make height equal to width for a round shape */
+    border-radius: 50%;
+    /* Makes the image round */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Adds shadow for lifting effect */
+    transform: translateY(-10px);
+    /* Lifts the image */
+    animation: inquisitive 2s infinite;
+    /* Default animation */
 }
 
 @keyframes inquisitive {
-    0% { transform: translateY(-10px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-    100% { transform: translateY(-10px) rotate(0deg); }
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(0deg);
+    }
 }
 
 @keyframes active {
-    0% { transform: translateY(-10px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(15deg); }
-    100% { transform: translateY(-10px) rotate(0deg); }
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(15deg);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(0deg);
+    }
 }
 
 @keyframes relaxed {
-    0% { transform: translateY(-10px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(-5deg); }
-    100% { transform: translateY(-10px) rotate(0deg); }
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(0deg);
+    }
 }
 
 .main-content {
@@ -58,7 +88,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-right: 200px; /* Add margin to the right to make space for the image */
+    margin-right: 200px;
+    /* Add margin to the right to make space for the image */
 }
 
 input[type="text"] {
@@ -95,7 +126,8 @@ button:hover {
 button:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
-    transform: scale(0.98); /* Slightly shrink the button */
+    transform: scale(0.98);
+    /* Slightly shrink the button */
 }
 
 .array-container {
@@ -132,6 +164,7 @@ button:disabled {
     font-weight: bold;
     margin-top: 10px;
 }
+
 .bubble-sort-essay {
     margin: 20px;
     padding: 20px;
@@ -161,13 +194,13 @@ button:disabled {
     margin-bottom: 15px;
 }
 
-.bubble-sort-essay ol, 
+.bubble-sort-essay ol,
 .bubble-sort-essay ul {
     margin: 15px 0;
     padding-left: 20px;
 }
 
-.bubble-sort-essay ol li, 
+.bubble-sort-essay ol li,
 .bubble-sort-essay ul li {
     margin-bottom: 10px;
 }
@@ -195,4 +228,11 @@ button:disabled {
 
 .bubble-sort-essay a:hover {
     text-decoration: underline;
+}
+
+.outer-loop-active {
+    border: 2px solid red;
+    /* Change this to whatever style you prefer */
+    background-color: rgba(255, 0, 0, 0.3);
+    /* Light red background for visibility */
 }
