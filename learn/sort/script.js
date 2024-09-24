@@ -6,7 +6,6 @@ const numberInput = document.getElementById('number-input');
 const startButton = document.querySelector('button');
 let array = [];
 let moves = []; // To store the moves
-// let swapCount = 0; // To count the number of swaps
 let boxWidth = 60; // Width of each div
 let gap = 10; // Gap between divs
 
@@ -16,8 +15,6 @@ function createArray() {
     console.log("Input: ", input);
     array = [];
     moves = []; // Clear moves from any previous run
-    //swapCount = 0;
-   // swapCountDisplay.textContent = 'Swaps: ?';
     arrayContainer.innerHTML = ''; // Clear previous array visuals
 
     if (input) {
@@ -53,19 +50,14 @@ function bubbleSort() {
                 let temp = array[j];
                 array[j] = array[j + 1];
                 array[j + 1] = temp;
-
-                // Increment the swap counter
-                // swapCount++;
             }
         }
     }
-    //swapCountDisplay.textContent = `Swaps: ${swapCount}`; // Update swap count display
 }
 
 // Animate the stored moves
-
 function animateMoves() {
-   let noofswaps=0;
+    let noofswaps = 0; // Counter for number of swaps
     let boxes = document.querySelectorAll('.box'); // Use querySelectorAll for a static NodeList
     let moveIndex = 0;
 
@@ -105,18 +97,19 @@ function animateMoves() {
 
                 boxes[i].classList.remove('active');
                 boxes[j].classList.remove('active');
-noofswaps++;
-swapCountDisplay.textContent = `Swaps: ${noofswaps}`;
+
+                // Increment the swap counter
+                noofswaps++;
+                swapCountDisplay.textContent = `Swaps: ${noofswaps}`;
+
                 moveIndex++;
-                animate(); // Recursively call animate for next move
+                animate(); // Recursively call animate for the next move
             }, 500); // Delay before moving down
         }, 500); // Delay before swapping
     }
 
     animate();
 }
-
-
 
 // Function to start sorting
 function startSorting() {
