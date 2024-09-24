@@ -1,16 +1,3 @@
-const arrayContainer = document.getElementById('array-container');
-const swapCountDisplay = document.getElementById('swap-count');
-const favicon = document.getElementById('favicon');
-const image = document.querySelector('.side-image');
-const numberInput = document.getElementById('number-input');
-const startButton = document.querySelector('button');
-let array = [];
-let moves = []; // To store the moves
-let swapCount = 0; // To count the number of swaps
-let boxWidth = 60; // Width of each div
-let gap = 10; // Gap between divs
-
-// Create the array based on user input or generate a random array
 function createArray() {
     const input = numberInput.value;
     array = [];
@@ -28,6 +15,8 @@ function createArray() {
         }
     }
 
+    console.log('Created array:', array); // Log created array
+
     for (let i = 0; i < array.length; i++) {
         const box = document.createElement('div');
         box.classList.add('box');
@@ -39,12 +28,12 @@ function createArray() {
     }
 }
 
-// Perform bubble sort and store the moves
 function bubbleSort() {
+    console.log('Before sorting:', array); // Log before sorting
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = 0; j < array.length - i - 1; j++) {
             if (array[j] > array[j + 1]) {
-                // Store the swap in the moves array (i and j are the indices)
+                // Store the swap in the moves array
                 moves.push([j, j + 1]);
 
                 // Swap the actual array values
@@ -58,12 +47,15 @@ function bubbleSort() {
         }
     }
     swapCountDisplay.textContent = `Swaps: ${swapCount}`; // Update swap count display
+    console.log('After sorting:', array); // Log after sorting
+    console.log('Moves:', moves); // Log moves array
 }
 
-// Animate the stored moves
 function animateMoves() {
     const boxes = document.getElementsByClassName('box');
     let moveIndex = 0;
+
+    console.log('Animating moves...'); // Log animation start
 
     function animate() {
         if (moveIndex >= moves.length) {
@@ -122,7 +114,3 @@ function startSorting() {
         animateMoves(); // Start animating the moves
     }, 500); // Delay before starting animation
 }
-
-// Initialize with inquisitive animation
-image.style.animation = 'inquisitive 2s infinite'; 
-``
