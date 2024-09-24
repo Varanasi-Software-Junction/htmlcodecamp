@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input, select, button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  .preview-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: #e74c3c;
+    margin: 20px auto;
+    transition: none;
+    line-height: 100px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .box:hover {
+    /* The properties will be applied via JS */
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+  }
+  
+  #copy {
+    margin-top: 10px;
+    background-color: #2ecc71;
+  }
+  
+  #copy:hover {
+    background-color: #27ae60;
+  }
+  

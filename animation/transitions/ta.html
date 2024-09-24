@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Transition Playground</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .controls {
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+    .controls label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    .controls input,
+    .controls select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    #apply-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .demo-area {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .demo-box {
+      width: 200px;
+      height: 200px;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      transition: all 1s ease;
+      cursor: pointer;
+    }
+
+    /* Hover effect classes */
+    .hover-bg-color:hover {
+      background-color: #e74c3c;
+    }
+
+    .hover-width:hover {
+      width: 300px;
+    }
+
+    .hover-height:hover {
+      height: 300px;
+    }
+
+    .hover-opacity:hover {
+      opacity: 0.5;
+    }
+
+    .hover-transform:hover {
+      transform: rotate(45deg);
+    }
+
+    .code-section {
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Transition Playground</h1>
+
+  <div class="controls">
+    <label for="property">Transition Property:</label>
+    <select id="property">
+      <option value="background-color">background-color</option>
+      <option value="width">width</option>
+      <option value="height">height</option>
+      <option value="opacity">opacity</option>
+      <option value="transform">transform</option>
+    </select>
+
+    <label for="duration">Duration (seconds):</label>
+    <input type="number" id="duration" value="1" min="0" step="0.1">
+
+    <label for="timing-function">Timing Function:</label>
+    <select id="timing-function">
+      <option value="ease">ease</option>
+      <option value="linear">linear</option>
+      <option value="ease-in">ease-in</option>
+      <option value="ease-out">ease-out</option>
+      <option value="ease-in-out">ease-in-out</option>
+    </select>
+
+    <label for="delay">Delay (seconds):</label>
+    <input type="number" id="delay" value="0" min="0" step="0.1">
+
+    <button id="apply-button">Apply Transition</button>
+  </div>
+
+  <div class="demo-area">
+    <div class="demo-box" id="demo-box">
+      Hover over me!
+    </div>
+  </div>
+
+  <div class="code-section">
+    <h2>Generated CSS Code:</h2>
+    <pre id="generated-code"></pre>
+  </div>
+
+  <script>
+    // JavaScript code to handle interactions
+    const propertySelect = document.getElementById('property');
+    const durationInput = document.getElementById('duration');
+    const timingFunctionSelect = document.getElementById('timing-function');
+    const delayInput = document.getElementById('delay');
+    const applyButton = document.getElementById('apply-button');
+    const demoBox = document.getElementById('demo-box');
+    const generatedCode = document.getElementById('generated-code');
+
+    applyButton.addEventListener('click', () => {
+      const property = propertySelect.value;
+      const duration = durationInput.value;
+      const timingFunction = timingFunctionSelect.value;
+      const delay = delayInput.value;
+
+      // Set the transition property
+      demoBox.style.transition = `${property} ${duration}s ${timingFunction} ${delay}s`;
+
+      // Reset hover styles
+      demoBox.classList.remove('hover-bg-color', 'hover-width', 'hover-height', 'hover-opacity', 'hover-transform');
+
+      // Apply the hover effect based on the selected property
+      switch (property) {
+        case 'background-color':
+          demoBox.classList.add('hover-bg-color');
+          break;
+        case 'width':
+          demoBox.classList.add('hover-width');
+          break;
+        case 'height':
+          demoBox.classList.add('hover-height');
+          break;
+        case 'opacity':
+          demoBox.classList.add('hover-opacity');
+          break;
+        case 'transform':
+          demoBox.classList.add('hover-transform');
+          break;
+      }
+
+      // Generate the CSS code
+      const cssCode = `
+.demo-box {
+  transition: ${property} ${duration}s ${timingFunction} ${delay}s;
+}
+
+.demo-box:hover {
+  ${getHoverCSS(property)}
+}
+      `;
+      generatedCode.textContent = cssCode.trim();
+    });
+
+    // Functions to get the hover CSS based on property
+    function getHoverCSS(property) {
+      switch (property) {
+        case 'background-color':
+          return 'background-color: #e74c3c;';
+        case 'width':
+          return 'width: 300px;';
+        case 'height':
+          return 'height: 300px;';
+        case 'opacity':
+          return 'opacity: 0.5;';
+        case 'transform':
+          return 'transform: rotate(45deg);';
+        default:
+          return '';
+      }
+    }
+
+    // Initial hover effects (for first load)
+    demoBox.classList.add('hover-bg-color');
+    generatedCode.textContent = `
+.demo-box {
+  transition: background-color 1s ease 0s;
+}
+
+.demo-box:hover {
+  background-color: #e74c3c;
+}
+    `.trim();
+  </script>
+</body>
+</html>
