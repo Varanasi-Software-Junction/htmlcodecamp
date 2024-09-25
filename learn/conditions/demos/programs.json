@@ -1,12 +1,20 @@
 {
     "programs": [
         {
-            "name": "Check if a Number is Positive",
-            "code": "let num = 5; if (num > 0) { console.log('The number is positive'); } else { console.log('The number is not positive'); }"
+            "name": "Addition Program",
+            "code": "function addition(a, b) { return a + b; } console.log('Result:', addition(3, 5));"
         },
         {
-            "name": "Logical AND with Two Conditions",
-            "code": "let a = 5, b = 10; if (a < b && a != b) { console.log('Both conditions are true'); } else { console.log('One or both conditions are false'); }"
+            "name": "Factorial Program",
+            "code": "function factorial(n) { if (n === 0) return 1; else return n * factorial(n - 1); } console.log('Factorial of 5:', factorial(5));"
+        },
+        {
+            "name": "Palindrome Check",
+            "code": "function isPalindrome(str) { let reversed = str.split('').reverse().join(''); return str === reversed; } console.log('Is madam a palindrome?', isPalindrome('madam'));"
+        },
+        {
+            "name": "Prime Number Check",
+            "code": "function isPrime(num) { if (num <= 1) return false; for (let i = 2; i < num; i++) { if (num % i === 0) return false; } return true; } console.log('Is 7 prime?', isPrime(7));"
         }
     ]
 }
