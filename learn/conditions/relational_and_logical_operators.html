@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demo of loading and running JavaScript programs from JSON.">
+    <title>JavaScript Program Demos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/demoLoader.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Select and Run JavaScript Programs</h1>
+
+    <label for="program-select">Choose a program:</label>
+    <select id="program-select">
+        <option value="">--Select a Program--</option>
+    </select>
+
+    <h2>Program Code</h2>
+    <textarea id="program-code" rows="10" readonly></textarea>
+
+    <button id="run-program" class="button">Run Program</button>
+
+    <h2>Program Output</h2>
+    <pre id="program-output"></pre>
+</div>
+
+</body>
+</html>
