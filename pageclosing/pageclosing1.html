@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test onbeforeunload</title>
-    <script>
-        window.onbeforeunload = function (e) {
-            e.preventDefault(); // Prevents the default action
-            e.returnValue = ''; // Triggers the confirmation dialog
-        };
-    </script>
-</head>
-<body>
-    <h1>Test Page</h1>
-    <p>Try to close or reload this page.</p>
+<html>
+<body onunload="myFunction()">
+
+<h1>Welcome to my Home Page</h1>
+
+<p>Close this window or press F5 to reload the page.</p>
+<p><strong>Note:</strong> Due to different browser settings, this event may not always work as expected.</p>
+
+<script>
+function myFunction() {
+  alert("Thank you for visiting W3Schools!");
+}
+</script>
+
 </body>
 </html>
