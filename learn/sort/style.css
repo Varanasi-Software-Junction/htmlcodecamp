@@ -1,238 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f4f4f9;
-    position: relative;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
 }
 
 .content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
-}
-
-.image-container {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 1;
-}
-
-.side-image {
-    width: 150px;
-    /* Adjust the width as needed */
-    height: 150px;
-    /* Make height equal to width for a round shape */
-    border-radius: 50%;
-    /* Makes the image round */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Adds shadow for lifting effect */
-    transform: translateY(-10px);
-    /* Lifts the image */
-    animation: inquisitive 2s infinite;
-    /* Default animation */
-}
-
-@keyframes inquisitive {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(5deg);
-    }
-
-    100% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-}
-
-@keyframes active {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(15deg);
-    }
-
-    100% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-}
-
-@keyframes relaxed {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-10px) rotate(-5deg);
-    }
-
-    100% {
-        transform: translateY(-10px) rotate(0deg);
-    }
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
 }
 
 .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-right: 200px;
-    /* Add margin to the right to make space for the image */
-}
-
-input[type="text"] {
-    padding: 12px;
-    font-size: 18px;
-    border: 1px solid #3498db;
-    border-radius: 8px;
-    margin-right: 15px;
-    width: 320px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus {
-    border-color: #2980b9;
-    box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
-}
-
-button {
-    padding: 12px 24px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #3498db;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-button:disabled {
-    background-color: #bdc3c7;
-    cursor: not-allowed;
-    transform: scale(0.98);
-    /* Slightly shrink the button */
+    text-align: center; /* Center align text for the input and buttons */
+    margin-bottom: 20px; /* Space between animation and description */
 }
 
 .array-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    height: 100px;
-    margin: 20px 0;
+    display: flex; /* Align boxes in a row */
+    justify-content: center; /* Center the boxes */
+    align-items: flex-end; /* Align boxes to the bottom */
+    height: 200px; /* Set a height for the container */
+    border: 1px solid #ccc; /* Optional: add border for visibility */
+    margin-bottom: 10px; /* Space between array container and swap count */
 }
 
 .box {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-color: #3498db;
+    width: 60px; /* Width of each box */
+    height: 100px; /* Height of each box */
+    margin: 0 10px; /* Horizontal spacing */
+    background-color: #007bff; /* Default box color */
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: left 0.5s ease, top 0.5s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: flex-end; /* Align text to the bottom */
+    transition: left 0.5s; /* Smooth transition for movement */
 }
 
-.box.active {
-    background-color: #e74c3c;
-}
-
-#swap-count {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+.image-container {
+    display: flex;
+    justify-content: center; /* Center the side image */
 }
 
 .bubble-sort-essay {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background for essay section */
+    padding: 20px; /* Padding around the essay */
+    border: 1px solid #ccc; /* Optional: border for visibility */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Space above the essay section */
 }
 
-.bubble-sort-essay h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
+h2 {
+    margin-top: 0; /* Remove margin from top */
 }
 
-.bubble-sort-essay h3 {
-    font-size: 20px;
-    color: #555;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.bubble-sort-essay p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.bubble-sort-essay ol,
-.bubble-sort-essay ul {
-    margin: 15px 0;
-    padding-left: 20px;
-}
-
-.bubble-sort-essay ol li,
-.bubble-sort-essay ul li {
-    margin-bottom: 10px;
-}
-
-.bubble-sort-essay code {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #eef;
-    padding: 2px 4px;
-    border-radius: 4px;
-}
-
-.bubble-sort-essay pre {
-    background-color: #eef;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-}
-
-.bubble-sort-essay a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.bubble-sort-essay a:hover {
-    text-decoration: underline;
-}
-
-.outer-loop-active {
-    border: 2px solid red;
-    /* Change this to whatever style you prefer */
-    background-color: rgba(255, 0, 0, 0.3);
-    /* Light red background for visibility */
+#swap-count, #loop-count {
+    margin-top: 10px; /* Space above swap count */
 }

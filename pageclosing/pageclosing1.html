@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test onbeforeunload</title>
+    <script>
+        window.onbeforeunload = function (e) {
+            e.preventDefault(); // Prevents the default action
+            e.returnValue = ''; // Triggers the confirmation dialog
+        };
+    </script>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <p>Try to close or reload this page.</p>
+</body>
+</html>
