@@ -1,50 +1,121 @@
-/* Styles for the dropdown, textarea, and button */
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-select {
-    width: 100%;
-    padding: 10px;
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
     margin-bottom: 20px;
-    font-size: 1.1rem;
 }
 
-textarea {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    resize: none;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+h1 {
+    text-align: center;
+    font-size: 2.5em;
 }
 
-pre {
-    background-color: #f4f4f4;
-    padding: 15px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border-left: 4px solid #007bff;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p, label {
+    font-size: 1.1em;
+    line-height: 1.6;
 }
 
 button {
     width: 100%;
     padding: 15px;
-    font-size: 1.2rem;
-    background-color: #28a745;
+    background-color: #3498db;
     color: white;
+    font-size: 1.2em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #2980b9;
 }
+
+.styled-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+}
+
+textarea.code-editor {
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    min-height: 150px;
+}
+
+pre.output-area {
+    width: 100%;
+    background-color: #ecf0f1;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    min-height: 100px;
+    white-space: pre-wrap;
+}
+
+.demo-controls {
+    margin-bottom: 20px;
+}
+/* Existing CSS ... */
+
+.profile-icon {
+    position: fixed; /* Fixed position */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    width: 60px; /* Width of the icon */
+    height: 60px; /* Height of the icon */
+    border-radius: 50%; /* Make it round */
+    animation: bounce 2s infinite; /* Add bounce animation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* Normal position */
+    }
+    40% {
+        transform: translateY(-10px); /* Move up */
+    }
+    60% {
+        transform: translateY(-5px); /* Move slightly down */
+    }
+}
+
+/* Existing CSS ... */

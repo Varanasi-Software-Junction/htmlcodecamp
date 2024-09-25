@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Demo of loading and running JavaScript programs from JSON.">
-    <title>JavaScript Program Demos</title>
+    <meta name="description" content="Blog post about relational and logical operators with interactive demo programs.">
+    <title>Relational and Logical Operators in Programming</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/demoLoader.js" defer></script>
+    <link rel="icon" type="image/jpeg" href="me.jpg"> <!-- Favicon -->
+    <script src="js/loader.js" defer></script>
 </head>
 <body>
 
 <div class="container">
-    <h1>Select and Run JavaScript Programs</h1>
+    <img src="me.jpg" alt="Profile" class="profile-icon" id="profile-icon"> <!-- Profile Icon -->
+    <h1 id="post-title"></h1>
 
-    <label for="program-select">Choose a program:</label>
-    <select id="program-select">
-        <option value="">--Select a Program--</option>
-    </select>
+    <div id="post-content">
+        <!-- The blog content will be injected here -->
+    </div>
 
-    <h2>Program Code</h2>
-    <textarea id="program-code" rows="10" readonly></textarea>
+    <h2 id="demo-title"></h2>
+    <p id="demo-description"></p>
+
+    <div class="demo-controls">
+        <label for="program-select">Choose a demo program:</label>
+        <select id="program-select" class="styled-select">
+            <option value="">--Select a Program--</option>
+        </select>
+    </div>
+
+    <h3>Editable Demo Code</h3>
+    <textarea id="program-code" class="code-editor" rows="10"></textarea>
 
     <button id="run-program" class="button">Run Program</button>
 
-    <h2>Program Output</h2>
-    <pre id="program-output"></pre>
+    <h3>Program Output</h3>
+    <pre id="program-output" class="output-area"></pre>
 </div>
 
 </body>
