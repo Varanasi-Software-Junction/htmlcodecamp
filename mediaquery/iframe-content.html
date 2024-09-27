@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Page</title>
+    <link href="iframe-style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Parent Page</h1>
+    <iframe src="iframe-content.html" id="myIframe" width="600" height="400" style="border: 1px solid black;"></iframe>
+    <br>
+    <button onclick="resizeIframe()">Resize Iframe</button>
+
+    <script>
+        function resizeIframe() {
+            const iframe = document.getElementById('myIframe');
+            iframe.style.width = iframe.style.width === '600px' ? '300px' : '600px';
+            iframe.style.height = iframe.style.height === '400px' ? '200px' : '400px';
+        }
+    </script>
+</body>
+</html>

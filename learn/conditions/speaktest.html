@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Speech with Voice Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Text to Speech with Voice Selection</h1>
+  <textarea id="textInput" type="text" placeholder="Enter text to speak" rows="20"></textarea>
+  <select id="voiceSelect"></select>
+  <button onclick="speakText()">Speak</button>
+
+  <script>
+    const synth = window.speechSynthesis;
+    const voiceSelect = document.getElementById('voiceSelect');
+    let voices = [];
+
+    function populateVoiceList() {
+      voices = synth.getVoices();
+      voices.forEach(voice => {
+        const option = document.createElement('option');
+        option.textContent = `${voice.name} (${voice.lang})`;
+        option.setAttribute('data-voice', voice.name);
+        voiceSelect.appendChild(option);
+      });
+    }
+
+    // Populate the voice list when available
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = populateVoiceList;
+    }
+
+    function speakText() {
+      const text = document.getElementById('textInput').value;
+      if (synth.speaking) {
+        console.error('Already speaking');
+        return;
+      }
+      if (text !== '') {
+        const utterThis = new SpeechSynthesisUtterance(text);
+        const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-voice');
+        
+        // Find and set the selected voice
+        utterThis.voice = voices.find(voice => voice.name === selectedVoice);
+        
+        // Optional: Set pitch and rate
+        utterThis.pitch = 1;
+        utterThis.rate = 1;
+
+        // Speak the text
+        synth.speak(utterThis);
+      }
+    }
+  </script>
+
+</body>
+</html>

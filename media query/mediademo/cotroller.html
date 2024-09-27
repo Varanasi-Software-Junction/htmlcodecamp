@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Window</title>
+    <link rel="icon" href="me.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .essay {
+            width: 40%;
+            padding: 20px;
+            text-align: justify;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 40%;
+        }
+
+        label {
+            margin: 10px 0;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+        .favicon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            animation: spin 3s infinite linear;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        #windowDimensions {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="me.jpg" alt="Favicon" class="favicon">
+
+    <div class="essay">
+        <h2>Understanding Media Queries: A Guide for Programmers</h2>
+        <p>
+            Media queries are a powerful tool in CSS that allow web developers to create responsive designs that adapt to different screen sizes, orientations, and resolutions. They provide the flexibility needed to design layouts that look great across various devices, from mobile phones to desktops.
+        </p>
+        <h3>How Media Queries Work</h3>
+        <p>
+            Media queries work by applying different CSS rules based on the characteristics of the device displaying the content. You can target specific conditions like the viewport width, device height, or even orientation (portrait or landscape). The most common syntax is:
+        </p>
+        <pre>
+            <code>
+@media (max-width: 600px) {
+    /* Styles for devices with a width of 600px or less */
+}
+            </code>
+        </pre>
+        <h3>Why Media Queries are Important</h3>
+        <p>
+            In today’s world, users access websites from a range of devices, each with different screen sizes and capabilities. A website that looks perfect on a large desktop screen might be completely unusable on a small mobile device without responsive design. Media queries solve this problem by allowing developers to specify different styles for different devices, ensuring a seamless user experience across all platforms.
+        </p>
+        <h3>Best Practices for Using Media Queries</h3>
+        <p>
+            When using media queries, it’s important to keep a few key best practices in mind:
+        </p>
+        <ul>
+            <li>
+                **Start with a Mobile-First Approach**: Design for smaller screens first, then use media queries to progressively enhance the design for larger screens. This approach simplifies the code and ensures mobile usability.
+            </li>
+            <li>
+                **Use Breakpoints Wisely**: Instead of designing for specific devices, focus on natural breakpoints where the design starts to look awkward or break. Common breakpoints include widths of 320px (small mobile), 768px (tablets), and 1024px (desktops).
+            </li>
+            <li>
+                **Minimize Overuse**: Avoid adding too many media queries. This can lead to complex code that’s hard to maintain. Use media queries only when necessary to adjust the layout or style.
+            </li>
+            <li>
+                **Test on Real Devices**: Always test your media queries on real devices or using browser developer tools to ensure that the design works as expected.
+            </li>
+        </ul>
+        <h3>Common Media Query Use Cases</h3>
+        <p>
+            Media queries are often used to:
+        </p>
+        <ul>
+            <li>Change font sizes and padding for better readability on small screens.</li>
+            <li>Switch from a multi-column layout on desktops to a single-column layout on mobile.</li>
+            <li>Hide or display elements based on screen size.</li>
+            <li>Modify navigation menus for different devices (e.g., a hamburger menu for mobile).</li>
+        </ul>
+        <p>
+            By using media queries effectively, developers can create fluid and adaptive websites that work across all devices, improving both usability and user satisfaction.
+        </p>
+    </div>
+
+    <div class="controls">
+        <h1>Control New Window Size</h1>
+
+        <label for="widthRange">Width: <span id="widthValue">600</span>px</label>
+        <input type="range" id="widthRange" min="300" max="1200" value="600">
+
+        <label for="heightRange">Height: <span id="heightValue">400</span>px</label>
+        <input type="range" id="heightRange" min="300" max="800" value="400">
+
+        <button id="openWindowBtn">Open New Window</button>
+
+        <div id="windowDimensions">
+            Child Window Dimensions: <span id="childWindowWidth">N/A</span>px × <span id="childWindowHeight">N/A</span>px
+        </div>
+    </div>
+
+    <script>
+        let newWindow;
+
+        const widthRange = document.getElementById('widthRange');
+        const heightRange = document.getElementById('heightRange');
+        const widthValue = document.getElementById('widthValue');
+        const heightValue = document.getElementById('heightValue');
+        const openWindowBtn = document.getElementById('openWindowBtn');
+        const childWindowWidth = document.getElementById('childWindowWidth');
+        const childWindowHeight = document.getElementById('childWindowHeight');
+
+        function updateChildWindowDimensions() {
+            if (newWindow && !newWindow.closed) {
+                childWindowWidth.textContent = newWindow.innerWidth;
+                childWindowHeight.textContent = newWindow.innerHeight;
+            }
+        }
+
+        widthRange.addEventListener('input', () => {
+            widthValue.textContent = widthRange.value;
+            if (newWindow) {
+                newWindow.resizeTo(parseInt(widthRange.value), parseInt(heightRange.value));
+                updateChildWindowDimensions();
+            }
+        });
+
+        heightRange.addEventListener('input', () => {
+            heightValue.textContent = heightRange.value;
+            if (newWindow) {
+                newWindow.resizeTo(parseInt(widthRange.value), parseInt(heightRange.value));
+                updateChildWindowDimensions();
+            }
+        });
+
+        openWindowBtn.addEventListener('click', () => {
+            newWindow = window.open(
+                'new-window.html',
+                '_blank',
+                `width=${widthRange.value},height=${heightRange.value},left=0,top=0`
+            );
+            
+            // Keep the new window on top by focusing it every 2 seconds
+            setInterval(() => {
+                if (newWindow && !newWindow.closed) {
+                    newWindow.focus();
+                }
+            }, 2000);
+
+            setInterval(updateChildWindowDimensions, 500);
+        });
+    </script>
+</body>
+</html>
