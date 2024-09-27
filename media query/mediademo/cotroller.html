@@ -3,40 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parent Window</title>
+    <title>Demonstrating Media Queries</title>
     <link rel="icon" href="me.jpg" type="image/jpg">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin: 0;
             height: 100vh;
+            position: relative;
         }
 
         .essay {
             width: 40%;
-            padding: 20px;
-            text-align: justify;
+            padding: 30px;
+            background-color: #eaf3ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .essay h2 {
+            color: #0056b3;
+            font-size: 26px;
+        }
+
+        .essay h3 {
+            color: #007bff;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .essay p, .essay ul {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .essay pre {
+            background-color: #f4f8fd;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 20px 0;
         }
 
         .controls {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: absolute;
-            right: 20px;
-            top: 20px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 40%;
+            margin-right: 20px;
+            margin-top: 20px;
+            position: relative;
         }
 
-        label {
+        .controls h1 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .controls label {
+            font-size: 16px;
             margin: 10px 0;
+            color: #333;
         }
 
         input[type="range"] {
-            width: 300px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
 
         .favicon {
@@ -50,11 +107,13 @@
             transform: rotateY(0deg);
             animation: spin 3s infinite linear;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
         }
 
         #windowDimensions {
             margin-top: 20px;
             font-size: 18px;
+            color: #333;
         }
 
         @keyframes spin {
@@ -91,36 +150,21 @@
             In today’s world, users access websites from a range of devices, each with different screen sizes and capabilities. A website that looks perfect on a large desktop screen might be completely unusable on a small mobile device without responsive design. Media queries solve this problem by allowing developers to specify different styles for different devices, ensuring a seamless user experience across all platforms.
         </p>
         <h3>Best Practices for Using Media Queries</h3>
-        <p>
-            When using media queries, it’s important to keep a few key best practices in mind:
-        </p>
         <ul>
-            <li>
-                **Start with a Mobile-First Approach**: Design for smaller screens first, then use media queries to progressively enhance the design for larger screens. This approach simplifies the code and ensures mobile usability.
-            </li>
-            <li>
-                **Use Breakpoints Wisely**: Instead of designing for specific devices, focus on natural breakpoints where the design starts to look awkward or break. Common breakpoints include widths of 320px (small mobile), 768px (tablets), and 1024px (desktops).
-            </li>
-            <li>
-                **Minimize Overuse**: Avoid adding too many media queries. This can lead to complex code that’s hard to maintain. Use media queries only when necessary to adjust the layout or style.
-            </li>
-            <li>
-                **Test on Real Devices**: Always test your media queries on real devices or using browser developer tools to ensure that the design works as expected.
-            </li>
+            <li>**Start with a Mobile-First Approach**: Design for smaller screens first, then use media queries to progressively enhance the design for larger screens. This approach simplifies the code and ensures mobile usability.</li>
+            <li>**Use Breakpoints Wisely**: Instead of designing for specific devices, focus on natural breakpoints where the design starts to look awkward or break. Common breakpoints include widths of 320px (small mobile), 768px (tablets), and 1024px (desktops).</li>
+            <li>**Minimize Overuse**: Avoid adding too many media queries. This can lead to complex code that’s hard to maintain. Use media queries only when necessary to adjust the layout or style.</li>
+            <li>**Test on Real Devices**: Always test your media queries on real devices or using browser developer tools to ensure that the design works as expected.</li>
         </ul>
         <h3>Common Media Query Use Cases</h3>
-        <p>
-            Media queries are often used to:
-        </p>
+        <p>Media queries are often used to:</p>
         <ul>
             <li>Change font sizes and padding for better readability on small screens.</li>
             <li>Switch from a multi-column layout on desktops to a single-column layout on mobile.</li>
             <li>Hide or display elements based on screen size.</li>
             <li>Modify navigation menus for different devices (e.g., a hamburger menu for mobile).</li>
         </ul>
-        <p>
-            By using media queries effectively, developers can create fluid and adaptive websites that work across all devices, improving both usability and user satisfaction.
-        </p>
+        <p>By using media queries effectively, developers can create fluid and adaptive websites that work across all devices, improving both usability and user satisfaction.</p>
     </div>
 
     <div class="controls">
@@ -180,7 +224,6 @@
                 `width=${widthRange.value},height=${heightRange.value},left=0,top=0`
             );
             
-            // Keep the new window on top by focusing it every 2 seconds
             setInterval(() => {
                 if (newWindow && !newWindow.closed) {
                     newWindow.focus();
