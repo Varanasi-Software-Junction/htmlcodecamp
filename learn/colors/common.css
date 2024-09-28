@@ -36,3 +36,23 @@
 body {
     padding-top: 60px;
 }
+#faviconImg {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    transform: rotateY(0deg); /* Initial position */
+    animation: rotate3D 5s infinite linear;
+}
+
+/* Animation keyframes */
+@keyframes rotate3D {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
