@@ -66,15 +66,29 @@ pre {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-/* WhatsApp button styles */
-.whatsapp-btn {
-    display: block;
-    padding: 10px 20px;
-    background-color: #25D366;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    /* position: absolute; */
+
+/* Branding Image Styling (me.jpg) */
+.branding-left {
+    position: fixed;
+    top: 20px;
+    left: 20px;
 }
 
+#brandingImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: rotateY(360deg);
+    animation: rotateMe 3s linear infinite;
+}
+
+/* 3D Rotation Animation */
+@keyframes rotateMe {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}

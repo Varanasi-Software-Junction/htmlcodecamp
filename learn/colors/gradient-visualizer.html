@@ -6,13 +6,25 @@
     <title>Radial Gradient Visualizer</title>
     <link rel="stylesheet" href="gradient-visualizer.css">
     <link rel="icon" href="me.jpg" id="favicon">
+    <link rel="stylesheet" href="common.css">
 </head>
 <body>
-    <img id="faviconImg" src="me.jpg" alt="Animated Favicon">
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home (RGB Color Generator)</a></li>
+            <li><a href="gradient-visualizer.html">Radial Gradient Visualizer</a></li>
+            <li><a href="color-theory.html">Color & Gradient Theory</a></li>
+        </ul>
+    </nav>
+    
+   
 
-    <!-- WhatsApp Button at the Top -->
-    <div class="whatsapp-button top">
-        <a href="https://wa.me/919335874326" class="whatsapp-btn top-btn">Contact on WhatsApp</a>
+    <!-- Image of me.jpg on the Left -->
+    <div style="z-index:100 ;" class="branding-left">
+        <br>
+        <br>
+        <br>
+        <img style="z-index: 400;" src="me.jpg" alt="Branding" id="brandingImage">
     </div>
 
     <div class="container">
@@ -52,8 +64,8 @@
         <pre id="cssCode"></pre>
     </div>
 
-    <!-- WhatsApp Button at the Bottom -->
-    <a href="https://wa.me/919335874326" class="whatsapp-btn top-btn">Contact on WhatsApp</a>
+    
+    
 
     <script src="gradient-visualizer.js"></script>
     <script>
