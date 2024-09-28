@@ -32,17 +32,25 @@ function displayQuestion() {
     q.options.forEach((option, i) => {
         questionHTML += `
             <label class="option">
-                <input type="radio" name="question${currentQuestionIndex}" value="${option}">
+                <input type="radio" name="question${currentQuestionIndex}" value="${option}" onchange="handleOptionSelection()">
                 ${option}
             </label>
         `;
     });
     quizContainer.innerHTML = questionHTML;
 
+    // Disable the next button initially
+    document.querySelector('.next-btn').disabled = true;
+
     // Show or hide buttons based on the current question
     document.querySelector('.prev-btn').style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
     document.querySelector('.next-btn').style.display = currentQuestionIndex < questions.length - 1 ? 'inline-block' : 'none';
     document.querySelector('.submit-btn').style.display = currentQuestionIndex === questions.length - 1 ? 'inline-block' : 'none';
+}
+
+function handleOptionSelection() {
+    // Enable the next button when an option is selected
+    document.querySelector('.next-btn').disabled = false;
 }
 
 function nextQuestion() {

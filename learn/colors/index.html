@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link  id="icon" rel="icon" type="image/x-icon" href="me.jpg">
+    
+</head>
+<body>
+    <!-- WhatsApp button at the top -->
+    <a href="https://wa.me/919335874326" class="whatsapp-btn top-btn">Contact on WhatsApp</a>
+    
+    <div class="container">
+        <h1>Color Generator</h1>
+        <img id="faviconImg" src="me.jpg" alt="Animated Favicon">
+
+
+        <!-- Toggle between Solid and Gradient -->
+        <button id="toggleMode">Switch to Gradient Generator</button>
+
+        <!-- Solid Color Generator -->
+        <div id="solidColor" class="mode">
+            <div class="sliders">
+                <label for="red">Red</label>
+                <input type="range" id="red" min="0" max="255" value="0">
+                <span id="redValue">0</span>
+
+                <label for="green">Green</label>
+                <input type="range" id="green" min="0" max="255" value="0">
+                <span id="greenValue">0</span>
+
+                <label for="blue">Blue</label>
+                <input type="range" id="blue" min="0" max="255" value="0">
+                <span id="blueValue">0</span>
+            </div>
+
+            <div id="colorDisplay" class="color-box"></div>
+            <p id="rgbCode">RGB: rgb(0, 0, 0)</p>
+            <p id="hexCode">HEX: #000000</p>
+            <button id="copyButton">Copy Color Code</button>
+            <p id="copyMessage"></p>
+        </div>
+
+        <!-- Gradient Color Generator -->
+        <div id="gradientColor" class="mode" style="display: none;">
+            <label for="startColor">Start Color</label>
+            <input type="color" id="startColor" value="#ff0000">
+
+            <label for="endColor">End Color</label>
+            <input type="color" id="endColor" value="#0000ff">
+
+            <label for="direction">Gradient Direction</label>
+            <select id="direction">
+                <option value="to right">To Right</option>
+                <option value="to left">To Left</option>
+                <option value="to bottom">To Bottom</option>
+                <option value="to top">To Top</option>
+            </select>
+
+            <div id="gradientDisplay" class="color-box"></div>
+            <p id="gradientCode">CSS: linear-gradient(to right, #ff0000, #0000ff)</p>
+            <button id="copyGradientButton">Copy Gradient Code</button>
+            <p id="copyGradientMessage"></p>
+        </div>
+    </div>
+
+    <!-- WhatsApp button at the bottom -->
+    <a href="https://wa.me/919335874326" class="whatsapp-btn bottom-btn">Contact on WhatsApp</a>
+
+    <script src="script.js"></script>
+</body>
+</html>

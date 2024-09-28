@@ -1,0 +1,120 @@
+/* Existing styles */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.mode {
+    margin-bottom: 20px;
+}
+
+.color-box {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="range"], input[type="color"], select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* WhatsApp button styles */
+.whatsapp-btn {
+    display: block;
+    padding: 10px 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    position: absolute;
+}
+
+.top-btn {
+    top: 10px;
+    right: 10px;
+}
+
+.bottom-btn {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Favicon in a 3D style */
+img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+
+/* Favicon in the top-left corner */
+#faviconImg {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    transform: rotateY(0deg); /* Initial position */
+    animation: rotate3D 5s infinite linear;
+}
+
+/* Animation keyframes */
+@keyframes rotate3D {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* For the parent page: shift the favicon to the right */
+body.parent-page #faviconImg {
+    left: unset;
+    right: 10px;
+}
