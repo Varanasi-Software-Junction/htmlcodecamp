@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radial Gradient Visualizer</title>
+    <link rel="stylesheet" href="gradient-visualizer.css">
+    <link rel="icon" href="me.jpg" id="favicon">
+</head>
+<body>
+    <img id="faviconImg" src="me.jpg" alt="Animated Favicon">
+
+    <!-- WhatsApp Button at the Top -->
+    <div class="whatsapp-button top">
+        <a href="https://wa.me/919335874326" class="whatsapp-btn top-btn">Contact on WhatsApp</a>
+    </div>
+
+    <div class="container">
+        <h1>Radial Gradient Visualizer</h1>
+        <p>
+            Use the color pickers and the range sliders below to create your own radial gradient and see the live preview!
+        </p>
+
+        <!-- Gradient Controls -->
+        <div class="controls">
+            <label for="color1">First Color:</label>
+            <input type="color" id="color1" value="#ff0000">
+            
+            <label for="color2">Second Color:</label>
+            <input type="color" id="color2" value="#0000ff">
+
+            <label for="shape">Shape:</label>
+            <select id="shape">
+                <option value="circle">Circle</option>
+                <option value="ellipse">Ellipse</option>
+            </select>
+
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="closest-side">Closest Side</option>
+                <option value="farthest-side">Farthest Side</option>
+                <option value="closest-corner">Closest Corner</option>
+                <option value="farthest-corner">Farthest Corner</option>
+            </select>
+        </div>
+
+        <!-- Gradient Preview Box -->
+        <div class="preview-box" id="previewBox"></div>
+
+        <!-- Code Output -->
+        <h2>Generated CSS Code</h2>
+        <pre id="cssCode"></pre>
+    </div>
+
+    <!-- WhatsApp Button at the Bottom -->
+    <a href="https://wa.me/919335874326" class="whatsapp-btn top-btn">Contact on WhatsApp</a>
+
+    <script src="gradient-visualizer.js"></script>
+    <script>
+        // Animation for favicon (me.jpg)
+        let angle = 0;
+        setInterval(() => {
+            angle += 5;
+            const favicon = document.getElementById('favicon');
+            favicon.style.transform = `rotate(${angle}deg)`;
+        }, 100);
+    </script>
+</body>
+</html>
