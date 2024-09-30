@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champak Roy's Birthday Countdown</title>
+    <link rel="icon" href="me.jpg" type="image/jpeg">
+
     <style>
         body {
             background-color: #fafafa;
@@ -194,7 +196,7 @@
     <button class="celebrate" onclick="celebrate()">Celebrate!</button>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/919876543210?text=Happy%20Birthday%20Champak%20Roy!%20🎉%20Hope%20you%20have%20an%20amazing%20day!" class="whatsapp-button">
+    <a href="https://wa.me/919335874326?text=Happy%20Birthday%20Champak%20Roy!%20🎉%20Hope%20you%20have%20an%20amazing%20day!" class="whatsapp-button">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
         Send Happy Birthday on WhatsApp
     </a>
@@ -229,10 +231,20 @@
 
             addCandles(candlesCount);
 
-            // Speak Happy Birthday after 5 seconds
+            // Array of birthday messages
+            const messages = [
+                `Happy Birthday, Champak Roy! Only ${remainingDays} days remaining!`,
+                `Champak, your special day is almost here! ${remainingDays} days to go!`,
+                `Get ready, Champak! Your birthday is just ${remainingDays} days away!`,
+                `Hey Champak! Only ${remainingDays} days left until your birthday celebration!`,
+                `Wishing you an early Happy Birthday, Champak! ${remainingDays} days remaining!`
+            ];
+
+            // Speak a random birthday message after 5 seconds
             setTimeout(() => {
-                const message = `Happy Birthday, Champak Roy! Only ${remainingDays} days remaining!`;
-                const speech = new SpeechSynthesisUtterance(message);
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                document.title=randomMessage;
+                const speech = new SpeechSynthesisUtterance(randomMessage);
                 speechSynthesis.speak(speech);
             }, 5000);
 
