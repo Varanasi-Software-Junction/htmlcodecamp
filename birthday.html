@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champak Roy's Birthday Countdown</title>
+    <link rel="icon" type="image/x-icon" href="me.jpg">
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            animation: backgroundChange 10s infinite alternate;
+            perspective: 1000px; /* Adding perspective for 3D effect */
+        }
+
+        @keyframes backgroundChange {
+            from { background-color: #ffe0b2; }
+            to { background-color: #b2dfdb; }
+        }
+
+        .cake {
+            width: 300px;
+            height: 200px;
+            background-color: #fff59d;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .candles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            position: absolute;
+            top: -50px;
+            width: 100%;
+        }
+
+        .candle {
+            width: 10px;
+            height: 50px;
+            background-color: #ffeb3b;
+            position: relative;
+            margin: 5px;
+            border-radius: 5px;
+            animation: growShrink 3s infinite alternate;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background-color: #ff5722;
+            border-radius: 50%;
+            animation: flicker 0.2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from {
+                transform: translateX(-50%) translateY(0px);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateX(-50%) translateY(-4px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes growShrink {
+            from { transform: scale(1); }
+            to { transform: scale(1.3); }
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 22px;
+            color: #37474f;
+        }
+
+        .info h1 {
+            font-size: 42px;
+            margin: 0;
+            color: #ff7043;
+        }
+
+        .info p {
+            font-size: 26px;
+            margin: 10px 0;
+        }
+
+        .celebrate {
+            color: #ffffff;
+            background-color: #ff4081;
+            padding: 12px 24px;
+            font-size: 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .celebrate:hover {
+            background-color: #e91e63;
+        }
+
+        /* Profile Picture 3D Movement */
+        .profile {
+            margin-top: 30px;
+            animation: move3D 10s infinite ease-in-out;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+            transform-style: preserve-3d; /* Ensures 3D effect */
+        }
+
+        @keyframes move3D {
+            0% {
+                transform: translateX(-200px) rotateY(0deg);
+            }
+            25% {
+                transform: translateX(0px) rotateY(45deg) scale(1.1);
+            }
+            50% {
+                transform: translateX(200px) rotateY(90deg) scale(1.2);
+            }
+            75% {
+                transform: translateX(0px) rotateY(45deg) scale(1.1);
+            }
+            100% {
+                transform: translateX(-200px) rotateY(0deg);
+            }
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            background-color: #25d366;
+            color: white;
+            padding: 12px 16px;
+            font-size: 18px;
+            border-radius: 50px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+        }
+
+        .whatsapp-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-5px);
+            background-color: #20b354;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="profile">
+        <img src="me.jpg" alt="Champak Roy">
+    </div>
+
+    <div class="cake">
+        <div class="candles" id="candles"></div>
+    </div>
+
+    <div class="info">
+        <h1>Birthday Countdown for Champak Roy!</h1>
+        <h2 id="candle-count">Candles: 1</h2>
+        <p id="days-remaining">Days Remaining: 365</p>
+    </div>
+
+    <button class="celebrate" onclick="celebrate()">Celebrate!</button>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919335874326?text=Happy%20Birthday%20Champak%20Roy!%20🎉%20Hope%20you%20have%20an%20amazing%20day!" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+        Send Happy Birthday on WhatsApp
+    </a>
+    
+
+    <script>
+        const startDate = new Date('2024-01-17');
+        const endDate = new Date('2025-01-16');
+        const today = new Date();
+
+        const daysBetween = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+        let daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        let candlesCount = Math.min(1 + Math.floor(daysPassed / (daysBetween / 53)), 54);
+        let remainingDays = Math.floor((endDate - today) / (1000 * 60 * 60 * 24));
+
+        function addCandles(count) {
+            const candlesContainer = document.getElementById('candles');
+            candlesContainer.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const candle = document.createElement('div');
+                candle.classList.add('candle');
+                const flame = document.createElement('div');
+                flame.classList.add('flame');
+                candle.appendChild(flame);
+                candlesContainer.appendChild(candle);
+            }
+            document.getElementById('candle-count').innerText = `Candles: ${candlesCount}`;
+            document.getElementById('days-remaining').innerText = `Days Remaining: ${remainingDays}`;
+        }
+
+        function celebrate() {
+            alert(`Happy early birthday, Champak Roy! You have ${candlesCount} candles and ${remainingDays} days left until your next birthday.`);
+        }
+
+        addCandles(candlesCount);
+
+        // Slightly vary the animation every day
+        const animationVariation = daysPassed % 5;
+        document.body.style.animation = `backgroundChange ${12 + animationVariation}s infinite alternate`;
+    </script>
+
+</body>
+</html>
