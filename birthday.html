@@ -229,6 +229,13 @@
 
             addCandles(candlesCount);
 
+            // Speak Happy Birthday after 5 seconds
+            setTimeout(() => {
+                const message = `Happy Birthday, Champak Roy! Only ${remainingDays} days remaining!`;
+                const speech = new SpeechSynthesisUtterance(message);
+                speechSynthesis.speak(speech);
+            }, 5000);
+
             // Slightly vary the animation every day
             const animationVariation = daysPassed % 5;
             document.body.style.animation = `backgroundChange ${12 + animationVariation}s infinite alternate`;
