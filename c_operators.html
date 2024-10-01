@@ -329,6 +329,112 @@
         </tbody>
     </table>
 
+
+
+    <div>
+        <h2>Typecasting in C</h2>
+        <p>
+            Typecasting is a way to convert a variable from one data type to another. In C, it is necessary when you want to perform operations between different data types, such as between integers and floating-point numbers, or when you want to force a conversion to a specific type.
+        </p>
+        <p>
+            C supports two types of typecasting:
+        </p>
+        <ul>
+            <li><strong>Implicit Typecasting:</strong> This occurs automatically when data is converted from a smaller data type to a larger one. For example, an integer can be automatically converted to a float in an arithmetic operation.</li>
+            <li><strong>Explicit Typecasting:</strong> This is manually done by the programmer using a cast operator to convert one data type to another. This typecasting is necessary when narrowing conversions (from larger to smaller types) are required or when mixing types in an expression.
+            </li>
+        </ul>
+        <p>
+            The syntax for explicit typecasting is: <code>(type) expression</code>, where <code>type</code> is the desired data type, and <code>expression</code> is the variable or value to be cast.
+        </p>
+        <p><strong>Example:</strong></p>
+        <pre><code>int a = 5;
+    float b = 2.3;
+    int result = (int)b + a;  // Explicit cast from float to int</code></pre>
+    
+        <h2>Booleans in C</h2>
+        <p>
+            The C language does not have a dedicated boolean data type in older versions (before C99). However, starting from C99, C introduced the `_Bool` data type, which can store the values <code>0</code> (false) and <code>1</code> (true).
+        </p>
+        <p>
+            A more commonly used approach before C99 was to treat integers as booleans, where <code>0</code> represented false, and any non-zero value represented true.
+        </p>
+        <p>
+            In C99 and later, you can include the <code>&lt;stdbool.h&gt;</code> header to use the more readable `bool`, `true`, and `false` keywords.
+        </p>
+        <p><strong>Example:</strong></p>
+        <pre><code>#include &lt;stdbool.h&gt;
+    
+    bool is_valid = true;
+    if (is_valid) {
+        // Do something if true
+    }</code></pre>
+    
+        <p>Without <code>&lt;stdbool.h&gt;</code>, you can use integers:</p>
+        <pre><code>int is_valid = 1;  // 1 for true, 0 for false
+    if (is_valid) {
+        // Do something if true
+    }</code></pre>
+    </div>
+    
+    <div>
+        <h2>Questions on Typecasting and Booleans in C</h2>
+        
+        <ol>
+            <li><strong>What is typecasting in C? Explain the two types of typecasting with examples.</strong></li>
+    
+            <li><strong>Why might explicit typecasting be necessary in C? Provide an example where explicit typecasting is used.</strong></li>
+    
+            <li>
+                <strong>What would happen if we did not use explicit typecasting in this code?</strong><br>
+                <pre><code>int a = 10;
+    float b = 3.5;
+    int result = a + b;</code></pre>
+                <ul>
+                    <li>a) The code will work fine.</li>
+                    <li>b) The result will be truncated, but there won’t be a warning.</li>
+                    <li>c) A compilation error will occur.</li>
+                    <li>d) None of the above.</li>
+                </ul>
+            </li>
+    
+            <li><strong>How does C treat booleans in versions before C99? What value represents true and what value represents false?</strong></li>
+    
+            <li><strong>Which header file in C99 allows the use of <code>bool</code>, <code>true</code>, and <code>false</code>?</strong></li>
+    
+            <li>
+                <strong>What would the following code output?</strong>
+                <pre><code>#include &lt;stdbool.h&gt;
+    
+    int main() {
+        bool condition = 5;
+        if (condition) {
+            printf("True\n");
+        } else {
+            printf("False\n");
+        }
+        return 0;
+    }</code></pre>
+                <ul>
+                    <li>a) It will print "True".</li>
+                    <li>b) It will print "False".</li>
+                    <li>c) Compilation error due to <code>bool</code>.</li>
+                    <li>d) None of the above.</li>
+                </ul>
+            </li>
+    
+            <li><strong>What is the difference between <code>_Bool</code> and <code>bool</code> in C99?</strong></li>
+    
+            <li><strong>How would you use integers as booleans in C without using <code>&lt;stdbool.h&gt;</code>? Write a sample code to demonstrate.</strong></li>
+    
+            <li><strong>What is the precedence of typecasting in an expression involving arithmetic and logical operators?</strong></li>
+    
+            <li><strong>Explain with an example how typecasting can be used to ensure the correct result in arithmetic operations involving mixed data types.</strong></li>
+        </ol>
+    </div>
+    
+
+
 </body>
 
 </html>
