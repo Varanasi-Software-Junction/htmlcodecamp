@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Operators Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>C Operators Chart</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Precedence</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>+</td>
+            <td>Addition</td>
+            <td>Adds two operands</td>
+            <td>14</td>
+            <td>a + b</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Subtraction</td>
+            <td>Subtracts second operand from the first</td>
+            <td>14</td>
+            <td>a - b</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Multiplication</td>
+            <td>Multiplies two operands</td>
+            <td>13</td>
+            <td>a * b</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>Division</td>
+            <td>Divides first operand by the second</td>
+            <td>13</td>
+            <td>a / b</td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Modulus</td>
+            <td>Returns remainder of a division</td>
+            <td>13</td>
+            <td>a % b</td>
+        </tr>
+        <tr>
+            <td>=</td>
+            <td>Assignment</td>
+            <td>Assigns value of right operand to left operand</td>
+            <td>2</td>
+            <td>a = 10</td>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>Equal to</td>
+            <td>Checks if two operands are equal</td>
+            <td>9</td>
+            <td>a == b</td>
+        </tr>
+        <tr>
+            <td>!=</td>
+            <td>Not equal to</td>
+            <td>Checks if two operands are not equal</td>
+            <td>9</td>
+            <td>a != b</td>
+        </tr>
+        <tr>
+            <td>></td>
+            <td>Greater than</td>
+            <td>Checks if first operand is greater than second</td>
+            <td>10</td>
+            <td>a > b</td>
+        </tr>
+        <tr>
+            <td><</td>
+            <td>Less than</td>
+            <td>Checks if first operand is less than second</td>
+            <td>10</td>
+            <td>a < b</td>
+        </tr>
+        <tr>
+            <td>>=</td>
+            <td>Greater than or equal to</td>
+            <td>Checks if first operand is greater than or equal to second</td>
+            <td>10</td>
+            <td>a >= b</td>
+        </tr>
+        <tr>
+            <td><=</td>
+            <td>Less than or equal to</td>
+            <td>Checks if first operand is less than or equal to second</td>
+            <td>10</td>
+            <td>a <= b</td>
+        </tr>
+        <tr>
+            <td>&&</td>
+            <td>Logical AND</td>
+            <td>Returns true if both operands are true</td>
+            <td>5</td>
+            <td>a && b</td>
+        </tr>
+        <tr>
+            <td>||</td>
+            <td>Logical OR</td>
+            <td>Returns true if at least one operand is true</td>
+            <td>4</td>
+            <td>a || b</td>
+        </tr>
+        <tr>
+            <td>!</td>
+            <td>Logical NOT</td>
+            <td>Reverses the logical state of its operand</td>
+            <td>3</td>
+            <td>!a</td>
+        </tr>
+        <tr>
+            <td>&</td>
+            <td>Bitwise AND</td>
+            <td>Performs AND operation on each bit</td>
+            <td>11</td>
+            <td>a & b</td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>Bitwise OR</td>
+            <td>Performs OR operation on each bit</td>
+            <td>7</td>
+            <td>a | b</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>Bitwise XOR</td>
+            <td>Performs XOR operation on each bit</td>
+            <td>8</td>
+            <td>a ^ b</td>
+        </tr>
+        <tr>
+            <td>~</td>
+            <td>Bitwise NOT</td>
+            <td>Inverts all the bits of the operand</td>
+            <td>3</td>
+            <td>~a</td>
+        </tr>
+        <tr>
+            <td>&lt;&lt;</td>
+            <td>Left shift</td>
+            <td>Shifts bits of the operand to the left</td>
+            <td>12</td>
+            <td>a &lt;&lt; 1</td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;</td>
+            <td>Right shift</td>
+            <td>Shifts bits of the operand to the right</td>
+            <td>12</td>
+            <td>a &gt;&gt; 1</td>
+        </tr>
+        <tr>
+            <td>++</td>
+            <td>Increment</td>
+            <td>Increases the value of the operand by 1</td>
+            <td>15</td>
+            <td>++a or a++</td>
+        </tr>
+        <tr>
+            <td>--</td>
+            <td>Decrement</td>
+            <td>Decreases the value of the operand by 1</td>
+            <td>15</td>
+            <td>--a or a--</td>
+        </tr>
+        <tr>
+            <td>?:</td>
+            <td>Ternary operator</td>
+            <td>Conditional expression</td>
+            <td>3</td>
+            <td>a ? b : c</td>
+        </tr>
+        <tr>
+            <td>&</td>
+            <td>Address of</td>
+            <td>Returns the memory address of its operand</td>
+            <td>15</td>
+            <td>&a</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Dereference</td>
+            <td>Points to the value at the memory address</td>
+            <td>15</td>
+            <td>*ptr</td>
+        </tr>
+        <tr>
+            <td>sizeof</td>
+            <td>Size of</td>
+            <td>Returns the size (in bytes) of its operand</td>
+            <td>15</td>
+            <td>sizeof(a)</td>
+        </tr>
+        <tr>
+            <td>,</td>
+            <td>Comma</td>
+            <td>Separates expressions, evaluates them left to right</td>
+            <td>1</td>
+            <td>a = 1, b = 2</td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>Add and assign</td>
+            <td>Adds right operand to the left and assigns result</td>
+            <td>2</td>
+            <td>a += 5</td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>Subtract and assign</td>
+            <td>Subtracts right operand from the left and assigns result</td>
+            <td>2</td>
+            <td>a -= 5</td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>Multiply and assign</td>
+            <td>Multiplies left operand by the right and assigns result</td>
+            <td>2</td>
+            <td>a *= 5</td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>Divide and assign</td>
+            <td>Divides left operand by the right and assigns result</td>
+            <td>2</td>
+            <td>a /= 5</td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>Modulus and assign</td>
+            <td>Takes modulus using both operands and assigns result</td>
+            <td>2</td>
+            <td>a %= 5</td>
+        </tr>
+        <tr>
+            <td>&amp;=</td>
+            <td>Bitwise AND and assign</td>
+            <td>Performs bitwise AND and assigns result</td>
+            <td>2</td>
+            <td>a &= b</td>
+        </tr>
+        <tr>
+            <td>|=</td>
+            <td>Bitwise OR and assign</td>
+            <td>Performs bitwise OR and assigns result</td>
+            <td>2</td>
+            <td>a |= b</td>
+        </tr>
+        <tr>
+            <td>^=</td>
+            <td>Bitwise XOR and assign</td>
+            <td>Performs bitwise XOR and assigns result</td>
+            <td>2</td>
+            <td>a ^= b</td>
+        </tr>
+        <tr>
+            <td>&lt;&lt;=</td>
+            <td>Left shift and assign</td>
+            <td>Left shifts bits of the operand and assigns result</td>
+            <td>2</td>
+            <td>a &lt;&lt;= 1</td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;=</td>
+            <td>Right shift and assign</td>
+            <td>Right shifts bits of the operand and assigns result</td>
+            <td>2</td>
+            <td>a &gt;&gt;= 1</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
