@@ -251,7 +251,7 @@
             // Speak a random birthday message after 5 seconds
             setTimeout(() => {
                 const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                document.title=randomMessage;
+                //document.title=randomMessage;
                 const speech = new SpeechSynthesisUtterance(randomMessage);
                 speechSynthesis.speak(speech);
             }, 5000);
