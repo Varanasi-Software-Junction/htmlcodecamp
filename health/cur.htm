@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Fitness Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .test-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .test-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Weekly Fitness Timetable</h1>
+
+    <table id="scheduleTable">
+        <tr>
+            <th>Day</th>
+            <th>Activity</th>
+            <th>Duration</th>
+        </tr>
+    </table>
+
+    <div class="status">
+        <div id="currentTime"></div>
+        <div id="nextBreak"></div>
+        <div id="timeRemaining"></div>
+    </div>
+
+    <button class="test-button" onclick="testSound()">Test Sound</button>
+
+    <script>
+        let reminders = [];
+
+        // Load schedule from JSON file
+        fetch('schedule.json')
+            .then(response => response.json())
+            .then(data => {
+                const schedule = data.schedule;
+                const table = document.getElementById("scheduleTable");
+
+                schedule.forEach((item, index) => {
+                    const row = table.insertRow(index + 1);
+                    row.insertCell(0).innerText = item.day;
+                    row.insertCell(1).innerText = item.activity;
+                    row.insertCell(2).innerText = item.duration;
+
+                    // Add reminders for the activities
+                    reminders.push({ day: index + 1, time: "07:30", message: `Time for your ${item.activity.toLowerCase()}!` }); // Activity reminders
+                });
+
+                // Add hourly break reminders
+                for (let hour = 9; hour < 17; hour++) {
+                    reminders.push({ day: 0, time: `${String(hour).padStart(2, '0')}:00`, message: "Take a break! Stand up, stretch, or walk around!" });
+                    reminders.push({ day: 0, time: `${String(hour).padStart(2, '0')}:30`, message: "It's time for a quick break! Stretch or walk around!" });
+                }
+            })
+            .catch(error => console.error('Error loading schedule:', error));
+
+        function speakMessage(message) {
+            const speech = new SpeechSynthesisUtterance(message);
+            speech.lang = 'en-US';
+            window.speechSynthesis.speak(speech);
+        }
+
+        function testSound() {
+            speakMessage("Testing sound. If you can hear this, the sound is working correctly!");
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const currentDay = now.getDay();
+            const currentTime = now.toTimeString().slice(0, 5); // Get HH:MM
+            document.getElementById("currentTime").innerText = `Current Date and Time: ${now.toLocaleString()}`;
+
+            let nextBreakTime = null;
+            for (const reminder of reminders) {
+                if (reminder.day === currentDay || reminder.day === 0) {
+                    if (reminder.time > currentTime) {
+                        nextBreakTime = reminder.time;
+                        break;
+                    }
+                }
+            }
+
+            if (nextBreakTime) {
+                const [nextHour, nextMinute] = nextBreakTime.split(':').map(Number);
+                const nextBreakDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextHour, nextMinute);
+                const timeDiff = nextBreakDate - now;
+                const minutesRemaining = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsRemaining = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                document.getElementById("nextBreak").innerText = `Next Break at: ${nextBreakTime}`;
+                document.getElementById("timeRemaining").innerText = `Time Remaining: ${minutesRemaining} minutes and ${secondsRemaining} seconds`;
+            } else {
+                document.getElementById("nextBreak").innerText = "No more breaks for today.";
+                document.getElementById("timeRemaining").innerText = "";
+            }
+        }
+
+        function checkReminders() {
+            const now = new Date();
+            const currentDay = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+            const currentTime = now.toTimeString().slice(0, 5); // Get HH:MM
+
+            reminders.forEach(reminder => {
+                if (reminder.day === currentDay || reminder.day === 0) {
+                    if (reminder.time === currentTime) {
+                        alert(reminder.message);
+                        speakMessage(reminder.message); // Speak the reminder
+                    }
+                }
+            });
+        }
+
+        setInterval(() => {
+            updateClock();
+            checkReminders();
+        }, 1000); // Check every second
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+    "schedule": [
+        { "day": "Monday", "activity": "Strength training (light weights or resistance bands)", "duration": "30 minutes" },
+        { "day": "Tuesday", "activity": "Balance exercises (tai chi, yoga, or similar)", "duration": "30 minutes" },
+        { "day": "Wednesday", "activity": "Aerobic exercise (brisk walking or cycling)", "duration": "30 minutes" },
+        { "day": "Thursday", "activity": "Flexibility and stretching (gentle yoga)", "duration": "30 minutes" },
+        { "day": "Friday", "activity": "Strength training (focus on different muscle groups)", "duration": "30 minutes" },
+        { "day": "Saturday", "activity": "Outdoor activity (hiking, walking in nature)", "duration": "45 minutes to 1 hour" },
+        { "day": "Sunday", "activity": "Rest and recovery (light stretching or relaxation)", "duration": "20-30 minutes" }
+    ]
+}

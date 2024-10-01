@@ -234,6 +234,10 @@
 
             // Function to handle the celebrate button click
             window.celebrate = function() {
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                //document.title=randomMessage;
+                const speech = new SpeechSynthesisUtterance(randomMessage);
+                speechSynthesis.speak(speech);
                 alert(`Happy early birthday, Champak Roy! You have ${candlesCount} candles and ${remainingDays} days left until your next birthday.`);
             }
 
@@ -254,7 +258,7 @@
                 //document.title=randomMessage;
                 const speech = new SpeechSynthesisUtterance(randomMessage);
                 speechSynthesis.speak(speech);
-            }, 5000);
+            }, 1000);
 
             // Slightly vary the animation every day
             const animationVariation = daysPassed % 5;
