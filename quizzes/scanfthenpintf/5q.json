@@ -1,0 +1,33 @@
+[
+    {
+        "question": "What is the purpose of the printf function in C?",
+        "options": ["To take input from the user", "To output data to the console", "To declare variables", "To create functions"],
+        "answer": 1,
+        "explanation": "The printf function is used to output formatted data to the console. It allows you to display variables, text, and other data types."
+    },
+    {
+        "question": "What is the format specifier for an integer in printf?",
+        "options": ["%d", "%f", "%c", "%s"],
+        "answer": 0,
+        "explanation": "In printf, the format specifier %d is used to output an integer value."
+    },
+    {
+        "question": "How do you read a string input from the user in C?",
+        "options": ["scanf('%s', string);", "scanf('%d', string);", "gets(string);", "print(string);"],
+        "answer": 0,
+        "explanation": "You can read a string input using scanf with the format specifier %s. For example, scanf('%s', string); stores the input in the variable string."
+    },
+    {
+        "question": "Which format specifier is used for floating-point numbers?",
+        "options": ["%d", "%f", "%s", "%c"],
+        "answer": 1,
+        "explanation": "The format specifier %f is used in printf to output floating-point numbers."
+    }
+,
+{
+    "question": "New Q",
+    "options": ["%d", "%f", "%s", "%c"],
+    "answer": 1,
+    "explanation": "The format specifier %f is used in printf to output floating-point numbers."
+}
+]

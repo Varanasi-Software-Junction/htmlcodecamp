@@ -1,0 +1,208 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Updated font family */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Light background for contrast */
+}
+
+.container {
+    width: 90%;
+    max-width: 800px; /* Max width for larger screens */
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Smaller and animated flip container */
+.flip-container {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    perspective: 1000px;
+    animation: move-around 20s infinite linear;
+}
+
+.flip-container .flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-container:hover .flipper {
+    border-style: ridge;
+}
+
+.flip-image {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframe animation to move the image randomly */
+@keyframes move-around {
+    0% { top: 20px; left: 20px; }
+    25% { top: 50px; left: 80%; }
+    50% { top: 80%; left: 50%; }
+    75% { top: 50%; left: 20px; }
+    100% { top: 20px; left: 20px; }
+}
+
+/* Correct and incorrect answer styles */
+.correct-answer {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.incorrect-answer {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+button {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient background */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
+    transition: all 0.3s ease; /* Smooth transition */
+    margin-top: 10px;
+    display: inline-block; /* Align with other elements */
+}
+
+button:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Button lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+}
+
+/* Custom Radio Button Styles */
+input[type="radio"] {
+    appearance: none; /* Hide the default radio button */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="radio"]:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+input[type="radio"]:checked {
+    background-color: #007bff; /* Blue background when checked */
+    border-color: #0056b3; /* Darker blue border */
+}
+
+input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Label Styles */
+label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    padding: 12px;
+    margin: 20px auto;
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* WhatsApp Button Hover Effect */
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    button {
+        width: 100%; /* Full-width button on smaller screens */
+    }
+
+    .flip-container {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the image to the right */
+    margin-top: -200px; /* Adds space above the image */
+}
+
+.c-image {
+    width: 150px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+pre, code {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap; /* Allows code to wrap in smaller screens */
+    display: block;
+    margin: 20px 0;
+    overflow-x: auto; /* Scroll for longer code */
+}
+
+code {
+    color: #d63384; /* Style for the code text */
+}
