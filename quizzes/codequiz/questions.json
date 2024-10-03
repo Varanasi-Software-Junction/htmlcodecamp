@@ -1,0 +1,62 @@
+[
+    {
+        "question": "What does the 'printf' function do in C?",
+        "options": ["It prints text to the console", "It scans input from the user", "It initializes a variable", "It returns the length of a string"],
+        "answer": 0,
+        "explanation": "'printf' is used to print formatted output to the console in C. It can display strings, integers, floats, and more."
+    },
+    {
+        "question": "Which format specifier is used for printing integers in 'printf'?",
+        "options": ["%f", "%d", "%s", "%c"],
+        "answer": 1,
+        "explanation": "The '%d' format specifier is used to print integers in C using 'printf'. It tells the function to expect an integer argument."
+    },
+    {
+        "question": "How can you read a string input from the user using 'scanf'?",
+        "options": ["scanf(\"%s\", variable);", "scanf(\"%d\", variable);", "scanf(\"%f\", variable);", "scanf(\"%c\", variable);"],
+        "answer": 0,
+        "explanation": "To read a string input using 'scanf', you use '%s' format specifier. The variable should be a char array (string) to hold the input."
+    },
+    {
+        "question": "What will happen if 'scanf' is used to read a string without using '&'?",
+        "options": ["It will cause a segmentation fault", "It will read the input correctly", "It will skip the input", "It will result in an infinite loop"],
+        "answer": 0,
+        "explanation": "In C, you do not use '&' with a character array when using 'scanf' because the array name already acts as a pointer to its first element."
+    },
+    {
+        "question": "What does the following code print: printf(\"%d + %d = %d\", 2, 3, 2 + 3);?",
+        "options": ["2 + 3 = 2 + 3", "2 + 3 = 5", "2 + 3 = 23", "Error in code"],
+        "answer": 1,
+        "explanation": "The code prints '2 + 3 = 5' because 'printf' evaluates the expression '2 + 3' and prints the result using the '%d' format specifiers."
+    },
+    {
+        "question": "Which of the following is the correct way to declare a 'printf' statement with a float value?",
+        "options": ["printf(\"%f\", 3.14);", "printf(\"%d\", 3.14);", "printf(\"%c\", 3.14);", "printf(\"%s\", 3.14);"],
+        "answer": 0,
+        "explanation": "To print a float value, you should use the '%f' format specifier in the 'printf' function. This tells it to expect a float argument."
+    },
+    {
+        "question": "What will be the output of the following code? printf(\"Hello %s!\", \"World\");",
+        "options": ["Hello World!", "Hello %s!", "Error", "Hello \"World\"!"],
+        "answer": 0,
+        "explanation": "The code will output 'Hello World!' because the '%s' format specifier is replaced by the string \"World\" in the 'printf' function."
+    },
+    {
+        "question": "How can you read an integer input from the user using 'scanf'?",
+        "options": ["scanf(\"%s\", &variable);", "scanf(\"%d\", variable);", "scanf(\"%f\", &variable);", "scanf(\"%d\", &variable);"],
+        "answer": 3,
+        "explanation": "To read an integer input using 'scanf', you use the '%d' format specifier along with the '&' operator to pass the address of the variable."
+    },
+    {
+        "question": "What is the purpose of the 'return 0;' statement in the main function?",
+        "options": ["Indicates successful termination", "Indicates an error occurred", "Starts the program", "Ends the program early"],
+        "answer": 0,
+        "explanation": "'return 0;' indicates that the program has completed successfully. It's a convention in C to return zero from the 'main' function."
+    },
+    {
+        "question": "Which format specifier is used to print a character in 'printf'?",
+        "options": ["%s", "%d", "%c", "%f"],
+        "answer": 2,
+        "explanation": "The '%c' format specifier is used to print a single character in C using 'printf'. It expects a char argument."
+    }
+]
