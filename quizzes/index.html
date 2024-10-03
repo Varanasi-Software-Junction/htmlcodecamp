@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Online MCQ Challenge: Test Your Knowledge of Printf and Scanf!</title>
+    <link rel="icon" type="image/x-icon" href="me.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Add this line -->
+
+    <link rel="stylesheet" href="styles.css">
+
+
+    <meta property="og:title" content="Interactive Online MCQ Challenge">
+<meta property="og:description" content="Test your knowledge with our engaging online MCQ test focused on C programming, featuring questions on printf and scanf.">
+<meta property="og:image" content="URL_TO_YOUR_IMAGE">
+<meta property="og:url" content="YOUR_WEBSITE_URL">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Varanasi Software Junction">
+
+</head>
+
+<body>
+
+    <!-- 3D Flipping Image Section -->
+    <div class="flip-container">
+        <div class="flipper">
+            <img src="me.jpg" alt="Me" class="flip-image">
+        </div>
+    </div>
+
+    <div class="container" id="quiz-container">
+        <h1>Interactive Online MCQ Challenge: Test Your Knowledge of Printf and Scanf!</h1>
+        <p id="question"></p>
+        <form id="options-form"></form>
+        <div class="image-container">
+            <img src="c.png" alt="C Programming" class="c-image">
+        </div>
+        <br><br>
+        <button id="next-btn" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+
+    <div class="container" id="result-container" style="display: none;">
+        <h1>Test Results</h1>
+        <p>Your score: <span id="score"></span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Q. No.</th>
+                    <th>Question</th>
+                    <th>Options</th>
+                    <th>Selected Answer</th>
+                    <th>Result</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody id="result-table-body"></tbody>
+        </table>
+        <button onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/919335874326?text=Hi, I would like to get in touch!" target="_blank" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+        Contact Me on WhatsApp
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
