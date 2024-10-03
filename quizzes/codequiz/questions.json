@@ -1,62 +1,68 @@
 [
     {
-        "question": "What does the 'printf' function do in C?",
-        "options": ["It prints text to the console", "It scans input from the user", "It initializes a variable", "It returns the length of a string"],
+        "question": "What will the following code output? printf(\"%d %d\", 10, 20);",
+        "options": ["10 20", "20 10", "10, 20", "Error"],
         "answer": 0,
-        "explanation": "'printf' is used to print formatted output to the console in C. It can display strings, integers, floats, and more."
+        "explanation": "The output will be '10 20' because the first %d is replaced with the first argument (10) and the second %d is replaced with the second argument (20)."
     },
     {
-        "question": "Which format specifier is used for printing integers in 'printf'?",
-        "options": ["%f", "%d", "%s", "%c"],
-        "answer": 1,
-        "explanation": "The '%d' format specifier is used to print integers in C using 'printf'. It tells the function to expect an integer argument."
-    },
-    {
-        "question": "How can you read a string input from the user using 'scanf'?",
-        "options": ["scanf(\"%s\", variable);", "scanf(\"%d\", variable);", "scanf(\"%f\", variable);", "scanf(\"%c\", variable);"],
+        "question": "What will the following code output? printf(\"%f\", 5);",
+        "options": ["5.000000", "5", "5.0", "Error"],
         "answer": 0,
-        "explanation": "To read a string input using 'scanf', you use '%s' format specifier. The variable should be a char array (string) to hold the input."
+        "explanation": "The output will be '5.000000'. In C, when you use %f with an integer, it is automatically promoted to a float, and printed with six decimal places by default."
     },
     {
-        "question": "What will happen if 'scanf' is used to read a string without using '&'?",
-        "options": ["It will cause a segmentation fault", "It will read the input correctly", "It will skip the input", "It will result in an infinite loop"],
+        "question": "What is the output of the following code? printf(\"%c %c\", 'A', 65);",
+        "options": ["A A", "A 65", "65 A", "Error"],
         "answer": 0,
-        "explanation": "In C, you do not use '&' with a character array when using 'scanf' because the array name already acts as a pointer to its first element."
+        "explanation": "The output will be 'A A'. The first %c is replaced by the character 'A'. The second %c is replaced by 65, which is the ASCII value of 'A'."
     },
     {
-        "question": "What does the following code print: printf(\"%d + %d = %d\", 2, 3, 2 + 3);?",
-        "options": ["2 + 3 = 2 + 3", "2 + 3 = 5", "2 + 3 = 23", "Error in code"],
-        "answer": 1,
-        "explanation": "The code prints '2 + 3 = 5' because 'printf' evaluates the expression '2 + 3' and prints the result using the '%d' format specifiers."
-    },
-    {
-        "question": "Which of the following is the correct way to declare a 'printf' statement with a float value?",
-        "options": ["printf(\"%f\", 3.14);", "printf(\"%d\", 3.14);", "printf(\"%c\", 3.14);", "printf(\"%s\", 3.14);"],
+        "question": "What will be the output of this code? printf(\"%.2f\", 3.14159);",
+        "options": ["3.14", "3.14159", "3.1", "3.142"],
         "answer": 0,
-        "explanation": "To print a float value, you should use the '%f' format specifier in the 'printf' function. This tells it to expect a float argument."
+        "explanation": "The output will be '3.14'. The %.2f format specifier rounds the float to two decimal places when printed."
     },
     {
-        "question": "What will be the output of the following code? printf(\"Hello %s!\", \"World\");",
-        "options": ["Hello World!", "Hello %s!", "Error", "Hello \"World\"!"],
+        "question": "What does the following code print? printf(\"Hello %s\", \"World\");",
+        "options": ["Hello World", "Hello %s", "Hello World!", "Error"],
         "answer": 0,
-        "explanation": "The code will output 'Hello World!' because the '%s' format specifier is replaced by the string \"World\" in the 'printf' function."
+        "explanation": "The output will be 'Hello World'. The %s format specifier is replaced by the string 'World'."
     },
     {
-        "question": "How can you read an integer input from the user using 'scanf'?",
-        "options": ["scanf(\"%s\", &variable);", "scanf(\"%d\", variable);", "scanf(\"%f\", &variable);", "scanf(\"%d\", &variable);"],
-        "answer": 3,
-        "explanation": "To read an integer input using 'scanf', you use the '%d' format specifier along with the '&' operator to pass the address of the variable."
-    },
-    {
-        "question": "What is the purpose of the 'return 0;' statement in the main function?",
-        "options": ["Indicates successful termination", "Indicates an error occurred", "Starts the program", "Ends the program early"],
+        "question": "What is the output of this code? printf(\"%d + %d = %d\", 2, 3, 2 + 3);",
+        "options": ["2 + 3 = 5", "2 + 3 = 23", "2 + 3 = 2 + 3", "Error"],
         "answer": 0,
-        "explanation": "'return 0;' indicates that the program has completed successfully. It's a convention in C to return zero from the 'main' function."
+        "explanation": "The output will be '2 + 3 = 5'. The printf function evaluates the expression '2 + 3' and replaces the last %d with the result."
     },
     {
-        "question": "Which format specifier is used to print a character in 'printf'?",
-        "options": ["%s", "%d", "%c", "%f"],
+        "question": "What does the following print? printf(\"%5d\", 42);",
+        "options": ["42", " 42", "   42", "Error"],
         "answer": 2,
-        "explanation": "The '%c' format specifier is used to print a single character in C using 'printf'. It expects a char argument."
+        "explanation": "The output will be '   42'. The '5' in %5d specifies a minimum field width of 5 characters. The number is right-aligned by default."
+    },
+    {
+        "question": "What is the output of this code snippet? printf(\"%d %d %d\", 1, 2);",
+        "options": ["1 2 0", "1 2", "1 2 1", "Error"],
+        "answer": 0,
+        "explanation": "The output will be '1 2 0'. The printf function expects three integers, but only two are provided. The third is implicitly assigned the value 0."
+    },
+    {
+        "question": "What will this code print? printf(\"%s %d\", \"Age\", 25);",
+        "options": ["Age 25", "25 Age", "Age, 25", "Error"],
+        "answer": 0,
+        "explanation": "The output will be 'Age 25'. The %s is replaced with 'Age' and %d is replaced with the integer 25."
+    },
+    {
+        "question": "What will the following code output? printf(\"%d%%\", 100);",
+        "options": ["100%", "100", "100%%", "Error"],
+        "answer": 0,
+        "explanation": "The output will be '100%'. The double percentage signs '%%' in printf are used to print a single '%' character."
+    },
+    {
+        "question": "What is the output of printf(\"%.3f\", 3.5);",
+        "options": ["3.500", "3.50", "3.5", "Error"],
+        "answer": 0,
+        "explanation": "The output will be '3.500'. The %.3f format specifier tells printf to display the floating-point number with three decimal places."
     }
 ]
