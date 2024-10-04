@@ -28,7 +28,7 @@ function shuffleQuestionsAndOptions() {
 
 // Load questions from questions.json and initialize the quiz
 function loadQuestions() {
-    fetch('5q.json')
+    fetch('questions.json')
         .then(response => response.json())
         .then(data => {
             questions = data; // Store the questions from JSON file
@@ -136,7 +136,7 @@ function endQuiz() {
 
         // Selected Answer
         const cellSelectedAnswer = document.createElement("td");
-        cellSelectedAnswer.textContent = entry.selectedAnswer;
+        cellSelectedAnswer.innerHTML = entry.selectedAnswer;
         row.appendChild(cellSelectedAnswer);
 
         // Result (Correct or Incorrect)

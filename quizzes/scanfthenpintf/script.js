@@ -124,6 +124,7 @@ function endQuiz() {
 
         // Question Text
         const cellQuestion = document.createElement("td");
+        // cellQuestion.textContent = entry.question;
         cellQuestion.textContent = entry.question;
         row.appendChild(cellQuestion);
 
@@ -153,7 +154,8 @@ function endQuiz() {
 
         // Explanation
         const cellExplanation = document.createElement("td");
-        cellExplanation.textContent = entry.explanation;
+        // cellExplanation.textContent = entry.explanation;
+        cellExplanation.innerHTML = entry.explanation;
         row.appendChild(cellExplanation);
 
         resultTableBody.appendChild(row);

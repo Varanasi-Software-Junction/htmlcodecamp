@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A step-by-step guide to creating a Django To-Do list application using MySQL as the database.">
+    <meta name="description"
+        content="A step-by-step guide to creating a Django To-Do list application using MySQL as the database.">
     <title>Creating a Django To-Do List App with Models, Forms, and MySQL</title>
     <link rel="stylesheet" href="styles.css"> <!-- Add your stylesheet here -->
     <style>
@@ -13,48 +15,61 @@
             margin: 0;
             padding: 0;
         }
-        h1, h2, h3, p {
+
+        h1,
+        h2,
+        h3,
+        p {
             color: #333;
         }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
+
         .content-section {
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         pre {
             background-color: #f4f4f4;
             padding: 10px;
             border-radius: 5px;
             overflow-x: auto;
         }
+
         code {
             color: #d63384;
         }
+
         a {
             color: #007bff;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .nav-links {
             margin: 10px 0;
             font-size: 1.1em;
         }
+
         .nav-links a {
             margin-right: 15px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -76,7 +91,8 @@
             <h2>1. Setting Up the Environment</h2>
             <p>Before we start building the Django To-Do app, make sure you have the following installed:</p>
             <ul>
-                <li><strong>Python 3.x</strong>: Download and install from <a href="https://www.python.org/downloads/" target="_blank">python.org</a>.</li>
+                <li><strong>Python 3.x</strong>: Download and install from <a href="https://www.python.org/downloads/"
+                        target="_blank">python.org</a>.</li>
                 <li><strong>Django</strong>: Install via <code>pip</code> using <code>pip install django</code>.</li>
                 <li><strong>MySQL</strong>: Install MySQL Server and create a database for your project.</li>
             </ul>
@@ -207,7 +223,8 @@ python manage.py migrate</code></pre>
             <p>To run the Django development server and test your To-Do app, use:</p>
             <pre><code>python manage.py runserver</code></pre>
 
-            <p>Open your browser and navigate to <a href="http://127.0.0.1:8000/todo/">http://127.0.0.1:8000/todo/</a> to see the app in action.</p>
+            <p>Open your browser and navigate to <a href="http://127.0.0.1:8000/todo/">http://127.0.0.1:8000/todo/</a>
+                to see the app in action.</p>
         </section>
 
         <footer>
@@ -215,4 +232,5 @@ python manage.py migrate</code></pre>
         </footer>
     </div>
 </body>
+
 </html>
