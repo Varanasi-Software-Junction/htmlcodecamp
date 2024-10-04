@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A step-by-step guide to creating a Django To-Do list application using MySQL as the database.">
+    <title>Creating a Django To-Do List App with Models, Forms, and MySQL</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Add your stylesheet here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, p {
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .content-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .nav-links {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .nav-links a {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Building a Django To-Do App with Models, Forms, and MySQL</h1>
+            <p>A step-by-step guide to creating a Django To-Do list application using MySQL as the database.</p>
+            <div class="nav-links">
+                <a href="#setup-environment">Setting Up the Environment</a>
+                <a href="#mysql-configuration">Installing MySQL and Configuring Django</a>
+                <a href="#creating-project">Creating a Django Project and App</a>
+                <a href="#models">Setting Up Models</a>
+                <a href="#forms">Creating and Validating Forms</a>
+                <a href="#views-templates">Connecting Views and Templates</a>
+                <a href="#migrations">Running Migrations for MySQL</a>
+                <a href="#testing">Testing the Application</a>
+            </div>
+        </header>
+
+        <section id="setup-environment" class="content-section">
+            <h2>1. Setting Up the Environment</h2>
+            <p>Before we start building the Django To-Do app, make sure you have the following installed:</p>
+            <ul>
+                <li><strong>Python 3.x</strong>: Download and install from <a href="https://www.python.org/downloads/" target="_blank">python.org</a>.</li>
+                <li><strong>Django</strong>: Install via <code>pip</code> using <code>pip install django</code>.</li>
+                <li><strong>MySQL</strong>: Install MySQL Server and create a database for your project.</li>
+            </ul>
+        </section>
+
+        <section id="mysql-configuration" class="content-section">
+            <h2>2. Installing MySQL and Configuring Django</h2>
+            <h3>Step 1: Install MySQL Client</h3>
+            <p>To connect Django to MySQL, install the MySQL client:</p>
+            <pre><code>pip install mysqlclient</code></pre>
+
+            <h3>Step 2: Create a MySQL Database</h3>
+            <p>Create a MySQL database for your Django project by running:</p>
+            <pre><code>mysql -u root -p
+CREATE DATABASE todo_db;</code></pre>
+
+            <h3>Step 3: Update Django's Database Settings</h3>
+            <p>Update your <code>settings.py</code> to configure MySQL as your database:</p>
+            <pre><code>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'todo_db',
+        'USER': 'root',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}</code></pre>
+        </section>
+
+        <section id="creating-project" class="content-section">
+            <h2>3. Creating a Django Project and App</h2>
+            <h3>Step 1: Create the Project</h3>
+            <p>To create a new Django project, run:</p>
+            <pre><code>django-admin startproject todo_project
+cd todo_project</code></pre>
+
+            <h3>Step 2: Create the To-Do App</h3>
+            <p>Create a new app called "todo" by running:</p>
+            <pre><code>python manage.py startapp todo</code></pre>
+
+            <h3>Step 3: Register the App</h3>
+            <p>Add the app to <code>INSTALLED_APPS</code> in <code>todo_project/settings.py</code>:</p>
+            <pre><code>INSTALLED_APPS = [
+    'todo',
+]</code></pre>
+        </section>
+
+        <section id="models" class="content-section">
+            <h2>4. Setting Up Models (Database Structure)</h2>
+            <p>Define a model for your To-Do tasks in <code>todo/models.py</code>:</p>
+            <pre><code>from django.db import models
+
+class Todo(models.Model):
+    title = models.CharField(max_length=200)
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title</code></pre>
+        </section>
+
+        <section id="forms" class="content-section">
+            <h2>5. Creating and Validating Forms</h2>
+            <p>Create a form to handle user input in <code>todo/forms.py</code>:</p>
+            <pre><code>from django import forms
+from .models import Todo
+
+class TodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        fields = ['title', 'completed']</code></pre>
+        </section>
+
+        <section id="views-templates" class="content-section">
+            <h2>6. Connecting Views and Templates</h2>
+            <h3>Step 1: Create Views</h3>
+            <p>Define views in <code>todo/views.py</code> to display and handle forms:</p>
+            <pre><code>from django.shortcuts import render, redirect
+from .models import Todo
+from .forms import TodoForm
+
+def todo_list(request):
+    todos = Todo.objects.all()
+    if request.method == 'POST':
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('todo_list')
+    else:
+        form = TodoForm()
+
+    return render(request, 'todo_list.html', {'todos': todos, 'form': form})</code></pre>
+
+            <h3>Step 2: Create HTML Template</h3>
+            <p>Create a template to display tasks and the form in <code>todo/templates/todo_list.html</code>:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;To-Do List&lt;/title&gt;
+    &lt;link rel="stylesheet" href="{% static 'styles.css' %}"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;To-Do List&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for todo in todos %}
+            &lt;li&gt;{{ todo.title }} - {{ todo.completed|yesno:"Yes,No" }}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+    &lt;h2&gt;Add a New Task&lt;/h2&gt;
+    &lt;form method="POST"&gt;
+        {% csrf_token %}
+        {{ form.as_p }}
+        &lt;button type="submit"&gt;Add Task&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+
+        <section id="migrations" class="content-section">
+            <h2>7. Running Migrations for MySQL</h2>
+            <p>To create and apply migrations for MySQL, run the following commands:</p>
+            <pre><code>python manage.py makemigrations
+python manage.py migrate</code></pre>
+        </section>
+
+        <section id="testing" class="content-section">
+            <h2>8. Testing the Application</h2>
+            <p>To run the Django development server and test your To-Do app, use:</p>
+            <pre><code>python manage.py runserver</code></pre>
+
+            <p>Open your browser and navigate to <a href="http://127.0.0.1:8000/todo/">http://127.0.0.1:8000/todo/</a> to see the app in action.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Django To-Do Tutorial</p>
+        </footer>
+    </div>
+</body>
+</html>
