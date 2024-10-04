@@ -193,3 +193,11 @@ th,td{
     border-radius: 4px;
     font-size: 14px;
 }
+.correct-answer
+{
+    background-color: lightgreen;
+}
+.incorrect-answer
+{
+    background-color: lightsalmon;
+}
