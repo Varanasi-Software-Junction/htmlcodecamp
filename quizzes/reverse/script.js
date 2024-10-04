@@ -173,8 +173,8 @@ function restartQuiz() {
 
 // Initialize the quiz
 function initQuiz() {
-    jsonfilename="questions.json";
+    jsonfilename=document.getElementById("quizjson").value;
     loadQuestions(); // Load questions from the JSON file and start the quiz
 }
 
-window.onload = initQuiz;
+window.onload =initQuiz;
