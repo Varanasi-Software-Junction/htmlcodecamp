@@ -2,7 +2,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswers = [];
 let questions = [];
-
+let jsonfilename="";
 // Shuffle an array using Fisher-Yates algorithm
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -28,7 +28,7 @@ function shuffleQuestionsAndOptions() {
 
 // Load questions from questions.json and initialize the quiz
 function loadQuestions() {
-    fetch('questions.json')
+    fetch(jsonfilename)
         .then(response => response.json())
         .then(data => {
             questions = data; // Store the questions from JSON file
@@ -173,6 +173,7 @@ function restartQuiz() {
 
 // Initialize the quiz
 function initQuiz() {
+    jsonfilename="questions.json";
     loadQuestions(); // Load questions from the JSON file and start the quiz
 }
 
