@@ -21,7 +21,8 @@
 </head>
 
 <body>
-    <input value="javaquestions.json" type="text" id ="quizjson" style="display: none;">
+    <input value="printf.json" type="text" id ="quizjson" style="display: none;">
+
 
     <!-- 3D Flipping Image Section -->
     <div class="flip-container">
@@ -31,7 +32,7 @@
     </div>
 
     <div class="container" id="quiz-container">
-        <h1>Interactive Online MCQ Challenge: Test Your Knowledge of Printf and Scanf!</h1>
+        <h1 id="qheading">Interactive Online MCQ Challenge: Test Your Knowledge of Printf and Scanf!</h1>
         <p id="question"></p>
         <form id="options-form"></form>
         <div class="image-container">
@@ -40,6 +41,27 @@
         <br><br>
         <button id="next-btn" onclick="nextQuestion()" disabled>Next</button>
     </div>
+    
+<script>
+
+    // Get the full URL
+    let url = new URL(window.location.href);
+    
+    // Get the search parameters
+    let params = new URLSearchParams(url.search);
+    
+    // Access individual parameters
+    let jsfilename = params.get('fj'); // "Champak"
+    let qname = params.get('qn');   // "54"
+    
+    // Output them
+    console.log(jsfilename); // Champak
+    console.log(qname);  // 54
+    document.getElementById("quizjson").value=jsfilename;
+    document.getElementById("qheading").innerHTML=qname;
+    
+    </script>
+    
 
     <div class="container" id="result-container" style="display: none;overflow: scroll;">
         <h1>Test Results</h1>
