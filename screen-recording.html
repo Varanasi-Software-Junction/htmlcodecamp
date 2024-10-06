@@ -20,52 +20,59 @@
 
         let mediaRecorder;
         let recordedChunks = [];
-        let speechSynthesisStream;
-        
+
         async function getScreenAndAudioStream() {
-            // Capture the screen
-            const screenStream = await navigator.mediaDevices.getDisplayMedia({
-                video: true
-            });
-            
-            // Capture the synthesized speech audio using an audio context
-            const audioContext = new AudioContext();
-            const speechSynthesis = window.speechSynthesis;
-            const utterance = new SpeechSynthesisUtterance(textToRead.value);
+            try {
+                const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const destination = audioContext.createMediaStreamDestination();
+                const utterance = new SpeechSynthesisUtterance(textToRead.value);
 
-            const destination = audioContext.createMediaStreamDestination();
-            speechSynthesis.speak(utterance);
+                utterance.onstart = () => {
+                    const synthSource = audioContext.createMediaStreamSource(destination.stream);
+                    synthSource.connect(audioContext.destination);
+                    audioContext.resume();
+                };
 
-            // Pipe speech synthesis through the destination to create an audio stream
-            const synthSource = audioContext.createMediaStreamSource(destination.stream);
-            utterance.onstart = () => synthSource.connect(audioContext.destination);
+                speechSynthesis.speak(utterance);
 
-            // Combine the screen and audio streams
-            speechSynthesisStream = destination.stream;
-            const combinedStream = new MediaStream([...screenStream.getTracks(), ...speechSynthesisStream.getTracks()]);
-
-            return combinedStream;
+                const combinedStream = new MediaStream([...screenStream.getTracks(), ...destination.stream.getTracks()]);
+                return combinedStream;
+            } catch (error) {
+                console.error("Error accessing display media:", error);
+                return null;
+            }
         }
 
         startButton.addEventListener('click', async () => {
             const stream = await getScreenAndAudioStream();
-            
+            if (!stream) return; // Exit if no stream is available
+
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.ondataavailable = (event) => {
+                console.log("Data available:", event.data.size);
                 if (event.data.size > 0) {
                     recordedChunks.push(event.data);
+                } else {
+                    console.warn("No data available from ondataavailable event.");
                 }
             };
 
             mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, {
-                    type: 'video/webm'
-                });
-                video.src = URL.createObjectURL(blob);
-                recordedChunks = [];
+                if (recordedChunks.length > 0) {
+                    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                    const videoUrl = URL.createObjectURL(blob);
+                    video.src = videoUrl;
+                    video.play();
+                    recordedChunks = [];
+                } else {
+                    console.error("No recorded data available.");
+                }
             };
 
             mediaRecorder.start();
+            console.log("Media recorder started, stream active:", stream.active);
             startButton.disabled = true;
             stopButton.disabled = false;
         });
