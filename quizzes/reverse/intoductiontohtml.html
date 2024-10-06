@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detailed guide on the structure of HTML5 with explanations of tags, their uses, and importance.">
+    <meta name="description"
+        content="Detailed guide on the structure of HTML5 with explanations of tags, their uses, and importance.">
     <title>Understanding the Structure of HTML5</title>
     <style>
         body {
@@ -13,24 +15,29 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
         }
+
         nav {
             margin: 10px 0;
             text-align: center;
         }
+
         nav a {
             margin: 0 15px;
             color: #fff;
             text-decoration: none;
         }
+
         section {
             max-width: 1000px;
             margin: 20px auto;
@@ -38,9 +45,12 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h2, h3 {
+
+        h2,
+        h3 {
             color: #333;
         }
+
         footer {
             background-color: #333;
             color: #fff;
@@ -48,11 +58,13 @@
             padding: 10px;
             margin-top: 20px;
         }
+
         code {
             background-color: #eee;
             padding: 2px 4px;
             border-radius: 4px;
         }
+
         pre {
             background-color: #f4f4f4;
             padding: 10px;
@@ -61,6 +73,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -68,6 +81,7 @@
         <nav>
             <a href="#basic-structure">Basic Structure</a>
             <a href="#essential-tags">Essential HTML5 Tags</a>
+            <a href="#meta-tags">Meta Tags</a>
             <a href="#semantic-elements">Semantic HTML</a>
             <a href="#features">New Features</a>
             <a href="#conclusion">Conclusion</a>
@@ -76,7 +90,8 @@
 
     <section id="basic-structure">
         <h2>1. Basic Structure of an HTML5 Document</h2>
-        <p>A typical HTML5 document follows a well-defined structure that allows web browsers to interpret the page correctly. Below is the basic structure of an HTML5 document:</p>
+        <p>A typical HTML5 document follows a well-defined structure that allows web browsers to interpret the page
+            correctly. Below is the basic structure of an HTML5 document:</p>
 
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -89,73 +104,127 @@
     &lt;!-- Content goes here --&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <p>This is a simple, functional template that can be extended to build a website. Let’s break down the key parts of this structure.</p>
+        <p>This is a simple, functional template that can be extended to build a website. Let’s break down the key parts
+            of this structure.</p>
     </section>
 
     <section id="essential-tags">
         <h2>2. Essential HTML5 Tags and Their Uses</h2>
 
         <h3>&lt;!DOCTYPE html&gt;</h3>
-        <p>The <code>&lt;!DOCTYPE html&gt;</code> declaration is used to define the document type and version of HTML being used. In HTML5, this declaration is simplified compared to earlier versions. It tells the browser to render the page in standards mode, ensuring consistent behavior across different browsers.</p>
+        <p>The <code>&lt;!DOCTYPE html&gt;</code> declaration is used to define the document type and version of HTML
+            being used. In HTML5, this declaration is simplified compared to earlier versions. It tells the browser to
+            render the page in standards mode, ensuring consistent behavior across different browsers.</p>
 
         <h3>&lt;html&gt;</h3>
-        <p>The <code>&lt;html&gt;</code> tag is the root element that wraps all the content of an HTML document. It defines the entire HTML structure and includes attributes like <code>lang</code> to specify the language of the document, which is important for accessibility and SEO.</p>
+        <p>The <code>&lt;html&gt;</code> tag is the root element that wraps all the content of an HTML document. It
+            defines the entire HTML structure and includes attributes like <code>lang</code> to specify the language of
+            the document, which is important for accessibility and SEO.</p>
 
         <h3>&lt;head&gt;</h3>
-        <p>The <code>&lt;head&gt;</code> section contains metadata about the document that isn’t displayed directly on the web page. It includes links to stylesheets, scripts, and information like the character set, viewport settings, and the page’s title.</p>
+        <p>The <code>&lt;head&gt;</code> section contains metadata about the document that isn’t displayed directly on
+            the web page. It includes links to stylesheets, scripts, and information like the character set, viewport
+            settings, and the page’s title.</p>
 
         <h3>&lt;meta&gt;</h3>
-        <p>The <code>&lt;meta&gt;</code> tag provides metadata about the HTML document. Commonly used attributes include <code>charset</code> (character encoding), <code>viewport</code> (responsive design settings), and <code>description</code> (SEO description of the page).</p>
+        <p>The <code>&lt;meta&gt;</code> tag provides metadata about the HTML document. Commonly used attributes include
+            <code>charset</code> (character encoding), <code>viewport</code> (responsive design settings), and
+            <code>description</code> (SEO description of the page).</p>
 
         <h3>&lt;title&gt;</h3>
-        <p>The <code>&lt;title&gt;</code> tag sets the title of the document, which appears in the browser tab and search engine results.</p>
+        <p>The <code>&lt;title&gt;</code> tag sets the title of the document, which appears in the browser tab and
+            search engine results.</p>
 
         <h3>&lt;body&gt;</h3>
-        <p>The <code>&lt;body&gt;</code> tag contains all the visible content of the webpage, such as text, images, and multimedia elements. Everything the user interacts with resides within this tag.</p>
+        <p>The <code>&lt;body&gt;</code> tag contains all the visible content of the webpage, such as text, images, and
+            multimedia elements. Everything the user interacts with resides within this tag.</p>
+    </section>
+
+    <section id="meta-tags">
+        <h2>3. Understanding Meta Tags in HTML5</h2>
+
+        <p>Meta tags are essential parts of the HTML <code>&lt;head&gt;</code> section and are used to provide metadata
+            about the document. Let’s explore some of the most common meta tags and how they affect the behavior and
+            appearance of the web page.</p>
+
+        <h3>3.1 &lt;meta charset="UTF-8"&gt;</h3>
+        <p>The <code>&lt;meta charset="UTF-8"&gt;</code> tag sets the character encoding for the document to UTF-8,
+            which supports almost all characters from every language. This is especially important for pages with
+            special characters, symbols, or non-Latin scripts.</p>
+        <p><strong>Example:</strong> Changing the character encoding can affect how text is rendered on the page. If you
+            switch from UTF-8 to ISO-8859-1, for example, some special characters may not display correctly.</p>
+        <pre><code>&lt;meta charset="ISO-8859-1"&gt;</code></pre>
+        <p><strong>Effect:</strong> Special characters like “ä” and “ñ” might appear as broken symbols if you use a
+            character encoding that doesn’t support them.</p>
+
+        <h3>3.2 &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</h3>
+        <p>The <code>&lt;meta name="viewport"&gt;</code> tag is crucial for responsive web design. It controls how the
+            webpage is displayed on different screen sizes, especially on mobile devices.</p>
+        <p><strong>Example:</strong> You can modify the <code>width</code> and <code>initial-scale</code> properties to
+            customize how the page scales.</p>
+        <pre><code>&lt;meta name="viewport" content="width=500, initial-scale=2.0"&gt;</code></pre>
+        <p><strong>Effect:</strong> Setting <code>width=500</code> restricts the page width to 500 pixels, and
+            <code>initial-scale=2.0</code> zooms in, making the content appear larger. This can be useful for certain
+            design strategies, but it can also make the page difficult to navigate if not handled properly.</p>
+
+        <h3>3.3 &lt;meta name="description" content="..."&gt;</h3>
+        <p>The <code>&lt;meta name="description"&gt;</code> tag provides a brief summary of the page content for search
+            engines and social media. It’s often used by Google to show a preview of the page in search results.</p>
+        <p><strong>Example:</strong></p>
+        <pre><code>&lt;meta name="description" content="This page is a detailed guide to understanding HTML5 structure."&gt;</code></pre>
+        <p><strong>Effect:</strong> If you don’t include this meta tag, search engines might generate a less accurate
+            description of your page. Providing a good description helps improve your SEO.</p>
+
+        <h3>3.4 &lt;meta name="keywords" content="..."&gt;</h3>
+        <p>The <code>&lt;meta name="keywords"&gt;</code> tag allows you to define a set of keywords related to your
+            content. While this tag is no longer heavily used by search engines like Google, it can still help with SEO
+            on other platforms.</p>
+
+        <h3>3.5 &lt;meta http-equiv="refresh" content="5;url=http://example.com"&gt;</h3>
+        <p>This meta tag automatically refreshes the page after a specified time (5 seconds in this example) and
+            optionally redirects to a different URL.</p>
+        <p><strong>Example:</strong></p>
+        <pre><code>&lt;meta http-equiv="refresh" content="5;url=http://example.com"&gt;</code></pre>
+        <p><strong>Effect:</strong> This tag can be useful for redirecting users to a new page after a certain event,
+            but it should be used sparingly to avoid disrupting user experience.</p>
     </section>
 
     <section id="semantic-elements">
-        <h2>3. Semantic Elements in HTML5</h2>
-        <p>One of the most important changes in HTML5 is the introduction of <strong>semantic elements</strong>. These elements make the document more readable, both for humans and machines (like search engines and screen readers).</p>
+        <h2>4. Semantic HTML</h2>
+        <p>Semantic HTML elements are those that clearly describe their meaning in a human- and machine-readable way.
+            For example, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> are
+            semantic elements, while <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> are non-semantic.</p>
 
-        <h3>&lt;header&gt;</h3>
-        <p>Defines a header for a document or a section. It often contains navigation links, logos, and titles.</p>
-
-        <h3>&lt;nav&gt;</h3>
-        <p>The <code>&lt;nav&gt;</code> element is used to define a set of navigation links. It helps organize and present key navigational options for users.</p>
-
-        <h3>&lt;section&gt;</h3>
-        <p>Represents a standalone section of content, typically with its own heading.</p>
-
-        <h3>&lt;article&gt;</h3>
-        <p>The <code>&lt;article&gt;</code> tag is used for self-contained, independent pieces of content, such as blog posts or news articles.</p>
-
-        <h3>&lt;footer&gt;</h3>
-        <p>Defines a footer for a document or section. It typically contains information like author details, copyright info, or links to related content.</p>
+        <p>Using semantic HTML is important for accessibility, SEO, and maintainability. Search engines and screen
+            readers rely on the meaning behind tags to properly interpret content.</p>
     </section>
 
     <section id="features">
-        <h2>4. New Features of HTML5</h2>
-        <p>HTML5 introduced several new features and elements designed for modern web development:</p>
-
-        <h3>Multimedia Elements</h3>
-        <p>The <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags allow embedding multimedia files without the need for external plugins.</p>
-
-        <h3>Form Enhancements</h3>
-        <p>HTML5 improved forms with new input types, such as <code>email</code>, <code>date</code>, and <code>range</code>, which provide built-in validation.</p>
-
-        <h3>Canvas and SVG</h3>
-        <p>The <code>&lt;canvas&gt;</code> element allows drawing graphics via JavaScript. SVG (Scalable Vector Graphics) provides a way to define vector-based graphics directly in the HTML document.</p>
+        <h2>5. New Features in HTML5</h2>
+        <p>HTML5 introduced many new features to simplify web development and enhance user experience. Some of these
+            include:</p>
+        <ul>
+            <li><strong>New input types:</strong> HTML5 introduced new form controls like <code>date</code>,
+                <code>color</code>, and <code>range</code>, which simplify data entry.</li>
+            <li><strong>Multimedia elements:</strong> The <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code>
+                elements allow you to easily embed media without needing third-party plugins.</li>
+            <li><strong>Canvas and SVG:</strong> These elements provide powerful ways to create graphics directly in the
+                browser.</li>
+        </ul>
     </section>
 
     <section id="conclusion">
-        <h2>5. Conclusion</h2>
-        <p>HTML5 revolutionized the way we build web pages. By introducing new semantic elements, multimedia capabilities, and improved form controls, HTML5 helps create more interactive, accessible, and SEO-friendly websites. Understanding the structure of HTML5 is essential for anyone looking to create modern, maintainable web applications.</p>
+        <h2>6. Conclusion</h2>
+        <p>HTML5 is a powerful language that has significantly improved web development. By understanding the essential
+            tags, semantic elements, and new features, developers can create modern, accessible, and SEO-friendly web
+            pages. Always consider how each part of your HTML document affects both users and search engines to build
+            the best possible experience.</p>
     </section>
 
     <footer>
-        <p>© 2024 Understanding HTML5. All rights reserved.</p>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
 
 </body>
+
 </html>
