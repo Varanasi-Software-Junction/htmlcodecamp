@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen and Speech Recorder</title>
+    <title>Screen Recorder</title>
 </head>
 <body>
-    <h1>Screen and Speech Recorder</h1>
-    <textarea id="textToRead" rows="4" cols="50" placeholder="Enter text here"></textarea><br>
+    <h1>Screen Recorder</h1>
     <button id="start">Start Recording</button>
     <button id="stop" disabled>Stop Recording</button>
     <video id="recordedVideo" controls></video>
@@ -16,63 +15,30 @@
         const startButton = document.getElementById('start');
         const stopButton = document.getElementById('stop');
         const video = document.getElementById('recordedVideo');
-        const textToRead = document.getElementById('textToRead');
-
         let mediaRecorder;
         let recordedChunks = [];
 
-        async function getScreenAndAudioStream() {
-            try {
-                const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
-                
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const destination = audioContext.createMediaStreamDestination();
-                const utterance = new SpeechSynthesisUtterance(textToRead.value);
-
-                utterance.onstart = () => {
-                    const synthSource = audioContext.createMediaStreamSource(destination.stream);
-                    synthSource.connect(audioContext.destination);
-                    audioContext.resume();
-                };
-
-                speechSynthesis.speak(utterance);
-
-                const combinedStream = new MediaStream([...screenStream.getTracks(), ...destination.stream.getTracks()]);
-                return combinedStream;
-            } catch (error) {
-                console.error("Error accessing display media:", error);
-                return null;
-            }
-        }
-
         startButton.addEventListener('click', async () => {
-            const stream = await getScreenAndAudioStream();
-            if (!stream) return; // Exit if no stream is available
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video: true
+            });
 
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.ondataavailable = (event) => {
-                console.log("Data available:", event.data.size);
                 if (event.data.size > 0) {
                     recordedChunks.push(event.data);
-                } else {
-                    console.warn("No data available from ondataavailable event.");
                 }
             };
 
             mediaRecorder.onstop = () => {
-                if (recordedChunks.length > 0) {
-                    const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                    const videoUrl = URL.createObjectURL(blob);
-                    video.src = videoUrl;
-                    video.play();
-                    recordedChunks = [];
-                } else {
-                    console.error("No recorded data available.");
-                }
+                const blob = new Blob(recordedChunks, {
+                    type: 'video/webm'
+                });
+                video.src = URL.createObjectURL(blob);
+                recordedChunks = [];
             };
 
             mediaRecorder.start();
-            console.log("Media recorder started, stream active:", stream.active);
             startButton.disabled = true;
             stopButton.disabled = false;
         });
