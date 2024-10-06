@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen and Speech Recorder</title>
+</head>
+<body>
+    <h1>Screen and Speech Recorder</h1>
+    <textarea id="textToRead" rows="4" cols="50" placeholder="Enter text here"></textarea><br>
+    <button id="start">Start Recording</button>
+    <button id="stop" disabled>Stop Recording</button>
+    <video id="recordedVideo" controls></video>
+
+    <script>
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const video = document.getElementById('recordedVideo');
+        const textToRead = document.getElementById('textToRead');
+
+        let mediaRecorder;
+        let recordedChunks = [];
+        let speechSynthesisStream;
+        
+        async function getScreenAndAudioStream() {
+            // Capture the screen
+            const screenStream = await navigator.mediaDevices.getDisplayMedia({
+                video: true
+            });
+            
+            // Capture the synthesized speech audio using an audio context
+            const audioContext = new AudioContext();
+            const speechSynthesis = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(textToRead.value);
+
+            const destination = audioContext.createMediaStreamDestination();
+            speechSynthesis.speak(utterance);
+
+            // Pipe speech synthesis through the destination to create an audio stream
+            const synthSource = audioContext.createMediaStreamSource(destination.stream);
+            utterance.onstart = () => synthSource.connect(audioContext.destination);
+
+            // Combine the screen and audio streams
+            speechSynthesisStream = destination.stream;
+            const combinedStream = new MediaStream([...screenStream.getTracks(), ...speechSynthesisStream.getTracks()]);
+
+            return combinedStream;
+        }
+
+        startButton.addEventListener('click', async () => {
+            const stream = await getScreenAndAudioStream();
+            
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, {
+                    type: 'video/webm'
+                });
+                video.src = URL.createObjectURL(blob);
+                recordedChunks = [];
+            };
+
+            mediaRecorder.start();
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        });
+
+        stopButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+    </script>
+</body>
+</html>
