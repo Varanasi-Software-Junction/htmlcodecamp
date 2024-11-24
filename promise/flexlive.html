@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Practice</title>
+    <style>
+        .container
+        {
+            gap: 5px;
+            display: flex;
+            background-color: lightblue;
+            /* justify-content: space-around; */
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+        }
+    </style>
+    
+</head>
+<body>
+    <select id="justify" onchange="f(event)">
+<option value="center">Center</option>
+<option value="start">Start</option>
+<option value="end">End</option>
+
+    </select>
+    <div id="cnt" style="justify-content: start;" class="container">
+        <div class="item">Item 1 </div>
+        <div class="item">Item 2 </div>
+        <div class="item">Item 3 </div>
+    
+    </div>
+    <script>
+        const jst=document.getElementById("cnt");
+    function f(event)
+    {
+    console.log(event.target.value,jst);
+    jst.style.justifyContent=event.target.value;
+    }
+    
+        </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+<title>Promise</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script>
+ function f1()
+ {
+ let promise = new Promise(function(resolve, reject) {
+    let success = false; // Simulate success or failure
+    if (success) {
+        resolve("Operation succeeded!");
+    } else {
+        reject("Operation failed.");
+    }
+});
+
+promise
+    .then(function(result) {
+        console.log(result);  // Output: Operation succeeded!
+    })
+    .catch(function(error) {
+        console.log(error);  // Output: Operation failed (if rejected)
+    });
+ }
+ </script>
+</head>
+<body>
+ Output<div id="output"></div><br/>
+ 
+ <input type="button" value="Promise" onclick="f1(7)"><br/>
+ 
+</body>
+</html>

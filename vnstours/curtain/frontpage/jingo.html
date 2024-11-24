@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive E-Commerce Front Page Walkthrough</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            display: block;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid #333;
+        }
+        .illustration {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .illustration img {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #333;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Walkthrough: Building a Responsive Front Page for an E-commerce Shop Using CSS Grid</h1>
+
+    <h2>Step 1: Basic Structure</h2>
+    <p>We start by creating the basic HTML structure with a header, main content area, and a footer. The main content contains sections for categories and featured products.</p>
+
+    <code>
+        &lt;header&gt;<br>
+        &lt;h1&gt;Shop Name&lt;/h1&gt;<br>
+        &lt;nav&gt;<br>
+        &lt;ul&gt;<br>
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+        &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;<br>
+        &lt;!-- Other navigation items --&gt;<br>
+        &lt;/ul&gt;<br>
+        &lt;/nav&gt;<br>
+        &lt;/header&gt;<br>
+        &lt;!-- Main content with categories and products --&gt;<br>
+        &lt;footer&gt;&lt;p&gt;&copy; 2024 Shop Name. All rights reserved.&lt;/p&gt;&lt;/footer&gt;
+    </code>
+
+    <div class="illustration">
+        <img src="illustration1-bw.png" alt="Basic Structure Illustration">
+        <p>Illustration 1: Basic HTML structure</p>
+    </div>
+
+    <h2>Step 2: CSS Grid Layout</h2>
+    <p>Next, we define the grid layout for categories and products using CSS Grid. The number of columns adjusts based on the screen size.</p>
+
+    <code>
+        .grid-container {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;display: grid;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;gap: 20px;<br>
+        }<br><br>
+        @media (min-width: 768px) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;.categories .grid-container {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;.products .grid-container {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: repeat(4, 1fr);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        }
+    </code>
+
+    <div class="illustration">
+        <img src="illustration2-bw.png" alt="Grid Layout Illustration">
+        <p>Illustration 2: Grid layout for categories and products</p>
+    </div>
+
+    <h2>Step 3: Responsive Layout with Media Queries</h2>
+    <p>We add media queries to make the layout responsive. On smaller screens, categories and products will display in a single-column format.</p>
+
+    <code>
+        @media (max-width: 767px) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;.categories .grid-container,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;.products .grid-container {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        }
+    </code>
+
+    <div class="illustration">
+        <img src="illustration3-bw.png" alt="Responsive Layout Illustration">
+        <p>Illustration 3: Responsive layout using media queries</p>
+    </div>
+
+    <h2>Step 4: Enhancements for Better UX</h2>
+    <p>To make the user experience more interactive, we add hover effects to products and categories. This simple CSS enhancement improves visual appeal.</p>
+
+    <code>
+        .product-item:hover, <br>
+        .category-item:hover {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;transform: scale(1.05);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.3s ease;<br>
+        }
+    </code>
+
+    <div class="illustration">
+        <img src="illustration4-bw.png" alt="Hover Effect Illustration">
+        <p>Illustration 4: Adding hover effects for products and categories</p>
+    </div>
+
+    <h2>Step 5: Product Information and Images</h2>
+    <p>Include images and product information (name, price, etc.) to enhance the design. This step makes the product section more functional and visually engaging.</p>
+
+    <code>
+        &lt;div class="product-item"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="path-to-product.jpg" alt="Product Image"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Product Name&lt;/h3&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;$29.99&lt;/p&gt;<br>
+        &lt;/div&gt;
+    </code>
+
+    <div class="illustration">
+        <img src="illustration5-bw.png" alt="Product Information and Images">
+        <p>Illustration 5: Adding images and product details</p>
+    </div>
+
+    <h2>Step 6: Footer Design</h2>
+    <p>Finally, we complete the design with a simple footer containing copyright information. You can also add social media links and contact information here.</p>
+
+    <code>
+        &lt;footer&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&copy; 2024 Shop Name. All rights reserved.&lt;/p&gt;<br>
+        &lt;/footer&gt;
+    </code>
+
+    <div class="illustration">
+        <img src="illustration6-bw.png" alt="Footer Design">
+        <p>Illustration 6: Footer design</p>
+    </div>
+
+    <footer>
+        <p>Walkthrough by Champak Roy. Follow for more tutorials!</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Beautiful Beach",
+        "location": "Hawaii",
+        "picture": "https://via.placeholder.com/800x400?text=Beach",
+        "description": "A stunning beach with crystal-clear waters and soft sand."
+    },
+    {
+        "name": "Mountain Adventure",
+        "location": "Colorado",
+        "picture": "https://via.placeholder.com/800x400?text=Mountain",
+        "description": "Explore the majestic mountains and breathtaking views."
+    },
+    {
+        "name": "City Lights",
+        "location": "New York",
+        "picture": "https://via.placeholder.com/800x400?text=City",
+        "description": "The vibrant city that never sleeps, full of energy and life."
+    }
+]

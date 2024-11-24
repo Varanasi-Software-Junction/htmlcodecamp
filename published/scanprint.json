@@ -1,0 +1,68 @@
+[
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int a;\nscanf(\"%d\", &a);\nprintf(\"The value of a is: %d\", a);</code></pre>\n\n(Assume the user inputs 5)",
+        "options": ["The value of a is: 5", "The value of a is: 0", "Error", "Undefined"],
+        "answer": 0,
+        "explanation": "The code declares an integer variable 'a' and reads a value from the user using `scanf`. Since the user inputs 5, 'a' is assigned 5, and `printf` will output `The value of a is: 5`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int x, y;\nscanf(\"%d %d\", &x, &y);\nint sum = x + y;\nprintf(\"Sum: %d\", sum);</code></pre>\n\n(Assume the user inputs 3 and 4)",
+        "options": ["Sum: 7", "Sum: 3", "Sum: 0", "Error"],
+        "answer": 0,
+        "explanation": "The code declares two integer variables 'x' and 'y'. The values are read from the user using `scanf`, and their sum is calculated and stored in 'sum'. Since the user inputs 3 and 4, `sum` becomes 7, and `printf` outputs `Sum: 7`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int num1, num2;\nscanf(\"%d %d\", &num1, &num2);\nprintf(\"Product: %d\", num1 * num2);</code></pre>\n\n(Assume the user inputs 6 and 2)",
+        "options": ["Product: 12", "Product: 8", "Product: 0", "Error"],
+        "answer": 0,
+        "explanation": "The code declares two integers 'num1' and 'num2', reads their values from the user using `scanf`, and prints the product. Since the user inputs 6 and 2, the product is 12, so the output is `Product: 12`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int a, b;\nscanf(\"%d %d\", &a, &b);\nint diff = a - b;\nprintf(\"Difference: %d\", diff);</code></pre>\n\n(Assume the user inputs 8 and 3)",
+        "options": ["Difference: 5", "Difference: 11", "Difference: -5", "Error"],
+        "answer": 0,
+        "explanation": "The code reads two integers 'a' and 'b' from the user, calculates their difference, and prints it. Since the user inputs 8 and 3, the difference is 5, and `printf` outputs `Difference: 5`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int x, y;\nscanf(\"%d %d\", &x, &y);\nint quotient = x / y;\nprintf(\"Quotient: %d\", quotient);</code></pre>\n\n(Assume the user inputs 9 and 3)",
+        "options": ["Quotient: 3", "Quotient: 9", "Quotient: 0", "Error"],
+        "answer": 0,
+        "explanation": "The code declares two integers 'x' and 'y', reads their values from the user, and calculates the quotient of 'x' divided by 'y'. Since the user inputs 9 and 3, the quotient is 3, and `printf` outputs `Quotient: 3`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int a, b;\nscanf(\"%d %d\", &a, &b);\nint remainder = a % b;\nprintf(\"Remainder: %d\", remainder);</code></pre>\n\n(Assume the user inputs 10 and 4)",
+        "options": ["Remainder: 2", "Remainder: 6", "Remainder: 0", "Error"],
+        "answer": 0,
+        "explanation": "The code reads two integers from the user, calculates the remainder of 'a' divided by 'b', and prints it. Since 10 divided by 4 leaves a remainder of 2, the output is `Remainder: 2`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int a;\nscanf(\"%d\", &a);\nint square = a * a;\nprintf(\"Square: %d\", square);</code></pre>\n\n(Assume the user inputs 7)",
+        "options": ["Square: 49", "Square: 7", "Square: 14", "Error"],
+        "answer": 0,
+        "explanation": "The code reads the integer 'a' from the user, calculates its square by multiplying it by itself, and prints the result. Since the user inputs 7, `square` becomes 49, and the output is `Square: 49`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int length, width;\nscanf(\"%d %d\", &length, &width);\nint area = length * width;\nprintf(\"Area: %d\", area);</code></pre>\n\n(Assume the user inputs 4 and 5)",
+        "options": ["Area: 20", "Area: 9", "Area: 45", "Error"],
+        "answer": 0,
+        "explanation": "The code reads two integers, 'length' and 'width', from the user, calculates the area by multiplying them, and prints the result. Since the user inputs 4 and 5, the area is 20, so the output is `Area: 20`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int num;\nscanf(\"%d\", &num);\nint cube = num * num * num;\nprintf(\"Cube: %d\", cube);</code></pre>\n\n(Assume the user inputs 3)",
+        "options": ["Cube: 27", "Cube: 9", "Cube: 81", "Error"],
+        "answer": 0,
+        "explanation": "The code reads the integer 'num' from the user, calculates its cube (num * num * num), and prints the result. Since the user inputs 3, the cube is 27, and the output is `Cube: 27`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int radius;\nscanf(\"%d\", &radius);\nfloat area = 3.14 * radius * radius;\nprintf(\"Area of Circle: %.2f\", area);</code></pre>\n\n(Assume the user inputs 5)",
+        "options": ["Area of Circle: 78.50", "Area of Circle: 31.40", "Area of Circle: 25.00", "Error"],
+        "answer": 0,
+        "explanation": "The code reads the integer 'radius' from the user, calculates the area of a circle using the formula πr², and prints the result formatted to two decimal places. For radius 5, the area is approximately 78.50, so the output is `Area of Circle: 78.50`."
+    },
+    {
+        "question": "What will be the output of the following code?\n<pre><code>int base, height;\nscanf(\"%d %d\", &base, &height);\nfloat area = 0.5 * base * height;\nprintf(\"Area of Triangle: %.2f\", area);</code></pre>\n\n(Assume the user inputs 6 and 8)",
+        "options": ["Area of Triangle: 24.00", "Area of Triangle: 48.00", "Area of Triangle: 12.00", "Error"],
+        "answer": 0,
+        "explanation": "The code reads two integers 'base' and 'height' from the user, calculates the area of a triangle using the formula (1/2) * base * height, and prints the result formatted to two decimal places. For base 6 and height 8, the area is 24, so the output is `Area of Triangle: 24.00`."
+    }
+]

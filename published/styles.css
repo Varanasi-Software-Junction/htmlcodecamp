@@ -1,0 +1,163 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightgrey;
+}
+
+.container {
+    width:80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+button {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Radio Button Styles */
+input[type="radio"] {
+    appearance: none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #6D83F2;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="radio"]:hover {
+    background-color: rgba(109, 131, 242, 0.2);
+}
+
+input[type="radio"]:checked {
+    background-color: #6D83F2;
+    border-color: #B480FF;
+}
+
+input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Label Styles */
+label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    padding: 12px;
+    margin: 20px auto;
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+table{
+    
+    width: 100%;
+    max-width: 100%;
+    overflow: scroll;
+}
+tr:nth-child(even){background-color: #f2f2f2;
+    box-shadow: 10px 10px lightblue;}
+
+ tr:hover {background-color: #ddd;}
+
+th,td{
+    border-style: ridge;
+    padding: 5px;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the image to the right */
+    margin-top: -200px; /* Adds space above the image */
+}
+
+.c-image {
+    width: 150px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+.assume-input {
+    border: 1px solid black;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    font-weight: bold;
+    font-style: italic;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.correct-answer
+{
+    background-color: lightgreen;
+}
+.incorrect-answer
+{
+    background-color: lightsalmon;
+}

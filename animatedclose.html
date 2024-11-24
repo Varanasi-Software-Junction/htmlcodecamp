@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color:lightgrey;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .searchrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search_box {
+            width: 650px;
+            height: 30px;
+            border: solid 2px lightblue;
+            border-radius: 15px;
+
+        }
+
+        .item_box {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            border: solid 1px whitesmoke;
+            border-radius: 10px;
+            flex-direction: column;
+            background-color: white;
+        }
+        h3{
+            color: turquoise;
+            display: flex;
+            justify-content:flex-start;
+            text-shadow: 1px 2px 2px black;
+            font-size: 25px;
+            margin-left: 20px;
+            }
+
+            .opening{
+                animation-name: openingup;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes openingup{
+                0%{opacity: 0;}
+                100%{opacity: 1;display: block;}
+
+            }
+            .closing{
+                animation-name: closingdown;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+@keyframes closingdown {
+    0%{opacity: 1;}
+    100%{opacity: 0;display: none;}
+
+    
+}
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="searchrow">
+            <input id="txtquery" onkeyup="doSearch()" class="search_box" type=" text" placeholder="Search">
+        </div>
+        <br>
+
+
+        <div class="item_box">
+
+            <h3 class="item opening">First</h3>
+            <h3 class="item opening">Second</h3>
+            <h3 class="item opening">Third</h3>
+            <h3 class="item opening">Fourth</h3>
+
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const txtquery=document.getElementById("txtquery");
+        const items=document.getElementsByClassName("item");
+        function doSearch() {
+            const searchtext=txtquery.value.toLowerCase().trim();
+            console.log("key up",searchtext);
+            for(let i=0;i<=items.length-1;i++){
+                {
+                    console.log(items[i]);
+                    if(items[i].textContent.trim().toLowerCase().includes(searchtext)){
+                        items[i].classList.remove("closing");
+                        items[i].classList.add("opening");
+                    }
+
+                    else{
+                        items[i].classList.remove("opening");
+                        items[i].classList.add("closing");
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

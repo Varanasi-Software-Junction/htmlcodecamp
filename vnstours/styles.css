@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    padding: 40px;
+    color: white;
+    text-align: center;
+}
+
+input#search {
+    padding: 10px;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.split-screen {
+    display: flex;
+    height: 80vh; /* Adjust height */
+}
+
+.tour-list {
+    width: 30%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: scroll;
+}
+
+.tour-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tour-card:hover {
+    transform: scale(1.05);
+}
+
+.tour-card img {
+    width: 100%;
+    height: auto;
+}
+
+.tour-details {
+    width: 70%;
+    padding: 20px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.book-button {
+    padding: 15px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.testimonials, .featured-tours {
+    margin-top: 20px;
+}

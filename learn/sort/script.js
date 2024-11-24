@@ -1,4 +1,5 @@
 const arrayContainer = document.getElementById('array-container');
+const stepsdiv=document.getElementById("stepsofsorting");
 const swapCountDisplay = document.getElementById('swap-count');
 const loopCountDisplay = document.getElementById('loop-count');
 const favicon = document.getElementById('favicon');
@@ -41,6 +42,7 @@ function createArray() {
 
 // Perform bubble sort and store the moves
 function bubbleSort() {
+    // stepsdiv.re
     for (let i = 0; i < array.length - 1; i++) {
         // Store outer loop marker
         moves.push([-1, i]); // Using -1 to indicate an outer loop marker
@@ -49,6 +51,13 @@ function bubbleSort() {
             if (array[j] > array[j + 1]) {
                 // Store the swap in the moves array (i and j are the indices)
                 moves.push([j, j + 1]);
+
+                let newmove=`${j} <--> ${j+1}`;
+                // alert(stepsdiv);
+                let x=document.createElement("li");
+                x.textContent=newmove;
+                stepsdiv.appendChild(x);
+
 
                 // Swap the actual array values
                 let temp = array[j];

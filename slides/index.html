@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="cube">
+            <div class="side front">
+                <img id="picture1" src="" alt="Slide Image 1">
+            </div>
+            <div class="side back">
+                <img id="picture2" src="" alt="Slide Image 2">
+            </div>
+            <div class="side left">
+                <div class="overlay">
+                    <h2 id="name1"></h2>
+                    <h3 id="location1"></h3>
+                    <p id="description1"></p>
+                </div>
+            </div>
+            <div class="side right">
+                <div class="overlay">
+                    <h2 id="name2"></h2>
+                    <h3 id="location2"></h3>
+                    <p id="description2"></p>
+                </div>
+            </div>
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

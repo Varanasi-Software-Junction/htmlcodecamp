@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varanasi Tours - Full-screen Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .hero {
+            height: 50vh;
+            background: url('https://via.placeholder.com/1600x800') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-bar {
+            width: 60%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .filter {
+            margin: 0 10px;
+        }
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: scroll;
+            padding: 20px;
+        }
+        .tour-card {
+            background-color: white;
+            width: 300px;
+            margin: 0 10px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .tour-card img {
+            width: 100%;
+            height: 200px;
+        }
+        .tour-card:hover {
+            transform: scale(1.05);
+        }
+        .tour-info {
+            padding: 20px;
+        }
+        .tour-title {
+            font-size: 1.5em;
+            color: #333;
+        }
+        .tour-desc {
+            color: #777;
+            margin: 10px 0;
+        }
+        .book-now {
+            background-color: #ff9933;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .book-now:hover {
+            background-color: #e68a00;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <input type="text" id="search" class="search-bar" placeholder="Search tours...">
+    </div>
+
+    <div class="filters">
+        <select class="filter" id="tourType">
+            <option value="">Filter by Tour Type</option>
+            <option value="spiritual">Spiritual</option>
+            <option value="historical">Historical</option>
+        </select>
+
+        <select class="filter" id="priceRange">
+            <option value="">Filter by Price</option>
+            <option value="low">Under $50</option>
+            <option value="medium">$50-$100</option>
+            <option value="high">Above $100</option>
+        </select>
+    </div>
+
+    <div class="horizontal-scroll" id="tourList">
+        <div class="tour-card">
+            <img src="https://via.placeholder.com/300x200" alt="Tour Image">
+            <div class="tour-info">
+                <h2 class="tour-title">Ganges River Boat Ride</h2>
+                <p class="tour-desc">Enjoy a peaceful boat ride along the sacred Ganges.</p>
+                <button class="book-now">Book Now</button>
+            </div>
+        </div>
+
+        <div class="tour-card">
+            <img src="https://via.placeholder.com/300x200" alt="Tour Image">
+            <div class="tour-info">
+                <h2 class="tour-title">Evening Aarti Experience</h2>
+                <p class="tour-desc">Witness the mesmerizing Ganga Aarti at Dashashwamedh Ghat.</p>
+                <button class="book-now">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            let filter = this.value.toLowerCase();
+            let tours = document.querySelectorAll('.tour-card');
+            tours.forEach(tour => {
+                let title = tour.querySelector('.tour-title').textContent.toLowerCase();
+                tour.style.display = title.includes(filter) ? 'block' : 'none';
+            });
+        });
+
+        // Add your filter logic here for tourType and priceRange dropdowns
+    </script>
+</body>
+</html>
