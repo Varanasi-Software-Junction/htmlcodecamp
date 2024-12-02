@@ -65,6 +65,7 @@ function bubbleSort() {
                 array[j + 1] = temp;
             }
         }
+        // alert("Loop done");
     }
 }
 

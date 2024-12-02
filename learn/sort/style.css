@@ -108,7 +108,7 @@ input[type="text"]:focus {
     box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
 }
 
-button {
+button ,ol{
     padding: 12px 24px;
     font-size: 18px;
     color: #fff;
@@ -122,7 +122,9 @@ button {
 button:hover {
     background-color: #2980b9;
 }
-
+li:hover {
+    background-color: #29b973;
+}
 button:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
