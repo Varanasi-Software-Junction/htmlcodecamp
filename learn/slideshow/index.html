@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders</title>
+    <style>
+        .slidecontainer {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .slideimage {
+            width: 100%;
+            animation-name: slider;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: both;
+            animation-delay: 5s;
+        }
+
+        @keyframes slider {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+                /* transform: rotateY(360deg); */
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let imageno = 0;
+        const totalimages = 3;
+    </script>
+    <div class="slidecontainer">
+        <img id="img" class="slideimage" src="pics/0.jpg">
+    </div>
+    <script>
+
+        function animationLoad() {
+
+        }
+        const box = document.getElementById('img');
+        box.addEventListener('animationiteration', () => {
+            console.log('Animation Completed! 🎉');
+            imageno = (imageno + 1) % totalimages;
+            box.src = `pics/${imageno}.jpg`;
+
+
+        });
+    </script>
+</body>
+
+</html>
