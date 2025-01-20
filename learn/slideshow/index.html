@@ -25,15 +25,21 @@
         @keyframes slider {
             0% {
                 opacity: 0;
+                transform: rotateY(0);
             }
 
             50% {
                 opacity: 1;
-                /* transform: rotateY(360deg); */
+              
             }
 
+            80% {
+                opacity: 1;
+               
+            }
             100% {
                 opacity: 0;
+                
             }
         }
     </style>
@@ -42,7 +48,7 @@
 <body>
     <script>
         let imageno = 0;
-        const totalimages = 3;
+        const totalimages = 4;
     </script>
     <div class="slidecontainer">
         <img id="img" class="slideimage" src="pics/0.jpg">

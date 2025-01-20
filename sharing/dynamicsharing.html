@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">Document</title>
+    <meta id="ogtitle" property="og:title" content="Your Page Title">
+    <meta id="ogdescription" property="og:description" content="Your Page Description">
+    <meta id="ogimage" property="og:image" content="URL to Your Image">
+    <link id="favicon" rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+    <script>
+        let n = 0;
+        const total = 5;
+        const titlebox = document.getElementById("title");
+        const favicon = document.getElementById("favicon");
+        const ogtitle=document.getElementById("ogtitle");
+        const ogdescription = document.getElementById("ogdescription");
+        const ogimage=document.getElementById("ogimage");
+        function changeAll() {
+            n = (n + 1) % total;
+            titlebox.innerHTML = n;
+            favicon.href = `pics/${n}.jpg`;
+            ogtitle.content=n;
+            ogdescription.content=n;
+            ogimage.content=`pics/${n}.jpg`;
+        }
+        setInterval("changeAll()", 5000);
+    </script>
+</body>
+
+</html>
