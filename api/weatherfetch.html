@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Fetch Example</title>
+
+</head>
+
+<body>
+    <h1>Weather Fetch Example</h1>
+
+    <div>
+        <label for="cityid">Enter City:</label>
+        <input type="text" id="cityid" placeholder="Varanasi">
+        <button onclick="fetchWeather()">Fetch City Weather</button>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+
+        function fetchWeather() {
+            const appid = "4a1f8a61b74546825af1e0be106e797b";
+            const city = document.getElementById("cityid").value;
+            // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}&units=metric`;
+
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appid}&units=metric`;
+            console.log(url);
+
+            //*******************************************************************************************************************
+
+            fetch(url)
+                .then(response => {
+                    // Check if the response is successful (status code 200-299)
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                    }
+
+                    // Parse the JSON data from the response
+                    return response.json();
+                })
+                .then(weatherData => {
+                    // Display character information on the page
+                    displayWeather(weatherData);
+                })
+                .catch(error => {
+                    // Display an error message if there's an issue with the fetch
+                    displayError(error.message);
+                });
+            //*******************************************************************************************************************
+        }
+
+        function displayError(data) {
+            console.log(data);
+            
+        }
+
+        function displayWeather(data) {
+            console.log(data);
+        }
+
+    </script>
+</body>
+
+</html>

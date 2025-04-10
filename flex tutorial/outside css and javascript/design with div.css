@@ -1,0 +1,12 @@
+.inputclass {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    background-color: teal;
+    color: yellow;;
+}
+
+div {
+    position: relative;
+    border-style: ridge;
+}
