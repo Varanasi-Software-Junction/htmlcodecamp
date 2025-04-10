@@ -13,11 +13,11 @@
 
     <div>
         <label for="cityid">Enter City:</label>
-        <input type="text" id="cityid" placeholder="Varanasi">
+        <input type="text" id="cityid" value="Varanasi" placeholder="Varanasi">
         <button onclick="fetchWeather()">Fetch City Weather</button>
     </div>
 
-    <div id="output"></div>
+    <div style="overflow: scroll;" id="output"></div>
 
     <script>
 
@@ -54,11 +54,13 @@
 
         function displayError(data) {
             console.log(data);
-            
+
         }
 
         function displayWeather(data) {
             console.log(data);
+            const output = document.getElementById("output");
+            output.innerHTML =`<pre>${ JSON.stringify(data)}</pre>`;
         }
 
     </script>
