@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes through JS</title>
+    <style>
+        .pve {
+            
+            border-color: green;
+            border-style: ridge
+        } 
+        
+
+        .nve {
+            border-color: red;
+            border-style: ridge
+        }
+    </style>
+</head>
+
+<body>
+    <input onkeyup="f(event)" type="number" id="colorInput" placeholder="Enter a color">
+    <script>
+        function f(event) {
+         
+            const t = document.getElementById("colorInput")
+            const n = Number(t.value);
+            t.classList.remove("nve");
+            t.classList.remove("pve");
+            if (n < 0)
+                t.classList.add("nve");
+            if (n > 0)
+                t.classList.add("pve");
+        }
+    </script>
+
+</body>
+
+</html>
