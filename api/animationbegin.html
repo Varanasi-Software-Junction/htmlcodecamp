@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>JavaScript Animation Example</title>
@@ -12,7 +13,8 @@
       color: #2c2c2c;
     }
 
-    h2, h3 {
+    h2,
+    h3 {
       color: #1a237e;
     }
 
@@ -84,59 +86,62 @@
     }
   </style>
 </head>
+
 <body>
 
-<h2>JavaScript Animation Using <code>setInterval()</code></h2>
+  <h2>JavaScript Animation Using <code>setInterval()</code></h2>
 
-<p>
-This example demonstrates how to animate a box using JavaScript timers. The box moves horizontally using <code>setInterval</code>, and you can control the animation with start, stop, and reset buttons.
-</p>
+  <p>
+    This example demonstrates how to animate a box using JavaScript timers. The box moves horizontally using
+    <code>setInterval</code>, and you can control the animation with start, stop, and reset buttons.
+  </p>
 
-<div class="controls">
-  <button onclick="startAnimation()">Start</button>
-  <button onclick="stopAnimation()">Stop</button>
-  <button onclick="resetAnimation()">Reset</button>
-</div>
+  <div class="controls">
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+    <button onclick="resetAnimation()">Reset</button>
+  </div>
 
-<div id="box"></div>
+  <div id="box"></div>
 
 
-<script>
-  let box = document.getElementById("box");
-  let pos = 0;
-  let animation;
+  <script>
+    let box = document.getElementById("box");
+    let pos = 0;
+    let animation;
 
-  function startAnimation() {
-    clearInterval(animation);
-    animation = setInterval(function () {
-      if (pos >= 300) {
-        clearInterval(animation);
-      } else {
-        pos += 2;
-        box.style.left = pos + "px";
-      }
-    }, 20);
-  }
+    function startAnimation() {
+      clearInterval(animation);
+      animation = setInterval(function () {
+        if (pos >= 300) {
+          clearInterval(animation);
+        } else {
+          pos += 2;
+          box.style.left = pos + "px";
+        }
+      }, 20);
+    }
 
-  function stopAnimation() {
-    clearInterval(animation);
-  }
+    function stopAnimation() {
+      clearInterval(animation);
+    }
 
-  function resetAnimation() {
-    clearInterval(animation);
-    pos = 0;
-    box.style.left = "0px";
-  }
+    function resetAnimation() {
+      clearInterval(animation);
+      pos = 0;
+      box.style.left = "0px";
+    }
 
-  function copyCode() {
-    const code = document.getElementById("codeBlock").innerText;
-    navigator.clipboard.writeText(code).then(function () {
-      alert("Code copied to clipboard!");
-    }, function (err) {
-      alert("Failed to copy code.");
-    });
-  }
-</script>
+    function copyCode() {
+      const code = document.getElementById("codeBlock").innerText;
+      navigator.clipboard.writeText(code).then(function () {
+        alert("Code copied to clipboard!");
+      }, function (err) {
+        alert("Failed to copy code.");
+      });
+    }
+  </script>
 
 </body>
+
 </html>
