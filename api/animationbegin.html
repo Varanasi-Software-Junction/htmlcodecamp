@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Animation Example</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
+      padding: 20px;
+      background-color: #fcfcfc;
+      color: #2c2c2c;
+    }
+
+    h2, h3 {
+      color: #1a237e;
+    }
+
+    #box {
+      width: 50px;
+      height: 50px;
+      background-color: royalblue;
+      position: relative;
+      left: 0;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .controls {
+      margin: 20px 0;
+    }
+
+    button {
+      margin: 10px 10px 10px 0;
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      background-color: #3949ab;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-family: 'Georgia', serif;
+    }
+
+    button:hover {
+      background-color: #303f9f;
+    }
+
+    .code-container {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 15px;
+      border-left: 4px solid #3949ab;
+      border-radius: 4px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #1a237e;
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background-color: #0d1548;
+    }
+  </style>
+</head>
+<body>
+
+<h2>JavaScript Animation Using <code>setInterval()</code></h2>
+
+<p>
+This example demonstrates how to animate a box using JavaScript timers. The box moves horizontally using <code>setInterval</code>, and you can control the animation with start, stop, and reset buttons.
+</p>
+
+<div class="controls">
+  <button onclick="startAnimation()">Start</button>
+  <button onclick="stopAnimation()">Stop</button>
+  <button onclick="resetAnimation()">Reset</button>
+</div>
+
+<div id="box"></div>
+
+
+<script>
+  let box = document.getElementById("box");
+  let pos = 0;
+  let animation;
+
+  function startAnimation() {
+    clearInterval(animation);
+    animation = setInterval(function () {
+      if (pos >= 300) {
+        clearInterval(animation);
+      } else {
+        pos += 2;
+        box.style.left = pos + "px";
+      }
+    }, 20);
+  }
+
+  function stopAnimation() {
+    clearInterval(animation);
+  }
+
+  function resetAnimation() {
+    clearInterval(animation);
+    pos = 0;
+    box.style.left = "0px";
+  }
+
+  function copyCode() {
+    const code = document.getElementById("codeBlock").innerText;
+    navigator.clipboard.writeText(code).then(function () {
+      alert("Code copied to clipboard!");
+    }, function (err) {
+      alert("Failed to copy code.");
+    });
+  }
+</script>
+
+</body>
+</html>
