@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zerotofifty {
+            background-color: green;
+
+        }
+
+        .fiftytohundred {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <h1 id="hCounter"></h1>
+    <script>
+        let count = 0;
+        function countForward() {
+
+            if (count > 50) {
+                hCounter.classList.remove("zerotofifty");
+                hCounter.classList.add("fiftytohundred");
+            }
+
+            else {
+                hCounter.classList.remove("fiftytohundred");
+                hCounter.classList.add("zerotofifty");
+            }
+
+            hCounter.innerHTML = count;
+            count++;
+            console.log(count);
+        }
+
+
+        const hCounter = document.getElementById("hCounter");
+
+        function startCounter() {
+            setInterval(countForward, 1000);
+        }
+
+
+
+    </script>
+    <button onclick="startCounter()">Start</button>
+</body>
+
+</html>
