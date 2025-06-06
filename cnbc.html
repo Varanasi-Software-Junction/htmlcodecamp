@@ -1,1 +1,176 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>CNBC Awaaz Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background-color: #004c8b;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .ticker {
+      white-space: nowrap;
+      overflow: hidden;
+      width: 60%;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 20s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    nav {
+      background-color: #e5e5e5;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav li {
+      margin: 0 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav li:hover {
+      color: #004c8b;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      flex: 2;
+      padding-right: 20px;
+      min-width: 300px;
+    }
+
+    .right {
+      flex: 1;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0 0 10px #ccc;
+      min-width: 300px;
+    }
+
+    h2 {
+      color: #004c8b;
+      border-bottom: 2px solid #004c8b;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #004c8b;
+      color: white;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">📺 CNBC Awaaz</div>
+    <div class="ticker" id="stockTicker">
+      <span>Loading stock data...</span>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li>बाजार</li>
+      <li>पर्सनल फाइनेंस</li>
+      <li>म्यूचुअल फंड</li>
+      <li>IPO</li>
+      <li>क्रिप्टो</li>
+      <li>बिज़नेस</li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="left">
+      <h2>🔴 ताज़ा खबरें</h2>
+      <ul id="newsList">
+        <li>शेयर बाजार में बड़ी गिरावट, निवेशक सावधान रहें</li>
+        <li>सोने की कीमतों में बढ़ोतरी, जानिए नया भाव</li>
+        <li>रिलायंस का शेयर 2% चढ़ा, निवेशकों की बल्ले-बल्ले</li>
+      </ul>
+    </section>
+
+    <section class="right">
+      <h2>📺 लाइव देखें</h2>
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/live_stream?channel=UCpEhnqL0y41EpW2TvWAHD7Q" frameborder="0" allowfullscreen></iframe>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 CNBC Awaaz Clone | Developed for educational use
+  </footer>
+
+  <script>
+    const stocks = [
+      { name: "Reliance", price: 2700, change: "+1.2%" },
+      { name: "TCS", price: 3560, change: "-0.5%" },
+      { name: "Infosys", price: 1450, change: "+0.8%" },
+      { name: "HDFC Bank", price: 1520, change: "+0.3%" },
+      { name: "Adani Ent", price: 2350, change: "-2.1%" },
+    ];
+
+    function updateTicker() {
+      const ticker = document.getElementById("stockTicker");
+      let content = "";
+      stocks.forEach(stock => {
+        const color = stock.change.startsWith('+') ? 'green' : 'red';
+        content += `<span style="margin-right: 40px;">${stock.name}: ₹${stock.price} <span style="color:${color}">${stock.change}</span></span>`;
+      });
+      ticker.innerHTML = `<span>${content}</span>`;
+    }
+
+    updateTicker();
+  </script>
+
+</body>
+</html>
