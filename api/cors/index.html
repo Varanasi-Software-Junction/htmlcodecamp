@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Browser Console – Learning Sutras</title>
+
+  <!-- Meta Information -->
+  <meta name="description" content="An interactive mini console by Learning Sutras to test and learn JavaScript safely inside your browser.">
+  <meta property="og:title" content="Mini Browser Console – Learning Sutras">
+  <meta property="og:description" content="Try JavaScript safely in this sandboxed mini console. Created by Champak Roy for Learning Sutras.">
+  <meta property="og:image" content="https://varanasi-software-junction.github.io/blogger/blogger-assets/console-header.png">
+  <meta property="og:type" content="website">
+
+  <!-- CRX Styles -->
+  <link rel="stylesheet" href="https://varanasi-software-junction.github.io/blogger/blogger-assets/crx_styles_v1.css">
+
+  <style>
+    :root {
+      --bg: #0f1724;
+      --panel: #0b1220;
+      --accent: #0ea5a4;
+      --muted: #94a3b8;
+    }
+
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      margin: 0;
+      background: linear-gradient(180deg, #071026 0%, #071827 100%);
+      color: #e6eef6;
+      padding: 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #0ea5a4;
+    }
+
+    header p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .demo-wrap {
+      max-width: 980px;
+      margin: 12px auto;
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 8px 30px rgba(2,6,23,.6);
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background: #0b1228;
+      border: 1px solid rgba(255,255,255,.04);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #e6eef6;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #022;
+    }
+
+    .panel {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 12px;
+    }
+
+    textarea#cmd {
+      min-height: 160px;
+      background: #071427;
+      border: 1px solid rgba(255,255,255,.03);
+      color: #e6eef6;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 13px;
+      width: 100%;
+    }
+
+    .output {
+      background: #06101a;
+      border-radius: 8px;
+      padding: 12px;
+      height: 360px;
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.03);
+      font-family: monospace;
+    }
+
+    .log {
+      padding: 6px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      white-space: pre-wrap;
+    }
+
+    .log.info { background: rgba(58,150,255,.06); border-left: 4px solid rgba(58,150,255,.22); }
+    .log.warn { background: rgba(250,180,50,.06); border-left: 4px solid rgba(250,180,50,.22); color: #ffdca3; }
+    .log.err  { background: rgba(255,80,80,.06); border-left: 4px solid rgba(255,80,80,.22); color: #ffdfe0; }
+
+    .history {
+      background: #041018;
+      border-radius: 8px;
+      padding: 8px;
+      height: 170px;
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.02);
+    }
+
+    .history button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 6px;
+      border-radius: 6px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .tip-box {
+      background: #e8f4fa;
+      color: #024;
+      border-left: 6px solid #0ea5a4;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    @media(max-width:920px) {
+      .panel { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Mini Browser Console</h1>
+    <p>Interactive JavaScript sandbox by <b>Learning Sutras</b> (Champak Roy)</p>
+  </header>
+
+  <div class="tip-box">
+    💡 <b>Tip:</b> Type any JavaScript code below and click <b>Run</b>.  
+    Try commands like <code>console.log()</code>, <code>console.warn()</code>, or <code>console.table()</code>.  
+    All output appears in the right-hand panel safely — without affecting your real browser or any website.
+  </div>
+
+  <div class="demo-wrap">
+
+    <div class="toolbar">
+      <button id="run" class="btn primary">▶ Run (Ctrl+Enter)</button>
+      <button id="clear" class="btn">🧹 Clear Output</button>
+      <button id="copy" class="btn">📋 Copy Code</button>
+      <button id="save" class="btn">💾 Save to File</button>
+      <button id="example" class="btn">✨ Insert Example</button>
+    </div>
+
+    <div class="panel">
+      <div>
+        <textarea id="cmd" spellcheck="false">
+// Try: console.log('Hello from Learning Sutras');
+const students = [
+  {name: 'Aman', marks: 85},
+  {name: 'Riya', marks: 92},
+  {name: 'Tanu', marks: 78}
+];
+console.table(students);
+
+// console.warn('This is a warning');
+// console.error('This is an error');
+        </textarea>
+
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button id="run2" class="btn primary">▶ Run & Show Result</button>
+          <button id="evalExpr" class="btn">= Evaluate Expression</button>
+          <button id="clearCmd" class="btn">✖ Clear</button>
+        </div>
+
+        <section style="margin-top:10px;">
+          <label style="font-size:13px;color:var(--muted);">History</label>
+          <div class="history" id="history"></div>
+        </section>
+      </div>
+
+      <div>
+        <label style="font-size:13px;color:var(--muted);">Console Output</label>
+        <div class="output" id="output"></div>
+
+        <div style="height:12px"></div>
+        <label style="font-size:13px;color:var(--muted);">Quick examples</label>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button class="btn" data-code="console.log('Hello world')">log</button>
+          <button class="btn" data-code="console.warn('Be careful!')">warn</button>
+          <button class="btn" data-code="console.error('Oops')">error</button>
+          <button class="btn" data-code="console.table([{a:1,b:2},{a:3,b:4}])">table</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Back to full tutorial: 
+      <a href="https://www.learnwithchampak.live/2025/10/mastering-browser-console.html" target="_blank">
+      Mastering the Browser Console – Learning Sutras</a>
+    </p>
+    <p>© 2025 Learning Sutras | Champak Roy</p>
+  </footer>
+
+  <script>
+  (function(){
+    const output = document.getElementById('output');
+    const cmd = document.getElementById('cmd');
+    const historyEl = document.getElementById('history');
+    let hist = [];
+
+    function appendLine(text, cls){
+      const el = document.createElement('div');
+      el.className = 'log ' + (cls||'info');
+      el.textContent = String(text);
+      output.appendChild(el);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    const orig = {log: console.log, warn: console.warn, error: console.error, table: console.table};
+    console.log = (...args)=>{ appendLine(args.join(' '),'info'); orig.log(...args); };
+    console.warn = (...args)=>{ appendLine(args.join(' '),'warn'); orig.warn(...args); };
+    console.error = (...args)=>{ appendLine(args.join(' '),'err'); orig.error(...args); };
+    console.table = (obj)=>{ appendLine(JSON.stringify(obj,null,2),'info'); orig.table(obj); };
+
+    function safeRun(code){
+      const sandbox = `
+        (function(){
+          'use strict';
+          const window=undefined,document=undefined,fetch=undefined,XMLHttpRequest=undefined;
+          return (async function(){ ${code} })();
+        })();`;
+      return new Function(sandbox)();
+    }
+
+    function addHistory(code){
+      if(!code.trim()) return;
+      hist.push(code);
+      if(hist.length>30) hist.shift();
+      renderHistory();
+    }
+
+    function renderHistory(){
+      historyEl.innerHTML='';
+      hist.slice().reverse().forEach(h=>{
+        const btn=document.createElement('button');
+        btn.textContent=h.slice(0,80).replace(/\n/g,' ↩ ');
+        btn.title=h;
+        btn.onclick=()=>cmd.value=h;
+        historyEl.appendChild(btn);
+      });
+    }
+
+    document.getElementById('run').onclick=async()=>{
+      const code=cmd.value;
+      addHistory(code);
+      try{
+        const res=await safeRun(code);
+        if(res!==undefined) appendLine(res,'info');
+      }catch(e){ appendLine(e.message,'err'); }
+    };
+
+    document.getElementById('run2').onclick=()=>document.getElementById('run').click();
+    document.getElementById('evalExpr').onclick=async()=>{
+      const expr=cmd.value.trim();
+      addHistory(expr);
+      try{
+        const res=await safeRun(`return (${expr})`);
+        appendLine(res,'info');
+      }catch(e){ appendLine(e.message,'err'); }
+    };
+
+    document.getElementById('clear').onclick=()=>output.innerHTML='';
+    document.getElementById('clearCmd').onclick=()=>cmd.value='';
+    document.getElementById('copy').onclick=()=>navigator.clipboard.writeText(cmd.value);
+    document.getElementById('save').onclick=()=>{
+      const blob=new Blob([cmd.value],{type:'text/plain'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a'); a.href=url; a.download='snippet.js'; a.click();
+      URL.revokeObjectURL(url);
+    };
+    document.getElementById('example').onclick=()=>{
+      cmd.value=`// Example: Fibonacci
+function fib(n){ if(n<2) return n; return fib(n-1)+fib(n-2);}
+console.log('fib(6)=', fib(6));`;
+    };
+    document.addEventListener('keydown',e=>{
+      if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){ e.preventDefault(); document.getElementById('run').click(); }
+    });
+    document.querySelectorAll('[data-code]').forEach(b=>{
+      b.onclick=()=>{ cmd.value=b.dataset.code; document.getElementById('run').click(); };
+    });
+  })();
+  </script>
+</body>
+</html>
