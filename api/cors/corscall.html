@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cors Demo</title>
+</head>
+<body>
+    <form id="corsForm" action="https://www.amazon.in/checkout/p/p-404-1618726-9518760/pay?pipelineType=Chewbacca&isBuyNow=1&referrer=pay" method="POST" target="corsTarget">
+        <input type="hidden" name="data" value="testData">
+        <button type="submit">Submit CORS Request</button>      
+    </form>
+</body>
+</html>
