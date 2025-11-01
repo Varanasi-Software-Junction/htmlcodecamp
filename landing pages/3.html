@@ -1,0 +1,94 @@
+<!-- 5. Event / Conference -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FutureTech Summit — Nov 18–19, 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="FutureTech Summit — two days of AI, design, and founders. Buy tickets now.">
+<style>
+  :root{--bg:#07172b;--accent:#8b5cf6;--muted:#9fb0d1}
+  body{margin:0;font-family:Inter,system-ui,Arial;color:#ecf6ff;background:linear-gradient(180deg,#07172b,#041022)}
+  .wrap{max-width:1100px;margin:34px auto;padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .hero{margin-top:24px;display:flex;gap:20px;align-items:center}
+  .hero-left{flex:1}
+  .cta{margin-top:16px}
+  .btn{background:var(--accent);color:#071022;padding:10px 14px;border-radius:10px;border:none}
+  .speakers{display:flex;gap:12px;margin-top:18px}
+  .speaker{background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;text-align:center;width:120px}
+  .ticker{margin-top:14px;background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;overflow:hidden}
+  .ticker .run{display:inline-block;animation:run 16s linear infinite;padding-right:40px}
+  @keyframes run{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  footer{margin-top:26px;color:var(--muted);display:flex;justify-content:space-between}
+  @media(max-width:900px){.hero{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div style="font-weight:800">FutureTech Summit</div>
+    <div class="small">Nov 18–19 • Bangalore</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 style="margin:0">Two days of AI, design & founders</h1>
+      <p class="small" style="color:var(--muted);margin-top:10px">Join leaders and builders for talks, workshops and networking — limited seats.</p>
+      <div class="cta"><button class="btn">Buy tickets</button></div>
+
+      <div class="ticker" aria-hidden="true" style="margin-top:14px"><div class="run">Keynotes announced • Early-bird ends Oct 31 • Student discount available • Workshops limited</div><div class="run">Keynotes announced • Early-bird ends Oct 31 • Student discount available • Workshops limited</div></div>
+    </div>
+
+    <aside style="width:320px">
+      <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:10px">
+        <h4 style="margin:0">Featured speakers</h4>
+        <div class="speakers" aria-hidden="true" style="margin-top:12px">
+          <div class="speaker"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="24" r="16" fill="#2b3b66"/><rect x="12" y="48" width="56" height="20" rx="6" fill="#1b2a44"/></svg><div style="font-weight:700;margin-top:8px">Dr. A.</div><div class="small">AI Research</div></div>
+
+          <div class="speaker"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="24" r="16" fill="#3b2b66"/><rect x="12" y="48" width="56" height="20" rx="6" fill="#2a1b44"/></svg><div style="font-weight:700;margin-top:8px">S. Mehta</div><div class="small">Design Lead</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;background:rgba(255,255,255,0.03);padding:12px;border-radius:10px">
+        <h4 style="margin:0">Agenda highlights</h4>
+        <ul style="color:var(--muted);margin-top:8px;padding-left:18px">
+          <li>AI for Product — keynote</li>
+          <li>Design Systems workshop</li>
+          <li>Founder panels & pitch hour</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <!-- schedule carousel -->
+  <section style="margin-top:18px">
+    <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">
+      <div style="font-weight:700">Schedule</div>
+      <div style="margin-top:10px;overflow:hidden;border-radius:8px">
+        <div id="sched" style="display:flex;transition:transform .5s">
+          <div style="min-width:100%;padding:12px">
+            <strong>Day 1</strong>
+            <p class="small" style="color:var(--muted)">Keynotes, design workshop, lunch & networking</p>
+          </div>
+          <div style="min-width:100%;padding:12px">
+            <strong>Day 2</strong>
+            <p class="small" style="color:var(--muted)">Panels, pitch hour, closing keynote</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="color:var(--muted)">© FutureTech Summit</div>
+    <div style="color:var(--muted)">Sponsors • Contact</div>
+  </footer>
+</main>
+
+<script>
+  // small schedule auto rotate
+  (function(){ const s=document.getElementById('sched'), total=s.children.length; let i=0; setInterval(()=>{ i=(i+1)%total; s.style.transform='translateX('+(-i*100)+'%)'; },5000); })();
+</script>
+</body>
+</html>

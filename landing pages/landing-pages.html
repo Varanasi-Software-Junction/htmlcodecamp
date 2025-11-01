@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="crx-dashboard-home" style="max-width:1100px;margin:auto;">
+        <style>
+            @import url('https://varanasi-software-junction.github.io/blogger/blogger-assets/crx_styles_v1.css');
+
+            :root {
+                --crx-accent-dark: #0a5fad;
+            }
+        </style>
+
+        <!-- 🏠 INTRODUCTION SECTION -->
+        <section class="crx-section intro">
+            <h1>👨‍💻 Welcome to Learn With Champak</h1>
+            <p>
+                Hi, I’m <strong>Champak Roy</strong> — a software developer, writer, and teacher from Varanasi.
+                This blog, <em>Learn With Champak</em>, is dedicated to helping students and programmers learn
+                <strong>Data Structures, Algorithms, Web Development, and Python</strong> in a practical, joyful way.
+                Whether you’re a beginner or an experienced coder, you’ll find guides, quizzes, and examples that make
+                learning coding simple, structured, and effective.
+            </p>
+        </section>
+
+        <!-- 🌟 IMPORTANCE SECTION -->
+        <section class="crx-section importance">
+            <h2>🌱 Why This Blog Matters</h2>
+            <p>
+                In today’s fast-changing tech world, learning through examples is the fastest way to master programming.
+                That’s why every post here blends <strong>concepts + code + visuals</strong>.
+                You’ll find short lessons, Python and JavaScript demos, and live quizzes to reinforce learning —
+                all designed with the same care I use when teaching my students in class.
+            </p>
+        </section>
+
+        <!-- 🔍 KEYWORDS SECTION -->
+        <section class="crx-section keywords">
+            <h2>🔑 Keywords</h2>
+            <p>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=python"><span
+                        class="crx-keyword">Python</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=JavaScript"><span
+                        class="crx-keyword">JavaScript</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=html"><span
+                        class="crx-keyword">HTML</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=css"><span
+                        class="crx-keyword">CSS</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=algorithms"><span
+                        class="crx-keyword">Algorithms</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=data structures"><span
+                        class="crx-keyword">Data Structures</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=flutter"><span
+                        class="crx-keyword">Flutter</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=sorting"><span
+                        class="crx-keyword">Sorting</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=recursion"><span
+                        class="crx-keyword">Recursion</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=firebase"><span
+                        class="crx-keyword">Firebase</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=django"><span
+                        class="crx-keyword">Django</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=projects"><span
+                        class="crx-keyword">Projects</span></a>
+                <a target="champak" href="https://www.learnwithchampak.live/search?q=champak%20;roy"><span
+                        class="crx-keyword">Learn with Champak</span></a>
+            </p>
+        </section>
+
+        <!-- 🐍 PYTHON CODER SECTION -->
+        <section class="crx-section coder python-coder">
+            <h2>🐍 Python Coder</h2>
+            <p>
+                Python is my go-to language for teaching logic and problem-solving.
+                On this blog, you’ll find <strong>step-by-step algorithms</strong>, clean Python code snippets, and live
+                execution blocks
+                (using Pyodide) that let you run Python right inside your browser!
+                Perfect for students learning loops, recursion, and DSA fundamentals.
+            </p>
+        </section>
+
+        <!-- ⚙️ JAVASCRIPT CODER SECTION -->
+        <section class="crx-section coder js-coder">
+            <h2>⚙️ JavaScript Coder</h2>
+            <p>
+                JavaScript brings your ideas to life.
+                From <strong>interactive quizzes</strong> and <strong>sorting visualizers</strong> to live dashboards,
+                the posts here teach you how to use JS to create real-world effects with elegance and simplicity.
+                Each example is small, powerful, and connected with web technologies like HTML5 and CSS3.
+            </p>
+        </section>
+        <section>
+ 
+</section>
+        <!-- 🔎 LIVE SEARCH + SCROLLABLE RESULTS -->
+        <div class="crx-section live-search">
+            <h2>🧭 Explore Posts</h2>
+        <!--
+Search Widget for your Blogger site (paste as an "HTML/JavaScript" gadget in Layout)
+Features:
+ - Lightweight search box that redirects to your blog search results
+ - Optional live autocomplete (fetches post titles via Blogger JSONP feed)
+ - Click a suggestion to open the post directly
+
+Usage: Add this as a gadget in your Blogger Layout -> Add a Gadget -> HTML/JavaScript
+--><div id="vsj-search-widget" style="font-family: Inter, system-ui, Arial; max-width:90%;">
+  <style>
+    /* widget styles (keeps look compact) */
+    #vsj-search-widget .vsj-search { display:flex; gap:8px; }
+    #vsj-search-widget input[type='search']{ flex:1; padding:10px 12px; border-radius:8px; border:1px solid #cbd5e1; box-shadow:0 1px 2px rgba(0,0,0,0.03); font-size:14px }
+    #vsj-search-widget button{ padding:10px 14px; border-radius:8px; border:0; background:#2563eb; color:white; font-weight:600; cursor:pointer }
+    #vsj-search-widget .vsj-suggestions{ margin-top:6px; border-radius:8px; border:1px solid #e6edf8; max-height:220px; overflow:auto; background:white }
+    #vsj-search-widget .vsj-item{ padding:10px; cursor:pointer; border-bottom:1px solid #f1f5f9 }
+    #vsj-search-widget .vsj-item:last-child{ border-bottom:0 }
+    #vsj-search-widget .vsj-item:hover{ background:#f1f7ff }
+    #vsj-search-widget .vsj-snippet{ display:block; font-size:12px; color:#475569; margin-top:6px }
+    #vsj-search-widget .vsj-empty{ padding:10px; color:#64748b }
+  </style>  <div class="vsj-search">
+    <input id="vsj-search-input" type="search" placeholder="Search this blog..." aria-label="Search this blog" />
+    <button id="vsj-search-btn" title="Search">Search</button>
+  </div>
+  <div id="vsj-suggestions" class="vsj-suggestions" style="display:none"></div>
+</div><script>
+(function(){
+  const blogBase = 'https://www.learnwithchampak.live';
+  const input = document.getElementById('vsj-search-input');
+  const btn = document.getElementById('vsj-search-btn');
+  const suggestions = document.getElementById('vsj-suggestions');
+  let posts = []; // {title, url, snippet}
+  let loaded = false;
+
+  // Redirect to blog search results (works without JS on server too)
+  function doSearch(q){
+    q = (q||'').trim();
+    if(!q) return;
+    const searchUrl = blogBase + '/search?q=' + encodeURIComponent(q) + '&m=1';
+    window.location.href = searchUrl;
+  }
+
+  // Load posts via Blogger JSONP (max-results up to 5000). JSONP endpoint: /feeds/posts/default?alt=json-in-script&callback=...
+  function loadPostsJSONP(){
+    if(loaded) return;
+    loaded = true;
+    const cbName = 'vsjPostsCallback_' + Date.now();
+    window[cbName] = function(data){
+      try{
+        const items = (data.feed && data.feed.entry) || [];
+        posts = items.map(e => {
+          // title
+          const title = e.title && e.title.$t ? e.title.$t : '(no title)';
+          // link selection - prefer alternate links
+          let url = '';
+          if(e.link){
+            for(const L of e.link){ if(L.rel==='alternate'){ url = L.href; break } }
+          }
+          // snippet - first paragraph or content slice
+          let snippet = '';
+          if(e.summary && e.summary.$t) snippet = e.summary.$t;
+          else if(e.content && e.content.$t) snippet = e.content.$t.replace(/<[^>]+>/g,'').slice(0,160) + '...';
+          // clean snippet
+          snippet = snippet.replace(/\s+/g,' ').trim();
+          return {title, url, snippet};
+        });
+      }catch(err){ console.warn('vsj jsonp parse error', err) }
+      // cleanup script tag
+      const s = document.getElementById(cbName + '_script'); if(s) s.remove();
+    };
+    const script = document.createElement('script');
+    script.id = cbName + '_script';
+    // request up to 1000 posts — if you have many posts increase max-results (beware payload size)
+    script.src = blogBase + '/feeds/posts/default?alt=json-in-script&max-results=1000&callback=' + cbName;
+    script.async = true;
+    script.onerror = function(){ console.warn('vsj jsonp load failed'); script.remove(); };
+    document.body.appendChild(script);
+  }
+
+  // Show suggestions matching q
+  function showSuggestions(q){
+    q = (q||'').trim().toLowerCase();
+    if(!q){ suggestions.style.display='none'; suggestions.innerHTML=''; return }
+    // if posts not loaded yet, try load (then still fallback to redirect)
+    if(!posts.length) loadPostsJSONP();
+    const matched = posts.filter(p => p.title.toLowerCase().includes(q) || p.snippet.toLowerCase().includes(q)).slice(0,8);
+    if(!matched.length){ suggestions.style.display='block'; suggestions.innerHTML = '<div class="vsj-empty">No quick matches — press Enter to view full search results.</div>'; return }
+    suggestions.style.display='block';
+    suggestions.innerHTML = matched.map(p => `
+      <div class="vsj-item" data-url="${p.url}" tabindex="0">
+        <strong>${escapeHtml(p.title)}</strong>
+        <span class="vsj-snippet">${escapeHtml(p.snippet)}</span>
+      </div>
+    `).join('');
+    // attach click handlers
+    Array.from(suggestions.querySelectorAll('.vsj-item')).forEach(item=>{
+      item.addEventListener('click', ()=>{ window.location.href = item.dataset.url });
+      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter') window.location.href = item.dataset.url });
+    });
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m] }) }
+
+  // events
+  input.addEventListener('input', (e)=>{ showSuggestions(e.target.value) });
+  input.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){
+      const q = input.value.trim();
+      // if suggestion visible and focused, let click handler run; otherwise search
+      if(!q) return; // ignore empty
+      doSearch(q);
+    }
+    if(e.key === 'Escape'){
+      suggestions.style.display='none'; suggestions.innerHTML='';
+    }
+  });
+  btn.addEventListener('click', ()=> doSearch(input.value));
+
+  // close suggestions when clicking outside
+  document.addEventListener('click', (ev)=>{
+    if(!document.getElementById('vsj-search-widget').contains(ev.target)){
+      suggestions.style.display='none';
+    }
+  });
+
+  // Load posts lazily after a short delay to avoid blocking gadget render
+  setTimeout(loadPostsJSONP, 800);
+
+  // Expose a minimal API (optional) if another script wants to trigger search
+  window.vsjSearchWidget = { search: doSearch };
+})();
+</script>
+        </div>
+
+        <style>
+            /* General section styling */
+            .crx-section {
+                background: var(--crx-panel);
+                border-radius: 14px;
+                padding: 22px 20px;
+                margin: 20px 0;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+            }
+
+            .crx-section h1,
+            .crx-section h2 {
+                color: var(--crx-accent-dark);
+                margin-bottom: 10px;
+            }
+
+            .crx-section p {
+                font-size: 1rem;
+                color: #444;
+                line-height: 1.6;
+            }
+
+            /* Keywords styling */
+            .crx-keyword {
+                background: var(--crx-accent);
+                color: white;
+                display: inline-block;
+                padding: 6px 12px;
+                border-radius: 20px;
+                margin: 4px;
+                font-size: 0.9em;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Scroll area */
+            #crx-scroll-area {
+                max-height: 500px;
+                overflow-y: auto;
+                padding-right: 6px;
+                scrollbar-width: thin;
+                scrollbar-color: var(--crx-accent) #e6f2ff;
+                border-radius: 12px;
+            }
+
+            #crx-scroll-area::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            #crx-scroll-area::-webkit-scrollbar-track {
+                background: #e6f2ff;
+                border-radius: 8px;
+            }
+
+            #crx-scroll-area::-webkit-scrollbar-thumb {
+                background-color: var(--crx-accent);
+                border-radius: 8px;
+            }
+
+            /* Post cards */
+            #crx-card-list .crx-card-row {
+                background: var(--crx-panel);
+                border-radius: 12px;
+                padding: 14px;
+                margin: 16px 6px;
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+                position: relative;
+            }
+
+            .crx-thumb-square {
+                width: 110px;
+                height: 110px;
+                border-radius: 12px;
+                object-fit: cover;
+            }
+
+            .crx-avatar-circle {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 4px solid var(--crx-panel);
+                position: absolute;
+                left: 18px;
+                top: 50%;
+                transform: translateY(-50%) translateX(-30px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+            }
+
+            .crx-content {
+                flex: 1;
+                padding-left: 32px;
+                min-height: 110px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .crx-post-title {
+                display: inline-block;
+                background: #0e63d6;
+                color: white;
+                padding: 12px 18px;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .crx-post-meta {
+                margin-top: 8px;
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            @media (max-width:600px) {
+                .crx-thumb-square {
+                    width: 92px;
+                    height: 92px;
+                }
+
+                .crx-avatar-circle {
+                    width: 66px;
+                    height: 66px;
+                    left: 14px;
+                    transform: translateY(-50%) translateX(-26px);
+                }
+            }
+        </style>
+
+        <!-- 🧠 Script for Live Blogger Feed -->
+        <script>
+            (function () {
+                var CRX_BLOGGER_URL = "https://www.learnwithchampak.live";
+                var CRX_MAX_POSTS = 60;
+                var TIMEOUT = 9000;
+
+                var feedUrl = CRX_BLOGGER_URL.replace(/\/$/, "") + "/feeds/posts/default?alt=json-in-script&max-results=" + CRX_MAX_POSTS + "&callback=crx_live_feed_callback";
+                var s = document.createElement("script");
+                s.src = feedUrl;
+                s.async = true;
+                document.head.appendChild(s);
+
+                var timer = setTimeout(() => {
+                    document.getElementById("crx-card-list").innerHTML = '<div style="padding:20px;text-align:center;color:#b33;">Unable to load posts.</div>';
+                }, TIMEOUT);
+
+                window.crx_live_feed_callback = function (data) {
+                    clearTimeout(timer);
+                    try {
+                        var entries = (data.feed.entry) || [];
+                        renderCards(entries);
+                    } catch (err) {
+                        document.getElementById("crx-card-list").innerHTML = '<div style="padding:20px;text-align:center;color:#b33;">Feed parse error.</div>';
+                    }
+                };
+
+                function renderCards(entries) {
+                    var container = document.getElementById("crx-card-list");
+                    container.innerHTML = "";
+                    if (!entries.length) { container.innerHTML = '<div style="padding:20px;text-align:center;">No posts yet.</div>'; return; }
+
+                    entries.forEach(e => {
+                        var title = e.title?.$t || "Untitled";
+                        var url = e.link?.find(l => l.rel === 'alternate')?.href || "#";
+                        var published = e.published ? new Date(e.published.$t).toLocaleDateString() : "";
+                        var snippet = (e.summary?.$t || e.content?.$t || "").replace(/<[^>]+>/g, '').slice(0, 140) + "...";
+                        var thumb = e.media$thumbnail?.url || "";
+                        if (!thumb) { var m = (e.content?.$t || "").match(/<img[^>]+src=["']([^"']+)["']/i); thumb = m ? m[1] : ""; }
+                        if (!thumb) thumb = "https://varanasi-software-junction.github.io/blogger/blogger-assets/default-thumb.svg";
+
+                        var row = document.createElement("div");
+                        row.className = "crx-card-row";
+                        row.dataset.title = title.toLowerCase();
+                        row.dataset.snippet = snippet.toLowerCase();
+
+                        row.innerHTML = `
+          <img class="crx-thumb-square crx-avatar-circle" src="${thumb}" alt="${title}">
+          <div class="crx-content">
+            <div class="crx-post-title"><a href="${url}" target="_blank" style="color:white;text-decoration:none;">${title}</a></div>
+            <div class="crx-post-meta">${published} • ${snippet}</div>
+          </div>
+          <img class="crx-avatar-circle" src="${thumb}" alt="${title}">
+        `;
+                        container.appendChild(row);
+                    });
+                    updateFound(entries.length);
+                }
+
+                window.crxFilterPosts = function () {
+                    const q = document.getElementById("crx-live-search").value.toLowerCase();
+                    const posts = document.querySelectorAll(".crx-card-row");
+                    let shown = 0;
+                    posts.forEach(p => {
+                        const t = p.dataset.title, s = p.dataset.snippet;
+                        if (!q || t.includes(q) || s.includes(q)) { p.style.display = "flex"; shown++; }
+                        else p.style.display = "none";
+                    });
+                    updateFound(shown);
+                };
+
+                function updateFound(n) { document.getElementById("crx-found-num").innerText = n; }
+            })();
+        </script>
+    </div>
+
+
+</body>
+
+</html>

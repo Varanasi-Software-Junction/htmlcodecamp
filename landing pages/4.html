@@ -1,0 +1,72 @@
+<!-- 6. Nonprofit / Fundraising Campaign -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Books for Every Child — Donate Today</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Donate $25 to sponsor a child with school supplies. Transparent, trusted nonprofit.">
+<style>
+  :root{--bg:#f3fbf9;--accent:#059669;--muted:#14532d}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#033022}
+  .wrap{max-width:980px;margin:36px auto;padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .hero{display:flex;gap:18px;align-items:center;margin-top:18px}
+  .left{flex:1}
+  .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;border:none}
+  .impact{display:flex;gap:12px;margin-top:16px}
+  .card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,.04);flex:1}
+  .ticker{margin-top:14px;background:#e6fff4;padding:8px;border-radius:8px;overflow:hidden}
+  .ticker .run{display:inline-block;animation:run 16s linear infinite;padding-right:40px}
+  @keyframes run{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  footer{margin-top:28px;color:var(--muted);display:flex;justify-content:space-between}
+  @media(max-width:900px){.hero{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header><div style="font-weight:800">Books for Every Child</div><div class="small">Nonprofit • Registered</div></header>
+
+  <section class="hero">
+    <div class="left">
+      <h1 style="margin:0">Every child deserves school supplies.</h1>
+      <p class="small" style="color:var(--muted);margin-top:10px">Sponsor a child for $25 for a full year — books, stationery and support.</p>
+      <div style="margin-top:12px"><button class="btn">Donate $25</button><button class="small" style="margin-left:10px;border:none;background:none">Volunteer</button></div>
+
+      <div class="ticker" aria-hidden="true" style="margin-top:14px"><div class="run">Raised $142,000 this year • 9,400 children supported • Quarterly transparency reports</div><div class="run">Raised $142,000 this year • 9,400 children supported • Quarterly transparency reports</div></div>
+
+      <div class="impact" style="margin-top:16px">
+        <div class="card"><div style="font-weight:700">9.4k</div><div class="small" style="color:var(--muted)">Children reached</div></div>
+        <div class="card"><div style="font-weight:700">$142k</div><div class="small" style="color:var(--muted)">Funds raised</div></div>
+        <div class="card"><div style="font-weight:700">100%</div><div class="small" style="color:var(--muted)">Program transparency</div></div>
+      </div>
+    </div>
+
+    <aside style="width:340px">
+      <div style="background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.04)">
+        <h4 style="margin:0">Story</h4>
+        <p class="small" style="color:var(--muted);margin-top:8px">Meet Ritu — with a $25 kit she could continue school and finish her exams. Your gift matters.</p>
+
+        <div style="margin-top:12px"><button class="btn">Donate now</button></div>
+      </div>
+    </aside>
+  </section>
+
+  <section style="margin-top:16px">
+    <div style="background:#fff;padding:12px;border-radius:10px">
+      <h4 style="margin:0">Where donations go</h4>
+      <ul style="color:var(--muted);margin-top:8px;padding-left:18px">
+        <li>60% books & supplies</li>
+        <li>25% local program operations</li>
+        <li>15% monitoring & reporting</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div style="color:var(--muted)">© Books for Every Child • info@books.example</div>
+    <div style="color:var(--muted)">Privacy • Reports</div>
+  </footer>
+</main>
+</body>
+</html>

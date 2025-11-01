@@ -1,0 +1,184 @@
+<!-- HOTEL BOOKING LANDING PAGE — "Ganga View Retreat" (Varanasi, India) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ganga View Retreat — Boutique Hotel on the Ghats of Varanasi | Book Stay</title>
+<meta name="description" content="Book your stay at Ganga View Retreat — a boutique riverside hotel in Varanasi overlooking the sacred Ganga. Rooftop dining, yoga sessions, and authentic Indian hospitality." />
+<style>
+  :root{
+    --max-w:1200px;
+    --bg:#f9fafc;
+    --card:#ffffff;
+    --accent:#ff914d;
+    --accent-2:#0072bb;
+    --muted:#555f6d;
+    --radius:14px;
+    --shadow:0 12px 30px rgba(0,0,0,0.08);
+    --font-sans:'Poppins', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:var(--font-sans);color:#0b2032}
+  a{text-decoration:none;color:var(--accent-2)}
+  header{display:flex;justify-content:space-between;align-items:center;max-width:var(--max-w);margin:auto;padding:16px 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .logo{background:linear-gradient(135deg,var(--accent),var(--accent-2));width:60px;height:60px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .btn{border:none;border-radius:8px;padding:10px 18px;font-weight:600;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-outline{border:1px solid var(--accent);color:var(--accent);background:transparent}
+  .hero{max-width:var(--max-w);margin:auto;padding:24px;display:grid;grid-template-columns:1fr 400px;gap:28px;align-items:start}
+  .hero h1{font-size:34px;margin:0;color:#041423}
+  .lead{color:var(--muted);margin:12px 0;font-size:16px}
+  .card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+  input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e0e6ec;margin-top:6px}
+  .rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:30px}
+  .room{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:flex;flex-direction:column}
+  .room h3{margin:8px 0}
+  .price{color:var(--accent-2);font-weight:800}
+  .muted{color:var(--muted);font-size:14px}
+  .section{max-width:var(--max-w);margin:auto;padding:24px}
+  .carousel{margin-top:12px;border-radius:12px;overflow:hidden}
+  .slides{display:flex;transition:transform 0.6s ease}
+  .slide{min-width:100%}
+  .ticker{background:#fff3e6;color:#a65200;padding:8px;border-radius:999px;overflow:hidden;margin-top:12px;font-weight:600}
+  .ticker-text{display:inline-block;animation:scroll 18s linear infinite;padding-right:40px}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  footer{background:#06192a;color:#fff;padding:20px;text-align:center;margin-top:30px;font-size:14px}
+  @media(max-width:850px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">GV</div> Ganga View Retreat</div>
+  <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Wake up to the sacred Ganga, sleep under Varanasi’s stars 🌅</h1>
+    <p class="lead">Nestled on Assi Ghat, <b>Ganga View Retreat</b> brings you the timeless charm of Banaras — traditional interiors, rooftop café overlooking the Ganges, morning yoga, and soulful Indian meals. Book direct and enjoy a complimentary Ganga Aarti experience.</p>
+    <div class="ticker">
+      <div class="ticker-text">✨ Festive Offer: Get 15% OFF on stays of 2 nights or more • Free Masala Chai welcome drink • Sunset boat ride for couples</div>
+      <div class="ticker-text">✨ Festive Offer: Get 15% OFF on stays of 2 nights or more • Free Masala Chai welcome drink • Sunset boat ride for couples</div>
+    </div>
+    <div class="carousel" style="margin-top:18px">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <svg viewBox="0 0 1000 420" width="100%" height="320" role="img" aria-label="View of Ganga at dawn">
+            <rect width="100%" height="100%" fill="#fff9f0"/>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#a67c52" font-size="24">SVG — View of Ganga at Dawn</text>
+          </svg>
+        </div>
+        <div class="slide">
+          <svg viewBox="0 0 1000 420" width="100%" height="320">
+            <rect width="100%" height="100%" fill="#eaf6ff"/>
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#0072bb" font-size="24">SVG — Rooftop Café Overlooking River</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="booking">
+    <h3>Check Availability</h3>
+    <label>Check-in</label>
+    <input type="date" id="in">
+    <label>Check-out</label>
+    <input type="date" id="out">
+    <label>Guests</label>
+    <select id="guests"><option>1 Adult</option><option selected>2 Adults</option><option>3 Adults</option></select>
+    <label>Room Type</label>
+    <select id="room"><option>Ganga View Deluxe</option><option>Terrace Heritage Suite</option><option>Banaras Studio</option></select>
+    <button class="btn btn-primary" style="margin-top:12px;width:100%" onclick="checkRates()">Check Rates</button>
+    <div id="result" style="margin-top:10px;font-weight:600;color:var(--accent-2)"></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Rooms & Tariffs</h2>
+  <div class="rooms">
+    <div class="room">
+      <svg width="100%" height="140"><rect width="100%" height="100%" rx="12" fill="#fff4ec"/></svg>
+      <h3>Ganga View Deluxe</h3>
+      <p class="muted">River-facing king room with balcony and handcrafted Banarasi décor.</p>
+      <p class="price">₹7,200 / night</p>
+      <button class="btn btn-primary" onclick="book('Ganga View Deluxe')">Book Now</button>
+    </div>
+    <div class="room">
+      <svg width="100%" height="140"><rect width="100%" height="100%" rx="12" fill="#eaf6ff"/></svg>
+      <h3>Terrace Heritage Suite</h3>
+      <p class="muted">Private terrace suite with panoramic views, perfect for families & couples.</p>
+      <p class="price">₹10,800 / night</p>
+      <button class="btn btn-primary" onclick="book('Terrace Heritage Suite')">Book Now</button>
+    </div>
+    <div class="room">
+      <svg width="100%" height="140"><rect width="100%" height="100%" rx="12" fill="#f3f8ff"/></svg>
+      <h3>Banaras Studio</h3>
+      <p class="muted">Compact city-view room with workspace, designed for solo travelers.</p>
+      <p class="price">₹5,600 / night</p>
+      <button class="btn btn-primary" onclick="book('Banaras Studio')">Book Now</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Why Guests Love Us 💛</h2>
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:260px">
+      “The sunrise view from my balcony was surreal. Loved the complimentary chai after Ganga Aarti!”  
+      <br><b>— Priya Sharma, Delhi</b>
+    </div>
+    <div class="card" style="flex:1;min-width:260px">
+      “Beautiful interiors, peaceful location, and great staff. Perfect weekend getaway.”  
+      <br><b>— Arjun Mehta, Mumbai</b>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Contact & Location 📍</h2>
+  <p class="muted">Ganga View Retreat, Assi Ghat Road, Varanasi — just 2 km from BHU.</p>
+  <svg viewBox="0 0 900 300" width="100%" height="250" role="img">
+    <rect width="100%" height="100%" rx="12" fill="#e6f2ff"/>
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#0072bb" font-size="20">SVG — Map Placeholder</text>
+  </svg>
+  <p style="margin-top:10px">📞 +91 99350 00000 &nbsp; | &nbsp; ✉️ stay@gangaviewretreat.in</p>
+</section>
+
+<footer>
+  © 2025 Ganga View Retreat, Varanasi • Designed by Learning Sutras  
+</footer>
+
+<script>
+  let slideIndex = 0;
+  setInterval(()=> {
+    slideIndex = (slideIndex + 1) % 2;
+    document.getElementById("slides").style.transform = `translateX(${-slideIndex * 100}%)`;
+  }, 4000);
+
+  function checkRates() {
+    const inDate = document.getElementById('in').value;
+    const outDate = document.getElementById('out').value;
+    if (!inDate || !outDate) {
+      document.getElementById('result').innerText = "Please select both dates.";
+      return;
+    }
+    const nights = Math.ceil((new Date(outDate) - new Date(inDate)) / (1000*60*60*24));
+    if (nights <= 0) {
+      document.getElementById('result').innerText = "Check-out must be after check-in.";
+      return;
+    }
+    const rates = { "Ganga View Deluxe":7200, "Terrace Heritage Suite":10800, "Banaras Studio":5600 };
+    const room = document.getElementById('room').value;
+    const total = rates[room] * nights;
+    document.getElementById('result').innerHTML = `Available ✅ — ${nights} night(s), estimated total <b>₹${total.toLocaleString('en-IN')}</b>`;
+  }
+
+  function book(room) {
+    document.getElementById('room').value = room;
+    document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+  }
+</script>
+</body>
+</html>

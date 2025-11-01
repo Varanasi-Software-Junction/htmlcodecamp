@@ -1,0 +1,204 @@
+<!-- Varanasi Snacks & Sweets — Landing Page (India) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Taste of Varanasi — Authentic Banarasi Snacks & Sweets</title>
+<meta name="description" content="Order authentic Banarasi snacks and sweets — Launglata, Malaiyo, Rabri, Thekua and more. Freshly prepared in Varanasi and delivered across India.">
+<style>
+  :root{
+    --max-w:1200px;
+    --bg:#fffaf5;
+    --card:#ffffff;
+    --accent:#d44a16;
+    --accent-2:#fcbf49;
+    --muted:#624a2e;
+    --radius:14px;
+    --shadow:0 8px 24px rgba(100,60,20,0.12);
+    --font-sans:'Poppins',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font-sans);background:var(--bg);color:#2a1c0f;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:var(--max-w);margin:auto;padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .logo{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+  .btn{padding:10px 16px;border:none;border-radius:8px;cursor:pointer;font-weight:600}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start;margin-top:20px}
+  h1{margin:0;font-size:34px;line-height:1.05}
+  .lead{color:var(--muted);margin-top:10px;font-size:16px}
+  .ticker{background:#fff1e6;padding:8px;border-radius:999px;overflow:hidden;margin-top:16px;box-shadow:var(--shadow)}
+  .run{display:inline-block;padding-right:40px;animation:scroll 20s linear infinite;font-weight:600;color:#7a3416}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+  input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e7dccd;margin-top:8px}
+  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:26px}
+  .product{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:flex;flex-direction:column}
+  .product svg{width:100%;height:160px;border-radius:12px;background:#fff8ef}
+  .price{color:var(--accent);font-weight:700;font-size:17px;margin-top:6px}
+  .muted{color:var(--muted);font-size:14px}
+  .carousel{margin-top:12px;border-radius:14px;overflow:hidden}
+  .slides{display:flex;transition:transform 0.6s ease}
+  .slide{min-width:100%}
+  footer{margin-top:30px;background:#2a1c0f;color:#fff;padding:24px;text-align:center;font-size:14px;border-top:4px solid var(--accent-2)}
+  @media(max-width:880px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="brand"><div class="logo">TV</div> Taste of Varanasi</div>
+    <button class="btn btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Authentic Banarasi Snacks & Sweets 🍬</h1>
+      <p class="lead">From the lanes of Vishwanath Gali to your home — taste Launglata, Malaiyo, Rabri, Thekua, and our signature Kachori-Sabzi. Handcrafted by local halwais using traditional recipes passed down generations.</p>
+      <div class="ticker">
+        <div class="run">🎉 Festive Special: Free shipping on orders above ₹999 • Fresh Malaiyo available for pre-order (limited time) • 100% pure ghee preparations</div>
+        <div class="run">🎉 Festive Special: Free shipping on orders above ₹999 • Fresh Malaiyo available for pre-order (limited time) • 100% pure ghee preparations</div>
+      </div>
+      <div class="carousel card" style="margin-top:18px">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <svg viewBox="0 0 900 300" width="100%" height="260">
+              <rect width="100%" height="100%" rx="14" fill="#fff7f0"/>
+              <text x="50%" y="50%" fill="#c05213" text-anchor="middle" dominant-baseline="middle" font-size="22">SVG — Banarasi Sweets Counter</text>
+            </svg>
+          </div>
+          <div class="slide">
+            <svg viewBox="0 0 900 300" width="100%" height="260">
+              <rect width="100%" height="100%" rx="14" fill="#fcefe2"/>
+              <text x="50%" y="50%" fill="#aa4b12" text-anchor="middle" dominant-baseline="middle" font-size="22">SVG — Kachori-Sabzi & Jalebi Morning Scene</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="order" class="card">
+      <h3>Quick Order</h3>
+      <label for="item">Select Item</label>
+      <select id="item">
+        <option>Launglata (Pack of 6)</option>
+        <option>Malaiyo (200ml Cup)</option>
+        <option>Rabri (500g)</option>
+        <option>Kachori-Sabzi Combo</option>
+        <option>Thekua (500g)</option>
+      </select>
+      <label for="qty">Quantity</label>
+      <input id="qty" type="number" min="1" value="1">
+      <label for="city">Delivery City</label>
+      <input id="city" type="text" placeholder="e.g., Delhi, Mumbai, Lucknow">
+      <button class="btn btn-primary" style="margin-top:12px;width:100%" onclick="placeOrder()">Check Availability</button>
+      <div id="result" style="margin-top:10px;font-weight:600;color:var(--accent)"></div>
+      <p class="muted" style="margin-top:8px">All orders packed in eco-friendly boxes. Cash on delivery available in select cities.</p>
+    </div>
+  </section>
+
+  <!-- Product showcase -->
+  <section style="margin-top:30px">
+    <h2>Popular Items</h2>
+    <div class="products">
+      <div class="product">
+        <svg><text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="18">Launglata</text></svg>
+        <h3>Launglata</h3>
+        <p class="muted">Crispy outer shell filled with mawa and dry fruits, sealed with a clove.</p>
+        <div class="price">₹240 / box of 6</div>
+        <button class="btn btn-primary" onclick="order('Launglata')">Order Now</button>
+      </div>
+
+      <div class="product">
+        <svg><text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="18">Malaiyo</text></svg>
+        <h3>Malaiyo</h3>
+        <p class="muted">Seasonal winter delicacy — frothy, saffron-flavored milk cream served chilled.</p>
+        <div class="price">₹180 / 200ml cup</div>
+        <button class="btn btn-primary" onclick="order('Malaiyo')">Pre-Order</button>
+      </div>
+
+      <div class="product">
+        <svg><text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="18">Rabri</text></svg>
+        <h3>Rabri</h3>
+        <p class="muted">Rich condensed milk dessert topped with pista and saffron strands.</p>
+        <div class="price">₹320 / 500g</div>
+        <button class="btn btn-primary" onclick="order('Rabri')">Order Now</button>
+      </div>
+
+      <div class="product">
+        <svg><text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="18">Kachori-Sabzi</text></svg>
+        <h3>Kachori-Sabzi Combo</h3>
+        <p class="muted">The iconic Banarasi breakfast — spicy potato curry with crispy kachoris.</p>
+        <div class="price">₹120 / plate</div>
+        <button class="btn btn-primary" onclick="order('Kachori-Sabzi')">Order Now</button>
+      </div>
+
+      <div class="product">
+        <svg><text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="18">Thekua</text></svg>
+        <h3>Thekua</h3>
+        <p class="muted">Traditional sweet snack from Purvanchal — crisp, earthy, made with jaggery & wheat.</p>
+        <div class="price">₹180 / 500g</div>
+        <button class="btn btn-primary" onclick="order('Thekua')">Order Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="margin-top:28px">
+    <h2>What Our Customers Say ❤️</h2>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <div class="card" style="flex:1;min-width:260px">“Malaiyo tasted exactly like the one I had at Godowlia last winter!” — <b>Neha Agarwal, Delhi</b></div>
+      <div class="card" style="flex:1;min-width:260px">“Super fresh Launglata and Rabri, arrived in perfect condition.” — <b>Vivek Tiwari, Mumbai</b></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section style="margin-top:28px">
+    <h2>Visit or Contact Us 📍</h2>
+    <p class="muted">Taste of Varanasi, Vishwanath Gali, Near Dashashwamedh Ghat, Varanasi</p>
+    <svg viewBox="0 0 900 300" width="100%" height="250">
+      <rect width="100%" height="100%" rx="14" fill="#fff0d9"/>
+      <text x="50%" y="50%" fill="#b44a13" text-anchor="middle" dominant-baseline="middle" font-size="20">SVG — Map Placeholder of Varanasi</text>
+    </svg>
+    <p style="margin-top:10px">📞 +91 94152 12345 &nbsp; | &nbsp; ✉️ orders@tasteofvaranasi.in</p>
+  </section>
+
+  <footer>
+    © 2025 Taste of Varanasi • Pure Ghee • Handcrafted • Delivered with Love ❤️  
+  </footer>
+</main>
+
+<script>
+  // Simple carousel
+  let index = 0;
+  setInterval(()=> {
+    const slides = document.getElementById("slides");
+    index = (index+1)%slides.children.length;
+    slides.style.transform = `translateX(-${index*100}%)`;
+  }, 4000);
+
+  // Order logic (demo)
+  function placeOrder(){
+    const item = document.getElementById('item').value;
+    const qty = parseInt(document.getElementById('qty').value);
+    const city = document.getElementById('city').value.trim();
+    const result = document.getElementById('result');
+    if(!city){ result.innerText = "Please enter delivery city."; return; }
+    const baseRates = { "Launglata":240, "Malaiyo":180, "Rabri":320, "Kachori-Sabzi":120, "Thekua":180 };
+    const price = baseRates[item.split(' ')[0]] || 200;
+    const total = price * qty;
+    result.innerHTML = `Available ✅ — Estimated total: ₹${total.toLocaleString('en-IN')} (Delivery to ${city})`;
+  }
+
+  function order(item){
+    document.getElementById('item').value = item + " (Pack)";
+    document.getElementById('order').scrollIntoView({behavior:'smooth'});
+  }
+</script>
+</body>
+</html>

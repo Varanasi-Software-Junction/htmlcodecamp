@@ -1,0 +1,86 @@
+<!-- 4. Creative Agency / Portfolio -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Forge Creative — Branding & Design</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Forge Creative — We craft brands that customers remember.">
+<style>
+  :root{--bg:#f6fbff;--accent:#1e3a8a;--muted:#475569}
+  body{margin:0;font-family:Inter,system-ui,Helvetica,Arial;background:var(--bg);color:#0b1220}
+  .wrap{max-width:1100px;margin:36px auto;padding:22px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;gap:12px;align-items:center}
+  .hero{display:flex;gap:20px;align-items:center;margin-top:18px}
+  .hero-left{flex:1}
+  .cta{margin-top:16px}
+  .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:none}
+  .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(12,20,40,.06)}
+  .ticker{margin-top:16px;background:#eaf0ff;padding:8px;border-radius:8px;overflow:hidden}
+  .ticker .run{display:inline-block;animation:run 18s linear infinite;padding-right:40px}
+  @keyframes run{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  footer{margin-top:28px;color:var(--muted);display:flex;justify-content:space-between}
+  @media(max-width:900px){.portfolio{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="brand"><svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#1e3a8a"/></svg><div style="font-weight:700">Forge Creative</div></div>
+    <nav><a href="#work" style="color:var(--muted)">Work</a></nav>
+  </header>
+
+  <section class="hero" id="work">
+    <div class="hero-left">
+      <h1 style="margin:0">We craft brands that customers remember.</h1>
+      <p style="color:var(--muted);margin-top:10px">Strategy, design and growth — from concept to launch. We partner with startups and scale-ups to create iconic brands.</p>
+      <div class="cta"><button class="btn">See our work</button><button class="card" style="margin-left:10px;padding:10px 14px;border-radius:8px">Request proposal</button></div>
+
+      <div class="ticker" aria-hidden="true" style="margin-top:14px"><div class="run">Featured in DesignDaily • Helped 46 startups raise seed • 98% client satisfaction • Workshops available</div><div class="run">Featured in DesignDaily • Helped 46 startups raise seed • 98% client satisfaction • Workshops available</div></div>
+    </div>
+
+    <aside style="width:360px">
+      <div class="card">
+        <h4 style="margin:0">Featured case</h4>
+        <p class="small" style="color:var(--muted);margin-top:8px">Brand relaunch for Nova — revenue up 3x in 6 months.</p>
+        <div style="margin-top:10px"><button class="btn">Read case study</button></div>
+      </div>
+    </aside>
+  </section>
+
+  <section style="margin-top:20px">
+    <div style="font-weight:700;margin-bottom:8px">Selected portfolio</div>
+    <div class="portfolio" aria-live="polite">
+      <div class="card" role="article"><svg width="100%" height="140" viewBox="0 0 320 140" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#eef2ff"/></svg><div style="margin-top:10px;font-weight:700">Nova</div><div class="small" style="color:var(--muted)">Brand & product design</div></div>
+      <div class="card" role="article"><svg width="100%" height="140" viewBox="0 0 320 140" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#fff7ed"/></svg><div style="margin-top:10px;font-weight:700">Hearth</div><div class="small" style="color:var(--muted)">Packaging & identity</div></div>
+      <div class="card" role="article"><svg width="100%" height="140" viewBox="0 0 320 140" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#e6fffa"/></svg><div style="margin-top:10px;font-weight:700">Orbit</div><div class="small" style="color:var(--muted)">Product launch</div></div>
+    </div>
+  </section>
+
+  <section style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+    <div style="flex:1" class="card">
+      <div style="font-weight:700">Our process</div>
+      <ol style="color:var(--muted);margin-top:8px;padding-left:18px">
+        <li>Discovery</li>
+        <li>Strategy & naming</li>
+        <li>Design & delivery</li>
+        <li>Launch & growth</li>
+      </ol>
+    </div>
+
+    <div style="width:320px" class="card">
+      <div style="font-weight:700">Start a project</div>
+      <p class="small" style="color:var(--muted)">Tell us about your brand and we’ll send a tailored brief.</p>
+      <div style="margin-top:8px"><button class="btn">Request proposal</button></div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="color:var(--muted)">© Forge Creative • hello@forge.example</div>
+    <div style="color:var(--muted)">Careers • Privacy</div>
+  </footer>
+</main>
+</body>
+</html>

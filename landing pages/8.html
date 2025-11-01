@@ -1,0 +1,97 @@
+<!-- PAGE 6 — Flagship Event / Conference (Exquisite) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SummitX — International Tech Summit</title>
+<meta name="description" content="SummitX — 3-day international tech summit with thought leaders, workshops & networking. Buy tickets and view schedule." />
+<style>
+  :root{--bg:#071022;--muted:#9fb0c9;--accent:#8b5cf6;--max:1200px}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#071022,#041028);color:#ecf6ff;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:36px auto;padding:24px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:start;margin-top:18px}
+  h1{margin:0;font-size:34px}
+  .lead{color:var(--muted);margin-top:8px}
+  .speakers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+  .speaker{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:10px;border-radius:10px;text-align:center}
+  .tickets{margin-top:12px;display:flex;gap:12px}
+  .card{background:rgba(255,255,255,0.03);padding:12px;border-radius:12px}
+  .ticker{margin-top:12px;background:rgba(255,255,255,0.03);padding:8px;border-radius:999px;overflow:hidden}
+  .run{display:inline-block;padding-right:40px;animation:run 14s linear infinite}
+  @keyframes run{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  footer{margin-top:18px;color:var(--muted);display:flex;justify-content:space-between}
+  @media(max-width:980px){.hero{grid-template-columns:1fr}.speakers{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.speakers{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap" role="main">
+  <header>
+    <div style="font-weight:800">SummitX</div>
+    <div class="small">Nov 18–20 • Bengaluru</div>
+  </header>
+
+  <section class="hero" aria-labelledby="sum-title">
+    <div>
+      <h1 id="sum-title">The future of AI, design & product</h1>
+      <p class="lead">Three days of keynotes, hands-on workshops and founder-led panels. Global speakers, curated networking and startup pitch day.</p>
+
+      <div class="card" style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <strong>Featured</strong>
+            <div class="small" style="color:var(--muted);margin-top:6px">Keynotes by global researchers & CPOs</div>
+          </div>
+          <div style="text-align:right"><button style="background:var(--accent);color:#071022;padding:10px 12px;border-radius:8px;border:none">Buy tickets</button></div>
+        </div>
+        <div class="ticker" role="status" aria-live="polite" style="margin-top:12px"><div class="run">Early-bird ends Oct 14 • Student passes • Live-stream available • Workshops limited to 40 seats</div><div class="run">Early-bird ends Oct 14 • Student passes • Live-stream available • Workshops limited to 40 seats</div></div>
+      </div>
+
+      <div style="margin-top:14px">
+        <h4 style="margin:0">Speakers</h4>
+        <div class="speakers" aria-live="polite">
+          <div class="speaker"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="28" r="18" fill="#12263a"/><rect x="12" y="48" width="56" height="22" rx="6" fill="#0a1630"/></svg><div style="font-weight:800;margin-top:8px">Dr. Mei</div><div class="small" style="color:var(--muted)">AI Research</div></div>
+          <div class="speaker"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="28" r="18" fill="#132a3f"/><rect x="12" y="48" width="56" height="22" rx="6" fill="#0a1630"/></svg><div style="font-weight:800;margin-top:8px">Carlos R.</div><div class="small" style="color:var(--muted)">Product Lead</div></div>
+          <div class="speaker"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="28" r="18" fill="#1a2f4f"/><rect x="12" y="48" width="56" height="22" rx="6" fill="#0a1630"/></svg><div style="font-weight:800;margin-top:8px">Anika S.</div><div class="small" style="color:var(--muted)">Design Lead</div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <div style="font-weight:800">Tickets</div>
+        <div class="small" style="color:var(--muted);margin-top:8px">Choose a pass — full access or one-day tickets.</div>
+        <div class="tickets" style="margin-top:8px">
+          <div style="flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)"><div style="font-weight:800">$199</div><div class="small" style="color:var(--muted);margin-top:6px">Full pass</div></div>
+          <div style="flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)"><div style="font-weight:800">$79</div><div class="small" style="color:var(--muted);margin-top:6px">One-day</div></div>
+        </div>
+        <div style="margin-top:12px"><button style="background:var(--accent);color:#071022;padding:10px 12px;border-radius:8px;border:none">Buy tickets</button></div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4 style="margin:0">Workshops</h4>
+        <div class="small" style="color:var(--muted);margin-top:8px">Intensive half-day workshops — limited seats. Topics: MLOps, Design Systems, Product Strategy.</div>
+      </div>
+    </aside>
+  </section>
+
+  <section style="margin-top:18px" class="card">
+    <h3 style="margin:0">Schedule snapshot</h3>
+    <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
+      <div style="flex:1"><strong>Day 1</strong><div class="small" style="color:var(--muted);margin-top:6px">Keynotes, panels, welcome reception.</div></div>
+      <div style="flex:1"><strong>Day 2</strong><div class="small" style="color:var(--muted);margin-top:6px">Workshops & breakout sessions.</div></div>
+      <div style="flex:1"><strong>Day 3</strong><div class="small" style="color:var(--muted);margin-top:6px">Founder pitch & hiring day.</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="small">© SummitX • contact@summitx.example</div>
+    <div class="small">Sponsors • Code of Conduct</div>
+  </footer>
+</main>
+
+</body>
+</html>

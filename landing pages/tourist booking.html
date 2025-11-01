@@ -1,0 +1,357 @@
+<!-- TOURIST VEHICLE BOOKING LANDING PAGE — "Bharat Yatra Vehicles" (India, ₹) -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bharat Yatra Vehicles — Tourist vehicle booking across India | Book SUV, Tempo Traveller, Bus</title>
+<meta name="description" content="Book tourist vehicles across India — sedans, SUVs, Tempo Travellers, minibuses and bikes. Hourly, daily and outstation packages with driver, fuel and toll included. Best rates in ₹." />
+<style>
+  :root{
+    --max-w:1200px;
+    --bg:#fbfdff;
+    --card:#ffffff;
+    --muted:#475569;
+    --accent:#ff6b3d; /* saffron-ish */
+    --accent-2:#075985; /* deep blue */
+    --shadow:0 12px 28px rgba(3,10,22,0.06);
+    --radius:12px;
+    --font-sans:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font-sans);background:var(--bg);color:#052033;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-2);text-decoration:none}
+  .wrap{max-width:var(--max-w);margin:28px auto;padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+  nav{display:flex;gap:12px;align-items:center}
+  .btn{padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-outline{background:transparent;border:1px solid rgba(5,32,51,0.06);color:#052033}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start;margin-top:18px}
+  h1{margin:0;font-size:32px;line-height:1.02}
+  .lead{color:var(--muted);margin-top:10px}
+  .ticker{margin-top:12px;background:#fff4eb;padding:10px;border-radius:999px;overflow:hidden;box-shadow:var(--shadow)}
+  .ticker .run{display:inline-block;padding-right:40px;animation:scroll 18s linear infinite;font-weight:700;color:#9b3d1a}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .card{background:var(--card);padding:14px;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .booking{position:sticky;top:22px}
+  label{display:block;font-size:13px;color:var(--muted);margin-top:10px}
+  input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-top:6px}
+  .vehicles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:20px}
+  .vehicle{border-radius:12px;background:var(--card);padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .vehicle svg{width:100%;height:120px;border-radius:8px;background:#f3fbff}
+  .price{font-weight:800;color:var(--accent-2)}
+  .features{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .feature{background:#f0f7ff;padding:8px;border-radius:8px;font-size:13px;color:var(--muted)}
+  .carousel{margin-top:12px;border-radius:12px;overflow:hidden}
+  .slides{display:flex;transition:transform .5s ease}
+  .slide{min-width:100%}
+  .testimonials{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .test{background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+  .faq{margin-top:18px}
+  details > summary{cursor:pointer;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent)}
+  footer{margin-top:26px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 0}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}.vehicles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap" role="main">
+  <header>
+    <div class="brand" aria-hidden="true">
+      <div class="logo">BY</div>
+      <div>
+        <div style="font-weight:800">Bharat Yatra Vehicles</div>
+        <div style="font-size:13px;color:var(--muted)">Tourist vehicle rentals — Across India</div>
+      </div>
+    </div>
+
+    <nav aria-label="Main">
+      <a class="btn-outline" href="#vehicles">Vehicles</a>
+      <a class="btn-outline" href="#packages">Packages</a>
+      <button class="btn btn-primary" onclick="document.getElementById('bookingCard').scrollIntoView({behavior:'smooth'})">Book a Vehicle</button>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="heroTitle">
+    <div>
+      <h1 id="heroTitle">Comfortable, reliable vehicles — driver, fuel & toll included</h1>
+      <p class="lead">Book sedans, SUVs, Tempo Travellers, minibuses and motorbikes for sightseeing, outstation trips, pilgrimages and corporate travel. Transparent pricing in <strong>₹</strong>, local drivers, 24/7 support.</p>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="run">Diwali Special: Flat ₹1,000 off on Tempo Traveller day hire • Free pickup within city limits • GST & Toll included</div>
+        <div class="run">Diwali Special: Flat ₹1,000 off on Tempo Traveller day hire • Free pickup within city limits • GST & Toll included</div>
+      </div>
+
+      <div class="carousel card" style="margin-top:18px" aria-roledescription="carousel" aria-label="Vehicle highlights">
+        <div class="slides" id="heroSlides">
+          <div class="slide">
+            <svg viewBox="0 0 900 320" width="100%" height="260" role="img" aria-label="Tempo Traveller for group tours">
+              <rect width="100%" height="100%" rx="12" fill="#fff8f3"/>
+              <text x="50%" y="50%" fill="#b45f2b" text-anchor="middle" dominant-baseline="middle" font-size="20">Tempo Traveller — Group Tours</text>
+            </svg>
+          </div>
+          <div class="slide">
+            <svg viewBox="0 0 900 320" width="100%" height="260" role="img" aria-label="SUV for family trips">
+              <rect width="100%" height="100%" rx="12" fill="#eef8ff"/>
+              <text x="50%" y="50%" fill="#075985" text-anchor="middle" dominant-baseline="middle" font-size="20">SUV — Family Outstation</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:220px">
+          <div style="font-weight:800">Instant quotes</div>
+          <div style="color:var(--muted);margin-top:8px">Get rates for hourly, daily and outstation trips with full breakdown.</div>
+        </div>
+        <div class="card" style="width:240px;text-align:center">
+          <div style="font-weight:800">Support</div>
+          <div style="color:var(--muted);margin-top:8px">Call: +91 99123 45678</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking card -->
+    <aside id="bookingCard" class="card booking" aria-labelledby="bookingHeading" role="region">
+      <div id="bookingHeading" style="font-weight:800">Get a quick quote</div>
+      <form id="quoteForm" onsubmit="return getQuote(event)" novalidate>
+        <label for="pickup">Pickup city / location</label>
+        <input id="pickup" type="text" placeholder="e.g., Varanasi, Dashashwamedh Ghat" required>
+
+        <label for="drop">Drop / Return city</label>
+        <input id="drop" type="text" placeholder="Same as pickup for round-trip" required>
+
+        <div style="display:flex;gap:8px">
+          <div style="flex:1">
+            <label for="startDate">Start date</label>
+            <input id="startDate" type="date" required>
+          </div>
+          <div style="flex:1">
+            <label for="endDate">End date</label>
+            <input id="endDate" type="date" required>
+          </div>
+        </div>
+
+        <label for="vehicle">Vehicle type</label>
+        <select id="vehicle" aria-label="Vehicle type">
+          <option value="sedan">Sedan (Etios/Swift Dzire)</option>
+          <option value="suv">SUV (Innova/Crysta)</option>
+          <option value="tempo">Tempo Traveller (12–17 seater)</option>
+          <option value="minibus">Mini Bus (25 seater)</option>
+          <option value="bike">Royal Enfield / Bike</option>
+        </select>
+
+        <label for="purpose">Purpose</label>
+        <select id="purpose" aria-label="Trip purpose">
+          <option>Local sightseeing (hourly)</option>
+          <option selected>Outstation (per day)</option>
+          <option>Pilgrimage / Dharam yatra</option>
+          <option>Airport transfer</option>
+        </select>
+
+        <label for="passengers">Passengers</label>
+        <select id="passengers"><option>1–2</option><option selected>3–5</option><option>6–10</option><option>10+</option></select>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn btn-primary" type="submit">Get Quote</button>
+          <button class="btn btn-outline" type="button" onclick="requestCall()">Request Callback</button>
+        </div>
+
+        <div id="quoteResult" style="margin-top:12px;font-weight:700;color:var(--accent-2)" aria-live="polite"></div>
+
+        <div style="margin-top:10px;font-size:13px;color:var(--muted)">Prices shown are indicative — final quote includes GST, tolls & driver allowance. Safe drivers, verified vehicles.</div>
+      </form>
+    </aside>
+  </section>
+
+  <!-- Vehicles grid -->
+  <section id="vehicles" class="card" style="margin-top:20px">
+    <h2 style="margin:0">Our Vehicles</h2>
+    <p class="muted" style="margin-top:8px">Choose from modern, well-maintained vehicles with experienced drivers familiar with tourist routes and local etiquette.</p>
+
+    <div class="vehicles" role="list">
+      <article class="vehicle" role="listitem" aria-labelledby="v1">
+        <svg viewBox="0 0 400 200" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#eef8ff"/></svg>
+        <h3 id="v1">Sedan — Comfortable & economical</h3>
+        <div class="muted">Best for 1–3 passengers, city tours and airport transfers.</div>
+        <div class="price">₹1,200 / day (city) • ₹10/km (outstation)</div>
+        <div class="features"><span class="feature">AC</span><span class="feature">Driver</span><span class="feature">Fuel incl.</span></div>
+        <div style="margin-top:auto;display:flex;gap:8px"><button class="btn btn-primary" onclick="prefill('sedan')">Book Sedan</button><button class="btn btn-outline" onclick="details('Sedan')">Details</button></div>
+      </article>
+
+      <article class="vehicle" role="listitem" aria-labelledby="v2">
+        <svg viewBox="0 0 400 200" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#fff8f0"/></svg>
+        <h3 id="v2">SUV — Spacious family/comfort</h3>
+        <div class="muted">Ideal for families and long drives.</div>
+        <div class="price">₹2,200 / day • ₹14/km</div>
+        <div class="features"><span class="feature">AC</span><span class="feature">Driver</span><span class="feature">Roadside support</span></div>
+        <div style="margin-top:auto;display:flex;gap:8px"><button class="btn btn-primary" onclick="prefill('suv')">Book SUV</button><button class="btn btn-outline" onclick="details('SUV')">Details</button></div>
+      </article>
+
+      <article class="vehicle" role="listitem" aria-labelledby="v3">
+        <svg viewBox="0 0 400 200" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#fff7f3"/></svg>
+        <h3 id="v3">Tempo Traveller — Groups & pilgrimages</h3>
+        <div class="muted">12–17 seaters, excellent for group tours and temples.</div>
+        <div class="price">₹6,500 / day (12-seater) • ₹9,500 / day (17-seater)</div>
+        <div class="features"><span class="feature">Driver</span><span class="feature">Fuel incl.</span><span class="feature">Music/AC</span></div>
+        <div style="margin-top:auto;display:flex;gap:8px"><button class="btn btn-primary" onclick="prefill('tempo')">Book Traveller</button><button class="btn btn-outline" onclick="details('Tempo Traveller')">Details</button></div>
+      </article>
+
+      <article class="vehicle" role="listitem" aria-labelledby="v4">
+        <svg viewBox="0 0 400 200" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#eefcfa"/></svg>
+        <h3 id="v4">Mini Bus — 25+ seats</h3>
+        <div class="muted">Corporate groups, larger pilgrimages, school trips.</div>
+        <div class="price">₹14,500 / day</div>
+        <div class="features"><span class="feature">Driver</span><span class="feature">Comfort seats</span></div>
+        <div style="margin-top:auto;display:flex;gap:8px"><button class="btn btn-primary" onclick="prefill('minibus')">Book Mini Bus</button><button class="btn btn-outline" onclick="details('Mini Bus')">Details</button></div>
+      </article>
+
+      <article class="vehicle" role="listitem" aria-labelledby="v5">
+        <svg viewBox="0 0 400 200" aria-hidden="true"><rect width="100%" height="100%" rx="8" fill="#f4f7ff"/></svg>
+        <h3 id="v5">Bike (Royal Enfield)</h3>
+        <div class="muted">Guided rides and short outstation trips for 1–2 riders.</div>
+        <div class="price">₹1,800 / day</div>
+        <div class="features"><span class="feature">Helmet</span><span class="feature">Guide</span></div>
+        <div style="margin-top:auto;display:flex;gap:8px"><button class="btn btn-primary" onclick="prefill('bike')">Book Bike</button><button class="btn btn-outline" onclick="details('Bike')">Details</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="card" style="margin-top:18px">
+    <h2 style="margin:0">Popular Packages</h2>
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+      <div class="card" style="flex:1;min-width:220px">
+        <strong>Golden Triangle — 6 days, Tempo Traveller</strong>
+        <div class="muted" style="margin-top:8px">Delhi → Agra → Jaipur • ₹45,000 (12-seater, per day avg incl. fuel)</div>
+      </div>
+      <div class="card" style="flex:1;min-width:220px">
+        <strong>Varanasi Pilgrimage — 3 days</strong>
+        <div class="muted" style="margin-top:8px">City tour, Ganga Aarti boat, Sarnath visit • ₹8,500 (SUV, per day avg)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="margin-top:18px">
+    <h2 style="margin:0">What travellers say</h2>
+    <div class="testimonials">
+      <div class="test">“Driver was punctual and helpful; Tempo Traveller was comfortable for our family group.” — <b>Ramesh Gupta, Kanpur</b></div>
+      <div class="test">“Smooth outstation ride to Rishikesh with great stops — recommended!” — <b>Neha Kapoor, Noida</b></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" style="margin-top:18px">
+    <h3 style="margin:0">Frequently asked questions</h3>
+    <div class="faq" style="margin-top:8px">
+      <details><summary>Are fuel, tolls and driver included?</summary><div class="muted" style="margin-top:8px">Yes — our outstation & day-hire quotes include fuel, tolls and driver allowance unless stated otherwise. GST is additional.</div></details>
+      <details style="margin-top:8px"><summary>Do you provide pick-up from airports and railway stations?</summary><div class="muted" style="margin-top:8px">Yes — we provide pickup and drop to major airports and stations. Early/late pickups may have additional charges.</div></details>
+      <details style="margin-top:8px"><summary>Can I change the itinerary mid-trip?</summary><div class="muted" style="margin-top:8px">Most changes are accommodated; additional charges may apply for extra distance or hours. Contact operations for immediate help.</div></details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section style="margin-top:18px" class="card">
+    <h3 style="margin:0">Contact & Support</h3>
+    <p class="muted" style="margin-top:8px">24/7 support • Emergency hotline • Local city offices</p>
+    <div style="display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap">
+      <div style="font-weight:800">Call: +91 99123 45678</div>
+      <div class="muted">Email: bookings@bharatyatra.example</div>
+      <button class="btn btn-primary" onclick="requestCall()">Request a callback</button>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 Bharat Yatra Vehicles • GSTIN: 09ABCDE1234F1Z5</div>
+    <div class="muted">Terms • Privacy • Safety Guidelines</div>
+  </footer>
+</main>
+
+<script>
+  // Hero carousel
+  (function(){
+    const slides = document.getElementById('heroSlides');
+    let idx = 0;
+    setInterval(()=>{ idx = (idx+1) % slides.children.length; slides.style.transform = 'translateX(' + (-idx*100) + '%)'; }, 4500);
+  })();
+
+  // Pricing model (indicative, demo)
+  const baseRates = {
+    sedan: { type:'Sedan', daily:1200, perKm:10, hourly:250 },
+    suv: { type:'SUV', daily:2200, perKm:14, hourly:350 },
+    tempo: { type:'Tempo Traveller', daily12:6500, daily17:9500 },
+    minibus: { type:'Mini Bus', daily:14500 },
+    bike: { type:'Bike', daily:1800 }
+  };
+
+  function parseDateVal(id){ const v = document.getElementById(id).value; return v ? new Date(v+'T12:00:00') : null; }
+  function dayDiff(a,b){ return Math.max(1, Math.round((b - a) / 86400000)); }
+
+  function getQuote(e){
+    e.preventDefault();
+    const pickup = document.getElementById('pickup').value.trim();
+    const drop = document.getElementById('drop').value.trim();
+    const start = parseDateVal('startDate');
+    const end = parseDateVal('endDate');
+    const veh = document.getElementById('vehicle').value;
+    const purpose = document.getElementById('purpose').value;
+    const passengers = document.getElementById('passengers').value;
+
+    const resEl = document.getElementById('quoteResult');
+    resEl.innerText = '';
+
+    if(!pickup || !drop || !start || !end) {
+      resEl.innerText = 'Please fill pickup, drop and dates.';
+      return false;
+    }
+    if(end <= start){
+      resEl.innerText = 'End date must be after start date.';
+      return false;
+    }
+
+    const nights = dayDiff(start,end);
+    // Simple pricing rules demonstration
+    let estimate = 0;
+    if(veh === 'sedan'){ estimate = baseRates.sedan.daily * nights; }
+    else if(veh === 'suv'){ estimate = baseRates.suv.daily * nights; }
+    else if(veh === 'tempo'){ // choose 12-seater as default for demo
+      estimate = baseRates.tempo.daily12 * nights;
+    }
+    else if(veh === 'minibus'){ estimate = baseRates.minibus.daily * nights; }
+    else if(veh === 'bike'){ estimate = baseRates.bike.daily * nights; }
+
+    // Simple promos
+    if(nights >= 5) estimate = Math.round(estimate * 0.92); // 8% discount for 5+ days
+    if(purpose.toLowerCase().includes('pilgrimage')) estimate = Math.round(estimate * 0.95);
+
+    // Add example surcharge for remote locations (demo)
+    const remoteSurcharge = (pickup.toLowerCase().includes('remote') || drop.toLowerCase().includes('remote')) ? 1500 : 0;
+    estimate += remoteSurcharge;
+
+    // Show estimate
+    resEl.innerHTML = `Estimated: <span style="color:#075985">₹${estimate.toLocaleString('en-IN')}</span> for ${nights} day(s). <div style="font-size:13px;color:var(--muted);margin-top:6px">GST, tolls & driver allowance are extra (final invoice will show breakdown). To confirm booking, proceed to secure checkout or request callback.</div>`;
+
+    // Optionally: store quote on server (not implemented in demo)
+    return false;
+  }
+
+  function prefill(type){
+    const map = { sedan:'Sedan (Etios/Swift Dzire)', suv:'SUV (Innova/Crysta)', tempo:'Tempo Traveller (12–17 seater)', minibus:'Mini Bus (25 seater)', bike:'Royal Enfield' };
+    document.getElementById('vehicle').value = (type === 'tempo' ? 'tempo' : (type === 'suv' ? 'suv' : (type === 'minibus' ? 'minibus' : (type === 'bike' ? 'bike' : 'sedan'))));
+    document.getElementById('pickup').focus();
+    document.getElementById('bookingCard').scrollIntoView({behavior:'smooth'});
+  }
+
+  function details(name){
+    alert(name + ' — details & itinerary options (demo). Contact +91 99123 45678 for a custom quote.');
+  }
+
+  function requestCall(){
+    alert('Thanks — our operations team will call you shortly at the number you provide (demo).');
+  }
+</script>
+</body>
+</html>
