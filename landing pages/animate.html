@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Learn 3D & SVG Animations — Step by Step (with Rotating Numbers)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#071024;--card:#091428;--accent:#1fb6ff;--accent2:#ff8177;--muted:#9fb3c8}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#041027);color:#e6eef8;}
+    header{padding:28px 20px;text-align:center;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#012}
+    header h1{margin:0;font-size:24px}
+    header p{margin:6px 0 0;font-weight:500;color:rgba(1,18,36,0.8)}
+    main{max-width:980px;margin:22px auto;padding:20px}
+    section{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:18px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.03)}
+    h2{color:var(--accent);margin:0 0 8px}
+    p{color:var(--muted);line-height:1.6}
+    .stage{margin-top:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);height:240px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .btn{background:var(--accent);border:0;color:#042;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+    pre.code{background:#07152a;padding:12px;border-radius:8px;color:#9be6ff;overflow:auto}
+
+    /* cube used earlier */
+    .cube{width:120px;height:120px;position:relative;transform-style:preserve-3d;animation:spin 5s linear infinite}
+    .cube div{position:absolute;inset:0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#012;font-weight:700}
+    .cube .front{transform:translateZ(60px);background:linear-gradient(135deg,#9be6ff,#1fb6ff)}
+    .cube .back{transform:rotateY(180deg) translateZ(60px);background:linear-gradient(135deg,#ffd7cf,#ff8177)}
+    .cube .right{transform:rotateY(90deg) translateZ(60px);background:linear-gradient(135deg,#c7f7d7,#6de49a)}
+    .cube .left{transform:rotateY(-90deg) translateZ(60px);background:linear-gradient(135deg,#f0d7ff,#d7a7ff)}
+    .cube .top{transform:rotateX(90deg) translateZ(60px);background:linear-gradient(135deg,#fff6d6,#ffd66b)}
+    .cube .bottom{transform:rotateX(-90deg) translateZ(60px);background:linear-gradient(135deg,#dbe9ff,#a6d0ff)}
+    @keyframes spin{0%{transform:rotateX(0) rotateY(0)}100%{transform:rotateX(360deg) rotateY(360deg)}}
+
+    /* rotating numbers ring */
+    .scene{width:320px;height:320px;perspective:1000px}
+    .ring{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+    .slice{position:absolute;left:50%;top:50%;width:84px;height:44px;margin-left:-42px;margin-top:-22px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#012;box-shadow:0 10px 30px rgba(1,18,36,0.5);backface-visibility:hidden;transition:transform 220ms ease}
+    .slice:hover{transform:scale(1.2) translateZ(160px) !important}
+
+    .ui-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    label{color:var(--muted);font-size:13px}
+    input[type=range]{width:220px}
+
+    @media (max-width:720px){.scene{width:260px;height:260px}.stage{height:260px}}
+    @media (prefers-reduced-motion:reduce){.cube{animation:none}.ring{animation:none}.slice{transition:none !important}}
+  </style>
+</head>
+<body>
+  
+
+  <main>
+    <section id="step1">
+      <h2>Step 1 — 3D Basics: The Spinning Cube</h2>
+      <p>We use CSS transforms to place faces in 3D (translateZ, rotateX, rotateY). Below is a live cube you can pause.</p>
+      <div class="stage">
+        <div class="cube" id="demoCube">
+          <div class="front">FRONT</div>
+          <div class="back">BACK</div>
+          <div class="right">RIGHT</div>
+          <div class="left">LEFT</div>
+          <div class="top">TOP</div>
+          <div class="bottom">BOT</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="cubeToggle">Pause</button>
+        <button class="btn secondary" id="cubeSlow">Slow</button>
+        <div class="small">Try dragging the cube (desktop) to rotate.</div>
+      </div>
+      <pre class="code">CSS: transform-style: preserve-3d; transform: translateZ(...);</pre>
+    </section>
+
+ `
+    <section id="step4">
+      <h2>Step 4 — Rotating Numbers Ring (NEW)</h2>
+      <p>This is the rotating numbers animation you asked for. It arranges items around a circle using rotateY + translateZ. Try changing the count and speed below.</p>
+
+      <div class="stage">
+        <div class="scene">
+          <div class="ring" id="numbersRing" aria-hidden="false"></div>
+        </div>
+      </div>
+
+      <div class="ui-row">
+        <label for="count">Count</label>
+        <input id="count" type="number" min="4" max="36" value="12" style="width:76px;padding:6px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#e6eef8">
+
+        <label for="radius">Radius</label>
+        <input id="radius" type="range" min="60" max="220" value="120">
+
+        <label for="speed">Speed</label>
+        <input id="speed" type="range" min="1" max="30" value="10">
+
+        <button class="btn" id="regen">Apply</button>
+        <button class="btn secondary" id="pauseRing">Pause</button>
+      </div>
+
+      <div class="small">Tip: hover the ring to pause rotation, hover a number to pop it forward.</div>
+      <pre class="code">JS core: element.style.transform = rotateY(${angle}deg) translateZ(${radius}px)</pre>
+    </section>
+
+
+  </main>
+
+  <footer style="text-align:center;padding:18px;color:var(--muted)">Made with ❤ — interactive lessons (reduced-motion respected)</footer>
+
+  <script>
+    // Respect prefers-reduced-motion
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --------- Cube controls & drag rotate ---------
+    (function(){
+      const cube = document.getElementById('demoCube');
+      const btn = document.getElementById('cubeToggle');
+      const slow = document.getElementById('cubeSlow');
+      if(!cube) return;
+      let spinning = true;
+      btn.addEventListener('click', ()=>{ spinning = !spinning; cube.style.animationPlayState = spinning ? 'running' : 'paused'; btn.textContent = spinning ? 'Pause' : 'Play'; });
+      slow.addEventListener('click', ()=>{ cube.style.animationDuration = '18s'; setTimeout(()=> cube.style.animationDuration='5s',8000); });
+
+      // drag to rotate (desktop)
+      if(!reduced){
+        let dragging=false,lastX=0,lastY=0,rx=0,ry=0;
+        cube.addEventListener('mousedown', e=>{ dragging=true; lastX=e.clientX; lastY=e.clientY; cube.style.animationPlayState='paused'; });
+        window.addEventListener('mouseup', ()=>{ if(dragging) cube.style.animationPlayState = spinning ? 'running' : 'paused'; dragging=false; });
+        window.addEventListener('mousemove', e=>{ if(!dragging) return; const dx=e.clientX-lastX, dy=e.clientY-lastY; ry += dx*0.3; rx -= dy*0.3; cube.style.transform = rotateX(${rx}deg) rotateY(${ry}deg); lastX=e.clientX; lastY=e.clientY; });
+      }
+    })();
+
+    // --------- Parallax stage (simple) ---------
+    (function(){
+      const stage = document.getElementById('parallaxStage'); if(!stage) return; const svg = stage.querySelector('svg');
+      if(reduced) return;
+      stage.addEventListener('mousemove', e=>{
+        const r = stage.getBoundingClientRect(); const nx = (e.clientX - r.left)/r.width - 0.5; const ny = (e.clientY - r.top)/r.height - 0.5;
+        const rects = svg.querySelectorAll('rect'); rects.forEach((el,i)=>{ const depth = (i+1)*6; el.style.transform = translate(${ -nx*depth }px, ${ -ny*depth }px); });
+      });
+      stage.addEventListener('mouseleave', ()=>{ const rects = svg.querySelectorAll('rect'); rects.forEach(el=>el.style.transform=''); });
+    })();
+
+    // --------- Flip card ---------
+    (function(){ const flip = document.getElementById('flipInner'); if(!flip) return; document.getElementById('flipBtn').addEventListener('click', ()=>{ const cur = flip.style.transform || ''; flip.style.transform = (cur.indexOf('180')!==-1) ? 'rotateY(0deg)' : 'rotateY(180deg)'; }); })();
+
+    // --------- Rotating Numbers Ring ---------
+    (function(){
+      const ring = document.getElementById('numbersRing');
+      const inputCount = document.getElementById('count');
+      const inputRadius = document.getElementById('radius');
+      const inputSpeed = document.getElementById('speed');
+      const regen = document.getElementById('regen');
+      const pause = document.getElementById('pauseRing');
+
+      let animId=null;
+      let autoAngle = 0;
+      function build(count, radius){
+        ring.innerHTML = '';
+        for(let i=0;i<count;i++){
+          const el = document.createElement('div'); el.className='slice'; el.tabIndex = 0;
+          el.textContent = (i+1).toString().padStart(2,'0');
+          const angle = (360 / count) * i;
+          el.style.transform = rotateY(${angle}deg) translateZ(${radius}px);
+          // pop forward on hover (keyboard accessible)
+          el.addEventListener('mouseenter', ()=> el.style.transform += ' translateZ(40px) scale(1.12)');
+          el.addEventListener('mouseleave', ()=> el.style.transform = rotateY(${angle}deg) translateZ(${radius}px));
+          el.addEventListener('focus', ()=> el.style.transform += ' translateZ(40px) scale(1.12)');
+          el.addEventListener('blur', ()=> el.style.transform = rotateY(${angle}deg) translateZ(${radius}px));
+          ring.appendChild(el);
+        }
+      }
+
+      function startAuto(speed){
+        if(reduced) return; // no auto animation if reduced motion
+        if(animId) cancelAnimationFrame(animId);
+        const step = speed/100; // convert control to sensible speed
+        function tick(){ autoAngle = (autoAngle + step) % 360; ring.style.transform = rotateY(${autoAngle}deg); animId = requestAnimationFrame(tick); }
+        animId = requestAnimationFrame(tick);
+      }
+
+      // initial build
+      build(parseInt(inputCount.value,10), parseInt(inputRadius.value,10));
+      startAuto(parseInt(inputSpeed.value,10));
+
+      regen.addEventListener('click', ()=>{
+        const c = Math.max(4, Math.min(36, parseInt(inputCount.value,10)||12));
+        const r = Math.max(40, Math.min(220, parseInt(inputRadius.value,10)||120));
+        build(c,r);
+        startAuto(parseInt(inputSpeed.value,10));
+      });
+
+      pause.addEventListener('click', ()=>{
+        if(animId){ cancelAnimationFrame(animId); animId=null; pause.textContent='Resume'; }
+        else { startAuto(parseInt(inputSpeed.value,10)); pause.textContent='Pause'; }
+      });
+
+      // hover to pause
+      const scene = ring.closest('.scene'); if(scene){ scene.addEventListener('mouseenter', ()=>{ if(animId) { cancelAnimationFrame(animId); } }); scene.addEventListener('mouseleave', ()=>{ if(!animId) startAuto(parseInt(inputSpeed.value,10)); }); }
+
+      // slider live update
+      inputSpeed.addEventListener('input', ()=>{ if(animId){ cancelAnimationFrame(animId); startAuto(parseInt(inputSpeed.value,10)); } });
+
+    })();
+
+    // Respect reduced motion on load: stop any animations
+    if(reduced){ document.querySelectorAll('.cube').forEach(n=>n.style.animation='none'); }
+  </script>
+</body>
+</html>

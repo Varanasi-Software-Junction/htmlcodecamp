@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Images in HTML — Mobile, Tablet & Desktop</title>
+
+    <style>
+        :root {
+            --bg: #fffaf2;
+            --card: #ffffff;
+            --ink: #1f2937;
+            --muted: #6b7280;
+            --brand: #d97706;
+            --border: #fde68a;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: auto;
+            padding: 20px;
+           
+    
+        }
+        .mid{
+             display: flex;
+            justify-content: center;
+        }
+
+        header {
+            background: linear-gradient(90deg, #fff7ed, #ffedd5);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+        }
+
+        h1 {
+            margin: 0;
+            color: #92400e;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 22px;
+            margin-top: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 16px;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: ui-monospace, Consolas, monospace;
+        }
+
+        .svg-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .note {
+            background: #fffbeb;
+            border-left: 5px solid var(--brand);
+            padding: 14px;
+            border-radius: 10px;
+            color: #78350f;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            margin: 40px 0 10px;
+        }
+
+         
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Responsive Images in HTML</h1>
+            <p>Load different images for <b>Mobile (600px)</b>, <b>Tablet (1024px)</b>, and <b>Desktop</b> — the correct
+                way.</p>
+        </header>
+
+        <!-- INTRO -->
+        <section class="mid">
+            <h2>Why Responsive Images?</h2>
+            <p>
+                A mobile user should <b>not download a heavy desktop image</b>.
+                Responsive images ensure:
+            </p>
+            <ul>
+                <li>Faster loading</li>
+                <li>Less data usage</li>
+                <li>Better SEO & performance</li>
+            </ul>
+        </section>
+
+        <!-- SVG DIAGRAM -->
+
+        <!-- METHOD 1 -->
+        <section>
+            <h2>Method 1: &lt;picture&gt; (Best Method)</h2>
+
+            <p>
+                This gives you <b>full control</b> over which image loads on which screen.
+            </p>
+             <picture>
+                <!-- Mobile -->
+                <source media="(max-width: 600px)"
+                    srcset="https://programmer-s-picnic.github.io/json-images/mobile.png">
+
+                <!-- Tablet -->
+                <source media="(max-width: 1024px)"
+                    srcset="https://programmer-s-picnic.github.io/json-images/tablet.png">
+
+                <!-- Desktop -->
+                <source media="(min-width: 1025px)"
+                    srcset="https://programmer-s-picnic.github.io/json-images/desktop.png">
+
+                <!-- Fallback -->
+                <img src="https://programmer-s-picnic.github.io/json-images/desktop.png" alt="Responsive Image"
+                    loading="lazy">
+            </picture>
+           
+            <pre><code>&lt;picture&gt;
+  &lt;!-- Mobile (up to 600px) --&gt;
+  &lt;source media="(max-width: 600px)" srcset="https://programmer-s-picnic.github.io/json-images/mobile.png"&gt;
+
+  &lt;!-- Tablet (up to 1024px) --&gt;
+  &lt;source media="(max-width: 1024px)" srcset="https://programmer-s-picnic.github.io/json-images/tablet.png"&gt;
+
+  &lt;!-- Desktop --&gt;
+  &lt;source media="(min-width: 1025px)" srcset="https://programmer-s-picnic.github.io/json-images/desktop.png"&gt;
+
+  &lt;img src="https://programmer-s-picnic.github.io/json-images/desktop.png" alt="Responsive Image" loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+
+            <div class="note">
+                ✔ Loads only one image<br>
+                ✔ Perfect for comics, banners, illustrations
+            </div>
+        </section>
+
+        <!-- METHOD 2 -->
+      
+
+         
+        <!-- SUMMARY -->   <section>
+            <h2>Recommended Usage</h2>
+
+            <table style="width:100%;border-collapse:collapse">
+                <tr>
+                    <th align="left">Use Case</th>
+                    <th align="left">Method</th>
+                </tr>
+                <tr>
+                    <td>Hero Banner</td>
+                    <td>CSS background-image</td>
+                </tr>
+                <tr>
+                    <td>Blog Images</td>
+                    <td>&lt;picture&gt;</td>
+                </tr>
+                <tr>
+                    <td>Comics</td>
+                    <td>&lt;picture&gt;</td>
+                </tr>
+                <tr>
+                    <td>Photos</td>
+                    <td>srcset + sizes</td>
+                </tr>
+            </table>
+        </section>
+
+        <footer>
+            Programmer’s Picnic • Learn smart, load light
+        </footer>
+
+    </div>
+</body>
+
+</html>
